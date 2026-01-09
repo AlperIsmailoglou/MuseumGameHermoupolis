@@ -122,19 +122,21 @@ let roomItemsData = {};
 
 function loadGameState() {
     const savedStateJSON = localStorage.getItem(LOCAL_STORAGE_KEY + 'gameState');
+    // Start with default, then overwrite if save exists
     gameState = { ...defaultState };
 
     if (savedStateJSON) {
         try {
             const savedState = JSON.parse(savedStateJSON);
+            // Merge saved data into current state
             gameState = { ...gameState, ...savedState };
-            gameState.language = localStorage.getItem('gameLanguage') || 'en';
         } catch (e) {
             console.error("Error parsing saved state:", e);
         }
     }
     
-   // gameState.language = localStorage.getItem('gameLanguage') || 'en';
+    // Always sync language from its specific key
+    gameState.language = localStorage.getItem('gameLanguage') || 'en';
     updateInventoryButtonVisual();
 }
 
@@ -379,11 +381,13 @@ function changeGameLanguage(newLang) {
     localStorage.setItem('gameLanguage', newLang);
     window.location.reload(); 
 }
-
 function saveRoomProgress(roomID, sceneID) {
+    // 1. Update the progress for this specific room
     gameState.roomProgress[roomID] = sceneID;
+    // 2. Track which room the player is currently in
     gameState.currentRoom = roomID;
-    saveGameState(roomID);
+    // 3. Persist to localStorage
+    saveGameState();
 }
 
 function getRoomProgress(roomID) {

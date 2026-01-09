@@ -69,7 +69,7 @@ function handlePlaceboUseClick() {
     // 2. Έλεγχος αν ο παίκτης έχει το αντικείμενο
     if (gameState.inventory.includes(itemNeeded)) {
         console.log(`System: Successfully using ${itemNeeded}`);
-        
+
         // Κλείσιμο του inventory panel
         toggleInventory(false);
 
@@ -94,7 +94,7 @@ function handleSceneAdvance(event) {
     const scene = currentDialogueScript[currentSceneIndex];
     if (scene && scene.type === 'task_check') {
         if (event.target.classList.contains('task-highlight') || event.target.closest('.interactive-ui')) {
-            return; 
+            return;
         }
         showTaskFeedback(gameState.language === 'en' ? "Finish the task first!" : "Ολοκληρώστε την εργασία πρώτα!");
         return;
@@ -124,7 +124,7 @@ function handleCharacterVisuals(scene) {
             if (scene.emotion && ASSETS.characters[speakerKey]) {
                 const emotionSrc = ASSETS.characters[speakerKey][scene.emotion];
                 if (emotionSrc) {
-                    charEl.src = BASE_PATH + emotionSrc; 
+                    charEl.src = BASE_PATH + emotionSrc;
                 }
             }
         } else {
@@ -155,7 +155,7 @@ function handleSceneActions(actionString) {
 
             if (value === 'on') {
                 if (overlay) overlay.style.display = 'block';
-                if (dialogueBox) dialogueBox.style.zIndex = "1002"; 
+                if (dialogueBox) dialogueBox.style.zIndex = "1002";
             } else if (value === 'off') {
                 if (overlay) overlay.style.display = 'none';
                 if (dialogueBox) dialogueBox.style.zIndex = "500";
@@ -170,7 +170,20 @@ function handleSceneActions(actionString) {
                 const btn = document.querySelector(targetId);
                 if (btn) btn.classList.add('highlight-active');
             }
-        } else if (type === 'show-alert') {
+        }
+        else if (type === 'flicker-lights') {
+            const overlay = document.getElementById('light-overlay');
+            if (overlay) {
+                overlay.classList.add('flicker-active');
+
+                // Αφαίρεση της κλάσης μετά το τέλος της animation (2 δευτερόλεπτα)
+                // για να μπορεί να ξαναχρησιμοποιηθεί
+                setTimeout(() => {
+                    overlay.classList.remove('flicker-active');
+                }, 2000);
+            }
+        }
+        else if (type === 'show-alert') {
             const currentLang = gameState.language || 'en';
             const alertMessages = {
                 'gr': "Χαχαχα! Σας έκλεψα τόσα πολλά πράγματα...",
@@ -204,7 +217,10 @@ function processScene() {
 
 async function initializeDialogueEngine(roomName, jsonPath) {
     roomID = roomName;
+    console.log(`Initializing Engine for ${roomID}...`);
+
     try {
+        // 1. Fetch Room-Specific Data
         const [dialogueRes, itemsRes] = await Promise.all([
             fetch(jsonPath),
             fetch(`../data/${roomID}_items.json`)
@@ -213,10 +229,33 @@ async function initializeDialogueEngine(roomName, jsonPath) {
         currentDialogueScript = await dialogueRes.json();
         roomItemsData = await itemsRes.json();
 
+        // 2. RECOVERY LOGIC: Find where to start
+        const savedSceneID = getRoomProgress(roomID);
+        let startingIndex = 0;
+
+        // Check Room-Specific Mini-Game Flags (Prioritize these)
+        if (roomID === 'room_1') {
+            if (getFlag('Hidden_objects_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_30');
+            else if (getFlag('Find_difference_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_29');
+            else if (getFlag('Broken_plate_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_27_success');
+            else if (getFlag('statue_game_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_26_success');
+        }
+        
+        // 3. FALLBACK: If no mini-game was just solved, use the last saved scene ID
+        if (startingIndex <= 0 && savedSceneID) {
+            const foundIndex = currentDialogueScript.findIndex(s => s.id === savedSceneID);
+            if (foundIndex !== -1) startingIndex = foundIndex;
+        }
+
+        currentSceneIndex = startingIndex;
+        console.log(`System: Resuming ${roomID} at index ${currentSceneIndex} (ID: ${currentDialogueScript[currentSceneIndex]?.id})`);
+
+        // 4. Attach Listeners
         const container = document.getElementById('game-container');
         container.removeEventListener('click', handleSceneAdvance);
         container.addEventListener('click', handleSceneAdvance);
 
+        // 5. Start Visuals
         processScene();
     } catch (error) {
         console.error("Initialization Error:", error);
