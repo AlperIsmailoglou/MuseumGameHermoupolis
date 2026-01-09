@@ -128,12 +128,13 @@ function loadGameState() {
         try {
             const savedState = JSON.parse(savedStateJSON);
             gameState = { ...gameState, ...savedState };
+            gameState.language = localStorage.getItem('gameLanguage') || 'en';
         } catch (e) {
             console.error("Error parsing saved state:", e);
         }
     }
     
-    gameState.language = localStorage.getItem('gameLanguage') || 'en';
+   // gameState.language = localStorage.getItem('gameLanguage') || 'en';
     updateInventoryButtonVisual();
 }
 
@@ -381,6 +382,7 @@ function changeGameLanguage(newLang) {
 
 function saveRoomProgress(roomID, sceneID) {
     gameState.roomProgress[roomID] = sceneID;
+    gameState.currentRoom = roomID;
     saveGameState(roomID);
 }
 

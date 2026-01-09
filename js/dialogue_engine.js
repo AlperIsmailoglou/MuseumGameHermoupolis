@@ -7,7 +7,7 @@ let currentSceneIndex = 0;
 let isProcessingClick = false;
 let roomID = '';
 
-// --- HELPER FUNCTIONS (Defined first to avoid ReferenceErrors) ---
+// --- HELPER FUNCTIONS ---
 
 function showTaskFeedback(msg) {
     const feedback = document.getElementById('task-feedback');
@@ -48,10 +48,47 @@ function updateTaskVisibility(activeTaskID) {
     }
 }
 
+/**
+ * Λειτουργία του κουμπιού USE (Placebo) στο Inventory
+ */
+function handlePlaceboUseClick() {
+    console.log("System: Use Button Clicked");
+    const scene = currentDialogueScript[currentSceneIndex];
+
+    // 1. Έλεγχος αν η τρέχουσα σκηνή απαιτεί αντικείμενο
+    if (!scene || scene.type !== 'task_check' || !scene.required_item) {
+        showTaskFeedback(gameState.language === 'en' ? "Nothing to use here!" : "Δεν υπάρχει κάτι προς χρήση εδώ!");
+        toggleInventory(false); // Κλείνει το inventory αν πατηθεί άσκοπα
+        return;
+    }
+
+    const itemNeeded = scene.required_item;
+    console.log("System: Scene needs:", itemNeeded);
+    console.log("System: Current Inventory:", gameState.inventory);
+
+    // 2. Έλεγχος αν ο παίκτης έχει το αντικείμενο
+    if (gameState.inventory.includes(itemNeeded)) {
+        console.log(`System: Successfully using ${itemNeeded}`);
+        
+        // Κλείσιμο του inventory panel
+        toggleInventory(false);
+
+        // Αφαίρεση από το inventory και προώθηση στην επόμενη σκηνή
+        removeItemFromInventory(itemNeeded);
+        currentSceneIndex++;
+        processScene();
+    } else {
+        // Αν ο παίκτης δεν έχει το σωστό αντικείμενο
+        showTaskFeedback(gameState.language === 'en' ? "Missing required item!" : "Λείπει το απαραίτητο αντικείμενο!");
+        // Προαιρετικά κλείνουμε το inventory για να δει το feedback
+        toggleInventory(false);
+    }
+}
+
 function handleSceneAdvance(event) {
     console.log("System: Click detected on:", event.target);
 
-    if (event.target.closest('.overlay-menu')) return;
+    if (event.target.closest('.overlay-menu') || event.target.closest('.ui-icon-button')) return;
     if (isProcessingClick) return;
 
     const scene = currentDialogueScript[currentSceneIndex];
@@ -86,8 +123,7 @@ function handleCharacterVisuals(scene) {
             charEl.classList.remove('is-listening');
             if (scene.emotion && ASSETS.characters[speakerKey]) {
                 const emotionSrc = ASSETS.characters[speakerKey][scene.emotion];
-               if (emotionSrc) {
-                    // USE BASE_PATH HERE: This adds "/REPOSITORY_NAME/" to the front
+                if (emotionSrc) {
                     charEl.src = BASE_PATH + emotionSrc; 
                 }
             }
@@ -177,7 +213,6 @@ async function initializeDialogueEngine(roomName, jsonPath) {
         currentDialogueScript = await dialogueRes.json();
         roomItemsData = await itemsRes.json();
 
-        // Attach the listener (now handleSceneAdvance is definitely defined)
         const container = document.getElementById('game-container');
         container.removeEventListener('click', handleSceneAdvance);
         container.addEventListener('click', handleSceneAdvance);
@@ -192,7 +227,6 @@ window.handleTaskInteraction = function (taskID, requiredItem, miniGameURL) {
     const scene = currentDialogueScript[currentSceneIndex];
     if (scene.type === 'task_check' && scene.task_id === taskID) {
         saveRoomProgress(roomID, scene.id);
-       // Ensure the miniGameURL starts at the root of your repository
         const finalURL = BASE_PATH + miniGameURL;
         console.log("Navigating to mini-game:", finalURL);
         window.location.href = finalURL;
