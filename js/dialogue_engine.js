@@ -86,7 +86,10 @@ function handleCharacterVisuals(scene) {
             charEl.classList.remove('is-listening');
             if (scene.emotion && ASSETS.characters[speakerKey]) {
                 const emotionSrc = ASSETS.characters[speakerKey][scene.emotion];
-                if (emotionSrc) charEl.src = BASE_PATH + emotionSrc;
+               if (emotionSrc) {
+                    // USE BASE_PATH HERE: This adds "/REPOSITORY_NAME/" to the front
+                    charEl.src = BASE_PATH + emotionSrc; 
+                }
             }
         } else {
             if (charEl.id === 'guide') {
@@ -189,6 +192,9 @@ window.handleTaskInteraction = function (taskID, requiredItem, miniGameURL) {
     const scene = currentDialogueScript[currentSceneIndex];
     if (scene.type === 'task_check' && scene.task_id === taskID) {
         saveRoomProgress(roomID, scene.id);
-        window.location.href = BASE_PATH + miniGameURL;
+       // Ensure the miniGameURL starts at the root of your repository
+        const finalURL = BASE_PATH + miniGameURL;
+        console.log("Navigating to mini-game:", finalURL);
+        window.location.href = finalURL;
     }
 };
