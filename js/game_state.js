@@ -92,7 +92,17 @@ const ASSETS = {
 };
 
 function getBasePath() {
-    return window.location.origin + '/';
+    // Detect if we are on GitHub Pages
+    const isGitHub = window.location.hostname.includes('github.io');
+    
+    if (isGitHub) {
+        // Extracts 'REPOSITORY_NAME' from 'alperismailoglou.github.io/REPOSITORY_NAME/'
+        const repoName = window.location.pathname.split('/')[1];
+        return `/${repoName}/`; 
+    }
+    
+    // For local testing (Live Server)
+    return '/'; 
 }
 
 const BASE_PATH = getBasePath();
