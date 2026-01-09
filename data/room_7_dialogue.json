@@ -1,0 +1,305 @@
+[
+  {
+    "id": "scene_r7_01",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "This is the bedroom that the master and lady of the house would have used. As you can see, it has everything from clothes to grooming items!",
+      "gr": "Αυτό είναι το υπνοδωμάτιο που θα χρησιμοποιούσε ο κύριος και η κυρία του σπιτιού. Όπως μπορείς να δεις έχει από ρούχα, σε αντικείμενα περιποίησης!"
+    },
+    "next_id": "scene_r7_02"
+  },
+  {
+    "id": "scene_r7_02",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "If you noticed the pillowcases, they have the first letters of previous owners. That's how they did it back then. Your family might even have some like these from your great-grandparents!",
+      "gr": "Αν παρατήρησες τις μαξιλαροθήκες, έχουν τα πρώτα γράμματα από προηγούμενους ιδιοκτήτες. Έτσι τα έκαναν παλιά. Μπορεί και η οικογένειά σου να έχει μερικά σαν αυτά από τους προπάππους σου!"
+    },
+    "next_id": "scene_r7_03"
+  },
+  {
+    "id": "scene_r7_03",
+    "type": "dialogue",
+    "speaker_id": "character8",
+    "emotion": "happy",
+    "text": {
+      "en": "Hahaha! You really still love being a tour guide, don't you Eric?",
+      "gr": "Χαχαχα! Στα αλήθεια σου αρέσει να κάνεις τον ξεναγό ακόμη, ε Έρικ;"
+    },
+    "next_id": "scene_r7_04"
+  },
+  {
+    "id": "scene_r7_04",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Ah, Mrs. Iphigenia! Hello!",
+      "gr": "Α, κυρία Ιφιγένεια! Γεια σας!"
+    },
+    "next_id": "scene_r7_05"
+  },
+  {
+    "id": "scene_r7_05",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "This is Mrs. Iphigenia; she was once the lady of the house!",
+      "gr": "Από εδώ είναι η κυρία Ιφιγένεια, ήταν κάποτε η κυρία του σπιτιού!"
+    },
+    "next_id": "scene_r7_06"
+  },
+  {
+    "id": "scene_r7_06",
+    "type": "dialogue",
+    "speaker_id": "character8",
+    "emotion": "happy",
+    "text": {
+      "en": "Pleasure to meet you.",
+      "gr": "Χαίρω πολύ."
+    },
+    "next_id": "scene_r7_07"
+  },
+  {
+    "id": "scene_r7_07",
+    "type": "dialogue",
+    "speaker_id": "character9",
+    "emotion": "happy",
+    "text": {
+      "en": "Hmph, playing the fool again, I see, Eric.",
+      "gr": "Χμφ, πάλι κάνεις τον καραγκιόζη βλέπω, Έρικ."
+    },
+    "next_id": "scene_r7_08"
+  },
+  {
+    "id": "scene_r7_08",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Oh, Mr. Achilles! It is a great honor to see you again...",
+      "gr": "Ω, κύριε Αχιλλέα! Μεγάλη μου τιμή που σας ξαναβλέπω…"
+    },
+    "next_id": "scene_r7_09"
+  },
+  {
+    "id": "scene_r7_09",
+    "type": "dialogue",
+    "speaker_id": "character8",
+    "emotion": "happy",
+    "text": {
+      "en": "Come now, Mr. Achilles, don't be like that...",
+      "gr": "Ελάτε τώρα κύριε Αχιλλέα, μην κάνετε έτσι…"
+    },
+    "next_id": "scene_r7_10"
+  },
+  {
+    "id": "scene_r7_10",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Mr. Achilles was Mrs. Iphigenia's husband—essentially one of the masters of this house long ago.",
+      "gr": "Ο κύριος Αχιλλέας ήταν ο άντρας της κυρίας Ιφιγένειας, με λίγα λόγια ένας από τους κυρίους του σπιτιού αυτού, πριν πολύ καιρό."
+    },
+    "next_id": "scene_r7_11"
+  },
+  {
+    "id": "scene_r7_11",
+    "type": "dialogue",
+    "speaker_id": "character9",
+    "emotion": "happy",
+    "text": {
+      "en": "Hmph...",
+      "gr": "Χμφ…"
+    },
+    "next_id": "scene_r7_12"
+  },
+  {
+    "id": "scene_r7_12",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Back then, it was normal for young girls to marry, and not strange at all for the husband to be a similar age as her father!",
+      "gr": "Τότε ήταν φυσιολογικό να παντρεύονταν νεαρές οι κοπέλες, και δεν ήταν καθόλου περίεργο ο άντρας να ήταν παρόμοια ηλικία με τον πατέρα της!"
+    },
+    "next_id": "scene_r7_13"
+  },
+  {
+    "id": "scene_r7_13",
+    "type": "dialogue",
+    "speaker_id": "character8",
+    "emotion": "happy",
+    "text": {
+      "en": "Oh my dear Eric, since you're here can you help me find something? It should be inside the grooming case but I don't see it, and Mr. Achilles always had trouble with his eyes.",
+      "gr": "Αχ Έρικ μου, μιας και είσαι εδώ μπορείς να με βοηθήσεις να βρω κάτι; Έπρεπε να είναι μέσα στην βαλίτσα με τα πράγματα περιποίησης αλλά δεν το βλέπω."
+    },
+    "next_id": "scene_r7_14"
+  },
+  {
+    "id": "scene_r7_14",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "But of course! We will certainly help you! What are you looking for?",
+      "gr": "Μα φυσικά! Εννοείται ότι θα σας βοηθήσουμε! Τι ψάχνετε;"
+    },
+    "next_id": "scene_r7_15"
+  },
+  {
+    "id": "scene_r7_15",
+    "type": "dialogue",
+    "speaker_id": "character8",
+    "emotion": "happy",
+    "text": {
+      "en": "I think I saw the sewing machine needle inside... though I don't know how it got there.",
+      "gr": "Νομίζω είδα την βελόνα από την ραπτομηχανή μέσα… δεν ξέρω όμως πώς βρέθηκε εκεί."
+    },
+    "next_id": "scene_r7_16_trigger"
+  },
+  {
+    "id": "scene_r7_16_trigger",
+    "type": "task_check",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "task_id": "Hidden_objects",
+    "mini_game_url": "mini_games/hidden_objects/hiddenObjects.html",
+    "text": {
+      "en": "Leave it to us! It's not exactly a needle in a haystack—we'll find it!",
+      "gr": "Αφήστε το πάνω μας! Δεν είναι και άχυρα για να μην μπορούμε να βρούμε μία βελόνα!"
+    },
+    "next_id": "scene_r7_17_success"
+  },
+  {
+    "id": "scene_r7_17_success",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Eureka! Here is the needle!",
+      "gr": "Εύρηκα! Ορίστε η βελόνα!"
+    },
+    "next_id": "scene_r7_18"
+  },
+  {
+    "id": "scene_r7_18",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Again! And this time he had the nerve to snatch the needle right from your hands! I think I saw him go to the living room, but...",
+      "gr": "Άντε πάλι! Και αυτή την φορά είχε το θράσος να πάρει την βελόνα από τα χέρια σου! Νομίζω ότι τον είδα να πηγαίνει στο καθιστικό, αλλά…"
+    },
+    "action": "flicker-lights",
+    "next_id": "scene_r7_19"
+  },
+  {
+    "id": "scene_r7_19",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "I don't know if Miss Katerina will let us in again...",
+      "gr": "Δεν ξέρω εάν η δεσποινίς Κατερίνα θα μας αφήσει να ξαναμπούμε…"
+    },
+    "next_id": "scene_r7_20"
+  },
+  {
+    "id": "scene_r7_20",
+    "type": "dialogue",
+    "speaker_id": "character8",
+    "emotion": "happy",
+    "text": {
+      "en": "What, did you have a fight with Katerina?",
+      "gr": "Καλά, μάλωσες με την Κατερίνα;"
+    },
+    "next_id": "scene_r7_21"
+  },
+  {
+    "id": "scene_r7_21",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Ah... yes... sort of...",
+      "gr": "Α…ναι…κάπως…"
+    },
+    "next_id": "scene_r7_22"
+  },
+  {
+    "id": "scene_r7_22",
+    "type": "dialogue",
+    "speaker_id": "character8",
+    "emotion": "happy",
+    "text": {
+      "en": "Hahaha! It's not hard to apologize to her. If you go back there, I'm sure she will have calmed down.",
+      "gr": "Χαχαχα! Εντάξει δεν είναι δύσκολο να της ζητήσεις συγγνώμη. Αν ξαναπάς εκεί πιστεύω θα έχει ηρεμήσει."
+    },
+    "next_id": "scene_r7_23"
+  },
+  {
+    "id": "scene_r7_23",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "You're right. Let's go back to the living room, quickly!",
+      "gr": "Έχετε δίκιο. Πάμε πίσω στο καθιστικό, γρήγορα!"
+    },
+    "next_id": "scene_r7_24"
+  },
+   {
+    "id": "scene_r7_24",
+    "type": "task_check",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "required_item": "Needle",
+    "text": {
+      "en": "",
+      "gr": ""
+    },
+    "next_id": "scene_r7_25"
+  },
+   {
+    "id": "scene_r7_25",
+    "type": "dialogue",
+    "speaker_id": "character8",
+    "emotion": "happy",
+    "text": {
+      "en": "Thank you very much.",
+      "gr": " Σας ευχαριστώ πολύ."
+    },
+    "action":"remove-item:Needle",
+    "next_id": "scene_r7_26"
+  },
+  {
+    "id": "scene_r7_27",
+    "type": "dialogue",
+    "speaker_id": "character9",
+    "emotion": "happy",
+    "text": {
+      "en": "Hmm.",
+      "gr": "Χμφ."
+    },
+    "next_id": "scene_r7_28"
+  },
+   {
+    "id": "scene_r7_28",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Please...let's go to the office now for the cane.",
+      "gr": "Παρακαλούμε…ας πάμε τώρα στο γραφείο για το μπαστούνι."
+    },
+    "next_id": "END"
+  }
+ 
+]

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Broken Plate Adventure Puzzle</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../../js/game_state.js"></script>
+</head>
+<body>
+
+    <div id="win-screen" class="hidden">
+        <div class="win-content">
+            <h1>Restored!</h1>
+            <p>The plate is whole again.</p>
+            <button id="play-again-btn">Continue Adventure</button>
+        </div>
+    </div>
+
+    <header id="ui-header">
+        <button id="reset-btn">Reset</button>
+        <span class="title">Broken Plate</span>
+        <button id="help-btn" onclick="toggleTutorial()">?</button>
+    </header>
+
+    <div id="game-container">
+        <div id="puzzle-board">
+            <div id="play-zone">
+                <img id="ghost-image" src="plate.jpg" alt="Ghost Reference">
+            </div>
+        </div>
+        
+        <div id="piece-tray">
+            </div>
+    </div>
+
+    <div id="tutorial-modal" class="modal">
+        <div class="modal-content">
+            <h2>How to Play</h2>
+            
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #34495e;"><span>🖱️</span></div>
+                <div class="step-text">
+                    <h3>Drag & Drop</h3>
+                    <p>Drag pieces from the tray to the board.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #2ecc71;"><span>✨</span></div>
+                <div class="step-text">
+                    <h3>Snap to Lock</h3>
+                    <p>Green flash means correct position!</p>
+                </div>
+            </div>
+
+            <button class="close-btn-red" onclick="toggleTutorial()">CLOSE</button>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

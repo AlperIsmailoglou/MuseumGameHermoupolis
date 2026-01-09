@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room 7:Master Bedroom </title>
+    <link rel="stylesheet" href="../css/main_responsive.css">
+    <link rel="stylesheet" href="../css/room_styles/room_7_specific.css">
+    <script src="../js/game_state.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <div id="light-overlay"></div>
+       <div id="character-layer">
+            <img id="guide" src="../images/characters/guide_happy.png" alt="Eric">
+            <img id="character8" src="../images/characters/character8_happy.png" alt="Chef" style="display: none;">
+            <img id="character9" src="../images/characters/character9_happy.png" alt="Chef" style="display: none;">
+        </div>
+
+        <div id="task-layer">
+            <img id="task-hidden" class="interactive-ui" src="../images/room_7/hidden_objects.png" 
+                alt="Hidden Objects" style="display: none;"
+                onclick="handleTaskInteraction('Hidden_objects', null, 'mini_games/hidden_objects/hiddenObjects.html')">
+
+        </div>
+
+        <div id="task-feedback" style="display: none;"></div>
+
+        <div id="dialogue-box">
+            <div id="dialogue-text">Click anywhere to start the story...</div>
+        </div>
+
+        <div id="reward-popup" style="display: none;" class="interactive-ui"></div>
+        
+        <div id="top-left-ui-layer">
+            <div class="ui-icon-button interactive-ui" onclick="toggleLanguageMenu(true)">
+                <img src="../images/UI/settings.png" alt="Settings">
+            </div>
+        </div>
+
+        <div id="persistent-ui-layer">
+            <div class="ui-icon-button interactive-ui" onclick="toggleInventory(true)">
+                <img id="inventory-btn" src="../images/UI/inventory_empty.png" alt="Inventory">
+            </div>
+            <div class="ui-icon-button interactive-ui" onclick="toggleArtifacts(true)">
+                <img src="../images/UI/artifacts.png" alt="Artifacts">
+            </div>
+        </div>
+
+        <div id="inventory-menu" style="display: none;" class="overlay-menu interactive-ui">
+            <div class="ui-close-button-combo" onclick="toggleInventory(false)">
+                <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
+            </div>
+            <div id="inventory-use-container">
+        <button id="use-item-btn" class="lang-option" onclick="handlePlaceboUseClick()">
+            USE / ΧΡΗΣΗ
+        </button>
+    </div>
+            <h2>Inventory / Αποθήκη</h2>
+            <div id="inventory-list"></div>
+        </div>
+
+        <div id="artifacts-menu" style="display: none;" class="overlay-menu interactive-ui">
+            <div class="ui-close-button-combo" onclick="toggleArtifacts(false)">
+                <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
+            </div>
+            <h2>Artifacts / Τεχνουργήματα</h2>
+            <div id="artifacts-grid-list"></div>
+            <div id="artifact-detail-panel" style="display: none;">
+                <div class="ui-close-button-combo" onclick="showArtifactsList()">
+                    <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
+                </div>
+                <h3 id="detail-name-title"></h3>
+                <div id="detail-content">
+                    <div id="detail-image-container"><img id="detail-image" src="" alt="Artifact"></div>
+                    <p id="detail-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="language-menu" style="display: none;" class="overlay-menu interactive-ui">
+            <div class="ui-close-button-combo" onclick="toggleLanguageMenu(false)">
+                <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
+            </div>
+            <h2>Select Language / Επιλέξτε Γλώσσα</h2>
+            <div id="language-options-list">
+                <button class="lang-option interactive-ui" onclick="changeGameLanguage('en')">English</button>
+                <button class="lang-option interactive-ui" onclick="changeGameLanguage('gr')">Ελληνικά</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/dialogue_engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGameState();
+            // Safety check for language
+            if (!gameState.language) {
+                window.location.href = '../index.html';
+                return;
+            }
+            updateInventoryButtonVisual();
+
+            // CRITICAL CHANGE: Tell the engine this is Room 2
+            initializeDialogueEngine('room_7', '../data/room_7_dialogue.json');
+        });
+    </script>
+</body>
+</html>

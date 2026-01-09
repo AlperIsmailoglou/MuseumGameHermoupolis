@@ -1,0 +1,295 @@
+:root {
+    /* 1. NEW RATIO: 669 width / 969 height */
+    --puzzle-aspect-ratio: 669 / 969; 
+    
+    --bg-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    --tray-bg: rgba(0, 0, 0, 0.85);
+    --accent-color: #ff9800;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    width: 100vw; height: 100vh;
+    background: var(--bg-gradient);
+    color: white;
+    font-family: sans-serif;
+    display: flex; flex-direction: column;
+    overflow: hidden; 
+    user-select: none; -webkit-user-select: none;
+}
+
+h2 {
+    margin: 10px 0;
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+    text-align: center;
+    flex-shrink: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* --- TOP VIEWPORT --- */
+#viewport-top {
+    flex: 1;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 10px;
+    min-height: 0; 
+}
+
+#game-board-container {
+    position: relative;
+    /* Responsive sizing logic */
+    width: auto;
+    height: 90%; /* Default to fitting height */
+    aspect-ratio: var(--puzzle-aspect-ratio);
+    
+    /* Fallback for width constraint */
+    max-width: 95vw;
+    
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+#game-board { width: 100%; height: 100%; position: relative; }
+
+/* SHARED PIECE STYLES */
+.board-piece {
+    position: absolute;
+    top: 0;
+    height: 100% !important;
+    /* 'fill' stretches image to box size, fixing the X/Y distortion */
+    object-fit: fill !important; 
+    pointer-events: none;
+    display: block;
+}
+
+/* 65% LEFT */
+#fixed-left-piece {
+    left: 5%;
+    width: 65% !important;
+    z-index: 2;
+}
+
+/* 35% RIGHT */
+#placed-right-piece, #ghost-guide-piece, #target-zone-piece {
+    left: 60%;
+    width: 35% !important;
+}
+#placed-right-piece { z-index: 5; }
+.ghost { filter: brightness(0) opacity(0.3); z-index: 1; }
+#target-zone-piece { height: 100%; z-index: 10; }
+
+
+/* GLUE ZONE - COVER WHOLE IMAGE */
+#target-zone-glue {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%; /* Full Coverage */
+    z-index: 50;
+    pointer-events: none;
+    /* Debug: background: rgba(0,255,0,0.1); */
+}
+#glue-effect {
+    position: absolute; top: 0; left: 65%; /* Center on seam */
+    width: 2%; height: 100%; transform: translateX(-50%);
+    pointer-events: none; z-index: 60;
+}
+
+
+/* --- BOTTOM VIEWPORT (TRAY) --- */
+#viewport-bottom {
+    height: 25vh; /* Taller workbench */
+    min-height: 180px;
+    flex-shrink: 0;
+    background: var(--tray-bg);
+    border-top: 2px solid #555;
+    display: flex; flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    z-index: 100;
+}
+
+#status-bar {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #ddd;
+    text-align: center;
+}
+
+#inventory-tray {
+    width: 100%; height: 100%;
+    display: flex; justify-content: center; align-items: center;
+    position: relative;
+}
+
+/* BIGGER BUTTONS */
+.tray-btn {
+    padding: 20px 40px; /* Big padding */
+    background: var(--accent-color);
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: clamp(1rem, 5vw, 1.5rem); /* Responsive big text */
+    color: #000;
+    box-shadow: 0 5px 0 #c66900;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: transform 0.1s;
+    width: 90%; /* Take most width on mobile */
+    max-width: 400px;
+}
+.tray-btn:active { transform: translateY(4px); box-shadow: 0 0 0; }
+
+.tray-item {
+    height: 80%; max-height: 120px; width: auto;
+    touch-action: none; cursor: grab; z-index: 1000;
+    filter: drop-shadow(0 4px 4px rgba(0,0,0,0.5));
+}
+.glue-container {
+    /* Fixed logic but responsive sizing */
+    width: 15vw;       /* Starts at 15% of screen width */
+    max-width: 100px;  /* Never gets bigger than 100px (Desktop) */
+    min-width: 60px;   /* Never gets smaller than 60px (Mobile) */
+    
+    /* Force a Square Aspect Ratio */
+    aspect-ratio: 1 / 1; 
+    
+    /* Styling */
+    background: transparent; /* Clean look */
+    /* Optional: Add a subtle border if you want a "box" look, or remove for realism */
+    /* border: 2px solid rgba(255,255,255,0.3); */
+    /* border-radius: 10px; */
+    
+    /* Flex to center the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    cursor: grab;
+    touch-action: none; /* Critical for mobile drag */
+    z-index: 1000;
+}
+
+/* The Image Inside */
+.glue-container img {
+    width: 100%;
+    height: 100%;
+    /* 'contain' ensures the whole glue stick is visible without stretching */
+    object-fit: contain; 
+    
+    /* visual pop */
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
+    pointer-events: none; /* Clicks pass through to the container */
+}
+
+/* Landscape Tweaks for the new box */
+@media (max-height: 600px) and (orientation: landscape) {
+    .glue-container {
+        width: 80px; /* Fixed size for sidebar */
+        max-width: none;
+        height: 80px;
+    }
+}
+
+/* --- WIN SCREEN STYLES --- */
+.win-content {
+    border-top: 5px solid #27ae60; /* Green top bar */
+}
+
+.continue-btn {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    box-shadow: 0 4px 0 #1e8449;
+    transition: transform 0.1s;
+}
+.continue-btn:hover { background-color: #2ecc71; }
+.continue-btn:active { transform: translateY(4px); box-shadow: none; }
+
+
+/* --- NEW: GLUE DROP ZONE HIGHLIGHT --- */
+/* This class is added by JS when you drag the glue */
+.active-drop-zone {
+    box-shadow: 0 0 30px #f1c40f, inset 0 0 20px #f1c40f !important;
+    border: 3px solid #f1c40f !important;
+    animation: pulse-border 1s infinite alternate;
+}
+
+@keyframes pulse-border {
+    from { box-shadow: 0 0 10px #f1c40f; }
+    to { box-shadow: 0 0 30px #f1c40f, 0 0 50px rgba(241, 196, 15, 0.5); }
+}
+
+/* UTILS */
+.hidden { display: none !important; }
+
+/* LANDSCAPE MODE */
+@media (max-height: 600px) and (orientation: landscape) {
+    body { flex-direction: row; }
+    #viewport-top { height: 100vh; padding: 5px; }
+    #game-board-container { height: 95%; width: auto; }
+    
+    #viewport-bottom {
+        width: 200px; height: 100vh;
+        border-top: none; border-left: 2px solid #555;
+        overflow-y: auto; justify-content: flex-start; padding-top: 20px;
+    }
+    #inventory-tray { flex-direction: column; height: auto; gap: 20px; }
+    .tray-btn { width: 100%; padding: 15px; font-size: 1rem; }
+    .tray-item { width: 90px; height: auto; }
+}
+
+/* --- TUTORIAL & MODAL CSS --- */
+#help-btn {
+    position: absolute; top: 15px; right: 15px;
+    width: 40px; height: 40px;
+    border-radius: 50%; border: none;
+    background-color: #3498db; color: white;
+    font-size: 1.2rem; font-weight: bold;
+    cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    z-index: 150;
+}
+#help-btn:hover { background-color: #2980b9; }
+
+.modal {
+    display: none; position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 300; justify-content: center; align-items: center;
+}
+.modal.show { display: flex; animation: fadeIn 0.3s; }
+.modal-content {
+    background-color: white; width: 90%; max-width: 500px;
+    border-radius: 10px; padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    text-align: center; color: #333;
+    max-height: 90vh; overflow-y: auto;
+}
+.modal-content h2 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+.tutorial-step {
+    display: flex; align-items: center;
+    background: #f8f9fa; margin: 15px 0; padding: 10px;
+    border-radius: 8px; text-align: left; border: 1px solid #ddd;
+}
+.step-img {
+    width: 60px; height: 60px; flex-shrink: 0;
+    border-radius: 8px; display: flex; justify-content: center; align-items: center;
+    font-size: 24px; margin-right: 15px; color: white;
+}
+.step-text h3 { margin: 0 0 5px 0; font-size: 1rem; color: #333; }
+.step-text p { margin: 0; font-size: 0.9rem; color: #666; }
+.close-btn-red {
+    background-color: #e74c3c; color: white; border: none;
+    padding: 12px 30px; font-size: 1rem; font-weight: bold;
+    border-radius: 50px; cursor: pointer; width: 100%; margin-top: 20px;
+}
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }

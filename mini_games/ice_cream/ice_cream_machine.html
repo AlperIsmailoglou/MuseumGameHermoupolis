@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ice Cream Turn Mini-Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../../js/game_state.js"></script>
+</head>
+<body>
+
+    <div id="top-ui">
+        <div id="progress-container">
+            <div id="progress-fill"></div>
+            <div id="status-text">TURN PROGRESS: 0%</div>
+        </div>
+    </div>
+
+    <div id="game-area">
+        <div class="game-cabinet">
+            
+            <div class="machine-assembly">
+                <img id="bucket-img" src="ice_cream_machine.png" alt="Machine Body">
+                <div id="handle-anchor">
+                    <img id="handle-img" src="ice_cream_machine_handle.png" alt="Handle">
+                </div>
+            </div>
+
+            <div class="ingredients-panel">
+                <div class="ingredient-item">
+                    <div class="ing-icon">🥛</div> 
+                    <div class="tick-mark">✔</div>
+                </div>
+                
+                <div class="ingredient-item">
+                     <div class="ing-icon">🍚</div>
+                    <div class="tick-mark">✔</div>
+                </div>
+
+                <div class="ingredient-item">
+                     <div class="ing-icon">🧊</div>
+                    <div class="tick-mark">✔</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="controls-ui">
+        <button id="crank-btn">TAP TO TURN</button>
+    </div>
+
+    <div id="win-screen">
+        <h1>ICE CREAM READY!</h1>
+        <button onclick="window.location.href='../../rooms/room_2.html'" id="restart-btn" onclick="location.reload()">Continue to Adventure</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

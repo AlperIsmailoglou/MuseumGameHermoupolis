@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Shoe Polish Mini-Game</title>
+    <link rel="stylesheet" href="style.css">
+     <script src="../../js/game_state.js"></script>
+</head>
+<body>
+
+    <div class="page-background"></div>
+     <button id="help-btn" onclick="toggleTutorial()">?</button>
+
+    <div class="game-area" id="gameArea">
+        
+       
+
+        <div class="shoe-container">
+            <img src="shoe_polish.png" id="cleanShoeImg" alt="Shoe" draggable="false">
+            <canvas id="dirtCanvas"></canvas>
+        </div>
+
+        <div class="cloth" id="cloth"></div>
+
+        <div class="win-screen" id="winScreen">
+            <img src="win_condition.png" alt="Sparkle" class="win-image">
+            <h2 class="win-text">Perfect!</h2>
+            <button onclick="window.location.href='../../rooms/room_4.html'" class="replay-btn">Continue To Adventure</button>
+        </div>
+
+        <div class="ui-container">
+            <div class="progress-bar-container">
+                <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <p class="progress-text">Cleaned: <span id="progressText">0</span>%</p>
+            <p class="instructions">Drag the rag to polish!</p>
+        </div>
+    </div>
+
+    <div id="tutorial-modal" class="modal">
+        <div class="modal-content">
+            <h2>How to Play</h2>
+            
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #34495e;">
+                    <span>👆</span>
+                </div>
+                <div class="step-text">
+                    <h3>Grab the Brush</h3>
+                    <p>Touch and drag the brush to pick it up.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #2ecc71;">
+                    <span>✨</span>
+                </div>
+                <div class="step-text">
+                    <h3>Scrub Dirt</h3>
+                    <p>Rub back and forth over the dirty spots to clean them.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #e74c3c;">
+                    <span>🏆</span>
+                </div>
+                <div class="step-text">
+                    <h3>Win!</h3>
+                    <p>Clean 100% of the shoe to finish the game.</p>
+                </div>
+            </div>
+
+            <button class="close-btn-red" onclick="toggleTutorial()">PLAY</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

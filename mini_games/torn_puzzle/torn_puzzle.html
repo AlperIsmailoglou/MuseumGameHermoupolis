@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Restore the Memory</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../../js/game_state.js"></script>
+</head>
+<body>
+
+    <button id="help-btn" onclick="toggleTutorial()">?</button>
+    
+    <div id="win-modal" class="modal">
+        <div class="modal-content win-content">
+            <div style="font-size: 50px;">🎉</div>
+            <h2 style="color: #27ae60; border-bottom: none;">Memory Restored!</h2>
+            <p style="color: #555; font-size: 1.1rem;">You have successfully repaired the document.</p>
+            
+            <button class="continue-btn" onclick="window.location.href='../../rooms/room_5.html'">
+                CONTINUE TO ADVENTURE ➔
+            </button>
+        </div>
+    </div>
+    <div id="tutorial-modal" class="modal">
+        <div class="modal-content">
+            <h2>How to Play</h2>
+            
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #34495e;">
+                    <span>🖱️</span>
+                </div>
+                <div class="step-text">
+                    <h3>Drag & Drop</h3>
+                    <p>Drag pieces from the bottom tray onto the board.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #2ecc71;">
+                    <span>✨</span>
+                </div>
+                <div class="step-text">
+                    <h3>Snap to Lock</h3>
+                    <p>Drop a piece near its correct spot. It will flash green and lock!</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #e74c3c;">
+                    <span>↩️</span>
+                </div>
+                <div class="step-text">
+                    <h3>Wrong Move?</h3>
+                    <p>If you drop it in the wrong spot, it jumps back to the tray.</p>
+                </div>
+            </div>
+
+            <button class="close-btn-red" onclick="toggleTutorial()">CLOSE</button>
+        </div>
+    </div>
+
+    <section id="viewport-top">
+        <h2>Restore the Memory</h2>
+
+        <div id="game-board-container">
+            <div id="game-board">
+                <img src="torn_piece_left.png" id="fixed-left-piece" class="board-piece" alt="Left">
+                
+                <img src="torn_piece_right.png" id="ghost-guide-piece" class="board-piece ghost" alt="Ghost">
+
+                <div id="target-zone-piece" class="target-zone"></div>
+                
+                <div id="target-zone-glue" class="target-zone hidden"></div>
+                <div id="glue-effect"></div>
+
+                <img src="torn_piece_right.png" id="placed-right-piece" class="board-piece hidden" alt="Placed">
+            </div>
+        </div>
+    </section>
+
+    <section id="viewport-bottom">
+        <div id="status-bar">Tray is empty. Search for the missing piece.</div>
+
+        <div id="inventory-tray">
+            <button id="btn-search-piece" class="tray-btn">SEARCH FOR PIECE</button>
+            <img src="torn_piece_right.png" id="draggable-piece" class="tray-item hidden" alt="Piece">
+
+           <button id="btn-search-glue" class="tray-btn hidden">SEARCH FOR GLUE</button>
+
+            <div id="draggable-glue" class="tray-item glue-container hidden">
+                <img src="glue.png" alt="Glue Stick" draggable="false">
+            </div>
+        </div>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>

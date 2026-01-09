@@ -1,0 +1,498 @@
+/* --- GLOBAL SETUP --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+/* --- UI LAYERS --- */
+#top-left-ui-layer {
+    position: absolute;
+    top: 2vh;
+    left: 2vw;
+    z-index: 1000;
+}
+
+#persistent-ui-layer {
+    position: absolute;
+    top: 2vh;
+    right: 2vw;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+/* --- ARTIFACT/INVENTROTY DETAIL PANEL (The view in your image) --- */
+/* The Red Dot */
+.notification-dot {
+    position: relative;
+}
+.notification-dot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+.inventory-bounce {
+    animation: bounce 1s ease;
+}
+#artifact-detail-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* COOL BLUE PALETTE */
+    background: linear-gradient(135deg, #1a2a6c, #2975bc);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 2005;
+    /* Above the grid list */
+    border-radius: 12px;
+}
+
+/* Position the Back button at the top left without overlapping */
+.detail-back,
+.ui-close-button-combo {
+    align-self: flex-start;
+    margin-bottom: 10px;
+}
+
+/* Fix the Title (e.g., "Kanata") */
+#detail-name-title {
+    text-align: center;
+    color: #ffd700;
+    /* Gold */
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+/* Container for the Image (The Pitcher/Kanata) */
+#detail-image-container {
+    flex-grow: 1;
+    /* Takes available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    /* Keeps image clean as per your screenshot */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+#detail-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* The description text at the bottom */
+#detail-description {
+    color: #000;
+    /* Black text as requested */
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+/* Specifically target the Inventory Menu header */
+#inventory-menu h2 {
+    margin-top: 60px;
+    /* Pushes the title down so it doesn't hit the BACK button */
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Fix the list container so it doesn't overlap the header */
+#inventory-list {
+    display: flex;
+    flex-direction: column;
+    /* Stack items vertically */
+    gap: 15px;
+    width: 100%;
+    padding: 10px;
+    overflow-y: auto;
+    align-items: stretch;
+    /* Ensure items take full width of the menu */
+}
+
+#inventory-menu .ui-close-button-combo {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2010;
+}
+
+.inventory-item {
+    display: flex;
+    /* CRITICAL: Forces Image and Text to be side-by-side */
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.15);
+    /* Secondary Cool Blue tint */
+    border: 2px solid #ffd700;
+    /* Gold accent */
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+    min-height: 100px;
+}
+
+/* FIXED BOX FOR THE IMAGE (Left Side) */
+.inventory-item .item-image-box,
+#inventory-list .inventory-item img {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    /* Prevents the image box from being crushed by long text */
+    background-color: white;
+    /* Keeps transparent PNGs like the Kanata clean */
+    border-radius: 5px;
+    object-fit: contain;
+    /* The 'Magic' property to keep the pitcher in the box */
+    margin-right: 20px;
+}
+
+/* TEXT AREA (Right Side) */
+#inventory-list .inventory-item span {
+    color: #000000;
+    /* Black text as requested */
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: left;
+    /* Align text to the left, next to the image */
+    flex-grow: 1;
+}
+
+#inventory-use-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#use-item-btn {
+    width: 60%;
+    /* Adjust to match your yellow drawing */
+    max-width: 200px;
+    background-color: #ffd700;
+    /* Gold/Yellow */
+    color: black;
+    border: 2px solid #1a2a6c;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+#use-item-btn:active {
+    transform: scale(0.95);
+    background-color: #fff;
+}
+
+/* --- UNIFIED BUTTONS --- */
+.ui-icon-button {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a2a6c, #2975bc);
+    border: 2px solid #ffd700;
+    border-radius: 12px;
+    padding: 8px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 600px) {
+    .ui-icon-button {
+        width: 12vw;
+        height: 12vw;
+    }
+}
+
+.ui-icon-button:hover {
+    transform: scale(1.1);
+    border-color: #fff;
+}
+
+.ui-icon-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+/* --- DIALOGUE --- */
+#dialogue-box {
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    min-height: 15vh;
+    padding: 3vw;
+    z-index: 500;
+    background-color: rgba(15, 20, 155, 0.85);
+    border: 3px solid #fff;
+    border-radius: 15px;
+    font-family: Arial, sans-serif;
+    color: white;
+    font-size: 4vw;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+/* --- CHARACTER LAYER --- */
+#character-layer {
+    position: absolute;
+    top: 10vh; 
+    bottom: 20vh; 
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; /* Keeps them centered vertically */
+    padding: 0 5%; 
+    z-index: 300;
+    pointer-events: none;
+}
+
+#character-layer img {
+    position: relative; 
+    height: auto;
+    max-height: 100%; 
+    max-width: 45%; 
+    object-fit: contain;
+    /* Ensure all filter effects are transitionable */
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+    /* Set a default state to prevent flickering */
+    filter: brightness(100%) grayscale(0%);
+    opacity: 1;
+}
+
+/* Restored Dimming Logic */
+/* We use !important to ensure the 'is-listening' state overrides defaults */
+#character-layer img.is-listening {
+    filter: brightness(40%) grayscale(50%) !important;
+    opacity: 0.6 !important;
+}
+
+/* --- OVERLAY MENUS (UNIFIED CENTERED BOX) --- */
+.overlay-menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 500px;
+    height: 65%;
+    background: linear-gradient(135deg, #1a2a6c, #2975bc);
+    border: 3px solid #ffd700;
+    border-radius: 15px;
+    z-index: 2000;
+    padding: 30px;
+}
+
+/* TEXT COLOR - BLACK */
+.overlay-menu h2,
+.overlay-menu h3,
+.overlay-menu p,
+.overlay-menu span,
+.back-text {
+    color: #000000 !important;
+    font-weight: bold;
+}
+
+.overlay-menu h2 {
+    margin-top: 45px;
+    text-align: center;
+}
+
+/* --- BUTTONS & LISTS --- */
+#language-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.lang-option {
+    width: 250px;
+    padding: 15px;
+    font-size: 1.1rem;
+    background-color: #ffd700;
+    color: #000;
+    border: 2px solid #1a2a6c;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.lang-option:hover {
+    background-color: #fff;
+    transform: scale(1.05);
+}
+
+/* Back Button */
+.ui-close-button-combo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    z-index: 2001;
+}
+
+.ui-close-button-combo img {
+    width: 30px;
+    height: auto;
+}
+
+/* --- TASK LAYER --- */
+#task-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Perfect Center Logic */
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+    
+    z-index: 600; 
+    pointer-events: none; /* Let clicks pass through empty space */
+}
+.task-highlight {
+    animation: task-pulse 1.5s infinite ease-in-out;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8)); /* Golden Glow */
+    cursor: pointer;
+    pointer-events: auto !important;
+}
+
+@keyframes task-pulse {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+    }
+    50% {
+        transform: scale(1.08); /* Grows slightly */
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1)); /* Brightens */
+    }
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+    }
+}
+
+#task-layer img {
+    /* Reset any inherited positioning */
+    position: relative !important; 
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+
+    /* Make the interactive item prominent but responsive */
+    max-width: 60vw; 
+    max-height: 40vh;
+    object-fit: contain;
+
+    pointer-events: auto; /* Allow clicking on the item itself */
+    cursor: pointer;
+}
+#light-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    z-index: 9000; /* Πολύ υψηλό z-index για να είναι πάνω από όλα */
+    pointer-events: none; /* Επιτρέπει τα κλικ να περνούν από κάτω */
+}
+
+/* Η animation που αναβοσβήνει τα φώτα */
+.flicker-active {
+    animation: flicker-animation 2s ease-in-out;
+}
+
+@keyframes flicker-animation {
+    0%, 20%, 40%, 60%, 80%, 100% { opacity: 0; }
+    10%, 30%, 50%, 70%, 90% { opacity: 0.8; } /* Μαύρο με 80% αδιαφάνεια */
+}
+
+/* Το μαύρο φόντο που καλύπτει τα πάντα εκτός από το επιλεγμένο UI */
+#ui-focus-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Μαύρο με 70% opacity */
+    z-index: 400; /* Πάνω από background και χαρακτήρες */
+    display: none; /* Κρυφό από προεπιλογή */
+    pointer-events: none;
+}
+
+/* Animation για το "φωτισμένο" κουμπί */
+.highlight-active {
+    z-index: 1001 !important; /* Πάνω από το overlay (800) */
+    position: relative;
+    pointer-events: auto !important;
+    box-shadow: 0 0 20px 5px #ffd700; /* Χρυσή λάμψη */
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}

@@ -1,0 +1,266 @@
+[
+  {
+    "id": "scene_r8_01",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Where are you?! We are here! Don't tell me you're scared now?",
+      "gr": "Που είσαι;! Εμείς ήρθαμε! Μην μου πεις ότι τρόμαξες τώρα;"
+    },
+    "next_id": "scene_r8_02"
+  },
+  {
+    "id": "scene_r8_02",
+    "type": "dialogue",
+    "speaker_id": "character10",
+    "emotion": "happy",
+    "text": {
+      "en": "Ha! How funny!",
+      "gr": "Χα! Τι αστείο!"
+    },
+    "next_id": "scene_r8_03"
+  },
+  {
+    "id": "scene_r8_03",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Ah!",
+      "gr": "Α!"
+    },
+    "next_id": "scene_r8_04"
+  },
+  {
+    "id": "scene_r8_04",
+    "type": "dialogue",
+    "speaker_id": "character10",
+    "emotion": "happy",
+    "text": {
+      "en": "Hahaha!",
+      "gr": "Χαχαχα!"
+    },
+    "next_id": "scene_r8_05"
+  },
+  {
+    "id": "scene_r8_05",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Who... are you?",
+      "gr": "Ποιός…είσαι;"
+    },
+    "next_id": "scene_r8_06"
+  },
+  {
+    "id": "scene_r8_06",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Green hair...? Purple eyes...? What on earth are you?!",
+      "gr": "Πράσινα μαλλιά…; Μωβ μάτια…; Τι στο καλό είσαι;!"
+    },
+    "next_id": "scene_r8_07"
+  },
+  {
+    "id": "scene_r8_07",
+    "type": "dialogue",
+    "speaker_id": "character10",
+    "emotion": "happy",
+    "text": {
+      "en": "Hah... sorry, I didn't want to scare you too much, so I assumed that with the island's pirate history, it would be easier to take the form of one of them.",
+      "gr": "Χαχ…συγγνώμη, δεν ήθελα να σας τρομάξω πολύ οπότε υπέθεσα ότι, με την ιστορία πειρατών που έχει το νησί, θα ήταν πιο εύκολο να πάρω την εμφάνιση ενός από αυτούς."
+    },
+    "next_id": "scene_r8_08"
+  },
+  {
+    "id": "scene_r8_08",
+    "type": "dialogue",
+    "speaker_id": "character11",
+    "emotion": "happy",
+    "text": {
+      "en": "My name is Lais. I was bored and happened to detect many ectoplasm signals with a device from my planet, so I came to look out of curiosity.",
+      "gr": "Λέγομαι Λάις. Βαριόμουν και έτυχε να ανιχνεύσω με μία συσκευή από τον πλανήτη μου πολλά σήματα εκτοπλάσματος, και ήρθα να κοιτάξω από περιέργεια."
+    },
+    "next_id": "scene_r8_09"
+  },
+  {
+    "id": "scene_r8_09",
+    "type": "dialogue",
+    "speaker_id": "character11",
+    "emotion": "happy",
+    "text": {
+      "en": "But I got bored again because you weren't doing anything interesting, so I thought of a way to have some fun.",
+      "gr": "Αλλά βαρέθηκα πάλι επειδή δεν κάνατε τίποτα το ενδιαφέρον και έτσι σκέφτηκα έναν τρόπο να διασκεδάσω."
+    },
+    "next_id": "scene_r8_10"
+  },
+  {
+    "id": "scene_r8_10",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Are you serious?! How did you get the idea to destroy exhibits with great history just because you were bored?!",
+      "gr": "Πας καλά;! Πώς σου ήρθε η ιδέα να καταστρέψεις εκθέματα με μεγάλη ιστορία μόνο και μόνο επειδή βαριώσουν;!"
+    },
+    "next_id": "scene_r8_11"
+  },
+  {
+    "id": "scene_r8_11",
+    "type": "dialogue",
+    "speaker_id": "character11",
+    "emotion": "happy",
+    "text": {
+      "en": "Haha! But it was fun, wasn't it?",
+      "gr": "Χαχα! Μα είχε πλάκα, δεν είχε;"
+    },
+    "next_id": "scene_r8_12"
+  },
+  {
+    "id": "scene_r8_12",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "No! Even we ghosts were scared! Didn't anyone ever teach you that if others aren't laughing, it's not a joke, but a malicious prank?!",
+      "gr": "Όχι! Ακόμη και εμείς τα φαντάσματα τρομάξαμε! Δεν σου έμαθε ποτέ κανείς ότι αν και οι άλλοι δεν γελάνε, δεν είναι αστείο, αλλά μία κακόβουλη φάρσα;!"
+    },
+    "next_id": "scene_r8_13"
+  },
+  {
+    "id": "scene_r8_13",
+    "type": "dialogue",
+    "speaker_id": "character11",
+    "emotion": "happy",
+    "text": {
+      "en": "I'm sorry... I didn't mean to, really...",
+      "gr": "Συγγνώμη…δεν το ήθελα, στα αλήθεια…"
+    },
+    "next_id": "scene_r8_14"
+  },
+  {
+    "id": "scene_r8_14",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "A bit late for that...",
+      "gr": "Λίγο αργά για αυτά…"
+    },
+    "next_id": "scene_r8_15"
+  },
+  {
+    "id": "scene_r8_15",
+    "type": "dialogue",
+    "speaker_id": "character11",
+    "emotion": "happy",
+    "text": {
+      "en": "I just wanted to play with the new invention from my planet that lets me take a ghost form while still being able to touch things normally. And because I saw all of you here... I thought we could play together...",
+      "gr": "Απλώς ήθελα να παίξω με την καινούργια εφεύρεση από τον πλανήτη μου που με αφήνει να παίρνω την μορφή φαντάσματος ενώ μπορώ να ακουμπάω πράγματα κανονικά. Και επειδή σας είδα όλους εσάς εδώ…νόμιζα θα μπορούσαμε να παίξουμε μαζί…"
+    },
+    "next_id": "scene_r8_16"
+  },
+  {
+    "id": "scene_r8_16",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Alright, it's okay... actually, it matters a lot but... I understand. We also feel lonely many times. If we didn't have each other, we would have gone crazy after being stuck in this building for so long.",
+      "gr": "Καλά, δεν πειράζει…βασικά πειράζει πολύ αλλά…καταλαβαίνω. Και εμείς πολλές φορές νιώθουμε μοναξιά. Αν δεν είχαμε ο ένας τον άλλον θα είχαμε γίνει τρελοί μετά από τόσο καιρό που είμαστε κολλημένοι σε αυτό το κτήριο."
+    },
+    "next_id": "scene_r8_17"
+  },
+  {
+    "id": "scene_r8_17",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "If we agree to play with you every now and then, do you promise not to do anything like this again, to us or to others?",
+      "gr": "Εάν συμφωνήσουμε να παίζουμε κάθε τόσο μαζί σου, υπόσχεσαι να μην ξανακάνεις κάτι τέτοιο, σε εμάς ή σε άλλους;"
+    },
+    "next_id": "scene_r8_18"
+  },
+  {
+    "id": "scene_r8_18",
+    "type": "dialogue",
+    "speaker_id": "character11",
+    "emotion": "happy",
+    "text": {
+      "en": "Really? Yes! Of course I promise!",
+      "gr": "Αλήθεια; Ναι! Εννοείται το υπόσχομαι!"
+    },
+    "next_id": "scene_r8_19"
+  },
+  {
+    "id": "scene_r8_19",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Great. Just get ready, you have to apologize to everyone.",
+      "gr": "Ωραία. Απλά ετοιμάσου, πρέπει να ζητήσεις συγγνώμη από όλους."
+    },
+    "next_id": "scene_r8_20"
+  },
+  {
+    "id": "scene_r8_20",
+    "type": "dialogue",
+    "speaker_id": "character11",
+    "emotion": "happy",
+    "text": {
+      "en": "Of course! Whatever you want! I'm going right now!",
+      "gr": "Φυσικά! Ό,τι θέλετε! Πάω αμέσως τώρα!"
+    },
+    "next_id": "scene_r8_21"
+  },
+  {
+    "id": "scene_r8_21",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Hey, wait— Haaa...",
+      "gr": "Ε, περίμενε- Χαα…"
+    },
+    "next_id": "scene_r8_22"
+  },
+  {
+    "id": "scene_r8_22",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "At least that's over too.",
+      "gr": "Τουλάχιστον τελείωσε και αυτό."
+    },
+    "next_id": "scene_r8_23"
+  },
+  {
+    "id": "scene_r8_23",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Thank you very much, and on behalf of everyone else, for your help! We couldn't have solved the mystery of the saboteur without you.",
+      "gr": "Σε ευχαριστώ πολύ, και εκ μέρους όλων των άλλων, για την βοήθειά σου! Δεν θα μπορούσαμε να λύσουμε το μυστήριο του σαμποτέρ χωρίς εσένα."
+    },
+    "next_id": "scene_r8_24"
+  },
+  {
+    "id": "scene_r8_24",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "I hope you enjoyed your visit to the Historical Museum of Hermoupolis! I hope to see you again! Goodbye!",
+      "gr": "Ελπίζω να ευχαριστήθηκες την επίσκεψή σου στο Ιστορικό Μουσείο της Ερμούπολης! Εύχομαι να ξανα-ιδωθούμε! Αντίο!"
+    },
+    "next_id": "END"
+  }
+]

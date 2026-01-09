@@ -1,0 +1,187 @@
+/* --- RESET --- */
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Courier New', Courier, serif;
+    background: radial-gradient(circle at center, #fbf2d5 0%, #e6d3a3 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+    height: 100vh; height: 100dvh; width: 100vw; margin: 0; overflow: hidden;
+    user-select: none; -webkit-user-select: none;
+}
+
+/* --- UI ELEMENTS --- */
+#top-ui { 
+    width: 100%; padding: 15px; 
+    display: flex; justify-content: center; 
+    flex-shrink: 0; z-index: 50; 
+}
+
+#progress-container { 
+    width: 90%; max-width: 500px; height: 30px; 
+    background: #e0e0e0; 
+    border: 3px solid #5e2f0d; 
+    border-radius: 20px; 
+    position: relative; overflow: hidden; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+
+#progress-fill { 
+    height: 100%; width: 0%; 
+    background: repeating-linear-gradient(45deg, #1804fa, #ff9a9e 10px, #fecfef 10px, #fecfef 20px); 
+    transition: width 0.2s; 
+}
+
+#status-text { 
+    position: absolute; width: 100%; top: 0; 
+    line-height: 26px; text-align: center; 
+    font-size: 1rem; font-weight: bold; color: #030303; 
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5); 
+}
+
+/* --- THE GAME AREA (CENTER) --- */
+#game-area {
+    width: 100%; flex-grow: 1; 
+    display: flex; justify-content: center; align-items: center;
+    padding: 10px; /* Reduced padding to give more room on mobile */
+    overflow: visible; 
+}
+
+/* --- THE VISUAL CABINET BOX --- */
+.game-cabinet {
+    position: relative;
+    background: linear-gradient(145deg, #fffcf6, #ebdcb9);
+    padding: 40px 0; 
+    border-radius: 40px;
+    border: 4px solid #fff; 
+    box-shadow: 
+        15px 15px 30px rgba(94, 47, 13, 0.15), 
+        -5px -5px 15px rgba(255, 255, 255, 0.8),
+        inset 0 0 20px rgba(210, 180, 140, 0.1); 
+
+    width: 95%;
+    max-width: 600px; 
+    
+    display: flex;
+    justify-content: flex-start; /* Builds from left to right */
+    overflow: visible; 
+}
+
+/* --- LEFT HALF (Bucket) --- */
+.machine-assembly {
+    position: relative;
+    width: 50%; /* Left Half */
+    display: flex;
+    justify-content: flex-end; /* Push bucket to center line */
+    align-items: center;
+    z-index: 10; /* Keep machine above background */
+}
+
+#bucket-img {
+    display: block;
+    width: 100%; 
+    height: auto;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2)); 
+}
+
+/* Handle CSS (Same as before, keep it linked to anchor) */
+#handle-anchor {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 10;
+}
+
+#handle-img {
+    position: absolute;
+    left: 96%; top: 26%; width: 38%; 
+    transform-origin: left 3%;
+    transition: transform 0.1s ease-in-out;
+    filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.3));
+    z-index: 20; pointer-events: auto;
+}
+
+/* --- NEW: RIGHT HALF (Ingredients) --- */
+.ingredients-panel {
+    width: 50%; /* Right Half */
+    display: flex;
+    flex-direction: column; /* Stack vertically */
+    justify-content: space-evenly; /* Spread them out */
+    align-items: center; /* Center them horizontally in the right panel */
+    padding-left: 20%; /* Push them to the far right so handle doesn't hit them */
+    z-index: 5; /* Sit behind the handle if it swings really wide */
+}
+
+.ingredient-item {
+    position: relative;
+    width: 60px; height: 60px;
+    background: white;
+    border-radius: 50%; /* Circular icons */
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
+    border: 2px solid #fff;
+}
+
+/* Use this class if you use real <img> tags later */
+.ing-img {
+    width: 70%; height: auto;
+}
+
+/* Placeholder Emojis (Remove if using real images) */
+.ing-icon {
+    font-size: 1.8rem;
+}
+
+/* THE GREEN TICK */
+.tick-mark {
+    position: absolute;
+    bottom: -5px; right: -5px;
+    background: #4cd964; /* Nice Green */
+    color: white;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    font-size: 14px;
+    display: flex; justify-content: center; align-items: center;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    font-weight: bold;
+}
+
+/* Responsive adjustment for small phones */
+@media (max-width: 400px) {
+    .ingredients-panel { padding-left: 15%; }
+    .ingredient-item { width: 45px; height: 45px; }
+    .ing-icon { font-size: 1.2rem; }
+}
+
+/* --- CONTROLS (BOTTOM) --- */
+#controls-ui { 
+    padding-bottom: 30px; padding-top: 10px; 
+    width: 100%; display: flex; justify-content: center; 
+    flex-shrink: 0; z-index: 50; 
+    background: linear-gradient(to top, rgba(230, 211, 163, 0.9) 20%, transparent); 
+}
+
+button#crank-btn { 
+    background: linear-gradient(to bottom, #a05622, #8b4513); 
+    color: white; border: 2px solid #5e2f0d; 
+    padding: 15px 50px; font-size: 1.2rem; font-weight: bold; border-radius: 50px; 
+    box-shadow: 0 6px #4a2608, 0 10px 20px rgba(0,0,0,0.2); 
+    cursor: pointer; touch-action: manipulation; 
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+button#crank-btn:active { transform: translateY(3px); box-shadow: 0 2px #4a2608; }
+
+/* --- WIN SCREEN --- */
+#win-screen { 
+    display: none; position: fixed; top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.85); color: white; 
+    flex-direction: column; align-items: center; justify-content: center; 
+    z-index: 100; text-align: center; backdrop-filter: blur(5px); 
+}
+#win-screen h1 { margin-bottom: 20px; font-size: 2.5rem; color: #ff9a9e; text-shadow: 2px 2px 0 #fff; }
+#restart-btn { 
+    padding: 12px 30px; font-size: 1.2rem; border-radius: 50px; 
+    cursor: pointer; border: none; background: #fff; color: #8b4513; 
+    font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+}

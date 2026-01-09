@@ -1,0 +1,356 @@
+/* Basic resets */
+* { box-sizing: border-box; }
+html,body { height:100%; margin:0; padding:0; font-family:Arial,Helvetica,sans-serif; background:#111; }
+
+#game-wrapper {
+  width:100vw;
+  height:100vh;
+  display:flex;
+  transition:all 200ms ease;
+  align-items:stretch;
+  justify-content:center;
+}
+
+/* LANDSCAPE */
+#game-wrapper.landscape { flex-direction:row; }
+
+/* PORTRAIT */
+#game-wrapper.portrait { flex-direction:column-reverse; }
+
+/* Icon bar styling */
+#icon-bar {
+  background: rgba(255,255,255,0.95);
+  padding: 10px;
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  align-content:center;
+  justify-content:center;
+  align-items:center;
+  z-index: 30;
+  width: 140px;
+  min-width: 100px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  overflow:auto; 
+}
+
+#game-wrapper.portrait #icon-bar {
+  width:100%;
+  height:110px;
+  padding:12px;
+  align-items:center;
+}
+
+/* Icon tiles */
+.icon {
+  width:56px;
+  height:56px;
+  border-radius:8px;
+  border:2px solid #999;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  user-select:none;
+  padding: 4px; /* small padding so image doesn't touch border */
+  transition: all 0.3s ease;
+}
+
+/* Make images inside icons fit perfectly */
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.icon.found {
+  border-color:#2ecc71;
+  background: #eaffea;
+  opacity: 0.5; /* Fade out found items in the list */
+  filter: grayscale(100%); /* Optional: make found items black and white */
+}
+
+/* GAME AREA */
+#game-area {
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+}
+
+#image-frame {
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#000; 
+}
+
+#bg-image {
+  max-width:100%;
+  max-height:100%;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  user-select:none;
+  -webkit-user-drag:none;
+  pointer-events:none; 
+}
+
+#hotspot-layer {
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  pointer-events:auto;
+}
+
+/* Hotspot basic style */
+.hotspot {
+  position:absolute;
+  /* Removed the red debug border and background */
+  cursor:pointer;
+  transition: transform 120ms ease, opacity 300ms ease;
+  /* Flex ensures the image inside centers if the box is slightly different aspect ratio */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The image inside the hotspot */
+.hotspot-obj {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* ensures image doesn't stretch weirdly */
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* When found, we can animate it or hide it */
+.hotspot.found {
+  border: 3px solid #2ecc71;         /* Green Border */
+  background: rgba(46, 204, 113, 0.4); /* Semi-transparent Green fill */
+  box-shadow: 0 0 15px #2ecc71;      /* Green Glow */
+  transform: scale(1.0);             /* Keep size normal or slightly popped */
+  pointer-events: none;              /* Cannot click again */
+  opacity: 1;                        /* Ensure it stays visible */
+}
+
+/* 2. The Hint State (Yellow Flash) */
+.hotspot.hint-active {
+  border: 4px solid #f1c40f;          /* Bright Yellow Border */
+  background: rgba(241, 196, 15, 0.4); /* Yellow Fill */
+  box-shadow: 0 0 20px #f1c40f;       /* Yellow Glow */
+  animation: pulseHint 0.5s ease;
+}
+
+@keyframes pulseHint {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* --- BUTTON STYLING --- */
+#hint-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 50;
+  padding: 10px 20px;
+  background: #f1c40f; /* Yellowish button */
+  color: #000;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+#hint-btn:hover {
+  transform: scale(1.05);
+  background: #f39c12;
+}
+
+#hint-btn:disabled {
+  background: #bdc3c7;
+  color: #7f8c8d;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* --- NEW: Help Button (Top Left) --- */
+#help-btn {
+  position: absolute;
+  top: 15px;
+  left: 15px; /* Placed on left to avoid HINT button */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: #3498db;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  z-index: 150; 
+  transition: all 0.2s ease;
+}
+
+#help-btn:hover { 
+  background-color: #2980b9; 
+  transform: scale(1.1);
+}
+
+/* --- Tutorial Modal --- */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.85); /* Dark background */
+  z-index: 9999; /* Highest priority */
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.show {
+  display: flex; /* Flex to center content */
+  animation: fadeIn 0.3s;
+}
+
+.modal-content {
+  background-color: white;
+  width: 90%;
+  max-width: 450px;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  text-align: center;
+  max-height: 90vh;
+  overflow-y: auto;
+  font-family: Arial, sans-serif;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  color: #2c3e50;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+/* --- Tutorial Steps (Row Layout) --- */
+.tutorial-step {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: left;
+  border: 1px solid #eee;
+}
+
+.step-img {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  margin-right: 15px;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.step-text h3 {
+  margin: 0 0 4px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.step-text p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.3;
+}
+
+/* --- Big Red Close Button --- */
+.close-btn-red {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 20px;
+  width: 100%;
+  transition: transform 0.1s, background-color 0.2s;
+  box-shadow: 0 4px 0 #c0392b; /* 3D effect */
+}
+
+.close-btn-red:hover { background-color: #ff5e4d; }
+.close-btn-red:active { 
+  transform: translateY(4px); 
+  box-shadow: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* WIN POPUP */
+#win-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#win-popup.hidden { display: none; }
+
+#win-content {
+  max-width: 90%;
+  max-height: 90%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#win-content img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+}
+
+@media (max-width:560px) {
+  #icon-bar { padding:8px; gap:8px; }
+  .icon { width:48px; height:48px; }
+  #game-wrapper.portrait #icon-bar { height:92px; }
+}

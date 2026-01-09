@@ -1,0 +1,225 @@
+/* --- EXISTING STYLES --- */
+body {
+    margin: 0;
+    background-color: #222;
+    color: white;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.ui-bar {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically align items */
+    background: #333;
+    box-sizing: border-box;
+    z-index: 100;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+#hint-btn {
+    background-color: #f39c12;
+    color: white;
+}
+
+#hint-btn:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+#reset-btn {
+    background-color: #3498db;
+    color: white;
+    margin-top: 10px;
+}
+
+.game-wrapper {
+    position: relative;
+    display: inline-block;
+    max-width: 100%;
+    max-height: 85vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.base-image {
+    display: block;
+    max-width: 100%;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.diff-item {
+    position: absolute;
+    cursor: pointer;
+    box-sizing: border-box; 
+    transition: all 0.3s ease;
+    border-radius: 50%; 
+}
+
+.diff-item.found {
+    border: 3px solid #2ecc71;
+    box-shadow: 0 0 10px #2ecc71, inset 0 0 10px rgba(46, 204, 113, 0.5);
+    background-color: rgba(46, 204, 113, 0.1);
+    pointer-events: none;
+}
+
+.diff-item.hint-active:not(.found) {
+    border: 3px solid #f1c40f;
+    box-shadow: 0 0 15px #f1c40f;
+    background-color: rgba(241, 196, 15, 0.2);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#win-msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.9);
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    display: none;
+    z-index: 200;
+    min-width: 200px;
+}
+
+/* --- NEW: HELP BUTTON --- */
+#help-btn {
+    /* Adjusted to fit inside the flex bar better */
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    padding: 0; /* Remove default padding for perfect center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#help-btn:hover { background-color: #2980b9; }
+
+/* --- NEW: Tutorial Modal & Steps --- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 300;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: white;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    text-align: center;
+    max-height: 90vh;
+    overflow-y: auto;
+    color: #333; /* Ensure text is visible on white */
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+}
+
+.tutorial-step {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.step-img {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-right: 15px;
+    color: white;
+}
+
+.step-text h3 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.step-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.close-btn-red {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    transition: transform 0.1s;
+}
+
+.close-btn-red:hover { background-color: #c0392b; }
+.close-btn-red:active { transform: scale(0.95); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}

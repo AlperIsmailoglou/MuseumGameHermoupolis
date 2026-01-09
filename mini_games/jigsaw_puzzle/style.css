@@ -1,0 +1,281 @@
+:root {
+    --bg-color: #2c3e50;
+    --tray-color: #34495e;
+    --board-border: #ecf0f1;
+    --gap-size: 15px;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none; 
+    -webkit-user-select: none;
+    /* Prevent double-tap zoom on buttons */
+    touch-action: manipulation; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* Add top padding so the board doesn't touch the help button */
+    padding-top: 60px; 
+    background-color: var(--bg-color);
+    font-family: sans-serif;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; 
+    position: fixed; 
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    padding-bottom: 20px;
+    gap: var(--gap-size);
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- HELP BUTTON (Top Right) --- */
+#help-btn {
+    position: fixed; 
+    top: 20px;
+    right: 20px;
+    
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid white;
+    background-color: #3498db;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    
+    /* CRITICAL: Higher than everything else */
+    z-index: 10000; 
+    
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+#help-btn:active { transform: scale(0.9); }
+
+/* --- THE BOARD --- */
+#puzzle-board {
+    border: 2px solid var(--board-border);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.2);
+    flex-shrink: 0; 
+    /* Lower z-index so dragged pieces (100) fly OVER it */
+    z-index: 10; 
+}
+
+#puzzle-guide {
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+}
+
+/* --- THE TRAY --- */
+#pieces-tray {
+    background-color: var(--tray-color);
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    width: 100%; 
+    flex-grow: 1; 
+    min-height: 120px; 
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start; 
+    
+    gap: 25px; 
+    padding: 20px;
+    
+    overflow-y: auto; 
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    
+    /* Allows drag but handles scroll on background */
+    touch-action: pan-y; 
+}
+
+/* Scrollbar styling */
+#pieces-tray::-webkit-scrollbar { width: 20px; }
+#pieces-tray::-webkit-scrollbar-track { background: #2c3e50; border-radius: 10px; }
+#pieces-tray::-webkit-scrollbar-thumb { background-color: #95a5a6; border-radius: 10px; border: 4px solid #2c3e50; }
+
+/* --- PIECES --- */
+.jigsaw-piece {
+    position: absolute;
+    cursor: grab;
+    /* Normal state: Above board (10), below Help Button (10000) */
+    z-index: 100;
+    touch-action: none; 
+}
+
+/* Update this specific block */
+.jigsaw-piece.in-tray {
+    position: relative !important; /* Force it to sit in the flow */
+    top: auto !important;
+    left: auto !important;
+    margin: 10px;
+    transform: none !important; /* Remove any scaling/movement */
+    box-shadow: none !important; /* Remove drag shadows */
+    z-index: 10; /* Lower priority than dragged pieces */
+}
+
+/* Add this to ensure the active piece is always on top of the red ones */
+.jigsaw-piece:active {
+    cursor: grabbing;
+    z-index: 7000 !important; /* Higher than 'wrong' (6000) */
+}
+/* --- WIN SCREEN --- */
+#win-screen {
+    position: fixed; /* Fix to viewport */
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    
+    background: rgba(52, 52, 57, 0.854); /* Green transparent background */
+    color: white;
+    
+    /* FLEXBOX CENTERING */
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    
+    /* CRITICAL: Highest Z-Index (Higher than Tutorial and Pieces) */
+    z-index: 30000; 
+    
+    /* Animation */
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none; /* Let clicks pass through when hidden */
+}
+
+/* When the 'hidden' class is REMOVED, we show it */
+#win-screen:not(.hidden) {
+    opacity: 1;
+    pointer-events: auto; /* Re-enable clicks */
+}
+
+.win-content {
+    background: white;
+    color: #2c3e50;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#win-screen:not(.hidden) .win-content {
+    transform: scale(1); /* Pop in effect */
+}
+
+.win-content h1 {
+    margin: 0 0 10px 0;
+    font-size: 2.5rem;
+    color: #383938;
+}
+
+.win-content button {
+    margin-top: 20px;
+    padding: 10px 30px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+.win-content button:hover {
+    background-color: #0e0f0f5d;
+}
+
+/* Helper utility */
+.hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important; /* Force hide */
+}
+
+/* --- GREEN SNAP ANIMATION --- */
+@keyframes snapFlash {
+    0% {
+        filter: brightness(1.2);
+        box-shadow: 0 0 0 rgba(46, 204, 113, 0);
+        border: 2px solid rgba(46, 204, 113, 0);
+    }
+    30% {
+        /* Bright flash */
+        filter: brightness(1.5);
+        box-shadow: 0 0 25px rgba(46, 204, 113, 1);
+        border: 3px solid rgba(46, 204, 113, 1);
+        transform: scale(1.05);
+    }
+    100% {
+        filter: brightness(1);
+        box-shadow: none;
+        border: none; /* Removes border at end */
+        transform: scale(1);
+    }
+}
+
+.jigsaw-piece.snapped {
+    pointer-events: none;
+    /* Send to bottom so it doesn't block other pieces */
+    z-index: 5; 
+    
+    /* Trigger Animation */
+    animation: snapFlash 0.8s ease-out forwards;
+}
+
+/* --- RED ERROR ANIMATION --- */
+@keyframes errorFlash {
+    0% { box-shadow: 0 0 0 rgba(231, 76, 60, 0); transform: scale(1); }
+    50% { box-shadow: 0 0 20px rgba(231, 76, 60, 1); border: 2px solid #e74c3c; transform: scale(1.1); }
+    100% { box-shadow: none; transform: scale(1); }
+}
+
+/* Update this block in your CSS */
+.jigsaw-piece.wrong {
+    z-index: 6000 !important;
+    animation: errorFlash 1.5s ease-in-out infinite;
+    /* pointer-events: none;  */
+    cursor: grab !important; /* Let the user know they can grab it */
+}
+
+/* Modal & Media Queries */
+.hidden { display: none !important; }
+.modal { 
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background-color: rgba(0,0,0,0.85); z-index: 20000; 
+    justify-content: center; align-items: center; 
+}
+.modal.show { display: flex; animation: fadeIn 0.3s; }
+.modal-content { background: white; width: 90%; max-width: 500px; padding: 25px; border-radius: 10px; text-align: center; }
+.tutorial-step { display: flex; align-items: center; background: #f8f9fa; margin: 15px 0; padding: 10px; border-radius: 8px; text-align: left; }
+.step-img { width: 50px; height: 50px; border-radius: 5px; display: flex; justify-content: center; align-items: center; margin-right: 15px; color: white; font-size: 20px; flex-shrink: 0;}
+.close-btn-red { background: #e74c3c; color: white; border: none; padding: 12px 30px; font-weight: bold; border-radius: 50px; margin-top: 10px; width: 100%; cursor: pointer; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (min-width: 600px) and (orientation: landscape) {
+    .game-container { flex-direction: row; }
+    #pieces-tray { width: 300px; height: 100%; flex-grow: 0; overflow-y: auto; gap: 15px; }
+    body { padding-top: 0; }
+}

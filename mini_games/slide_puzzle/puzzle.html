@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Realistic Slide Puzzle</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../../js/game_state.js"></script>
+</head>
+<body>
+
+    <button id="help-btn" onclick="toggleTutorial()">?</button>
+    <div id="game-container">
+        <h1>Slide Puzzle</h1>
+        <div id="board"></div>
+        <button id="start-btn" onclick="startGame()">Start Game</button>
+    </div>
+
+    <div id="win-message" class="hidden">
+        🎉 Puzzle Solved! 🎉
+    </div>
+
+    <div id="tutorial-modal" class="modal">
+        <div class="modal-content">
+            <h2>How to Play</h2>
+            
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #517394;">
+                    <span>🎮</span>
+                </div>
+                <div class="step-text">
+                    <h3>Start the Game by shuffeling the tiles</h3>
+                    <p>Click the button below to start the game</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #2ecc71;">
+                    <span>👆</span>
+                </div>
+                <div class="step-text">
+                    <h3>Drag the tiles </h3>
+                    <p>Drag the tiles to the empty and try to solve the puzzle </p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #e74c3c;">
+                    <span>🔀</span>
+                </div>
+                <div class="step-text">
+                    <h3>Wrong Move?</h3>
+                    <p>If you stuck press the button below to restart the game again with new shuffle.</p>
+                </div>
+            </div>
+
+            <button class="close-btn-red" onclick="toggleTutorial()">CLOSE</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
