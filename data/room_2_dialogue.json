@@ -8,7 +8,7 @@
       "en": "Here's the kitchen! As you can see, it doesn't have all the equipment it used to have, but many of the items they used back then are still here.",
       "gr": "Εδώ είναι η κουζίνα! Όπως μπορείς να δεις δεν έχει όλο τον εξοπλισμό που είχε παλιά, αλλά πολλά από τα αντικείμενα που χρησιμοποιούσαν τότε είναι ακόμα εδώ. "
     },
-    "action": "add-item:Golden_Fragment add-item:kanata",
+   
     "next_id": "scene_2_post_puzzle"
   },
   {
@@ -208,6 +208,7 @@
       "en": "You were right after all, Natalia! I still can't believe it! But how...",
       "gr": " Είχες δίκιο τελικά Ναταλία! Ακόμη δεν το πιστεύω! Μα πώς…"
     },
+    "action":"remove-item:kanata",
     "next_id": "scene_20_post_puzzle"
   },
   {
