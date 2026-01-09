@@ -7,7 +7,7 @@ let currentSceneIndex = 0;
 let isProcessingClick = false;
 let roomID = '';
 
-// --- HELPER FUNCTIONS (Defined first to avoid ReferenceErrors) ---
+// --- HELPER FUNCTIONS ---
 
 function showTaskFeedback(msg) {
     const feedback = document.getElementById('task-feedback');
@@ -48,16 +48,42 @@ function updateTaskVisibility(activeTaskID) {
     }
 }
 
+/**
+ * Λειτουργία του κουμπιού USE (Placebo) στο Inventory
+ */
+function handlePlaceboUseClick() {
+    console.log("System: Use Button Clicked");
+    const scene = currentDialogueScript[currentSceneIndex];
+
+    if (!scene || scene.type !== 'task_check' || !scene.required_item) {
+        showTaskFeedback(gameState.language === 'en' ? "Nothing to use here!" : "Δεν υπάρχει κάτι προς χρήση εδώ!");
+        toggleInventory(false);
+        return;
+    }
+
+    const itemNeeded = scene.required_item;
+    if (gameState.inventory.includes(itemNeeded)) {
+        console.log(`System: Successfully using ${itemNeeded}`);
+        toggleInventory(false);
+        removeItemFromInventory(itemNeeded);
+        currentSceneIndex++;
+        processScene();
+    } else {
+        showTaskFeedback(gameState.language === 'en' ? "Missing required item!" : "Λείπει το απαραίτητο αντικείμενο!");
+        toggleInventory(false);
+    }
+}
+
 function handleSceneAdvance(event) {
     console.log("System: Click detected on:", event.target);
 
-    if (event.target.closest('.overlay-menu')) return;
+    if (event.target.closest('.overlay-menu') || event.target.closest('.ui-icon-button')) return;
     if (isProcessingClick) return;
 
     const scene = currentDialogueScript[currentSceneIndex];
     if (scene && scene.type === 'task_check') {
         if (event.target.classList.contains('task-highlight') || event.target.closest('.interactive-ui')) {
-            return; 
+            return;
         }
         showTaskFeedback(gameState.language === 'en' ? "Finish the task first!" : "Ολοκληρώστε την εργασία πρώτα!");
         return;
@@ -86,7 +112,9 @@ function handleCharacterVisuals(scene) {
             charEl.classList.remove('is-listening');
             if (scene.emotion && ASSETS.characters[speakerKey]) {
                 const emotionSrc = ASSETS.characters[speakerKey][scene.emotion];
-                if (emotionSrc) charEl.src = BASE_PATH + emotionSrc;
+                if (emotionSrc) {
+                    charEl.src = BASE_PATH + emotionSrc;
+                }
             }
         } else {
             if (charEl.id === 'guide') {
@@ -116,7 +144,7 @@ function handleSceneActions(actionString) {
 
             if (value === 'on') {
                 if (overlay) overlay.style.display = 'block';
-                if (dialogueBox) dialogueBox.style.zIndex = "1002"; 
+                if (dialogueBox) dialogueBox.style.zIndex = "1002";
             } else if (value === 'off') {
                 if (overlay) overlay.style.display = 'none';
                 if (dialogueBox) dialogueBox.style.zIndex = "500";
@@ -131,7 +159,17 @@ function handleSceneActions(actionString) {
                 const btn = document.querySelector(targetId);
                 if (btn) btn.classList.add('highlight-active');
             }
-        } else if (type === 'show-alert') {
+        }
+        else if (type === 'flicker-lights') {
+            const overlay = document.getElementById('light-overlay');
+            if (overlay) {
+                overlay.classList.add('flicker-active');
+                setTimeout(() => {
+                    overlay.classList.remove('flicker-active');
+                }, 2000);
+            }
+        }
+        else if (type === 'show-alert') {
             const currentLang = gameState.language || 'en';
             const alertMessages = {
                 'gr': "Χαχαχα! Σας έκλεψα τόσα πολλά πράγματα...",
@@ -165,6 +203,8 @@ function processScene() {
 
 async function initializeDialogueEngine(roomName, jsonPath) {
     roomID = roomName;
+    console.log(`Initializing Engine for ${roomID}...`);
+
     try {
         const [dialogueRes, itemsRes] = await Promise.all([
             fetch(jsonPath),
@@ -174,7 +214,52 @@ async function initializeDialogueEngine(roomName, jsonPath) {
         currentDialogueScript = await dialogueRes.json();
         roomItemsData = await itemsRes.json();
 
-        // Attach the listener (now handleSceneAdvance is definitely defined)
+        const savedSceneID = getRoomProgress(roomID);
+        let startingIndex = 0;
+
+        // --- ROOM LOGIC FLAGS ---
+        if (roomID === 'room_1') {
+            if (getFlag('Hidden_objects_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_30');
+            else if (getFlag('Find_difference_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_29');
+            else if (getFlag('Broken_plate_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_27_success');
+            else if (getFlag('statue_game_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_26_success');
+        }
+        else if (roomID === 'room_2') {
+            if (getFlag('Hidden_objects_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_27');
+            else if (getFlag('Ice_cream_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_26_success');
+        }
+        else if (roomID === 'room_3') {
+            if (getFlag('Hidden_objects_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r3_33');
+            else if (getFlag('Record_game_solved') && gameState.inventory.includes('Glue')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r3_28');
+            else if (getFlag('Record_game_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r3_success');
+        }
+        else if (roomID === 'room_4') {
+            if (getFlag('Ice_cream_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r4_22');
+            else if (getFlag('Shoe_Polish_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r4_success');
+        }
+        else if (roomID === 'room_5') {
+            if (getFlag('Hidden_objects_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r5_return_01');
+            else if (getFlag('r5_phase1_complete')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r5_28');
+            else if (getFlag('Torn_puzzle_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r5_success');
+        }
+        else if (roomID === 'room_6') {
+            if (getFlag('Hidden_objects_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r6_20');
+            else if (getFlag('Medal_Puzzle_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r6_13_post_game');
+        }
+        else if (roomID === 'room_7') {
+            if (getFlag('Hidden_objects_solved') && gameState.inventory.includes('Needle')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r7_24');
+            else if (getFlag('Hidden_objects_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r7_17_success');
+        }
+
+        // Fallback: If no mini-game solved just now, load last saved scene
+        if (startingIndex <= 0 && savedSceneID) {
+            const foundIndex = currentDialogueScript.findIndex(s => s.id === savedSceneID);
+            if (foundIndex !== -1) startingIndex = foundIndex;
+        }
+
+        currentSceneIndex = startingIndex;
+        console.log(`System: Resuming ${roomID} at index ${currentSceneIndex}`);
+
         const container = document.getElementById('game-container');
         container.removeEventListener('click', handleSceneAdvance);
         container.addEventListener('click', handleSceneAdvance);
@@ -189,6 +274,7 @@ window.handleTaskInteraction = function (taskID, requiredItem, miniGameURL) {
     const scene = currentDialogueScript[currentSceneIndex];
     if (scene.type === 'task_check' && scene.task_id === taskID) {
         saveRoomProgress(roomID, scene.id);
-        window.location.href = BASE_PATH + miniGameURL;
+        const finalURL = BASE_PATH + miniGameURL;
+        window.location.href = finalURL;
     }
 };
