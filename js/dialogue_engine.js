@@ -173,14 +173,18 @@ function handleSceneActions(actionString) {
         }
         else if (type === 'flicker-lights') {
             const overlay = document.getElementById('light-overlay');
+            console.log("System: Attempting to flicker lights...", overlay); // Debug log
+
             if (overlay) {
                 overlay.classList.add('flicker-active');
+                console.log("System: Class 'flicker-active' added.");
 
-                // Αφαίρεση της κλάσης μετά το τέλος της animation (2 δευτερόλεπτα)
-                // για να μπορεί να ξαναχρησιμοποιηθεί
                 setTimeout(() => {
                     overlay.classList.remove('flicker-active');
+                    console.log("System: Class 'flicker-active' removed.");
                 }, 2000);
+            } else {
+                console.error("System Error: light-overlay element not found in DOM!");
             }
         }
         else if (type === 'show-alert') {
@@ -240,7 +244,7 @@ async function initializeDialogueEngine(roomName, jsonPath) {
             else if (getFlag('Broken_plate_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_27_success');
             else if (getFlag('statue_game_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_26_success');
         }
-        
+
         // 3. FALLBACK: If no mini-game was just solved, use the last saved scene ID
         if (startingIndex <= 0 && savedSceneID) {
             const foundIndex = currentDialogueScript.findIndex(s => s.id === savedSceneID);
