@@ -92,17 +92,7 @@ const ASSETS = {
 };
 
 function getBasePath() {
-    // Detect if we are on GitHub Pages
-    const isGitHub = window.location.hostname.includes('github.io');
-    
-    if (isGitHub) {
-        // Extracts 'REPOSITORY_NAME' from 'alperismailoglou.github.io/REPOSITORY_NAME/'
-        const repoName = window.location.pathname.split('/')[1];
-        return `/${repoName}/`; 
-    }
-    
-    // For local testing (Live Server)
-    return '/'; 
+    return window.location.origin + '/';
 }
 
 const BASE_PATH = getBasePath();
@@ -122,20 +112,17 @@ let roomItemsData = {};
 
 function loadGameState() {
     const savedStateJSON = localStorage.getItem(LOCAL_STORAGE_KEY + 'gameState');
-    // Start with default, then overwrite if save exists
     gameState = { ...defaultState };
 
     if (savedStateJSON) {
         try {
             const savedState = JSON.parse(savedStateJSON);
-            // Merge saved data into current state
             gameState = { ...gameState, ...savedState };
         } catch (e) {
             console.error("Error parsing saved state:", e);
         }
     }
     
-    // Always sync language from its specific key
     gameState.language = localStorage.getItem('gameLanguage') || 'en';
     updateInventoryButtonVisual();
 }
@@ -381,13 +368,10 @@ function changeGameLanguage(newLang) {
     localStorage.setItem('gameLanguage', newLang);
     window.location.reload(); 
 }
+
 function saveRoomProgress(roomID, sceneID) {
-    // 1. Update the progress for this specific room
     gameState.roomProgress[roomID] = sceneID;
-    // 2. Track which room the player is currently in
-    gameState.currentRoom = roomID;
-    // 3. Persist to localStorage
-    saveGameState();
+    saveGameState(roomID);
 }
 
 function getRoomProgress(roomID) {
