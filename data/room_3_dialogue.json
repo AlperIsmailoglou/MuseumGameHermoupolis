@@ -330,12 +330,11 @@
     "speaker_id": "character3",
     "emotion": "happy",
     "task_id": "Fix_Record_Check",
-    "required_item": "Glue",
+     "required_item":"Broken_Record",
     "text": {
       "en": "Ah, great! Use the glue to fix the record.",
       "gr": "Αχ τέλεια! Χρησιμοποιήστε την κόλλα για να φτιάξετε τον δίσκο."
     },
-    "action": "remove-item:Broken_Record",
     "next_id": "scene_r3_30"
   },
   {
@@ -347,7 +346,7 @@
       "en": "Always with a good word in your mouth...",
       "gr": " Πάντα με τον καλό λόγο στο στόμα..."
     },
-     "action": "add-item:Glue",
+     "action": "remove-item:Broken_Record",
     "next_id": "scene_r3_31"
   },
    {

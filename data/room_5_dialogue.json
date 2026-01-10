@@ -162,6 +162,7 @@
     "speaker_id": "guide",
     "emotion": "happy",
     "task_id": "Torn_puzzle",
+    "required_item":"Right_score",
     "mini_game_url": "mini_games/torn_puzzle/torn_puzzle.html",
     "text": {
       "en": "Click on the torn score to start fixing it!",
@@ -171,14 +172,15 @@
   },
   {
     "id": "scene_r5_success",
-    "type": "dialogue",
+    "type": "task_check",
     "speaker_id": "guide",
     "emotion": "happy",
+    "required_item":"Right_score",
     "text": {
-      "en": "Here it is! Like new!",
-      "gr": "Ορίστε! Σαν καινούργια!"
+      "en": "Here it is! Like new!(Press the Use button to give the score)",
+      "gr": "Ορίστε! Σαν καινούργια!(Πατήστε το κουμπί Χρήση για να δώσετε τη παρτιτούρα)"
     },
-    "action": "remove-item:Right_score",
+    
     "next_id": "scene_r5_17"
   },
     {
@@ -190,6 +192,7 @@
       "en": "Ugh, thank you very much!",
       "gr": "Ουφ, ευχαριστώ πάρα πολύ!"
     },
+   
     "next_id": "scene_r5_18"
    },
     {

@@ -10,7 +10,7 @@ const winScreen = document.getElementById('winScreen');
 // --- CONFIGURATION ---
 const BRUSH_SIZE = 50; 
 const DIRTY_SHOE_URL = 'shoe_polish_dirty.png'; 
-const ERASER_STRENGTH = 0.22; 
+const ERASER_STRENGTH = 0.4; 
 
 const HITBOX_CONFIG = {
     x: 24, y: 13, width: 63, height: 40  
