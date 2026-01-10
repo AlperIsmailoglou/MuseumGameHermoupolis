@@ -172,8 +172,8 @@ function handleSceneActions(actionString) {
         else if (type === 'show-alert') {
             const currentLang = gameState.language || 'en';
             const alertMessages = {
-                'gr': "Χαχαχα! Σας έκλεψα τόσα πολλά πράγματα...",
-                'en': "Hahaha! I stole so many things..."
+                'gr': " Χαχαχα! Σας έκλεψα τόσα πολλά πράγματα και δεν καταλάβατε τίποτα! Ένα μέρος έχει μείνει τώρα μόνο που δεν έχετε επισκεφτεί, σας περιμένω εκεί.",
+                'en': "Hahaha! I stole so many things from you and you didn't understand anything! There's only one place left now that you haven't visited, I'm waiting for you there."
             };
             alert(alertMessages[currentLang]);
         }

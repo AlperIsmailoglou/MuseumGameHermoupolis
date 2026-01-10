@@ -135,15 +135,16 @@ html {
 
 /* Specifically target the Inventory Menu header */
 #inventory-menu h2 {
-    margin-top: 60px;
+    margin-top: 0px;
     /* Pushes the title down so it doesn't hit the BACK button */
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: center;
     width: 100%;
 }
 
 /* Fix the list container so it doesn't overlap the header */
 #inventory-list {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     /* Stack items vertically */
@@ -156,10 +157,12 @@ html {
 }
 
 #inventory-menu .ui-close-button-combo {
-    position: absolute;
-    top: 15px;
+    position: static;
+    align-self: flex-start;
+    /*top: 15px;
     left: 15px;
-    z-index: 2010;
+    z-index: 2010;*/
+    margin-bottom: 10px;
 }
 
 .inventory-item {
@@ -327,7 +330,7 @@ html {
     transform: translate(-50%, -50%);
     display: none;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 80%;
     max-width: 500px;
@@ -336,7 +339,7 @@ html {
     border: 3px solid #ffd700;
     border-radius: 15px;
     z-index: 2000;
-    padding: 30px;
+    padding: 20px;
 }
 
 /* TEXT COLOR - BLACK */
