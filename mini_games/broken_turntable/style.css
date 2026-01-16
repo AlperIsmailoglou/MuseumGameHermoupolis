@@ -189,3 +189,28 @@ html, body {
 
 @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Only shows up when the screen is in Portrait mode */
+@media screen and (orientation: portrait) {
+    body::after {
+        content: "Please Rotate Your Device ↻";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        color: #ffd700;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        z-index: 9999;
+        text-align: center;
+    }
+    
+    /* Hide the actual game container so they don't play in the wrong mode */
+    #game-container {
+        display: none !important;
+    }
+}
