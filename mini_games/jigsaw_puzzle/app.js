@@ -17,37 +17,7 @@ const board = document.getElementById('puzzle-board');
 const tray = document.getElementById('pieces-tray');
 const winScreen = document.getElementById('win-screen');
 
-// Add this to your mini-game JavaScript or HTML head
-(function() {
-    // Store the initial orientation to compare later
-    let currentOrientation = screen.orientation ? screen.orientation.type : window.orientation;
 
-    const handleRotation = () => {
-        // 1. Wait briefly for the device to finish the physical rotation animation
-        setTimeout(() => {
-            // 2. Check the new orientation
-            const newOrientation = screen.orientation ? screen.orientation.type : window.orientation;
-
-            // 3. Only reload if the orientation effectively changed (e.g. Portrait -> Landscape)
-            // This prevents phantom reloads on minor sensor jitters
-            if (newOrientation !== currentOrientation) {
-                console.log("System: Orientation changed. Reloading layout...");
-                window.location.reload();
-            }
-        }, 300); // 300ms delay is usually safe for all mobile browsers
-    };
-
-    // Listen for the event
-    window.addEventListener('orientationchange', handleRotation);
-    
-    // Fallback for some Android devices that treat rotation as a resize
-    window.addEventListener('resize', () => {
-        // We check dimensions to see if the aspect ratio flipped
-        if (window.innerWidth > window.innerHeight && currentOrientation.includes('portrait')) {
-             handleRotation();
-        }
-    });
-})();
 
 // --- INITIALIZATION ---
 puzzleImage.src = IMAGE_URL;
