@@ -146,6 +146,32 @@ function saveGameState(roomID = gameState.currentRoom) {
     localStorage.setItem(LOCAL_STORAGE_KEY + 'gameState', JSON.stringify(gameState));
 }
 
+/**
+ * Global Viewport & Orientation Fix
+ */
+function updateViewportHeight() {
+    // We use a small timeout to ensure the browser has finished its rotation animation
+    setTimeout(() => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        
+        // Force a layout reflow on the game container
+        const container = document.getElementById('game-container');
+        if (container) {
+            container.style.display = 'none';
+            container.offsetHeight; // Trigger reflow
+            container.style.display = 'flex';
+        }
+    }, 150);
+}
+
+// Listen for both orientation changes and window resizing
+window.addEventListener('resize', updateViewportHeight);
+window.addEventListener('orientationchange', updateViewportHeight);
+
+// Initial call on load
+document.addEventListener('DOMContentLoaded', updateViewportHeight);
+
 // --- UI Panel Logic ---
 
 function isMenuOpen(id) {

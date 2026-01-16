@@ -274,7 +274,24 @@ window.handleTaskInteraction = function (taskID, requiredItem, miniGameURL) {
     const scene = currentDialogueScript[currentSceneIndex];
     if (scene.type === 'task_check' && scene.task_id === taskID) {
         saveRoomProgress(roomID, scene.id);
-        const finalURL = BASE_PATH + miniGameURL;
-        window.location.href = finalURL;
+
+        // List of games that REQUIRE landscape
+        const landscapeGames = ['Find_difference', 'Hidden_objects']; 
+
+        if (landscapeGames.includes(taskID) && screen.orientation && screen.orientation.lock) {
+            // Attempt to lock to landscape if the device supports it
+            // Note: This usually requires Fullscreen mode to work on mobile browsers
+            document.documentElement.requestFullscreen().then(() => {
+                screen.orientation.lock('landscape').catch(err => console.warn("Lock failed", err));
+            }).finally(() => {
+                navigateToGame(miniGameURL);
+            });
+        } else {
+            navigateToGame(miniGameURL);
+        }
     }
 };
+
+function navigateToGame(url) {
+    window.location.href = BASE_PATH + url;
+}
