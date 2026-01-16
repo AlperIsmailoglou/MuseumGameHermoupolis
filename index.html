@@ -187,7 +187,8 @@
                 inventory: [],
                 flags: {},
                 roomProgress: {},
-                collectedArtifacts: {}
+                collectedArtifacts: {},
+                gameStartTime: Date.now()
             };
 
             localStorage.setItem(LOCAL_STORAGE_KEY_PREFIX + 'gameState', JSON.stringify(initialState));

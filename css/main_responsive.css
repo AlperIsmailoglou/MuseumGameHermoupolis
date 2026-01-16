@@ -504,3 +504,85 @@ html {
     transform: scale(1.1);
     transition: all 0.3s ease;
 }
+
+/* --- END GAME OVERLAY --- */
+#end-game-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background: linear-gradient(135deg, rgba(10, 10, 50, 0.95), rgba(26, 42, 108, 0.95));
+    z-index: 9999; /* On top of everything */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s ease-out;
+}
+
+.end-content {
+    text-align: center;
+    color: white;
+    padding: 40px;
+    border: 4px solid #ffd700; /* Gold Border */
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 500px;
+}
+
+.end-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.stars-container {
+    font-size: 4rem;
+    margin: 20px 0;
+}
+
+.star.filled {
+    color: #ffd700; /* Gold */
+    text-shadow: 0 0 20px #ffd700;
+}
+
+.star.empty {
+    color: #444; /* Dark Grey */
+}
+
+.time-label {
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-bottom: 5px;
+}
+
+.time-value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.restart-btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #ffd700;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #000;
+    transition: transform 0.2s;
+}
+
+.restart-btn:hover {
+    transform: scale(1.05);
+    background-color: #fff;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

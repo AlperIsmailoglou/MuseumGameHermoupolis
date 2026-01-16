@@ -114,6 +114,7 @@ const defaultState = {
     collectedArtifacts: {}, 
     roomProgress: {},
     currentRoom: 'room_1',
+    gameStartTime: 0
 };
 
 let gameState = { ...defaultState };

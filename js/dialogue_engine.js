@@ -81,6 +81,17 @@ function handleSceneAdvance(event) {
     if (isProcessingClick) return;
 
     const scene = currentDialogueScript[currentSceneIndex];
+    if (scene.next_id === 'END') {
+        if (roomID === 'room_8') {
+            showEndGameScreen(); // Trigger the ending!
+            return;
+        } else {
+            // For other rooms, maybe go to map or next room?
+            // Existing logic for other rooms goes here
+            console.log("End of room reached");
+            return; 
+        }
+    }
     if (scene && scene.type === 'task_check') {
         if (event.target.classList.contains('task-highlight') || event.target.closest('.interactive-ui')) {
             return;
@@ -268,6 +279,56 @@ async function initializeDialogueEngine(roomName, jsonPath) {
     } catch (error) {
         console.error("Initialization Error:", error);
     }
+}
+
+function showEndGameScreen() {
+    // 1. Calculate Duration
+    const endTime = Date.now();
+    const startTime = gameState.gameStartTime || endTime; // Fallback if missing
+    const totalMilliseconds = endTime - startTime;
+
+    // Convert to Minutes and Hours
+    const totalMinutes = Math.floor(totalMilliseconds / 60000);
+    const hours = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+
+    // 2. Determine Stars
+    let stars = 1;
+    if (totalMinutes <= 20) stars = 3;
+    else if (totalMinutes <= 60) stars = 2; // Covers the "40 minutes" case
+    else stars = 1; // Above 60 minutes
+
+    // 3. Create Overlay HTML dynamically
+    const overlay = document.createElement('div');
+    overlay.id = 'end-game-overlay';
+    
+    const lang = gameState.language;
+    const titleText = lang === 'en' ? "ADVENTURE COMPLETE" : "ΤΕΛΟΣ ΠΕΡΙΠΕΤΕΙΑΣ";
+    const timeText = lang === 'en' ? "Total Time:" : "Συνολικός Χρόνος:";
+    const timeDisplay = hours > 0 
+        ? `${hours}h ${minutes}m` 
+        : `${minutes}m`;
+
+    // Star generation (★ symbol)
+    let starHTML = '';
+    for (let i = 0; i < 3; i++) {
+        if (i < stars) starHTML += '<span class="star filled">★</span>';
+        else starHTML += '<span class="star empty">★</span>';
+    }
+
+    overlay.innerHTML = `
+        <div class="end-content">
+            <h1>${titleText}</h1>
+            <div class="stars-container">${starHTML}</div>
+            <p class="time-label">${timeText}</p>
+            <p class="time-value">${timeDisplay}</p>
+            <button onclick="window.location.href='../index.html'" class="restart-btn">
+                ${lang === 'en' ? "RETURN TO MENU" : "ΕΠΙΣΤΡΟΦΗ ΣΤΟ ΜΕΝΟΥ"}
+            </button>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
 }
 
 window.handleTaskInteraction = function (taskID, requiredItem, miniGameURL) {
