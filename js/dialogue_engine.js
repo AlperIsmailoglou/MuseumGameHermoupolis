@@ -73,6 +73,78 @@ function handlePlaceboUseClick() {
         toggleInventory(false);
     }
 }
+function toggleHistory(show) {
+    if (isMenuOpen('history-menu')) {
+        closeAllMenus();
+        return;
+    }
+
+    if (show) {
+        closeAllMenus();
+        renderHistoryLog(); // Generate the text
+        document.getElementById('history-menu').style.display = 'flex';
+    }
+}
+
+function renderHistoryLog() {
+    const list = document.getElementById('history-list');
+    list.innerHTML = ''; // Clear previous content
+
+    const lang = gameState.language;
+
+    // Loop from the start of the room UP TO the current scene
+    for (let i = 0; i <= currentSceneIndex; i++) {
+        const scene = currentDialogueScript[i];
+
+        // Only show scenes that actually have text
+        if (scene && scene.text) {
+            const text = scene.text[lang] || scene.text['en'];
+            
+            // Skip empty text entries (sometimes used for logic-only scenes)
+            if (!text || text.trim() === "") continue;
+
+            const speaker = scene.speaker_id || "System";
+            
+            // Create the entry HTML
+            const entryDiv = document.createElement('div');
+            entryDiv.className = 'history-entry';
+            
+            entryDiv.innerHTML = `
+                <div class="history-speaker">${formatSpeakerName(speaker)}</div>
+                <div class="history-text">${text}</div>
+            `;
+            
+            list.appendChild(entryDiv);
+        }
+    }
+
+    // Auto-scroll to the bottom (newest text)
+    setTimeout(() => {
+        list.scrollTop = list.scrollHeight;
+    }, 50);
+}
+function formatSpeakerName(id) {
+    if (!id) return "Unknown";
+
+    // Create a map of IDs to Real Names
+    // EDIT THESE NAMES TO MATCH YOUR STORY
+    const characterNames = {
+        'guide': 'ERIC', 
+        'character2': 'NATALIA',
+        'character3': 'MARINA',   
+        'character4': 'EMMANUEL',    
+        'character5': 'ANASTASIA & ELIZABETH',     
+        'character6': 'KATERINA',      
+        'character7': 'MANTHOS',    
+        'character8': 'IPHIGENIA',  
+        'character9': 'ACHILLES',     
+        'character10': 'LAIS',  
+        'character11': 'LAIS'     
+    };
+
+    // Return the mapped name if it exists, otherwise capitalize the ID as a fallback
+    return characterNames[id] || id.charAt(0).toUpperCase() + id.slice(1);
+}
 
 function handleSceneAdvance(event) {
     console.log("System: Click detected on:", event.target);
@@ -284,10 +356,9 @@ async function initializeDialogueEngine(roomName, jsonPath) {
 function showEndGameScreen() {
     // 1. Calculate Duration
     const endTime = Date.now();
-    const startTime = gameState.gameStartTime || endTime; // Fallback if missing
+    const startTime = gameState.gameStartTime || endTime; 
     const totalMilliseconds = endTime - startTime;
 
-    // Convert to Minutes and Hours
     const totalMinutes = Math.floor(totalMilliseconds / 60000);
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
@@ -295,8 +366,8 @@ function showEndGameScreen() {
     // 2. Determine Stars
     let stars = 1;
     if (totalMinutes <= 20) stars = 3;
-    else if (totalMinutes <= 60) stars = 2; // Covers the "40 minutes" case
-    else stars = 1; // Above 60 minutes
+    else if (totalMinutes <= 60) stars = 2; 
+    else stars = 1;
 
     // 3. Create Overlay HTML dynamically
     const overlay = document.createElement('div');
@@ -305,11 +376,14 @@ function showEndGameScreen() {
     const lang = gameState.language;
     const titleText = lang === 'en' ? "ADVENTURE COMPLETE" : "ΤΕΛΟΣ ΠΕΡΙΠΕΤΕΙΑΣ";
     const timeText = lang === 'en' ? "Total Time:" : "Συνολικός Χρόνος:";
-    const timeDisplay = hours > 0 
-        ? `${hours}h ${minutes}m` 
-        : `${minutes}m`;
+    const timeDisplay = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
 
-    // Star generation (★ symbol)
+    // New Button Texts
+    const menuText = lang === 'en' ? "RETURN TO MENU" : "ΕΠΙΣΤΡΟΦΗ ΣΤΟ ΜΕΝΟΥ";
+    const surveyText = lang === 'en' ? "TAKE SURVEY" : "ΣΥΜΠΛΗΡΩΣΤΕ ΤΗΝ ΕΡΕΥΝΑ";
+    const surveyUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfgCMBHJqDRni3w1ZULaoj7D_-PAi8ELSUOqHQeBzSFAKgMAw/viewform?usp=dialog";
+
+    // Star generation
     let starHTML = '';
     for (let i = 0; i < 3; i++) {
         if (i < stars) starHTML += '<span class="star filled">★</span>';
@@ -322,9 +396,16 @@ function showEndGameScreen() {
             <div class="stars-container">${starHTML}</div>
             <p class="time-label">${timeText}</p>
             <p class="time-value">${timeDisplay}</p>
-            <button onclick="window.location.href='../index.html'" class="restart-btn">
-                ${lang === 'en' ? "RETURN TO MENU" : "ΕΠΙΣΤΡΟΦΗ ΣΤΟ ΜΕΝΟΥ"}
-            </button>
+            
+            <div class="end-buttons-container">
+                <button onclick="window.location.href='../index.html'" class="restart-btn">
+                    ${menuText}
+                </button>
+                
+                <button onclick="window.open('${surveyUrl}', '_blank')" class="restart-btn survey-btn">
+                    ${surveyText}
+                </button>
+            </div>
         </div>
     `;
 

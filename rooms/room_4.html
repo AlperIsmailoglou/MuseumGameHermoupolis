@@ -37,6 +37,9 @@
             <div class="ui-icon-button interactive-ui" onclick="toggleLanguageMenu(true)">
                 <img src="../images/UI/settings.png" alt="Settings">
             </div>
+            <div class="ui-icon-button interactive-ui" onclick="toggleHistory(true)">
+        <img src="../images/UI/history_icon.png" alt="History">
+    </div>
         </div>
 
         <div id="persistent-ui-layer">
@@ -89,6 +92,14 @@
                 <button class="lang-option interactive-ui" onclick="changeGameLanguage('gr')">Ελληνικά</button>
             </div>
         </div>
+        <div id="history-menu" style="display: none;" class="overlay-menu interactive-ui">
+    <div class="ui-close-button-combo" onclick="toggleHistory(false)">
+        <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
+    </div>
+    <h2>Dialogue History / Ιστορικό</h2>
+    <div id="history-list">
+        </div>
+</div>
     </div>
 
     <script src="../js/dialogue_engine.js"></script>

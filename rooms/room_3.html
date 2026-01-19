@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Room 3: The Ladies Room</title>
     <link rel="stylesheet" href="../css/main_responsive.css">
     <link rel="stylesheet" href="../css/room_styles/room_3_specific.css">
     <script src="../js/game_state.js"></script>
 </head>
+
 <body>
     <div id="game-container">
         <div id="light-overlay"></div>
-       <div id="character-layer">
+        <div id="character-layer">
             <img id="guide" src="../images/characters/guide_happy.png" alt="Eric">
             <img id="character3" src="../images/characters/character3_happy.png" alt="Chef" style="display: none;">
         </div>
 
         <div id="task-layer">
-            <img id="task-turntable" class="interactive-ui" src="../images/room_3/Broken_record.jpg" 
-                alt="Broken Record" style="display: none;"
+            <img id="task-turntable" class="interactive-ui" src="../images/room_3/Broken_record.jpg" alt="Broken Record"
+                style="display: none;"
                 onclick="handleTaskInteraction('Record_game', null, 'mini_games/broken_turntable/broken_puzzle.html')">
 
         </div>
@@ -30,10 +33,13 @@
         </div>
 
         <div id="reward-popup" style="display: none;" class="interactive-ui"></div>
-        
+
         <div id="top-left-ui-layer">
             <div class="ui-icon-button interactive-ui" onclick="toggleLanguageMenu(true)">
                 <img src="../images/UI/settings.png" alt="Settings">
+            </div>
+            <div class="ui-icon-button interactive-ui" onclick="toggleHistory(true)">
+                <img src="../images/UI/history_icon.png" alt="History">
             </div>
         </div>
 
@@ -51,10 +57,10 @@
                 <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
             </div>
             <div id="inventory-use-container">
-        <button id="use-item-btn" class="lang-option" onclick="handlePlaceboUseClick()">
-            USE / ΧΡΗΣΗ
-        </button>
-    </div>
+                <button id="use-item-btn" class="lang-option" onclick="handlePlaceboUseClick()">
+                    USE / ΧΡΗΣΗ
+                </button>
+            </div>
             <h2>Inventory / Αποθήκη</h2>
             <div id="inventory-list"></div>
         </div>
@@ -87,12 +93,20 @@
                 <button class="lang-option interactive-ui" onclick="changeGameLanguage('gr')">Ελληνικά</button>
             </div>
         </div>
+        <div id="history-menu" style="display: none;" class="overlay-menu interactive-ui">
+            <div class="ui-close-button-combo" onclick="toggleHistory(false)">
+                <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
+            </div>
+            <h2>Dialogue History / Ιστορικό</h2>
+            <div id="history-list">
+            </div>
+        </div>
     </div>
 
     <script src="../js/dialogue_engine.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-             loadGameState();
+            loadGameState();
             // Safety check for language
             if (!gameState.language) {
                 window.location.href = '../index.html';
@@ -105,4 +119,5 @@
         });
     </script>
 </body>
+
 </html>

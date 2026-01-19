@@ -275,5 +275,41 @@ function checkWin() {
         }, 2000);
     }
 }
+function skipGame() {
+    // 1. Safety Check: Ask user if they really want to skip
+    if (!confirm("Are you sure you want to skip this puzzle?")) {
+        return; 
+    }
+
+    // 2. Stop the game logic
+    isGameActive = false;
+    board.classList.add("locked");
+    
+    // 3. VISUALLY SOLVE THE BOARD (Optional but looks good)
+    // We reset the array to the correct order so the user sees the full image
+    tiles = [0, 1, 2, 3, 4, 5, 6, 7, 8]; 
+    renderBoard();
+
+    // 4. Update UI Messages
+    winBox.textContent = "Puzzle Skipped!"; // Change text slightly
+    winBox.classList.remove("hidden");
+    startBtn.disabled = true;
+    startBtn.style.display = "none"; // Hide start button
+    const skipBtn = document.getElementById("skip-btn");
+    if(skipBtn) skipBtn.style.display = "none"; // Hide skip button
+
+    // 5. CRITICAL: Set the Global Flag
+    if (typeof setFlag === "function") {
+        console.log("Skipping: Setting flag 'statue_game_solved' to true.");
+        setFlag('statue_game_solved', true);
+    } else {
+        console.warn("setFlag function not found.");
+    }
+
+    // 6. Redirect back to the room
+    setTimeout(() => {
+        window.location.href = "../../rooms/room_1.html";
+    }, 1500); // 1.5 second delay
+}
 
 initGame();

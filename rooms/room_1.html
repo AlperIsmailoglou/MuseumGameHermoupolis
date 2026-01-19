@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Room 1: The Dining Room</title>
     <link rel="stylesheet" href="../css/main_responsive.css">
     <link rel="stylesheet" href="../css/room_styles/room_1_specific.css">
     <script src="../js/game_state.js"></script>
 </head>
+
 <body>
     <div id="game-container">
-        <div id="ui-focus-overlay"></div> 
+        <div id="ui-focus-overlay"></div>
         <div id="light-overlay"></div>
         <div id="character-layer">
             <img id="guide" src="../images/characters/guide_happy.png" alt="Eric the Ghost Guide">
         </div>
 
         <div id="task-layer">
-            <img id="task-statue" class="interactive-ui" src="../images/room_1/statue_broken.jpg" 
-                alt="Broken Statue" style="display: none;"
+            <img id="task-statue" class="interactive-ui" src="../images/room_1/statue_broken.jpg" alt="Broken Statue"
+                style="display: none;"
                 onclick="handleTaskInteraction('statue_game', null, 'mini_games/slide_puzzle/puzzle.html')">
 
-            <img id="task-plate" class="interactive-ui" src="../images/room_1/plate_broken.png" 
-                alt="Broken Plate" style="display: none;"
+            <img id="task-plate" class="interactive-ui" src="../images/room_1/plate_broken.png" alt="Broken Plate"
+                style="display: none;"
                 onclick="handleTaskInteraction('Broken_plate', null, 'mini_games/broken_plate_puzzle/broken_puzzle.html')">
 
-            <img id="task-difference" class="interactive-ui" src="../images/room_1/Find_the_difference.jpg" 
-                alt="Mural" style="display: none;"
+            <img id="task-difference" class="interactive-ui" src="../images/room_1/Find_the_difference.jpg" alt="Mural"
+                style="display: none;"
                 onclick="handleTaskInteraction('Find_difference', null, 'mini_games/find_the_difference/find_difference.html')">
         </div>
 
@@ -37,10 +40,13 @@
         </div>
 
         <div id="reward-popup" style="display: none;" class="interactive-ui"></div>
-        
+
         <div id="top-left-ui-layer">
             <div class="ui-icon-button interactive-ui" onclick="toggleLanguageMenu(true)">
                 <img src="../images/UI/settings.png" alt="Settings">
+            </div>
+            <div class="ui-icon-button interactive-ui" onclick="toggleHistory(true)">
+                <img src="../images/UI/history_icon.png" alt="History">
             </div>
         </div>
 
@@ -94,22 +100,31 @@
                 <button class="lang-option interactive-ui" onclick="changeGameLanguage('gr')">Ελληνικά</button>
             </div>
         </div>
+        <div id="history-menu" style="display: none;" class="overlay-menu interactive-ui">
+            <div class="ui-close-button-combo" onclick="toggleHistory(false)">
+                <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
+            </div>
+            <h2>Dialogue History / Ιστορικό</h2>
+            <div id="history-list">
+            </div>
+        </div>
     </div>
 
     <script src="../js/dialogue_engine.js"></script>
-     <script>
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
-             loadGameState();
+            loadGameState();
             // Safety check for language
             if (!gameState.language) {
                 window.location.href = '../index.html';
                 return;
             }
-             updateInventoryButtonVisual();
+            updateInventoryButtonVisual();
 
             // CRITICAL CHANGE: Tell the engine this is Room 2
             initializeDialogueEngine('room_1', '../data/room_1_dialogue.json');
         });
     </script>
 </body>
+
 </html>

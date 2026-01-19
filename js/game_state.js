@@ -21,12 +21,44 @@ const ASSETS = {
         'Plate':'images/room_7/plate.png',
         'WalkingStick':'images/room_7/WalkingStick.png'
     },
+    artifacts:{
+        'Old_Mural':'images/room_1/old_mural.jpg',
+        'Wooden_Ship':'images/room_1/wooden_ship.jpg',
+        'ice_cream_machine':'images/room_2/ice_cream_machine.jpg',
+        'inside_apron':'images/room_2/inside_apron.jpg',
+        'mug':'images/room_2/mug.jpg',
+        'outside_apron':'images/room_2/outside_apron.jpg',
+        'presser':'images/room_2/presser.jpg',
+        'stove':'images/room_2/stove.jpg',
+        'utensil':'images/room_2/utensil.jpg',
+        'utensil2':'images/room_2/utensil2.jpg',
+        'utensil3':'images/room_2/utensil3.jpg',
+        'Reward':'images/room_3/reward.jpg',
+        'Dance_Schedule':'images/room_3/dance_schedule.jpg',
+        'Ladies':'images/room_4/ladies.jpg',
+        'Mannequin':'images/room_4/mannequin.jpg',
+        'Couch':'images/room_5/couch.jpg',
+        'Dress_Baggage':'images/room_5/dress_baggage.jpg',
+        'Pattern':'images/room_5/pattern.jpg',
+        'Pattern2':'images/room_5/pattern2.jpg',
+        'Patern3':'images/room_5/pattern3.jpg',
+        'Locker':'images/room_6/locker.jpg',
+        'Beauty_bag':'images/room_7/beauty_bag.jpg',
+        'Calendar':'images/room_7/calendar.jpg',
+        'Clothes':'images/room_7/clothes.jpg',
+        'Folder':'images/room_7/folder.jpg',
+        'Pillow':'images/room_7/pillow.jpg',
+        'Porcelain_kanata':'images/room_7/porcelain_kanata.jpg',
+        'Sewing_machine':'images/room_7/sewing_machine.jpg',
+        'Wedding':'images/room_7/wedding.jpg'
+    },
     ui: {
         'inv_empty': 'images/UI/inventory_empty.png',
         'inv_full': 'images/UI/inventory_full.png',
         'back_arrow': 'images/UI/back_arrow.png',
         'lang_icon': 'images/UI/language_icon.png',
-        'art_icon': 'images/UI/artifact_icon.png'
+        'art_icon': 'images/UI/artifact_icon.png',
+        'history': 'images/UI/history_icon.png'
     },
     characters: {
         'guide': {
@@ -110,8 +142,7 @@ const BASE_PATH = getBasePath();
 const defaultState = {
     language: localStorage.getItem('gameLanguage') || 'en', 
     inventory: [],
-    flags: {},
-    collectedArtifacts: {}, 
+    flags: {}, 
     roomProgress: {},
     currentRoom: 'room_1',
     gameStartTime: 0
@@ -181,7 +212,7 @@ function isMenuOpen(id) {
 }
 
 function closeAllMenus() {
-    ['inventory-menu', 'artifacts-menu', 'language-menu'].forEach(id => {
+    ['inventory-menu', 'artifacts-menu', 'language-menu','history-menu'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none';
     });
@@ -330,26 +361,34 @@ function updateArtifactsGrid(roomName) {
     const grid = document.getElementById('artifacts-grid-list');
     if (!grid) return;
     grid.innerHTML = '';
-    
-    const collected = gameState.collectedArtifacts[roomName] || [];
+
+    // 1. Get all definitions loaded from the JSON
     const definitions = artifactData[roomName] || {};
+    
+    // 2. Get the list of ALL keys (e.g., ["Old_Mural", "Ancient_Vase"])
+    const allArtifacts = Object.keys(definitions); 
     const lang = gameState.language;
     
-    if (collected.length === 0) {
-        grid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: black;">${lang === 'en' ? 'No artifacts collected yet.' : 'Δεν έχουν συλλεχθεί τεχνουργήματα.'}</p>`;
+    // 3. Check if the JSON is empty or not loaded yet
+    if (allArtifacts.length === 0) {
+        grid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: black;">${lang === 'en' ? 'No artifacts data found.' : 'Δεν βρέθηκαν δεδομένα.'}</p>`;
         return;
     }
     
-    collected.forEach(key => {
+    // 4. Render EVERYTHING in the list
+    allArtifacts.forEach(key => {
         const data = definitions[key];
         if (!data) return;
 
         const itemDiv = document.createElement('div');
         itemDiv.className = 'artifact-grid-item interactive-ui';
         itemDiv.onclick = () => showArtifactDetails(roomName, key); 
+        
+        // Use BASE_PATH to ensure images load on GitHub Pages
         itemDiv.innerHTML = `<img src="${BASE_PATH + data.image}" alt="artifact" style="width: 100%; height: 100%; object-fit: contain;">`;
         grid.appendChild(itemDiv);
     });
+    
     showArtifactsList();
 }
 
@@ -373,13 +412,7 @@ window.showArtifactsList = function() {
     document.getElementById('artifact-detail-panel').style.display = 'none';
 }
 
-function addArtifact(roomID, artifactKey) {
-    gameState.collectedArtifacts[roomID] = gameState.collectedArtifacts[roomID] || [];
-    if (!gameState.collectedArtifacts[roomID].includes(artifactKey)) {
-        gameState.collectedArtifacts[roomID].push(artifactKey);
-        saveGameState();
-    }
-}
+
 
 // --- Flags & Language ---
 

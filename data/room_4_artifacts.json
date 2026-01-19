@@ -1,1 +1,25 @@
-{}
+{
+     "Ladies": {
+        "image": "images/room_4/ladies.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "Mannequin": {
+        "image": "images/room_4/mannequin.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    
+    }
+}

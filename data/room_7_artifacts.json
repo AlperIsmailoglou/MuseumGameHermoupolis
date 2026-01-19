@@ -1,1 +1,90 @@
-{}
+{
+    "Beauty_bag": {
+        "image": "images/room_7/beauty_bag.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "Calendar": {
+        "image": "images/room_7/calendar.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "Clothes": {
+        "image": "images/room_7/clothes.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "Folder": {
+        "image": "images/room_7/folder.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "Pillow": {
+        "image": "images/room_7/pillow.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "Porcelain_kanata": {
+        "image": "images/room_7/porcelain_kanata.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "Sewing_machine": {
+        "image": "images/room_7/sewing_machine.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "Wedding": {
+        "image": "images/room_7/wedding.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    }
+}

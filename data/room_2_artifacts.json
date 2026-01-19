@@ -1,1 +1,101 @@
-{}
+{
+    "ice_cream_machine": {
+        "image": "images/room_2/ice_cream_machine.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "inside_apron": {
+        "image": "images/room_2/inside_apron.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "mug": {
+        "image": "images/room_2/mug.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "outside_apron": {
+        "image": "images/room_2/outside_apron.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "presser": {
+        "image": "images/room_2/presser.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "stove": {
+        "image": "images/room_2/stove.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "utensil": {
+        "image": "images/room_2/utensil.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "utensil2": {
+        "image": "images/room_2/utensil2.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "utensil3": {
+        "image": "images/room_2/utensil3.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    }
+}

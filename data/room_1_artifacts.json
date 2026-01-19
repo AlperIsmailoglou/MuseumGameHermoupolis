@@ -1,14 +1,25 @@
 {
    
-    "old_coin": {
-        "image": "artifact_coin.png",
+    "Old_Mural": {
+        "image": "images/room_1/old_mural.jpg",
         "name": {
-            "en": "Ancient Coin",
+            "en": "Remnants from old mural",
             "gr": "Αρχαίο Νόμισμα"
         },
         "description": {
-            "en": "A heavy copper coin bearing the likeness of a forgotten king. It seems to react slightly to the ambient magic in the room.",
-            "gr": "Ένα βαρύ χάλκινο νόμισμα που φέρει την ομοίωση ενός ξεχασμένου βασιλιά. Φαίνεται να αντιδρά ελαφρώς στη μαγεία του χώρου."
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "Wooden_Ship": {
+        "image": "images/room_1/wooden_ship.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
         }
     }
 }
