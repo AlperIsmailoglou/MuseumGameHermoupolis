@@ -195,9 +195,14 @@ function handleCharacterVisuals(scene) {
             charEl.classList.remove('is-listening');
             if (scene.emotion && ASSETS.characters[speakerKey]) {
                 const emotionSrc = ASSETS.characters[speakerKey][scene.emotion];
-                if (emotionSrc) {
-                    charEl.src = BASE_PATH + emotionSrc;
-                }
+                const filenameKey = emotionSrc.split('/').pop().split('.')[0]; 
+                charEl.onload = function() {
+                    const renderMatrix = computeRenderMatrix(this, filenameKey);
+                    
+                    this.style.opacity = renderMatrix.opacity;
+                    this.style.transform = `scale(${renderMatrix.scale})`;
+                };
+                charEl.src = BASE_PATH + emotionSrc;
             }
         } else {
             if (charEl.id === 'guide') {

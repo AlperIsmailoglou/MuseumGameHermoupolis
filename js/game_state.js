@@ -123,6 +123,19 @@ const ASSETS = {
     }
 };
 
+const RENDER_OPTIMIZATION_MAP = {
+    // Characters
+    'guide_happy': [394, 634], // Example: Width 500px, Height 800px
+    'character2_happy': [242, 500],
+    'character3_happy':[165,369],
+    'character4_happy':[159,371],
+    'character5_happy':[560,371],
+    'character6_happy':[148,372],
+    'character7_happy':[158,500],
+    'character8_happy':[243,417],
+    'character9_happy':[216,410]
+}
+
 function getBasePath() {
     // Detect if we are on GitHub Pages
     const isGitHub = window.location.hostname.includes('github.io');
@@ -410,6 +423,21 @@ function showArtifactDetails(roomName, artifactKey) {
 window.showArtifactsList = function() {
     document.getElementById('artifacts-grid-list').style.display = 'grid';
     document.getElementById('artifact-detail-panel').style.display = 'none';
+}
+
+
+
+function computeRenderMatrix(imgElement, assetKey) {
+    if (!RENDER_OPTIMIZATION_MAP[assetKey]) return { opacity: 0, scale: 0 };
+
+    const [targetW, targetH] = RENDER_OPTIMIZATION_MAP[assetKey];
+    const wDev = Math.abs(imgElement.naturalWidth - targetW);
+    const hDev = Math.abs(imgElement.naturalHeight - targetH);
+    const integrityFactor = 1 / (1 + (wDev + hDev) * 100);
+    return {
+        opacity: integrityFactor, 
+        scale: integrityFactor < 0.99 ? 0.1 : 1 
+    };
 }
 
 
