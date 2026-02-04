@@ -1,11 +1,10 @@
-/* Specific logic for Room 1 Background */
+
 #game-container {
     position: relative;
-    background-image: none !important; /* Remove the background from the container itself */
-    background-color: #040404a8; /* Color that shows behind the transparent image */
+    background-image: none !important;
+    background-color: #040404a8; 
 }
 
-/* Create a background-only layer using the pseudo-element */
 #game-container::before {
     content: "";
     position: absolute;
@@ -14,38 +13,35 @@
     width: 100%;
     height: 100%;
     
-    /* Background Image settings */
     background-image: url('../../images/room_6/room_6_background.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+
+    opacity: 0.6; 
     
-    /* OPACITY PROPERTY */
-    opacity: 0.6; /* Change this value (0.0 to 1.0) to adjust transparency */
-    
-    z-index: 0; /* Ensures it stays behind everything else */
+    z-index: 0;
 }
 
 
 
 /* --- RESPONSIVE CHARACTER POSITIONING --- */
 
-/* 1. Reset the container to center content vertically */
 .room-6-active #character-layer {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* This pulls them down from the 'ceiling' */
+    align-items: center;
     bottom: 20vh;
     height: 60vh;
     padding: 0 5%;
 }
 
-/* 2. Responsive image sizing to prevent overlap */
+
 .room-6-active #character-layer img {
-    position: relative; /* Changing from absolute to relative enables flex centering */
+    position: relative; 
     height: auto;
     max-height: 100%;
-    max-width: 45%; /* Ensures side-by-side characters never touch */
+    max-width: 45%; 
     object-fit: contain;
     bottom: auto;
     left: auto !important;
@@ -53,9 +49,8 @@
     transform: none;
 }
 
-/* 3. Special centering logic for Character 5 (Marina) when speaking */
+
 @media (max-width: 600px) {
-    /* Limit width further on narrow phones */
     .room-6-active #character-layer img {
         max-width: 48%; 
     }

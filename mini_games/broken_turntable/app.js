@@ -18,10 +18,51 @@ const playZone = document.getElementById('play-zone');
 const pieceTray = document.getElementById('piece-tray');
 const winScreen = document.getElementById('win-screen');
 const resetBtn = document.getElementById('reset-btn');
-// We keep the ID 'play-again-btn' from your HTML, but change its behavior below
 const continueBtn = document.getElementById('play-again-btn'); 
 
+const tutorialData = {
+    en: {
+        title: "How to Play",
+        step1Head: "Drag & Drop",
+        step1Desc: "Move the shards from the tray onto the dashed puzzle area.",
+        step2Head: "Snap to Lock",
+        step2Desc: "A Green flash means the piece is correct and will lock in place.",
+        step3Head: "Wrong Spot?",
+        step3Desc: "A Red flash means it's not quite right. It will return to the tray.",
+        closeBtn: "START ADVENTURE"
+    },
+    gr: {
+        title: "Πώς να παίξεις",
+        step1Head: "Σύρε & Άφησε",
+        step1Desc: "Μετακίνησε τα κομμάτια από το δίσκο στην περιοχή του παζλ.",
+        step2Head: "Κλείδωμα",
+        step2Desc: "Η πράσινη λάμψη σημαίνει σωστή θέση και το κομμάτι κλειδώνει.",
+        step3Head: "Λάθος Θέση;",
+        step3Desc: "Η κόκκινη λάμψη σημαίνει λάθος. Το κομμάτι θα επιστρέψει στον δίσκο.",
+        closeBtn: "ΕΚΚΙΝΗΣΗ"
+    }
+};
 
+function updateTutorialLanguage() {
+    const storedLang = localStorage.getItem('gameLanguage'); 
+    let lang = (storedLang === 'gr' || storedLang === 'el') ? 'gr' : 'en';
+
+    const t = tutorialData[lang];
+    
+    document.getElementById('tut-title').innerText = t.title;
+    document.getElementById('tut-step1-head').innerText = t.step1Head;
+    document.getElementById('tut-step1-desc').innerText = t.step1Desc;
+    document.getElementById('tut-step2-head').innerText = t.step2Head;
+    document.getElementById('tut-step2-desc').innerText = t.step2Desc;
+    document.getElementById('tut-step3-head').innerText = t.step3Head;
+    document.getElementById('tut-step3-desc').innerText = t.step3Desc;
+    document.getElementById('tut-close-btn').innerText = t.closeBtn;
+}
+
+window.toggleTutorial = function() {
+    const modal = document.getElementById('tutorial-modal');
+    modal.classList.toggle('show');
+}
 
 function initGame() {
     // Cleanup existing pieces and overlays
@@ -42,21 +83,15 @@ function initGame() {
         }, 100);
     };
 
+   updateTutorialLanguage();
     const modal = document.getElementById('tutorial-modal');
-    if (!modal.classList.contains('show')) {
-        toggleTutorial();
-    }
+    if (modal) modal.classList.add('show'); 
 }
 
-window.toggleTutorial = function() {
-    document.getElementById('tutorial-modal').classList.toggle('show');
-}
 
 window.onload = initGame;
 resetBtn.addEventListener('click', initGame);
 
-// --- NEW NAVIGATION LOGIC ---
-// When the button on the Win Screen is clicked, go back to Room 1
 continueBtn.addEventListener('click', () => {
     window.location.href = "../../rooms/room_3.html";
 });
@@ -210,12 +245,10 @@ function handleStart(e) {
     selectedPiece = e.target;
     selectedPiece.style.zIndex = ++zIndexCounter;
 
-    // --- FIX FOR GHOST PIECES ---
     if (selectedPiece.returnTimer) {
         clearTimeout(selectedPiece.returnTimer);
         selectedPiece.returnTimer = null;
     }
-    // ----------------------------
 
     let clientX, clientY;
     
@@ -328,14 +361,12 @@ function snapToGrid(piece, x, y) {
     // --- WIN CONDITION CHECK ---
     if (lockedCount === pieces.length) {
         
-        // 1. Set the Global Flag (Wrapped in check to prevent crashing if function missing)
         if (typeof setFlag === 'function') {
             setFlag('Record_game_solved', true);
         } else {
             console.log("Game Won! Flag 'Broken_plate_solved' set to true.");
         }
 
-        // 2. Show Win Screen after 0.5s delay
         setTimeout(() => {
             winScreen.classList.remove('hidden');
         }, 500);

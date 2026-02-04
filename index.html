@@ -26,7 +26,6 @@
         .logo-container {
             width: 100%;
             max-width: 600px;
-            /* Limits size on PC */
             margin-bottom: 2vh;
             display: flex;
             justify-content: center;
@@ -37,9 +36,8 @@
             width: 100%;
             height: auto;
             max-height: 40vh;
-            /* Prevents it from pushing buttons off screen */
             object-fit: contain;
-            /* The 'contain' property you requested */
+         
         }
 
         /* --- BUTTON GROUP LOGIC --- */
@@ -53,14 +51,14 @@
 
         .main-btn {
             padding: 15px 30px;
-            /* clamp(min, preferred, max) - Keeps font size perfect across devices */
+            
             font-size: clamp(18px, 4vw, 32px);
             cursor: pointer;
             border: none;
             border-radius: 12px;
             transition: transform 0.2s, opacity 0.3s;
 
-            /* Flexible width for PC and Mobile */
+           
             width: 80%;
             max-width: 400px;
             font-weight: bold;
@@ -80,7 +78,7 @@
         .main-btn:hover {
             opacity: 0.9;
             transform: scale(1.05);
-            /* Slight pop effect */
+           
         }
 
         /* Language Modal Fixes */
@@ -140,16 +138,14 @@
             const continueBtn = document.getElementById('continue-btn');
             const langSelector = document.getElementById('language-selector');
 
-            // --- THE FIX STARTS HERE ---
-            // 1. Get the big save object string
             const savedStateJSON = localStorage.getItem(LOCAL_STORAGE_KEY_PREFIX + 'gameState');
             let savedRoom = null;
 
             if (savedStateJSON) {
                 try {
-                    // 2. Parse it into a real JavaScript object
+                    
                     const parsedState = JSON.parse(savedStateJSON);
-                    // 3. Extract the currentRoom variable
+                  
                     if (parsedState && parsedState.currentRoom) {
                         savedRoom = parsedState.currentRoom;
                     }
@@ -157,12 +153,11 @@
                     console.error("Save file corrupted:", e);
                 }
             }
-            // --- THE FIX ENDS HERE ---
+            
 
             if (savedRoom) {
                 continueBtn.style.display = 'block';
-                // Optional: Update button text to show where they are
-                // continueBtn.textContent = `CONTINUE (${savedRoom.replace('_', ' ').toUpperCase()})`;
+             
             }
 
             newGameBtn.addEventListener('click', () => {
@@ -171,7 +166,7 @@
 
             continueBtn.addEventListener('click', () => {
                 if (savedRoom) {
-                    // Redirects to the exact room stored in the JSON (e.g., room_5.html)
+                  
                     window.location.href = `rooms/${savedRoom}.html`;
                 }
             });
@@ -181,7 +176,6 @@
             localStorage.clear();
             localStorage.setItem('gameLanguage', lang);
 
-            // Setup initial clean state
             const initialState = {
                 currentRoom: 'room_1',
                 inventory: [],

@@ -24,7 +24,6 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    
 }
 
 /* 2. The Game Area Wrapper */
@@ -36,11 +35,8 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* CRITICAL: Prevents browser scrolling gestures inside the game */
     touch-action: none; 
-    
 }
-    
 
 /* 3. The Shoe Container */
 .shoe-container {
@@ -96,7 +92,7 @@ canvas {
     margin-top: 20px; 
     width: 100%;
     text-align: center;
-    color: rgb(255, 255, 255); /* Changed to black since your background is white? */
+    color: rgb(255, 255, 255); 
     text-shadow: 2px 2px 2.5px rgba(0,0,0,0.8);
     font-size:calc(0.5vw+1rem);
     font-weight: 1000;
@@ -127,12 +123,9 @@ canvas {
     left: 0;
     width: 100%;
     height: 100%;
-    
     background: rgba(255, 255, 255, 0.4); 
     backdrop-filter: blur(4px); 
-    
     z-index: 100; 
-    
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -145,7 +138,7 @@ canvas {
 }
 
 .win-text {
-    color: #333; /* Darker text for visibility on light bg */
+    color: #333; 
     font-size: 2em;
     margin: 10px 0;
     text-shadow: 0 2px 4px rgba(255,255,255,0.5);
@@ -171,30 +164,30 @@ canvas {
     transform: scale(0.95);
 }
 
-/* ... [KEEP ALL YOUR EXISTING CSS] ... */
+/* =========================================
+   STANDARD TUTORIAL CSS
+   ========================================= */
 
-/* --- ADD THIS TO THE BOTTOM OF YOUR CSS FILE --- */
-
-/* Help Button */
+/* --- TUTORIAL BUTTON --- */
 #help-btn {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    left: 20px; /* Adjust to right:20px if needed */
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid white;
+    border: none;
     background-color: #3498db;
     color: white;
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     z-index: 150; 
 }
 #help-btn:hover { background-color: #2980b9; }
 
-/* Tutorial Modal */
+/* --- MODAL BACKGROUND --- */
 .modal {
     display: none; 
     position: fixed;
@@ -211,14 +204,17 @@ canvas {
     animation: fadeIn 0.3s;
 }
 
+/* --- MODAL BOX --- */
 .modal-content {
     background-color: white;
     width: 90%;
-    max-width: 400px;
+    max-width: 500px;
     border-radius: 10px;
-    padding: 20px;
+    padding: 25px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     text-align: center;
+    max-height: 90vh; 
+    overflow-y: auto;
 }
 
 .modal-content h2 {
@@ -228,12 +224,12 @@ canvas {
     padding-bottom: 10px;
 }
 
-/* Tutorial Steps */
+/* --- STEPS ROW LAYOUT --- */
 .tutorial-step {
     display: flex;
     align-items: center;
     background: #f8f9fa;
-    margin: 10px 0;
+    margin: 15px 0;
     padding: 10px;
     border-radius: 8px;
     text-align: left;
@@ -241,8 +237,8 @@ canvas {
 }
 
 .step-img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     flex-shrink: 0; 
     border-radius: 8px;
     display: flex;
@@ -265,7 +261,7 @@ canvas {
     color: #666;
 }
 
-/* Close Button */
+/* --- CLOSE BUTTON --- */
 .close-btn-red {
     background-color: #e74c3c;
     color: white;
@@ -275,7 +271,7 @@ canvas {
     font-weight: bold;
     border-radius: 50px;
     cursor: pointer;
-    margin-top: 15px;
+    margin-top: 20px;
     width: 100%;
     transition: transform 0.1s;
 }

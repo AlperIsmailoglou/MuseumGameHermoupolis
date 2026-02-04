@@ -3,7 +3,7 @@
     --puzzle-aspect-ratio: 669 / 969; 
     
     --bg-gradient: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    --tray-bg: rgba(0, 0, 0, 0.85);
+    --tray-bg: rgba(0, 0, 0, 1);
     --accent-color: #ff9800;
 }
 
@@ -47,9 +47,6 @@ h2 {
     /* Fallback for width constraint */
     max-width: 95vw;
     
-    background: rgba(255,255,255,0.05);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,255,255,0.1);
 }
 
 #game-board { width: 100%; height: 100%; height: 100dvh; position: relative; }
@@ -89,7 +86,6 @@ h2 {
     width: 100%; height: 100%; /* Full Coverage */
     z-index: 50;
     pointer-events: none;
-    /* Debug: background: rgba(0,255,0,0.1); */
 }
 #glue-effect {
     position: absolute; top: 0; left: 65%; /* Center on seam */
@@ -148,27 +144,16 @@ h2 {
     filter: drop-shadow(0 4px 4px rgba(0,0,0,0.5));
 }
 .glue-container {
-    /* Fixed logic but responsive sizing */
-    width: 15vw;       /* Starts at 15% of screen width */
-    max-width: 100px;  /* Never gets bigger than 100px (Desktop) */
-    min-width: 60px;   /* Never gets smaller than 60px (Mobile) */
-    
-    /* Force a Square Aspect Ratio */
+    width: 15vw; 
+    max-width: 100px; 
+    min-width: 60px; 
     aspect-ratio: 1 / 1; 
-    
-    /* Styling */
-    background: transparent; /* Clean look */
-    /* Optional: Add a subtle border if you want a "box" look, or remove for realism */
-    /* border: 2px solid rgba(255,255,255,0.3); */
-    /* border-radius: 10px; */
-    
-    /* Flex to center the image */
+    background: transparent; 
     display: flex;
     justify-content: center;
     align-items: center;
-    
     cursor: grab;
-    touch-action: none; /* Critical for mobile drag */
+    touch-action: none; 
     z-index: 1000;
 }
 
@@ -176,18 +161,15 @@ h2 {
 .glue-container img {
     width: 100%;
     height: 100%;
-    /* 'contain' ensures the whole glue stick is visible without stretching */
     object-fit: contain; 
-    
-    /* visual pop */
     filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
-    pointer-events: none; /* Clicks pass through to the container */
+    pointer-events: none; 
 }
 
 /* Landscape Tweaks for the new box */
 @media (max-height: 600px) and (orientation: landscape) {
     .glue-container {
-        width: 80px; /* Fixed size for sidebar */
+        width: 80px; 
         max-width: none;
         height: 80px;
     }
@@ -217,7 +199,6 @@ h2 {
 
 
 /* --- NEW: GLUE DROP ZONE HIGHLIGHT --- */
-/* This class is added by JS when you drag the glue */
 .active-drop-zone {
     box-shadow: 0 0 30px #f1c40f, inset 0 0 20px #f1c40f !important;
     border: 3px solid #f1c40f !important;
@@ -267,6 +248,7 @@ h2 {
     z-index: 300; justify-content: center; align-items: center;
 }
 .modal.show { display: flex; animation: fadeIn 0.3s; }
+
 .modal-content {
     background-color: white; width: 90%; max-width: 500px;
     border-radius: 10px; padding: 25px;
@@ -274,7 +256,10 @@ h2 {
     text-align: center; color: #333;
     max-height: 90vh; overflow-y: auto;
 }
-.modal-content h2 { color: #2c3e50; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+.modal-content h2 {
+    margin-top: 0; color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px;
+}
+
 .tutorial-step {
     display: flex; align-items: center;
     background: #f8f9fa; margin: 15px 0; padding: 10px;
@@ -287,9 +272,14 @@ h2 {
 }
 .step-text h3 { margin: 0 0 5px 0; font-size: 1rem; color: #333; }
 .step-text p { margin: 0; font-size: 0.9rem; color: #666; }
+
 .close-btn-red {
     background-color: #e74c3c; color: white; border: none;
     padding: 12px 30px; font-size: 1rem; font-weight: bold;
     border-radius: 50px; cursor: pointer; width: 100%; margin-top: 20px;
+    transition: transform 0.1s;
 }
+.close-btn-red:hover { background-color: #c0392b; }
+.close-btn-red:active { transform: scale(0.95); }
+
 @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }

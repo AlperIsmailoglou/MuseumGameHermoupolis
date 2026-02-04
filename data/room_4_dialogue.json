@@ -1,12 +1,12 @@
 [
-     {
+  {
     "id": "scene_r4_01",
     "type": "dialogue",
     "speaker_id": "character4",
     "emotion": "happy",
     "text": {
       "en": "But why is Marina shouting again?",
-      "gr": " Μα γιατί φωνάζει η Μαρίνα πάλι;"
+      "gr": "Μα γιατί φωνάζει η Μαρίνα πάλι;"
     },
     "next_id": "scene_r4_02"
   },
@@ -21,7 +21,7 @@
     },
     "next_id": "scene_r4_03"
   },
-   {
+  {
     "id": "scene_r4_03",
     "type": "dialogue",
     "speaker_id": "guide",
@@ -38,8 +38,8 @@
     "speaker_id": "character4",
     "emotion": "happy",
     "text": {
-      "en": "Glue? What do you want? What happened again?",
-      "gr": "Κόλλα; Τι την θες; Τι έγινε πάλι;"
+      "en": "Glue? What do you want it for? What happened again?",
+      "gr": "Κόλλα; Τι τη θες; Τι έγινε πάλι;"
     },
     "next_id": "scene_r4_05"
   },
@@ -50,11 +50,11 @@
     "emotion": "happy",
     "text": {
       "en": "Well, you didn't understand anything while the lights were playing?",
-      "gr": "Καλά δεν κατάλαβες τίποτα ενώ έπαιζαν τα φώτα;"
+      "gr": "Καλά, δεν κατάλαβες τίποτα ενώ έπαιζαν τα φώτα;"
     },
     "next_id": "scene_r4_06"
   },
-   {
+  {
     "id": "scene_r4_06",
     "type": "dialogue",
     "speaker_id": "character4",
@@ -65,7 +65,7 @@
     },
     "next_id": "scene_r4_07"
   },
-    {
+  {
     "id": "scene_r4_07",
     "type": "dialogue",
     "speaker_id": "character5",
@@ -87,7 +87,7 @@
     },
     "next_id": "scene_r4_09"
   },
-    {
+  {
     "id": "scene_r4_09",
     "type": "dialogue",
     "speaker_id": "guide",
@@ -98,7 +98,7 @@
     },
     "next_id": "scene_r4_10_shoe_polish"
   },
-   {
+  {
     "id": "scene_r4_10_shoe_polish",
     "type": "task_check",
     "speaker_id": "character4",
@@ -107,11 +107,11 @@
     "mini_game_url": "mini_games/shoe_polish/shoe_polish.html",
     "text": {
       "en": "We'll see, for now do it, and then we'll see!",
-      "gr": " Θα δούμε, για τώρα κάντε το, και μετά βλέπουμε!"
+      "gr": "Θα δούμε, για τώρα κάντε το, και μετά βλέπουμε!"
     },
     "next_id": "scene_r4_success"
-   },
-    {
+  },
+  {
     "id": "scene_r4_success",
     "type": "dialogue",
     "speaker_id": "guide",
@@ -121,52 +121,52 @@
       "gr": "Ορίστε! Τώρα είναι πεντακάθαρο!"
     },
     "next_id": "scene_r4_12"
-   },
-    {
+  },
+  {
     "id": "scene_r4_12",
     "type": "dialogue",
     "speaker_id": "character4",
     "emotion": "happy",
     "text": {
       "en": "Yes, yes, well done.",
-      "gr": " Ναι, ναι, μπράβο."
+      "gr": "Ναι, ναι, μπράβο."
     },
     "next_id": "scene_r4_13"
-   },
-     {
+  },
+  {
     "id": "scene_r4_13",
     "type": "dialogue",
     "speaker_id": "guide",
     "emotion": "happy",
     "text": {
       "en": "Can we have the glue now?",
-      "gr": " Μπορούμε τώρα να έχουμε την κόλλα;"
+      "gr": "Μπορούμε τώρα να έχουμε την κόλλα;"
     },
     "next_id": "scene_r4_14"
-   },
-    {
+  },
+  {
     "id": "scene_r4_14",
     "type": "dialogue",
     "speaker_id": "character4",
     "emotion": "happy",
     "text": {
-      "en": "What glue? Uh...before that, I want you to do one more thing for me.",
-      "gr": "Ποια κόλλα; Α…πριν από αυτό, θέλω να κάνετε κάτι ακόμα για εμένα."
+      "en": "What glue? Uh... before that, I want you to do one more thing for me.",
+      "gr": "Ποια κόλλα; Α… πριν από αυτό, θέλω να κάνετε κάτι ακόμα για εμένα."
     },
     "next_id": "scene_r4_15"
-   },
-     {
+  },
+  {
     "id": "scene_r4_15",
     "type": "dialogue",
     "speaker_id": "guide",
     "emotion": "happy",
     "text": {
-      "en": "But, you promised.",
+      "en": "But, you promised!",
       "gr": "Μα, υποσχεθήκατε!"
     },
     "next_id": "scene_r4_16"
-   },
-    {
+  },
+  {
     "id": "scene_r4_16",
     "type": "dialogue",
     "speaker_id": "character4",
@@ -176,8 +176,8 @@
       "gr": "Είπα θα δούμε!"
     },
     "next_id": "scene_r4_17"
-   },
-    {
+  },
+  {
     "id": "scene_r4_17",
     "type": "dialogue",
     "speaker_id": "character4",
@@ -187,8 +187,8 @@
       "gr": "Πριν σας το δώσω, θέλω μία χάρη ακόμη."
     },
     "next_id": "scene_r4_18"
-   },
-    {
+  },
+  {
     "id": "scene_r4_18",
     "type": "dialogue",
     "speaker_id": "character4",
@@ -198,8 +198,8 @@
       "gr": "Έχω επιθυμήσει το παγωτό που έτρωγα ενώ ήμουν ακόμη ζωντανός."
     },
     "next_id": "scene_r4_19"
-   },
-     {
+  },
+  {
     "id": "scene_r4_19",
     "type": "dialogue",
     "speaker_id": "guide",
@@ -209,20 +209,20 @@
       "gr": "Μα δεν έχω τώρα υλικά για το παγωτό!"
     },
     "next_id": "scene_r4_20"
-   },
-     {
+  },
+  {
     "id": "scene_r4_20",
     "type": "dialogue",
     "speaker_id": "character3",
     "emotion": "happy",
     "text": {
       "en": "I can help! I have some more from when Natalia and I made it for Katerina.",
-      "gr": "Μπορώ εγώ να βοηθήσω! Έχω μερικά ακόμα από όταν το φτιάξαμε με την Ναταλία για την Κατερίνα."
+      "gr": "Μπορώ εγώ να βοηθήσω! Έχω μερικά ακόμα από όταν το φτιάξαμε με τη Ναταλία για την Κατερίνα."
     },
     "action": "add-item:Ice_cream_ingredients",
     "next_id": "scene_r4_21"
-   },
-   {
+  },
+  {
     "id": "scene_r4_21",
     "type": "task_check",
     "speaker_id": "guide",
@@ -230,36 +230,36 @@
     "task_id": "Ice_cream_check",
     "required_item": "Ice_cream",
     "text": {
-      "en": "Okay so...let's go back to the kitchen.",
-      "gr": "Εντάξει λοιπόν…πάμε πίσω στην κουζίνα."
+      "en": "Okay so... let's go back to the kitchen.",
+      "gr": "Εντάξει λοιπόν… πάμε πίσω στην κουζίνα."
     },
     "next_id": "scene_r4_22"
-   },
-   {
-   "id": "scene_r4_22",
+  },
+  {
+    "id": "scene_r4_22",
     "type": "task_check",
     "speaker_id": "guide",
     "emotion": "happy",
-    "required_item":"Ice_cream",
+    "required_item": "Ice_cream",
     "text": {
       "en": "Mr. Emmanuel! We brought your ice cream!",
-      "gr": " Κύριε Εμμανουήλ! Φέραμε το παγωτό σας!"
+      "gr": "Κύριε Εμμανουήλ! Φέραμε το παγωτό σας!"
     },
     "next_id": "scene_r4_23"
   },
-   {
+  {
     "id": "scene_r4_23",
     "type": "dialogue",
     "speaker_id": "character4",
     "emotion": "happy",
     "text": {
-      "en": "Well done, my child, well done!Okay, I'll give you the glue",
-      "gr": " Μπράβο παιδί μου, εύγε! Εντάξει, θα σας δώσω την κόλλα"
+      "en": "Well done, my child, well done! Okay, I'll give you the glue.",
+      "gr": "Μπράβο παιδί μου, εύγε! Εντάξει, θα σας δώσω την κόλλα."
     },
-    "action":"remove-item:Ice_cream",
+    "action": "remove-item:Ice_cream",
     "next_id": "scene_r4_24"
-   },
-   {
+  },
+  {
     "id": "scene_r4_24",
     "type": "dialogue",
     "speaker_id": "character4",
@@ -269,19 +269,19 @@
       "gr": "...κοιτάξτε μέσα στο παπούτσι."
     },
     "next_id": "scene_r4_25"
-   },
-   {
+  },
+  {
     "id": "scene_r4_25",
     "type": "dialogue",
     "speaker_id": "guide",
     "emotion": "happy",
     "text": {
-      "en": "But hey...what's glue doing inside a shoe...?",
-      "gr": "Μα καλά...τι κάνει μια κόλλα μέσα στο παπούτσι...;"
+      "en": "But hey... what's glue doing inside a shoe...?",
+      "gr": "Μα καλά... τι κάνει μια κόλλα μέσα στο παπούτσι...;"
     },
     "next_id": "scene_r4_26"
-   },
-   {
+  },
+  {
     "id": "scene_r4_26",
     "type": "dialogue",
     "speaker_id": "character4",
@@ -292,17 +292,16 @@
     },
     "action": "add-item:Glue",
     "next_id": "scene_r4_27"
-   },
-     {
+  },
+  {
     "id": "scene_r4_27",
     "type": "dialogue",
     "speaker_id": "guide",
     "emotion": "happy",
     "text": {
-      "en": " ...  Let's go back to the Marina...",
-      "gr": " ...  Πάμε πίσω στην Μαρίνα...;"
+      "en": "... Let's go back to Marina...",
+      "gr": "... Πάμε πίσω στη Μαρίνα..."
     },
     "next_id": "END"
-   }
-   
+  }
 ]

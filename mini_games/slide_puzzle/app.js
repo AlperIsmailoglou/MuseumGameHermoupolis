@@ -18,29 +18,100 @@ let activeTile = null;
 let startX = 0, startY = 0;
 let moveAxis = null; 
 let minMove = 0, maxMove = 0;
-let currentTranslate = 0; // Track current position for smooth animation
-let dragRaf = null; // Reference for animation frame
-let resetTimer = null; // Reference for the snap-back timer
+let currentTranslate = 0; 
+let dragRaf = null; 
+let resetTimer = null; 
 
-/* --- INITIALIZE --- */
-function initGame() {
-    renderBoard();
-    board.classList.add("locked"); 
+/* =========================================
+   BILINGUAL TUTORIAL MODULE
+   ========================================= */
 
-    // NEW: Open Tutorial on Load
-    // We check if it's already open to avoid double toggling if this function runs on resize
-    const modal = document.getElementById('tutorial-modal');
-    if (!modal.classList.contains('show')) {
-        toggleTutorial();
+// 1. CONFIGURATION
+const tutorialData = {
+    en: {
+        title: "How to Play",
+        step1Head: "Objective",
+        step1Desc: "Click 'Start Game' to shuffle the tiles.",
+        step2Head: "Controls",
+        step2Desc: "Drag tiles into the empty slot to move them.",
+        step3Head: "Winning",
+        step3Desc: "Arrange the numbers 1-8 in order to reveal the image.",
+        closeBtn: "CLOSE"
+    },
+    gr: {
+        title: "Πώς να παίξεις",
+        step1Head: "Στόχος",
+        step1Desc: "Πάτα 'Start Game' για να ανακατέψεις τα πλακίδια.",
+        step2Head: "Χειρισμός",
+        step2Desc: "Σύρε τα πλακίδια στο κενό για να τα μετακινήσεις.",
+        step3Head: "Νίκη",
+        step3Desc: "Βάλε τους αριθμούς 1-8 στη σειρά για να φτιάξεις την εικόνα.",
+        closeBtn: "ΚΛΕΙΣΙΜΟ"
     }
-}
+};
 
-// --- NEW: Global Tutorial Function ---
-// Make sure this is accessible globally (window scope)
+// 2. TOGGLE FUNCTION
 window.toggleTutorial = function() {
     const modal = document.getElementById('tutorial-modal');
     modal.classList.toggle('show');
 }
+
+// 3. LANGUAGE UPDATE FUNCTION
+function updateTutorialLanguage() {
+    // Detect Language from LocalStorage 
+    // (Assuming main game saves 'gr' or 'el' or 'Greek')
+    const storedLang = localStorage.getItem('gameLanguage'); 
+    let lang = 'en'; // Default
+    
+    if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') {
+        lang = 'gr';
+    }
+
+    const t = tutorialData[lang];
+    
+    // Update DOM elements safely
+    if(document.getElementById('tut-title')) 
+        document.getElementById('tut-title').innerText = t.title;
+    
+    if(document.getElementById('tut-step1-head')) {
+        document.getElementById('tut-step1-head').innerText = t.step1Head;
+        document.getElementById('tut-step1-desc').innerText = t.step1Desc;
+    }
+    
+    if(document.getElementById('tut-step2-head')) {
+        document.getElementById('tut-step2-head').innerText = t.step2Head;
+        document.getElementById('tut-step2-desc').innerText = t.step2Desc;
+    }
+    
+    if(document.getElementById('tut-step3-head')) {
+        document.getElementById('tut-step3-head').innerText = t.step3Head;
+        document.getElementById('tut-step3-desc').innerText = t.step3Desc;
+    }
+    
+    if(document.getElementById('tut-close-btn'))
+        document.getElementById('tut-close-btn').innerText = t.closeBtn;
+}
+
+// 4. INITIALIZATION 
+function initTutorial() {
+    updateTutorialLanguage();
+    
+    // Auto-open on start
+    const modal = document.getElementById('tutorial-modal');
+    if (modal && !modal.classList.contains('show')) {
+        toggleTutorial();
+    }
+}
+
+/* --- INITIALIZE GAME --- */
+function initGame() {
+    renderBoard();
+    board.classList.add("locked"); 
+    
+    // Call the tutorial init here
+    initTutorial();
+}
+
 
 /* --- RENDER BOARD --- */
 function renderBoard() {
@@ -51,11 +122,9 @@ function renderBoard() {
         tile.classList.add("tile");
         tile.dataset.posIndex = positionIndex;
         
-        // 8 is the empty slot
         if (tileIndex === 8) {
             tile.classList.add("empty");
         } else {
-            // 1. Calculate Background Image Position
             const tileW = imageSize / gridSize;
             const bgX = -(tileIndex % gridSize) * tileW;
             const bgY = -Math.floor(tileIndex / gridSize) * tileW;
@@ -64,13 +133,11 @@ function renderBoard() {
             tile.style.backgroundSize = `${imageSize}px ${imageSize}px`;
             tile.style.backgroundPosition = `${bgX}px ${bgY}px`;
             
-            // 2. NEW: Add the Number Overlay
             const numberSpan = document.createElement("span");
             numberSpan.classList.add("number");
-            numberSpan.innerText = tileIndex + 1; // Convert index 0 -> "1", index 1 -> "2", etc.
+            numberSpan.innerText = tileIndex + 1; 
             tile.appendChild(numberSpan);
 
-            // 3. Attach Click/Touch Listener
             tile.addEventListener('pointerdown', (e) => handlePointerDown(e));
         }
         board.appendChild(tile);
@@ -113,17 +180,38 @@ function startGame() {
     }, 100);
 }
 
-/* --- POINTER LOGIC --- */
+/* --- SKIP LOGIC --- */
+function skipGame() {
+    if (!confirm("Are you sure you want to skip this puzzle?")) {
+        return; 
+    }
+    isGameActive = false;
+    board.classList.add("locked");
+    tiles = [0, 1, 2, 3, 4, 5, 6, 7, 8]; 
+    renderBoard();
 
+    winBox.textContent = "Puzzle Skipped!"; 
+    winBox.classList.remove("hidden");
+    startBtn.style.display = "none"; 
+    const skipBtn = document.getElementById("skip-btn");
+    if(skipBtn) skipBtn.style.display = "none"; 
+
+    if (typeof setFlag === "function") {
+        setFlag('statue_game_solved', true);
+    } 
+
+    setTimeout(() => {
+        window.location.href = "../../rooms/room_1.html";
+    }, 1500); 
+}
+
+/* --- POINTER LOGIC --- */
 function handlePointerDown(e) {
     if (!isGameActive) return; 
 
-    // If we were waiting for a previous tile to reset, clear that timer now
-    // This prevents the "Stuck" bug if you click fast
     if (resetTimer) {
         clearTimeout(resetTimer);
         resetTimer = null;
-        // Clean up any lingering active tile
         if (activeTile) {
             activeTile.style.transition = "";
             activeTile.style.transform = "";
@@ -135,7 +223,6 @@ function handlePointerDown(e) {
     const posIndex = parseInt(tile.dataset.posIndex);
     const emptyIndex = tiles.indexOf(8);
     
-    // Check adjacency
     const row = Math.floor(posIndex / gridSize);
     const col = posIndex % gridSize;
     const emptyRow = Math.floor(emptyIndex / gridSize);
@@ -150,7 +237,6 @@ function handlePointerDown(e) {
     startY = e.clientY;
     currentTranslate = 0;
     
-    // Determine Axis
     const colDiff = emptyCol - col;
     const rowDiff = emptyRow - row;
 
@@ -171,15 +257,10 @@ function handlePointerDown(e) {
 
 function handlePointerMove(e) {
     if (!activeTile) return;
-    
-    // Calculate raw delta
     let delta = (moveAxis === 'x') ? e.clientX - startX : e.clientY - startY;
-    // Clamp
     delta = Math.max(minMove, Math.min(delta, maxMove));
     currentTranslate = delta;
 
-    // OPTIMIZATION: Use requestAnimationFrame
-    // This stops the code from updating CSS more often than the screen can draw
     if (!dragRaf) {
         dragRaf = requestAnimationFrame(() => {
             if (activeTile) {
@@ -193,17 +274,12 @@ function handlePointerMove(e) {
 
 function handlePointerUp(e) {
     if (!activeTile) return;
-    
-    // Cancel any pending animation frame
     if (dragRaf) {
         cancelAnimationFrame(dragRaf);
         dragRaf = null;
     }
 
-    // "Less Effort" logic:
-    // Reduced threshold to tileSize / 5 (20%) instead of 40%
     const threshold = tileSize / 5; 
-    
     let swap = false;
     if (moveAxis === 'x') {
         if (maxMove > 0 && currentTranslate > threshold) swap = true;
@@ -223,93 +299,38 @@ function handlePointerUp(e) {
         const toIndex = tiles.indexOf(8);
         [tiles[fromIndex], tiles[toIndex]] = [tiles[toIndex], tiles[fromIndex]];
         
-        activeTile = null; // Immediate cleanup on success
+        activeTile = null; 
         renderBoard();
         checkWin();
     } else {
-        // Snap back logic
         activeTile.style.transition = "transform 0.2s ease-out";
         activeTile.style.transform = "translate(0, 0)";
-        
-        // Save the tile element locally to close over it in the timeout
         const tileToReset = activeTile;
-        
         resetTimer = setTimeout(() => { 
             if(tileToReset) tileToReset.style.transition = ""; 
-            // Only nullify if we haven't already started a NEW drag
-            if (activeTile === tileToReset) {
-                activeTile = null; 
-            }
+            if (activeTile === tileToReset) activeTile = null; 
             resetTimer = null;
         }, 200);
     }
 }
-/* --- WIN CHECK & REDIRECT --- */
+
+/* --- WIN CHECK --- */
 function checkWin() {
     if (!isGameActive) return;
-
     const isSolved = tiles.every((val, index) => val === index);
-    
     if (isSolved) {
-        // 1. Show the Win Message
         winBox.classList.remove("hidden");
-        
-        // 2. Lock the game
         isGameActive = false;
         board.classList.add("locked");
         startBtn.textContent = "Play Again";
 
-        // 3. Set your Global Flag
         if (typeof setFlag === "function") {
             setFlag('statue_game_solved', true);
-        } else {
-            console.warn("setFlag function not found. Assuming standalone testing.");
-        }
-
-        // 4. Redirect after 2 seconds (2000 ms)
-        // This gives the user time to realize they won!
+        } 
         setTimeout(() => {
-            // ".." goes up one folder (out of mini_games)
-            // "/rooms/room_1.html" goes into the rooms folder
             window.location.href = "../../rooms/room_1.html";
         }, 2000);
     }
-}
-function skipGame() {
-    // 1. Safety Check: Ask user if they really want to skip
-    if (!confirm("Are you sure you want to skip this puzzle?")) {
-        return; 
-    }
-
-    // 2. Stop the game logic
-    isGameActive = false;
-    board.classList.add("locked");
-    
-    // 3. VISUALLY SOLVE THE BOARD (Optional but looks good)
-    // We reset the array to the correct order so the user sees the full image
-    tiles = [0, 1, 2, 3, 4, 5, 6, 7, 8]; 
-    renderBoard();
-
-    // 4. Update UI Messages
-    winBox.textContent = "Puzzle Skipped!"; // Change text slightly
-    winBox.classList.remove("hidden");
-    startBtn.disabled = true;
-    startBtn.style.display = "none"; // Hide start button
-    const skipBtn = document.getElementById("skip-btn");
-    if(skipBtn) skipBtn.style.display = "none"; // Hide skip button
-
-    // 5. CRITICAL: Set the Global Flag
-    if (typeof setFlag === "function") {
-        console.log("Skipping: Setting flag 'statue_game_solved' to true.");
-        setFlag('statue_game_solved', true);
-    } else {
-        console.warn("setFlag function not found.");
-    }
-
-    // 6. Redirect back to the room
-    setTimeout(() => {
-        window.location.href = "../../rooms/room_1.html";
-    }, 1500); // 1.5 second delay
 }
 
 initGame();

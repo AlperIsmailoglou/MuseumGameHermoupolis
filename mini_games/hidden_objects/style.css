@@ -212,108 +212,79 @@ html,body { height: 100%; height:100dvh; margin:0; padding:0; font-family:Arial,
   transform: scale(1.1);
 }
 
-/* --- Tutorial Modal --- */
+/* --- TUTORIAL MODAL STYLES --- */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.85); /* Dark background */
-  z-index: 9999; /* Highest priority */
-  justify-content: center;
-  align-items: center;
+    display: none; 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85); 
+    z-index: 9999; 
+    justify-content: center;
+    align-items: center;
 }
 
 .modal.show {
-  display: flex; /* Flex to center content */
-  animation: fadeIn 0.3s;
+    display: flex; 
+    animation: fadeIn 0.3s;
 }
 
 .modal-content {
-  background-color: white;
-  width: 90%;
-  max-width: 450px;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  text-align: center;
-  max-height: 90vh;
-  overflow-y: auto;
-  font-family: Arial, sans-serif;
+    background-color: white;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    text-align: center;
 }
 
-.modal-content h2 {
-  margin-top: 0;
-  color: #2c3e50;
-  border-bottom: 2px solid #ecf0f1;
-  padding-bottom: 15px;
-  margin-bottom: 15px;
-}
-
-/* --- Tutorial Steps (Row Layout) --- */
 .tutorial-step {
-  display: flex;
-  align-items: center;
-  background: #f8f9fa;
-  margin: 12px 0;
-  padding: 12px;
-  border-radius: 8px;
-  text-align: left;
-  border: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    margin: 15px 0;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
 }
 
 .step-img {
-  width: 50px;
-  height: 50px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  margin-right: 15px;
-  color: white;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0; 
+    font-size: 24px;
+    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    color: white;
 }
 
-.step-text h3 {
-  margin: 0 0 4px 0;
-  font-size: 1rem;
-  color: #333;
-}
+.step-text h3 { margin: 0 0 4px 0; font-size: 1rem; color: #333; }
+.step-text p { margin: 0; font-size: 0.9rem; color: #666; }
 
-.step-text p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: #666;
-  line-height: 1.3;
-}
-
-/* --- Big Red Close Button --- */
 .close-btn-red {
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 50px;
-  cursor: pointer;
-  margin-top: 20px;
-  width: 100%;
-  transition: transform 0.1s, background-color 0.2s;
-  box-shadow: 0 4px 0 #c0392b; /* 3D effect */
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 4px 0 #c0392b;
+    transition: all 0.1s;
 }
 
-.close-btn-red:hover { background-color: #ff5e4d; }
-.close-btn-red:active { 
-  transform: translateY(4px); 
-  box-shadow: none;
-}
+.close-btn-red:active { transform: translateY(3px); box-shadow: none; }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 /* WIN POPUP */

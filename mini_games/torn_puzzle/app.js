@@ -6,7 +6,83 @@ const State = {
     startPos: { x: 0, y: 0, parent: null }
 };
 
-/* ================= DOM ELEMENTS ================= */
+/* ================= BILINGUAL TUTORIAL MODULE ================= */
+// 1. CONFIGURATION
+const tutorialData = {
+    en: {
+        title: "How to Play",
+        step1Head: "Search",
+        step1Desc: "Use buttons to find the piece and glue.",
+        step2Head: "Drag & Drop",
+        step2Desc: "Drag the piece to the right side of the document.",
+        step3Head: "Apply Glue",
+        step3Desc: "Drop the glue anywhere on the board to finish.",
+        closeBtn: "CLOSE"
+    },
+    gr: {
+        title: "Πώς να παίξεις",
+        step1Head: "Αναζήτηση",
+        step1Desc: "Χρησιμοποίησε τα κουμπιά για να βρεις το κομμάτι και την κόλλα.",
+        step2Head: "Σύρε & Άσε",
+        step2Desc: "Σύρε το κομμάτι στη δεξιά πλευρά του εγγράφου.",
+        step3Head: "Κόλλα",
+        step3Desc: "Ρίξε την κόλλα οπουδήποτε στον πίνακα για να τελειώσεις.",
+        closeBtn: "ΚΛΕΙΣΙΜΟ"
+    }
+};
+
+// 2. TOGGLE FUNCTION
+window.toggleTutorial = function() {
+    const modal = document.getElementById('tutorial-modal');
+    modal.classList.toggle('show');
+}
+
+// 3. LANGUAGE UPDATE FUNCTION
+function updateTutorialLanguage() {
+    const storedLang = localStorage.getItem('gameLanguage'); 
+    let lang = 'en'; 
+    
+    if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') {
+        lang = 'gr';
+    }
+
+    const t = tutorialData[lang];
+    
+    // Safely update DOM
+    if(document.getElementById('tut-title')) 
+        document.getElementById('tut-title').innerText = t.title;
+    
+    if(document.getElementById('tut-step1-head')) {
+        document.getElementById('tut-step1-head').innerText = t.step1Head;
+        document.getElementById('tut-step1-desc').innerText = t.step1Desc;
+    }
+    
+    if(document.getElementById('tut-step2-head')) {
+        document.getElementById('tut-step2-head').innerText = t.step2Head;
+        document.getElementById('tut-step2-desc').innerText = t.step2Desc;
+    }
+    
+    if(document.getElementById('tut-step3-head')) {
+        document.getElementById('tut-step3-head').innerText = t.step3Head;
+        document.getElementById('tut-step3-desc').innerText = t.step3Desc;
+    }
+    
+    if(document.getElementById('tut-close-btn'))
+        document.getElementById('tut-close-btn').innerText = t.closeBtn;
+}
+
+// 4. INITIALIZATION
+function initTutorial() {
+    updateTutorialLanguage();
+    
+    // Auto-open on start
+    const modal = document.getElementById('tutorial-modal');
+    if (modal && !modal.classList.contains('show')) {
+        toggleTutorial();
+    }
+}
+
+/* ================= DOM ELEMENTS & INIT ================= */
 const els = {
     btnPiece: document.getElementById('btn-search-piece'),
     btnGlue: document.getElementById('btn-search-glue'),
@@ -19,18 +95,11 @@ const els = {
     status: document.getElementById('status-bar')
 };
 
-/* ================= INITIALIZATION ================= */
 window.onload = () => {
-    // Open Tutorial on Start
-    const modal = document.getElementById('tutorial-modal');
-    if (modal) modal.classList.add('show');
+    initTutorial();
 };
 
-window.toggleTutorial = function () {
-    document.getElementById('tutorial-modal').classList.toggle('show');
-};
-
-/* ================= BUTTON EVENTS ================= */
+/* ================= GAME LOGIC ================= */
 els.btnPiece.addEventListener('click', () => {
     els.status.innerText = "Searching...";
     setTimeout(() => {
@@ -51,7 +120,6 @@ els.btnGlue.addEventListener('click', () => {
     }, 400);
 });
 
-/* ================= DRAG SETUP ================= */
 setupDraggable(els.dragPiece, 'piece');
 setupDraggable(els.dragGlue, 'glue');
 
@@ -60,7 +128,6 @@ function setupDraggable(element, type) {
         e.preventDefault();
         State.isDragging = true;
 
-        // VISUAL FEEDBACK: Light up the board if dragging glue
         if (type === 'glue') {
             els.boardContainer.classList.add('active-drop-zone');
         }
@@ -91,8 +158,6 @@ function setupDraggable(element, type) {
     const onEnd = (e) => {
         if (!State.isDragging) return;
         State.isDragging = false;
-
-        // VISUAL FEEDBACK: Remove highlight
         els.boardContainer.classList.remove('active-drop-zone');
 
         const clientX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
@@ -109,20 +174,15 @@ function setupDraggable(element, type) {
     document.addEventListener('mouseup', onEnd);
 }
 
-/* ================= MATH-BASED DROP LOGIC (WITH BUFFER) ================= */
 function checkDropCoords(dropX, dropY, type, draggedElement) {
     let success = false;
 
-    // 1. Get Board Rect
     const boardRect = els.boardContainer.getBoundingClientRect();
 
-    // 2. Get Item Center
     const itemRect = draggedElement.getBoundingClientRect();
     const itemCenterX = itemRect.left + (itemRect.width / 2);
     const itemCenterY = itemRect.top + (itemRect.height / 2);
 
-    // 3. DEFINE BUFFER (Forgiveness in pixels)
-    // If user misses by 50px, we still count it.
     const buffer = 50;
 
     const isInsideBoard = (
@@ -132,13 +192,11 @@ function checkDropCoords(dropX, dropY, type, draggedElement) {
         itemCenterY <= (boardRect.bottom + buffer)
     );
 
-    // --- SCENARIO 1: PIECE ---
     if (type === 'piece' && State.step === 2) {
         if (isInsideBoard) {
             const relativeX = itemCenterX - boardRect.left;
             const percentX = (relativeX / boardRect.width) * 100;
 
-            // Must be on the right half (> 40% to be safe)
             if (percentX > 40) {
                 success = true;
                 draggedElement.style.display = 'none';
@@ -150,25 +208,23 @@ function checkDropCoords(dropX, dropY, type, draggedElement) {
         }
     }
 
-    // --- SCENARIO 2: GLUE ---
     else if (type === 'glue' && State.step === 4) {
         if (isInsideBoard) {
             success = true;
             draggedElement.style.display = 'none';
 
-            // Win Animation
             const effect = document.getElementById('glue-effect');
             effect.style.opacity = '1';
             effect.style.background = 'white';
             effect.style.animation = 'seal-seam 1.5s forwards';
 
             State.step = 5;
-            els.status.innerText = ""; // Clear status
+            els.status.innerText = ""; 
             els.boardContainer.style.borderColor = "#27ae60";
 
-            // SHOW WIN MODAL AFTER DELAY
             setTimeout(() => {
                 document.getElementById('win-modal').classList.add('show');
+                // --- YOUR ORIGINAL FLAGS PRESERVED HERE ---
                 if (typeof setFlag === 'function') {
                     setFlag('Torn_puzzle_solved', true);
                 } else {
@@ -178,10 +234,10 @@ function checkDropCoords(dropX, dropY, type, draggedElement) {
         }
     }
 
-    // --- FAILURE ---
     if (!success) {
         draggedElement.style.position = 'static';
-        draggedElement.style.width = 'auto';
+        draggedElement.style.width = (type === 'glue') ? '15vw' : 'auto'; 
+        if(type === 'glue') draggedElement.style.maxWidth = '100px'; 
         draggedElement.style.zIndex = '1000';
         draggedElement.style.visibility = 'visible';
 

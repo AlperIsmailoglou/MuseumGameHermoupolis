@@ -2,89 +2,89 @@
     "Beauty_bag": {
         "image": "images/room_7/beauty_bag.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Beauty bag",
+            "gr": "Τσάντα ομορφιάς"
         },
          "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Calendar": {
         "image": "images/room_7/calendar.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Calendar",
+            "gr": "Ημερολόγιο"
         },
          "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση."
         }
     },
     "Clothes": {
         "image": "images/room_7/clothes.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Clothes",
+            "gr": "Ρούχα"
         },
          "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Folder": {
         "image": "images/room_7/folder.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Folder",
+            "gr": "Διπλωτής"
         },
          "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Pillow": {
         "image": "images/room_7/pillow.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Pillow",
+            "gr": "Μαξιλάρι"
         },
          "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Porcelain_kanata": {
         "image": "images/room_7/porcelain_kanata.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Porcelain Pitcher",
+            "gr": "Πορσελάνινη κανάτα"
         },
          "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Sewing_machine": {
         "image": "images/room_7/sewing_machine.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Sewing Machine",
+            "gr": "Ραπτομηχανή"
         },
          "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Wedding": {
         "image": "images/room_7/wedding.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Wedding Dress",
+            "gr": "Νυφικό"
         },
          "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     }
 }

@@ -2,12 +2,12 @@
     "Locker": {
         "image": "images/room_6/locker.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Locker",
+            "gr": "Χρηματοκιβώτιo"
         },
          "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση."
         }
     }
 }

@@ -29,6 +29,7 @@
 
         <div id="dialogue-box">
             <div id="dialogue-text">Click anywhere to start the story...</div>
+            <div id="dialogue-arrow">▼</div>
         </div>
 
         <div id="reward-popup" style="display: none;" class="interactive-ui"></div>
@@ -113,7 +114,7 @@
             }
             updateInventoryButtonVisual();
 
-            // CRITICAL CHANGE: Tell the engine this is Room 2
+      
             initializeDialogueEngine('room_2', '../data/room_2_dialogue.json');
         });
     </script>

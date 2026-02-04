@@ -6,7 +6,7 @@
     "emotion": "happy",
     "text": {
       "en": "Where are you?! We are here! Don't tell me you're scared now?",
-      "gr": "Που είσαι;! Εμείς ήρθαμε! Μην μου πεις ότι τρόμαξες τώρα;"
+      "gr": "Πού είσαι;! Εμείς ήρθαμε! Μη μου πεις ότι τρόμαξες τώρα;"
     },
     "next_id": "scene_r8_02"
   },
@@ -50,7 +50,7 @@
     "emotion": "happy",
     "text": {
       "en": "Who... are you?",
-      "gr": "Ποιός…είσαι;"
+      "gr": "Ποιος… είσαι;"
     },
     "next_id": "scene_r8_06"
   },
@@ -72,7 +72,7 @@
     "emotion": "happy",
     "text": {
       "en": "Hah... sorry, I didn't want to scare you too much, so I assumed that with the island's pirate history, it would be easier to take the form of one of them.",
-      "gr": "Χαχ…συγγνώμη, δεν ήθελα να σας τρομάξω πολύ οπότε υπέθεσα ότι, με την ιστορία πειρατών που έχει το νησί, θα ήταν πιο εύκολο να πάρω την εμφάνιση ενός από αυτούς."
+      "gr": "Χαχ… συγγνώμη, δεν ήθελα να σας τρομάξω πολύ οπότε υπέθεσα ότι με την ιστορία πειρατών που έχει το νησί, θα ήταν πιο εύκολο να πάρω την εμφάνιση ενός από αυτούς."
     },
     "next_id": "scene_r8_08"
   },
@@ -105,7 +105,7 @@
     "emotion": "happy",
     "text": {
       "en": "Are you serious?! How did you get the idea to destroy exhibits with great history just because you were bored?!",
-      "gr": "Πας καλά;! Πώς σου ήρθε η ιδέα να καταστρέψεις εκθέματα με μεγάλη ιστορία μόνο και μόνο επειδή βαριώσουν;!"
+      "gr": "Πας καλά;! Πώς σου ήρθε η ιδέα να καταστρέψεις εκθέματα με μεγάλη ιστορία μόνο και μόνο επειδή βαριόσουν;!"
     },
     "next_id": "scene_r8_11"
   },
@@ -138,7 +138,7 @@
     "emotion": "happy",
     "text": {
       "en": "I'm sorry... I didn't mean to, really...",
-      "gr": "Συγγνώμη…δεν το ήθελα, στα αλήθεια…"
+      "gr": "Συγγνώμη… δεν το ήθελα, στα αλήθεια…"
     },
     "next_id": "scene_r8_14"
   },
@@ -160,7 +160,7 @@
     "emotion": "happy",
     "text": {
       "en": "I just wanted to play with the new invention from my planet that lets me take a ghost form while still being able to touch things normally. And because I saw all of you here... I thought we could play together...",
-      "gr": "Απλώς ήθελα να παίξω με την καινούργια εφεύρεση από τον πλανήτη μου που με αφήνει να παίρνω την μορφή φαντάσματος ενώ μπορώ να ακουμπάω πράγματα κανονικά. Και επειδή σας είδα όλους εσάς εδώ…νόμιζα θα μπορούσαμε να παίξουμε μαζί…"
+      "gr": "Απλώς ήθελα να παίξω με την καινούργια εφεύρεση από τον πλανήτη μου που με αφήνει να παίρνω τη μορφή φαντάσματος ενώ μπορώ να ακουμπάω πράγματα κανονικά. Και επειδή σας είδα όλους εσάς εδώ… νόμιζα ότι θα μπορούσαμε να παίξουμε μαζί…"
     },
     "next_id": "scene_r8_16"
   },
@@ -171,7 +171,7 @@
     "emotion": "happy",
     "text": {
       "en": "Alright, it's okay... actually, it matters a lot but... I understand. We also feel lonely many times. If we didn't have each other, we would have gone crazy after being stuck in this building for so long.",
-      "gr": "Καλά, δεν πειράζει…βασικά πειράζει πολύ αλλά…καταλαβαίνω. Και εμείς πολλές φορές νιώθουμε μοναξιά. Αν δεν είχαμε ο ένας τον άλλον θα είχαμε γίνει τρελοί μετά από τόσο καιρό που είμαστε κολλημένοι σε αυτό το κτήριο."
+      "gr": "Καλά, δεν πειράζει… βασικά πειράζει πολύ αλλά… καταλαβαίνω. Και εμείς πολλές φορές νιώθουμε μοναξιά. Αν δεν είχαμε ο ένας τον άλλον θα είχαμε τρελαθεί μετά από τόσο καιρό που είμαστε κολλημένοι σε αυτό το κτήριο."
     },
     "next_id": "scene_r8_17"
   },
@@ -243,23 +243,25 @@
   },
   {
     "id": "scene_r8_23",
-    "type": "dialogue",
+    "type": "task_check",
     "speaker_id": "guide",
     "emotion": "happy",
+    "task_id": "Quiz",
+    "mini_game_url": "mini_games/Quiz/quiz.html",
     "text": {
       "en": "Thank you very much, and on behalf of everyone else, for your help! We couldn't have solved the mystery of the saboteur without you.",
-      "gr": "Σε ευχαριστώ πολύ, και εκ μέρους όλων των άλλων, για την βοήθειά σου! Δεν θα μπορούσαμε να λύσουμε το μυστήριο του σαμποτέρ χωρίς εσένα."
+      "gr": "Σε ευχαριστώ πολύ, και εκ μέρους όλων των άλλων, για τη βοήθειά σου! Δεν θα μπορούσαμε να λύσουμε το μυστήριο του σαμποτέρ χωρίς εσένα."
     },
-    "next_id": "scene_r8_24"
+    "next_id": "scene_r8_24_success"
   },
   {
-    "id": "scene_r8_24",
+    "id": "scene_r8_24_success",
     "type": "dialogue",
     "speaker_id": "guide",
     "emotion": "happy",
     "text": {
       "en": "I hope you enjoyed your visit to the Historical Museum of Hermoupolis! I hope to see you again! Goodbye!",
-      "gr": "Ελπίζω να ευχαριστήθηκες την επίσκεψή σου στο Ιστορικό Μουσείο της Ερμούπολης! Εύχομαι να ξανα-ιδωθούμε! Αντίο!"
+      "gr": "Ελπίζω να ευχαριστήθηκες την επίσκεψή σου στο Ιστορικό Μουσείο της Ερμούπολης! Εύχομαι να ξαναϊδωθούμε! Αντίο!"
     },
     "next_id": "END"
   }

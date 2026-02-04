@@ -42,7 +42,7 @@ body {
 #game-area {
     width: 100%; flex-grow: 1; 
     display: flex; justify-content: center; align-items: center;
-    padding: 10px; /* Reduced padding to give more room on mobile */
+    padding: 10px; 
     overflow: visible; 
 }
 
@@ -62,18 +62,18 @@ body {
     max-width: 600px; 
     
     display: flex;
-    justify-content: flex-start; /* Builds from left to right */
+    justify-content: flex-start; 
     overflow: visible; 
 }
 
 /* --- LEFT HALF (Bucket) --- */
 .machine-assembly {
     position: relative;
-    width: 50%; /* Left Half */
+    width: 50%; 
     display: flex;
-    justify-content: flex-end; /* Push bucket to center line */
+    justify-content: flex-end; 
     align-items: center;
-    z-index: 10; /* Keep machine above background */
+    z-index: 10; 
 }
 
 #bucket-img {
@@ -83,7 +83,7 @@ body {
     filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2)); 
 }
 
-/* Handle CSS (Same as before, keep it linked to anchor) */
+/* Handle CSS */
 #handle-anchor {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -99,42 +99,34 @@ body {
     z-index: 20; pointer-events: auto;
 }
 
-/* --- NEW: RIGHT HALF (Ingredients) --- */
+/* --- RIGHT HALF (Ingredients) --- */
 .ingredients-panel {
-    width: 50%; /* Right Half */
+    width: 50%; 
     display: flex;
-    flex-direction: column; /* Stack vertically */
-    justify-content: space-evenly; /* Spread them out */
-    align-items: center; /* Center them horizontally in the right panel */
-    padding-left: 20%; /* Push them to the far right so handle doesn't hit them */
-    z-index: 5; /* Sit behind the handle if it swings really wide */
+    flex-direction: column; 
+    justify-content: space-evenly; 
+    align-items: center; 
+    padding-left: 20%; 
+    z-index: 5; 
 }
 
 .ingredient-item {
     position: relative;
     width: 60px; height: 60px;
     background: white;
-    border-radius: 50%; /* Circular icons */
+    border-radius: 50%; 
     display: flex; justify-content: center; align-items: center;
     box-shadow: inset 0 2px 5px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
     border: 2px solid #fff;
 }
 
-/* Use this class if you use real <img> tags later */
-.ing-img {
-    width: 70%; height: auto;
-}
+.ing-img { width: 70%; height: auto; }
+.ing-icon { font-size: 1.8rem; }
 
-/* Placeholder Emojis (Remove if using real images) */
-.ing-icon {
-    font-size: 1.8rem;
-}
-
-/* THE GREEN TICK */
 .tick-mark {
     position: absolute;
     bottom: -5px; right: -5px;
-    background: #4cd964; /* Nice Green */
+    background: #4cd964; 
     color: white;
     width: 24px; height: 24px;
     border-radius: 50%;
@@ -145,14 +137,13 @@ body {
     font-weight: bold;
 }
 
-/* Responsive adjustment for small phones */
 @media (max-width: 400px) {
     .ingredients-panel { padding-left: 15%; }
     .ingredient-item { width: 45px; height: 45px; }
     .ing-icon { font-size: 1.2rem; }
 }
 
-/* --- CONTROLS (BOTTOM) --- */
+/* --- CONTROLS --- */
 #controls-ui { 
     padding-bottom: 30px; padding-top: 10px; 
     width: 100%; display: flex; justify-content: center; 
@@ -168,10 +159,8 @@ button#crank-btn {
     cursor: pointer; touch-action: manipulation; 
     text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
-
 button#crank-btn:active { transform: translateY(3px); box-shadow: 0 2px #4a2608; }
 
-/* --- WIN SCREEN --- */
 #win-screen { 
     display: none; position: fixed; top: 0; left: 0; 
     width: 100%; height: 100%; 
@@ -184,4 +173,94 @@ button#crank-btn:active { transform: translateY(3px); box-shadow: 0 2px #4a2608;
     padding: 12px 30px; font-size: 1.2rem; border-radius: 50px; 
     cursor: pointer; border: none; background: #fff; color: #8b4513; 
     font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+}
+
+#help-btn {
+    position: absolute;
+    top: 20px; left: 20px;
+    width: 40px; height: 40px;
+    border-radius: 50%; border: none;
+    background-color: #3498db; color: white;
+    font-size: 1.2rem; font-weight: bold;
+    cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    z-index: 150; 
+}
+#help-btn:hover { background-color: #2980b9; }
+
+.modal {
+    display: none; 
+    position: fixed; top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85); 
+    z-index: 300; 
+    justify-content: center; align-items: center;
+}
+.modal.show { display: flex; animation: fadeIn 0.3s; }
+
+.modal-content {
+    background-color: white; width: 90%; max-width: 500px;
+    border-radius: 10px; padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    text-align: center; max-height: 90vh; overflow-y: auto;
+    
+    /* --- FIX: READABILITY UPGRADE --- */
+    /* Switch to a clean, thick font for the popup only */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.modal-content h2 { 
+    margin-top: 0; 
+    color: #000; /* Pure Black */
+    border-bottom: 2px solid #ecf0f1; 
+    padding-bottom: 10px; 
+    font-weight: 900; /* Extra Bold */
+    text-transform: uppercase;
+}
+
+.tutorial-step {
+    display: flex; align-items: center;
+    background: #f0f0f0; /* Slightly darker background for contrast */
+    margin: 15px 0; padding: 15px;
+    border-radius: 8px; text-align: left; 
+    border: 2px solid #ccc; /* Thicker border */
+}
+
+.step-img {
+    width: 60px; height: 60px; flex-shrink: 0; 
+    border-radius: 8px; display: flex;
+    justify-content: center; align-items: center;
+    font-size: 28px; margin-right: 15px; color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.step-text h3 { 
+    margin: 0 0 5px 0; 
+    font-size: 1.1rem; 
+    color: #000; /* Pure Black */
+    font-weight: 800; /* Extra Bold */
+}
+
+.step-text p { 
+    margin: 0; 
+    font-size: 1rem; 
+    color: #222; /* Very dark gray */
+    font-weight: 700; /* Bold as requested */
+    line-height: 1.4;
+}
+
+.close-btn-red {
+    background-color: #e74c3c; color: white; border: none;
+    padding: 15px 30px; font-size: 1.1rem; 
+    font-weight: 900; /* Extra Bold */
+    border-radius: 50px; cursor: pointer; margin-top: 20px;
+    width: 100%; transition: transform 0.1s;
+    text-transform: uppercase;
+    box-shadow: 0 4px #c0392b; /* 3D button effect */
+}
+.close-btn-red:hover { background-color: #c0392b; }
+.close-btn-red:active { transform: translateY(4px); box-shadow: none; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }

@@ -18,10 +18,7 @@ const playZone = document.getElementById('play-zone');
 const pieceTray = document.getElementById('piece-tray');
 const winScreen = document.getElementById('win-screen');
 const resetBtn = document.getElementById('reset-btn');
-// We keep the ID 'play-again-btn' from your HTML, but change its behavior below
 const continueBtn = document.getElementById('play-again-btn'); 
-
-
 
 function initGame() {
     // Cleanup existing pieces and overlays
@@ -42,21 +39,14 @@ function initGame() {
         }, 100);
     };
 
-    const modal = document.getElementById('tutorial-modal');
-    if (!modal.classList.contains('show')) {
-        toggleTutorial();
-    }
-}
-
-window.toggleTutorial = function() {
-    document.getElementById('tutorial-modal').classList.toggle('show');
+    // Initialize Tutorial (Language check + Auto-open)
+    initTutorial();
 }
 
 window.onload = initGame;
 resetBtn.addEventListener('click', initGame);
 
-// --- NEW NAVIGATION LOGIC ---
-// When the button on the Win Screen is clicked, go back to Room 1
+// Go back to Room 1 on win
 continueBtn.addEventListener('click', () => {
     window.location.href = "../../rooms/room_1.html";
 });
@@ -172,7 +162,6 @@ function createPuzzlePieces(image) {
 function spawnPieceInTray(piece) {
     const tRect = pieceTray.getBoundingClientRect();
     const pRect = piece.getBoundingClientRect();
-    
     const maxX = tRect.width - pRect.width;
     const maxY = tRect.height - pRect.height;
     
@@ -193,7 +182,6 @@ function spawnPieceInTray(piece) {
 
     piece.style.left = randX + 'px';
     piece.style.top = randY + 'px';
-    
     piece.dataset.trayX = randX;
     piece.dataset.trayY = randY;
 }
@@ -210,12 +198,11 @@ function handleStart(e) {
     selectedPiece = e.target;
     selectedPiece.style.zIndex = ++zIndexCounter;
 
-    // --- FIX FOR GHOST PIECES ---
+    // Timer Cancellation
     if (selectedPiece.returnTimer) {
         clearTimeout(selectedPiece.returnTimer);
         selectedPiece.returnTimer = null;
     }
-    // ----------------------------
 
     let clientX, clientY;
     
@@ -265,8 +252,6 @@ function handleEnd(e) {
     checkPosition(selectedPiece);
     selectedPiece = null;
 }
-
-/* --- VISUAL & GAME LOGIC --- */
 
 function createFlashOverlay(piece, color) {
     const flashCanvas = document.createElement('canvas');
@@ -325,17 +310,12 @@ function snapToGrid(piece, x, y) {
     
     lockedCount++;
     
-    // --- WIN CONDITION CHECK ---
     if (lockedCount === pieces.length) {
-        
-        // 1. Set the Global Flag (Wrapped in check to prevent crashing if function missing)
         if (typeof setFlag === 'function') {
             setFlag('Broken_plate_solved', true);
         } else {
-            console.log("Game Won! Flag 'Broken_plate_solved' set to true.");
+            console.log("Game Won! Flag set.");
         }
-
-        // 2. Show Win Screen after 0.5s delay
         setTimeout(() => {
             winScreen.classList.remove('hidden');
         }, 500);
@@ -352,4 +332,82 @@ function returnToTrayAnimated(piece) {
         piece.style.top = piece.dataset.trayY + 'px';
         piece.returnTimer = null; 
     }, RETURN_DELAY);
+}
+
+/* =========================================
+   BILINGUAL TUTORIAL MODULE
+   ========================================= */
+
+// 1. CONFIGURATION
+const tutorialData = {
+    en: {
+        title: "How to Play",
+        step1Head: "Drag & Drop",
+        step1Desc: "Drag the broken pieces from the tray to the board.",
+        step2Head: "Snap to Lock",
+        step2Desc: "If the position is correct, the piece flashes green and locks.",
+        step3Head: "Watch Out",
+        step3Desc: "Incorrect pieces flash red and return to the tray after 1 second.",
+        closeBtn: "CLOSE"
+    },
+    gr: {
+        title: "Πώς να παίξεις",
+        step1Head: "Σύρε & Άσε",
+        step1Desc: "Σύρε τα σπασμένα κομμάτια από τον δίσκο στον πίνακα.",
+        step2Head: "Κλείδωμα",
+        step2Desc: "Αν η θέση είναι σωστή, το κομμάτι πρασινίζει και κλειδώνει.",
+        step3Head: "Προσοχή",
+        step3Desc: "Τα λάθος κομμάτια κοκκινίζουν και επιστρέφουν στον δίσκο.",
+        closeBtn: "ΚΛΕΙΣΙΜΟ"
+    }
+};
+
+// 2. TOGGLE FUNCTION
+window.toggleTutorial = function() {
+    const modal = document.getElementById('tutorial-modal');
+    modal.classList.toggle('show');
+}
+
+// 3. LANGUAGE UPDATE FUNCTION
+function updateTutorialLanguage() {
+    const storedLang = localStorage.getItem('gameLanguage'); 
+    let lang = 'en'; 
+    
+    if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') {
+        lang = 'gr';
+    }
+
+    const t = tutorialData[lang];
+    
+    if(document.getElementById('tut-title')) 
+        document.getElementById('tut-title').innerText = t.title;
+    
+    if(document.getElementById('tut-step1-head')) {
+        document.getElementById('tut-step1-head').innerText = t.step1Head;
+        document.getElementById('tut-step1-desc').innerText = t.step1Desc;
+    }
+    
+    if(document.getElementById('tut-step2-head')) {
+        document.getElementById('tut-step2-head').innerText = t.step2Head;
+        document.getElementById('tut-step2-desc').innerText = t.step2Desc;
+    }
+    
+    if(document.getElementById('tut-step3-head')) {
+        document.getElementById('tut-step3-head').innerText = t.step3Head;
+        document.getElementById('tut-step3-desc').innerText = t.step3Desc;
+    }
+    
+    if(document.getElementById('tut-close-btn'))
+        document.getElementById('tut-close-btn').innerText = t.closeBtn;
+}
+
+// 4. INITIALIZATION
+function initTutorial() {
+    updateTutorialLanguage();
+    
+    const modal = document.getElementById('tutorial-modal');
+    // Ensure tutorial opens if not already open (and perhaps only on first visit if you wanted to add that logic)
+    if (modal && !modal.classList.contains('show')) {
+        toggleTutorial();
+    }
 }

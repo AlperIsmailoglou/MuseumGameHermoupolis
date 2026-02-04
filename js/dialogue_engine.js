@@ -7,7 +7,7 @@ let currentSceneIndex = 0;
 let isProcessingClick = false;
 let roomID = '';
 
-// --- HELPER FUNCTIONS ---
+
 
 function showTaskFeedback(msg) {
     const feedback = document.getElementById('task-feedback');
@@ -28,7 +28,8 @@ function updateTaskVisibility(activeTaskID) {
         'Ice_cream': 'task-Ice',
         'Torn_puzzle': 'task-torn',
         'Medal_Puzzle': 'task-medal',
-        'Hidden_objects': 'task-hidden'
+        'Hidden_objects': 'task-hidden',
+        'Quiz':'task-quiz'
     };
 
     Object.values(taskElements).forEach(id => {
@@ -48,9 +49,6 @@ function updateTaskVisibility(activeTaskID) {
     }
 }
 
-/**
- * Λειτουργία του κουμπιού USE (Placebo) στο Inventory
- */
 function handlePlaceboUseClick() {
     console.log("System: Use Button Clicked");
     const scene = currentDialogueScript[currentSceneIndex];
@@ -81,31 +79,26 @@ function toggleHistory(show) {
 
     if (show) {
         closeAllMenus();
-        renderHistoryLog(); // Generate the text
+        renderHistoryLog(); 
         document.getElementById('history-menu').style.display = 'flex';
     }
 }
 
 function renderHistoryLog() {
     const list = document.getElementById('history-list');
-    list.innerHTML = ''; // Clear previous content
+    list.innerHTML = ''; 
 
     const lang = gameState.language;
-
-    // Loop from the start of the room UP TO the current scene
     for (let i = 0; i <= currentSceneIndex; i++) {
         const scene = currentDialogueScript[i];
 
-        // Only show scenes that actually have text
         if (scene && scene.text) {
             const text = scene.text[lang] || scene.text['en'];
             
-            // Skip empty text entries (sometimes used for logic-only scenes)
             if (!text || text.trim() === "") continue;
 
             const speaker = scene.speaker_id || "System";
             
-            // Create the entry HTML
             const entryDiv = document.createElement('div');
             entryDiv.className = 'history-entry';
             
@@ -118,7 +111,6 @@ function renderHistoryLog() {
         }
     }
 
-    // Auto-scroll to the bottom (newest text)
     setTimeout(() => {
         list.scrollTop = list.scrollHeight;
     }, 50);
@@ -126,8 +118,6 @@ function renderHistoryLog() {
 function formatSpeakerName(id) {
     if (!id) return "Unknown";
 
-    // Create a map of IDs to Real Names
-    // EDIT THESE NAMES TO MATCH YOUR STORY
     const characterNames = {
         'guide': 'ERIC', 
         'character2': 'NATALIA',
@@ -142,7 +132,6 @@ function formatSpeakerName(id) {
         'character11': 'LAIS'     
     };
 
-    // Return the mapped name if it exists, otherwise capitalize the ID as a fallback
     return characterNames[id] || id.charAt(0).toUpperCase() + id.slice(1);
 }
 
@@ -155,11 +144,10 @@ function handleSceneAdvance(event) {
     const scene = currentDialogueScript[currentSceneIndex];
     if (scene.next_id === 'END') {
         if (roomID === 'room_8') {
-            showEndGameScreen(); // Trigger the ending!
+            showEndGameScreen(); 
             return;
         } else {
-            // For other rooms, maybe go to map or next room?
-            // Existing logic for other rooms goes here
+          
             console.log("End of room reached");
             return; 
         }
@@ -195,14 +183,9 @@ function handleCharacterVisuals(scene) {
             charEl.classList.remove('is-listening');
             if (scene.emotion && ASSETS.characters[speakerKey]) {
                 const emotionSrc = ASSETS.characters[speakerKey][scene.emotion];
-                const filenameKey = emotionSrc.split('/').pop().split('.')[0]; 
-                charEl.onload = function() {
-                    const renderMatrix = computeRenderMatrix(this, filenameKey);
-                    
-                    this.style.opacity = renderMatrix.opacity;
-                    this.style.transform = `scale(${renderMatrix.scale})`;
-                };
-                charEl.src = BASE_PATH + emotionSrc;
+                if (emotionSrc) {
+                    charEl.src = BASE_PATH + emotionSrc;
+                }
             }
         } else {
             if (charEl.id === 'guide') {
@@ -242,6 +225,7 @@ function handleSceneActions(actionString) {
             if (value === 'settings') targetId = '.ui-icon-button[onclick*="toggleLanguageMenu"]';
             if (value === 'artifacts') targetId = '.ui-icon-button[onclick*="toggleArtifacts"]';
             if (value === 'inventory') targetId = '.ui-icon-button[onclick*="toggleInventory"]';
+             if (value === 'history') targetId = '.ui-icon-button[onclick*="toggleHistory"]';
 
             if (targetId !== '') {
                 const btn = document.querySelector(targetId);
@@ -276,6 +260,18 @@ function processScene() {
 
     dialogueTextElement.textContent = scene.text[gameState.language] || scene.text['en'];
     handleCharacterVisuals(scene);
+
+   
+    const arrowEl = document.getElementById('dialogue-arrow');
+    if (arrowEl) {
+        if (scene.type === 'task_check') {
+            
+            arrowEl.style.display = 'none';
+        } else {
+         
+            arrowEl.style.display = 'block';
+        }
+    }
 
     if (scene.type === 'task_check') {
         updateTaskVisibility(scene.task_id);
@@ -338,6 +334,10 @@ async function initializeDialogueEngine(roomName, jsonPath) {
             if (getFlag('Hidden_objects_solved') && gameState.inventory.includes('Needle')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r7_24');
             else if (getFlag('Hidden_objects_solved')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r7_17_success');
         }
+         else if (roomID === 'room_8') {
+            if (getFlag('Quiz_Final_Stars')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r8_24_success');
+           
+        }
 
         // Fallback: If no mini-game solved just now, load last saved scene
         if (startingIndex <= 0 && savedSceneID) {
@@ -359,7 +359,7 @@ async function initializeDialogueEngine(roomName, jsonPath) {
 }
 
 function showEndGameScreen() {
-    // 1. Calculate Duration
+    // --- 1. TIME CALCULATION ---
     const endTime = Date.now();
     const startTime = gameState.gameStartTime || endTime; 
     const totalMilliseconds = endTime - startTime;
@@ -367,23 +367,31 @@ function showEndGameScreen() {
     const totalMinutes = Math.floor(totalMilliseconds / 60000);
     const hours = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
+    
+    const timeDisplay = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
 
-    // 2. Determine Stars
-    let stars = 1;
-    if (totalMinutes <= 20) stars = 3;
-    else if (totalMinutes <= 60) stars = 2; 
-    else stars = 1;
+    // --- 2. SCORE & STAR RETRIEVAL ---
+    let stars = getFlag('Quiz_Final_Stars');
+    // Safety check
+    if (!stars || stars < 1) stars = 1;
+    if (stars > 3) stars = 3;
 
-    // 3. Create Overlay HTML dynamically
+    // RETRIEVE THE SCORE
+    // Default to 0/8 if not found (for safety)
+    const scoreCorrect = getFlag('Quiz_Score_Correct') || 0;
+    const scoreTotal = getFlag('Quiz_Score_Total') || 8;
+
+    // --- 3. UI GENERATION ---
     const overlay = document.createElement('div');
     overlay.id = 'end-game-overlay';
     
     const lang = gameState.language;
+    
+    // TEXT CONTENT
     const titleText = lang === 'en' ? "ADVENTURE COMPLETE" : "ΤΕΛΟΣ ΠΕΡΙΠΕΤΕΙΑΣ";
     const timeText = lang === 'en' ? "Total Time:" : "Συνολικός Χρόνος:";
-    const timeDisplay = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
-
-    // New Button Texts
+    const scoreLabel = lang === 'en' ? "Quiz Score:" : "Σκορ Κουίζ:";
+    
     const menuText = lang === 'en' ? "RETURN TO MENU" : "ΕΠΙΣΤΡΟΦΗ ΣΤΟ ΜΕΝΟΥ";
     const surveyText = lang === 'en' ? "TAKE SURVEY" : "ΣΥΜΠΛΗΡΩΣΤΕ ΤΗΝ ΕΡΕΥΝΑ";
     const surveyUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfgCMBHJqDRni3w1ZULaoj7D_-PAi8ELSUOqHQeBzSFAKgMAw/viewform?usp=dialog";
@@ -398,15 +406,23 @@ function showEndGameScreen() {
     overlay.innerHTML = `
         <div class="end-content">
             <h1>${titleText}</h1>
+            
             <div class="stars-container">${starHTML}</div>
-            <p class="time-label">${timeText}</p>
-            <p class="time-value">${timeDisplay}</p>
+            
+            <div class="score-container">
+                <p class="score-label">${scoreLabel}</p>
+                <p class="score-value">${scoreCorrect} / ${scoreTotal}</p>
+            </div>
+
+            <div class="time-container">
+                <p class="time-label">${timeText}</p>
+                <p class="time-value">${timeDisplay}</p>
+            </div>
             
             <div class="end-buttons-container">
                 <button onclick="window.location.href='../index.html'" class="restart-btn">
                     ${menuText}
                 </button>
-                
                 <button onclick="window.open('${surveyUrl}', '_blank')" class="restart-btn survey-btn">
                     ${surveyText}
                 </button>
@@ -421,21 +437,8 @@ window.handleTaskInteraction = function (taskID, requiredItem, miniGameURL) {
     const scene = currentDialogueScript[currentSceneIndex];
     if (scene.type === 'task_check' && scene.task_id === taskID) {
         saveRoomProgress(roomID, scene.id);
-
-        // List of games that REQUIRE landscape
-        const landscapeGames = ['Find_difference', 'Hidden_objects']; 
-
-        if (landscapeGames.includes(taskID) && screen.orientation && screen.orientation.lock) {
-            // Attempt to lock to landscape if the device supports it
-            // Note: This usually requires Fullscreen mode to work on mobile browsers
-            document.documentElement.requestFullscreen().then(() => {
-                screen.orientation.lock('landscape').catch(err => console.warn("Lock failed", err));
-            }).finally(() => {
-                navigateToGame(miniGameURL);
-            });
-        } else {
-            navigateToGame(miniGameURL);
-        }
+         navigateToGame(miniGameURL);
+        
     }
 };
 

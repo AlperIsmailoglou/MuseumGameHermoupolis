@@ -109,66 +109,45 @@ button {
     border-radius: 4px;
     z-index: 10;
 }
-/* --- NEW: Help Button (Top Right) --- */
 #help-btn {
-    /* FIX: Use fixed to guarantee it sits on top of the viewport */
-    position: fixed; 
+    position: absolute;
     top: 20px;
-    right: 20px;
-    
-    /* Ensure it doesn't get hidden behind the notch on iPhones */
-    top: max(20px, env(safe-area-inset-top));
-    right: max(20px, env(safe-area-inset-right));
-
+    right: 20px; /* Kept to right as preferred in games */
     width: 45px;
-    height: 50px;
-    border-radius: 30%;
-    border: 2px solid white; /* White border to pop against dark bg */
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid white;
     background-color: #3498db;
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
-    
-    /* Shadow for depth */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    
-    /* Z-Index: Lower than Modal (300) and Win Screen (200), but higher than Board */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     z-index: 150; 
-    
-    /* Flex to center the question mark text perfectly */
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0;
 }
+#help-btn:hover { background-color: #2980b9; transform: scale(1.1); }
 
-#help-btn:hover { 
-    background-color: #2980b9; 
-    transform: scale(1.1); /* Small grow effect on hover */
-    transition: transform 0.1s;
-}
-
-#help-btn:active {
-    transform: scale(0.95);
-}
-/* --- NEW: Tutorial Modal --- */
+/* --- MODAL BACKGROUND --- */
 .modal {
-    display: none; /* Hidden by default */
+    display: none; 
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.85); /* Dark background */
-    z-index: 300; /* Highest priority */
+    background-color: rgba(0,0,0,0.85); 
+    z-index: 300; 
     justify-content: center;
     align-items: center;
 }
 
 .modal.show {
-    display: flex; /* Flex to center content */
+    display: flex; 
     animation: fadeIn 0.3s;
 }
 
+/* --- MODAL BOX --- */
 .modal-content {
     background-color: white;
     width: 90%;
@@ -177,7 +156,7 @@ button {
     padding: 25px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     text-align: center;
-    max-height: 90vh; /* Prevent overflow on small screens */
+    max-height: 90vh; 
     overflow-y: auto;
 }
 
@@ -188,7 +167,7 @@ button {
     padding-bottom: 10px;
 }
 
-/* --- Tutorial Steps (Row Layout) --- */
+/* --- STEPS ROW LAYOUT --- */
 .tutorial-step {
     display: flex;
     align-items: center;
@@ -203,7 +182,7 @@ button {
 .step-img {
     width: 60px;
     height: 60px;
-    flex-shrink: 0; /* Don't squash image */
+    flex-shrink: 0; 
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -225,7 +204,7 @@ button {
     color: #666;
 }
 
-/* --- Big Red Close Button --- */
+/* --- CLOSE BUTTON --- */
 .close-btn-red {
     background-color: #e74c3c;
     color: white;
@@ -238,6 +217,14 @@ button {
     margin-top: 20px;
     width: 100%;
     transition: transform 0.1s;
+}
+
+.close-btn-red:hover { background-color: #c0392b; }
+.close-btn-red:active { transform: scale(0.95); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 .close-btn-red:hover { background-color: #c0392b; }

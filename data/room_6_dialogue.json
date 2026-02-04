@@ -94,7 +94,7 @@
     "emotion": "happy",
     "text": {
       "en": "He would work with the head maid, like Mrs. Marina, so that everything went perfectly.",
-      "gr": "Θα δούλευε μαζί με την επικεφαλή υπηρέτρια, όπως ήταν η κυρία Μαρίνα, έτσι ώστε όλα να πήγαιναν στην εντέλεια."
+      "gr": "Θα δούλευε μαζί με την επικεφαλής υπηρέτρια, όπως ήταν η κυρία Μαρίνα, έτσι ώστε όλα να πήγαιναν στην εντέλεια."
     },
     "next_id": "scene_r6_10"
   },
@@ -105,7 +105,7 @@
     "emotion": "happy",
     "text": {
       "en": "Haaa... sorry for suspecting you, it's just that the other day that... that rascal destroyed the medal here!",
-      "gr": "Χααα…συγγνώμη που σε υποπτεύθηκα, απλώς τις προάλλες αυτός ο… ο αλήτης τέλος πάντων κατέστρεψε το μετάλλιο εδώ!"
+      "gr": "Χααα… συγγνώμη που σε υποπτεύθηκα, απλώς τις προάλλες αυτός ο… ο αλήτης τέλος πάντων κατέστρεψε το μετάλλιο εδώ!"
     },
     "next_id": "scene_r6_11"
   },
@@ -162,8 +162,8 @@
     "speaker_id": "guide",
     "emotion": "happy",
     "text": {
-      "en": "Yes, yes",
-      "gr": "Ναι ναι !!!"
+      "en": "Yes, yes!!!",
+      "gr": "Ναι ναι!!!"
     },
     "action": "remove-item:Golden_Fragment",
     "next_id": "scene_r6_16"
@@ -175,7 +175,7 @@
     "emotion": "happy",
     "text": {
       "en": "Splendid! I am grateful for your help.",
-      "gr": "Θεσπαίσια! Είμαι ευγνώμων για την βοήθειά σας."
+      "gr": "Θεσπέσια! Είμαι ευγνώμων για τη βοήθειά σας."
     },
     "next_id": "scene_r6_17"
   },
@@ -208,7 +208,7 @@
     "emotion": "happy",
     "text": {
       "en": "Let's go to the bedroom now. It's the second to last place we can search for clues.",
-      "gr": "Ας πάμε στην κρεβατοκάμαρα τώρα. Είναι ο προ-τελευταίος χώρος που μπορούμε να ψάξουμε για στοιχεία."
+      "gr": "Ας πάμε στην κρεβατοκάμαρα τώρα. Είναι ο προτελευταίος χώρος που μπορούμε να ψάξουμε για στοιχεία."
     },
     "next_id": "scene_r6_20"
   },
@@ -217,23 +217,23 @@
     "type": "task_check",
     "speaker_id": "guide",
     "emotion": "happy",
-    "required_item":"WalkingStick",
+    "required_item": "WalkingStick",
     "text": {
       "en": "",
       "gr": ""
     },
     "next_id": "scene_r6_21"
   },
-   {
+  {
     "id": "scene_r6_21",
     "type": "dialogue",
     "speaker_id": "character7",
     "emotion": "happy",
     "text": {
       "en": "Thank you for returning it, now I realized one was missing.",
-      "gr": " Σας ευχαριστώ που το επιστρέψατε, τώρα συνειδητοποίησα ότι έλλειπε ένα."
+      "gr": "Σας ευχαριστώ που το επιστρέψατε, τώρα συνειδητοποίησα ότι έλειπε ένα."
     },
-    "action":"remove-item:WalkingStick",
+    "action": "remove-item:WalkingStick",
     "next_id": "scene_r6_22"
   },
   {

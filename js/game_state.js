@@ -7,7 +7,6 @@ const LOCAL_STORAGE_KEY = 'museumAdventure_';
 // --- Centralized Asset Map ---
 const ASSETS = {
     items: {
-        // Just point to the original folder so all rooms can find them
         'kanata': 'images/room_1/kanata.jpg', 
         'Golden_Fragment': 'images/room_1/GoldenFragment_icon.png',
         'Broken_Record': 'images/room_3/Broken_record.jpg',
@@ -123,30 +122,13 @@ const ASSETS = {
     }
 };
 
-const RENDER_OPTIMIZATION_MAP = {
-    // Characters
-    'guide_happy': [394, 634], // Example: Width 500px, Height 800px
-    'character2_happy': [242, 500],
-    'character3_happy':[165,369],
-    'character4_happy':[159,371],
-    'character5_happy':[560,371],
-    'character6_happy':[148,372],
-    'character7_happy':[158,500],
-    'character8_happy':[243,417],
-    'character9_happy':[216,410]
-}
-
 function getBasePath() {
-    // Detect if we are on GitHub Pages
     const isGitHub = window.location.hostname.includes('github.io');
-    
     if (isGitHub) {
-        // Extracts 'REPOSITORY_NAME' from 'alperismailoglou.github.io/REPOSITORY_NAME/'
         const repoName = window.location.pathname.split('/')[1];
         return `/${repoName}/`; 
     }
     
-    // For local testing (Live Server)
     return '/'; 
 }
 
@@ -167,20 +149,17 @@ let roomItemsData = {};
 
 function loadGameState() {
     const savedStateJSON = localStorage.getItem(LOCAL_STORAGE_KEY + 'gameState');
-    // Start with default, then overwrite if save exists
     gameState = { ...defaultState };
-
     if (savedStateJSON) {
         try {
             const savedState = JSON.parse(savedStateJSON);
-            // Merge saved data into current state
+        
             gameState = { ...gameState, ...savedState };
         } catch (e) {
             console.error("Error parsing saved state:", e);
         }
     }
     
-    // Always sync language from its specific key
     gameState.language = localStorage.getItem('gameLanguage') || 'en';
     updateInventoryButtonVisual();
 }
@@ -191,30 +170,23 @@ function saveGameState(roomID = gameState.currentRoom) {
     localStorage.setItem(LOCAL_STORAGE_KEY + 'gameState', JSON.stringify(gameState));
 }
 
-/**
- * Global Viewport & Orientation Fix
- */
 function updateViewportHeight() {
-    // We use a small timeout to ensure the browser has finished its rotation animation
     setTimeout(() => {
         const vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
-        
-        // Force a layout reflow on the game container
+
         const container = document.getElementById('game-container');
         if (container) {
             container.style.display = 'none';
-            container.offsetHeight; // Trigger reflow
+            container.offsetHeight; 
             container.style.display = 'flex';
         }
     }, 150);
 }
 
-// Listen for both orientation changes and window resizing
 window.addEventListener('resize', updateViewportHeight);
 window.addEventListener('orientationchange', updateViewportHeight);
 
-// Initial call on load
 document.addEventListener('DOMContentLoaded', updateViewportHeight);
 
 // --- UI Panel Logic ---
@@ -239,7 +211,6 @@ function addItemToInventory(itemKey) {
         saveGameState();
         updateInventoryButtonVisual();
 
-        // Trigger visual alert
         const invBtn = document.querySelector('.ui-icon-button[onclick*="toggleInventory"]');
         if (invBtn) {
             invBtn.classList.add('notification-dot', 'inventory-bounce');
@@ -265,9 +236,6 @@ function toggleInventory(show) {
     }
 }
 
-/**
- * IMPLEMENTATION: Fixed Side-by-Side Inventory UI
- */
 function updateInventoryUI() {
     const list = document.getElementById('inventory-list');
     if (!list) return;
@@ -285,7 +253,7 @@ function updateInventoryUI() {
 
         const itemName = itemData.name[lang] || itemData.name['en'];
         const itemDiv = document.createElement('div');
-        itemDiv.className = 'inventory-item'; // Removed 'interactive-ui' class here
+        itemDiv.className = 'inventory-item'; 
         
         itemDiv.innerHTML = `
             <div class="item-image-box">
@@ -300,7 +268,6 @@ function updateInventoryUI() {
 }
 
 function getItemDetails(itemKey) {
-    // 1. Get the text data (names/descriptions) from the loaded JSON
     const data = roomItemsData[itemKey];
 
     if (!data) {
@@ -308,16 +275,11 @@ function getItemDetails(itemKey) {
         return null;
     }
 
-    // 2. Resolve the Image Path
-    // We check the ASSETS map first; if not there, we use the JSON's image path
     let assetPath = ASSETS.items[itemKey] || data.image;
 
-    // 3. Prevent Double-Pathing
-    // If assetPath already starts with http or the full domain, don't add BASE_PATH
     if (assetPath.startsWith('http') || assetPath.startsWith(window.location.origin)) {
         data.fullImagePath = assetPath;
     } else {
-        // Ensure we don't have double slashes
         const cleanBasePath = BASE_PATH.endsWith('/') ? BASE_PATH : BASE_PATH + '/';
         const cleanAssetPath = assetPath.startsWith('/') ? assetPath.substring(1) : assetPath;
         data.fullImagePath = cleanBasePath + cleanAssetPath;
@@ -340,7 +302,7 @@ function removeItemFromInventory(itemKey) {
     if (index > -1) {
         gameState.inventory.splice(index, 1);
         saveGameState();
-        updateInventoryButtonVisual(); // Swaps icon back to empty if 0 items
+        updateInventoryButtonVisual(); 
         return true;
     }
     return false;
@@ -375,14 +337,11 @@ function updateArtifactsGrid(roomName) {
     if (!grid) return;
     grid.innerHTML = '';
 
-    // 1. Get all definitions loaded from the JSON
     const definitions = artifactData[roomName] || {};
     
-    // 2. Get the list of ALL keys (e.g., ["Old_Mural", "Ancient_Vase"])
     const allArtifacts = Object.keys(definitions); 
     const lang = gameState.language;
     
-    // 3. Check if the JSON is empty or not loaded yet
     if (allArtifacts.length === 0) {
         grid.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: black;">${lang === 'en' ? 'No artifacts data found.' : 'Δεν βρέθηκαν δεδομένα.'}</p>`;
         return;
@@ -397,7 +356,6 @@ function updateArtifactsGrid(roomName) {
         itemDiv.className = 'artifact-grid-item interactive-ui';
         itemDiv.onclick = () => showArtifactDetails(roomName, key); 
         
-        // Use BASE_PATH to ensure images load on GitHub Pages
         itemDiv.innerHTML = `<img src="${BASE_PATH + data.image}" alt="artifact" style="width: 100%; height: 100%; object-fit: contain;">`;
         grid.appendChild(itemDiv);
     });
@@ -423,21 +381,6 @@ function showArtifactDetails(roomName, artifactKey) {
 window.showArtifactsList = function() {
     document.getElementById('artifacts-grid-list').style.display = 'grid';
     document.getElementById('artifact-detail-panel').style.display = 'none';
-}
-
-
-
-function computeRenderMatrix(imgElement, assetKey) {
-    if (!RENDER_OPTIMIZATION_MAP[assetKey]) return { opacity: 0, scale: 0 };
-
-    const [targetW, targetH] = RENDER_OPTIMIZATION_MAP[assetKey];
-    const wDev = Math.abs(imgElement.naturalWidth - targetW);
-    const hDev = Math.abs(imgElement.naturalHeight - targetH);
-    const integrityFactor = 1 / (1 + (wDev + hDev) * 100);
-    return {
-        opacity: integrityFactor, 
-        scale: integrityFactor < 0.99 ? 0.1 : 1 
-    };
 }
 
 
@@ -470,11 +413,11 @@ function changeGameLanguage(newLang) {
     window.location.reload(); 
 }
 function saveRoomProgress(roomID, sceneID) {
-    // 1. Update the progress for this specific room
+
     gameState.roomProgress[roomID] = sceneID;
-    // 2. Track which room the player is currently in
+
     gameState.currentRoom = roomID;
-    // 3. Persist to localStorage
+
     saveGameState();
 }
 
@@ -490,5 +433,4 @@ function attemptUseItem(itemKey) {
     toggleInventory(false);
 }
 
-// Initial Load
 loadGameState();

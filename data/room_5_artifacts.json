@@ -2,48 +2,56 @@
       "Couch": {
         "image": "images/room_5/couch.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Couch",
+            "gr": "Καναπές"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Dress_Baggage": {
         "image": "images/room_5/dress_baggage.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Dress baggage",
+            "gr": "Αποσκευές ντυσίματος"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Pattern": {
         "image": "images/room_5/pattern.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Pattern",
+            "gr": "Μοτίβο"
         },
          "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Pattern2": {
         "image": "images/room_5/pattern2.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Pattern",
+            "gr": "Μοτίβο"
         },
          "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Pattern3": {
         "image": "images/room_5/pattern3.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Pattern",
+            "gr": "Μοτίβο"
         },
          "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     }
 }

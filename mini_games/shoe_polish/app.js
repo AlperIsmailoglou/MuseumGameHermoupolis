@@ -7,7 +7,6 @@ const progressText = document.getElementById('progressText');
 const gameArea = document.getElementById('gameArea'); 
 const winScreen = document.getElementById('winScreen');
 
-// --- CONFIGURATION ---
 const BRUSH_SIZE = 50; 
 const DIRTY_SHOE_URL = 'shoe_polish_dirty.png'; 
 const ERASER_STRENGTH = 0.4; 
@@ -19,20 +18,96 @@ const HITBOX_CONFIG = {
 const SHOW_HITBOX_DEBUG = false; 
 const ALPHA_THRESHOLD = 20; 
 
-// --- STATE ---
 let gameWon = false; 
 let isDraggingRag = false;
 let lastX = 0;
 let lastY = 0;
 let totalVisiblePixels = 0;
 
-// --- TUTORIAL LOGIC ---
+/* =========================================
+   BILINGUAL TUTORIAL MODULE
+   ========================================= */
+
+// 1. CONFIGURATION: SHOE POLISH MECHANICS
+const tutorialData = {
+    en: {
+        title: "How to Play",
+        step1Head: "Grab the Brush",
+        step1Desc: "Touch and drag the brush to pick it up.",
+        step2Head: "Scrub Dirt",
+        step2Desc: "Rub back and forth over the dirty spots to clean them.",
+        step3Head: "Win!",
+        step3Desc: "Clean 100% of the shoe to finish the game.",
+        closeBtn: "PLAY"
+    },
+    gr: {
+        title: "Πώς να παίξεις",
+        step1Head: "Πιάσε τη Βούρτσα",
+        step1Desc: "Πάτα και σύρε τη βούρτσα για να την πιάσεις.",
+        step2Head: "Τρίψε τη Βρωμιά",
+        step2Desc: "Τρίψε πέρα-δώθε στα βρώμικα σημεία για να καθαρίσουν.",
+        step3Head: "Νίκη!",
+        step3Desc: "Καθάρισε το 100% του παπουτσιού για να κερδίσεις.",
+        closeBtn: "ΠΑΙΞΕ"
+    }
+};
+
+// 2. TOGGLE FUNCTION
 window.toggleTutorial = function() {
     const modal = document.getElementById('tutorial-modal');
     modal.classList.toggle('show');
 }
 
-// --- INITIALIZATION ---
+// 3. LANGUAGE UPDATE FUNCTION
+function updateTutorialLanguage() {
+    const storedLang = localStorage.getItem('gameLanguage'); 
+    let lang = 'en'; // Default
+    
+    if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') {
+        lang = 'gr';
+    }
+
+    const t = tutorialData[lang];
+    
+    if(document.getElementById('tut-title')) 
+        document.getElementById('tut-title').innerText = t.title;
+    
+    if(document.getElementById('tut-step1-head')) {
+        document.getElementById('tut-step1-head').innerText = t.step1Head;
+        document.getElementById('tut-step1-desc').innerText = t.step1Desc;
+    }
+    
+    if(document.getElementById('tut-step2-head')) {
+        document.getElementById('tut-step2-head').innerText = t.step2Head;
+        document.getElementById('tut-step2-desc').innerText = t.step2Desc;
+    }
+    
+    if(document.getElementById('tut-step3-head')) {
+        document.getElementById('tut-step3-head').innerText = t.step3Head;
+        document.getElementById('tut-step3-desc').innerText = t.step3Desc;
+    }
+    
+    if(document.getElementById('tut-close-btn'))
+        document.getElementById('tut-close-btn').innerText = t.closeBtn;
+}
+
+// 4. INITIALIZATION 
+function initTutorial() {
+    updateTutorialLanguage();
+    
+    // Auto-open on start
+    setTimeout(() => {
+        const modal = document.getElementById('tutorial-modal');
+        if (modal && !modal.classList.contains('show')) {
+            toggleTutorial();
+        }
+    }, 500);
+}
+
+/* =========================================
+   MAIN GAME LOGIC
+   ========================================= */
+
 function init() {
     if (cleanShoeImg.complete) {
         setupCanvas();
@@ -43,13 +118,8 @@ function init() {
     setupEventListeners();
     window.addEventListener('resize', setupCanvas);
 
-    // AUTO-OPEN TUTORIAL ON START
-    setTimeout(() => {
-        const modal = document.getElementById('tutorial-modal');
-        if (!modal.classList.contains('show')) {
-            toggleTutorial();
-        }
-    }, 500); // Small delay to let game load first
+    // Call the tutorial init instead of custom logic
+    initTutorial();
 }
 
 function setupCanvas() {
@@ -250,7 +320,6 @@ function triggerWin() {
 
     setTimeout(() => {
         winScreen.style.display = 'flex'; 
-       // window.location.href = "../../rooms/room_4.html";
     }, 500); 
 }
 

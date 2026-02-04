@@ -51,7 +51,10 @@ html {
     gap: 1vh;
 }
 
+
+
 /* --- HISTORY / DIALOGUE LOG STYLES --- */
+
 #history-list {
     flex-grow: 1;
     overflow-y: auto;
@@ -62,13 +65,17 @@ html {
     gap: 15px;
 }
 
+
+
 .history-entry {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
     padding: 12px;
-    border-left: 5px solid #1a2a6c; /* Blue accent */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    border-left: 5px solid #1a2a6c;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+
 
 .history-speaker {
     font-weight: bold;
@@ -78,74 +85,70 @@ html {
     text-transform: uppercase;
 }
 
+
+
 .history-text {
     color: #000;
     font-size: 1.1rem;
     line-height: 1.4;
 }
 
-/* --- ARTIFACT/INVENTORY DETAIL PANEL (Consolidated & Fixed) --- */
+
+
+/* --- ARTIFACT/INVENTORY DETAIL PANEL --- */
+
 #artifact-detail-panel {
-    display: none; /* Toggled by JS */
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 2005;
-    
+
     /* Layout */
     flex-direction: column;
     padding: 15px;
-    box-sizing: border-box; /* Ensures padding is inside the height */
-    
-    /* Visuals */
+    box-sizing: border-box;
     background: linear-gradient(135deg, #1a2a6c, #2975bc);
-    overflow:scroll; /* No scroll on the main panel itself */
+    overflow: scroll;
 }
 
-/* 1. Header (Back Button & Title) */
-/* Force static position so it doesn't float over the title */
 #artifact-detail-panel .ui-close-button-combo {
     position: static !important;
     align-self: flex-start;
     margin-bottom: 5px;
-    flex-shrink: 0; /* Do not squash */
+    flex-shrink: 0;
 }
 
 #detail-name-title {
     margin: 0 0 10px 0;
     text-align: center;
     width: 100%;
-    flex-shrink: 0; /* Prevents title from shrinking */
+    flex-shrink: 0;
     font-size: 1.4rem;
-    color: #ffd700; /* Gold text for title */
+    color: #ffd700;
     text-shadow: 1px 1px 2px black;
 }
 
-/* 2. Content Wrapper (Holds Image + Description) */
 #detail-content {
     display: flex;
     flex-direction: column;
-    /* This calculates: 100% height - (Button Height + Title Height) */
-    flex-grow: 1; 
-    min-height: 0; /* CRITICAL FIX: Allows this container to shrink */
-    gap: 15px; /* Space between Image Box and Text Box */
-    overflow: hidden; 
+    flex-grow: 1;
+    min-height: 0;
+    gap: 15px;
+    overflow: hidden;
 }
 
-/* 3. Top Half: Image Container */
 #detail-image-container {
-    flex: 1; /* Forces exactly 50% of the available vertical space */
-    min-height: 0; /* CRITICAL FIX: Forces image to shrink if it's too tall */
+    flex: 1;
+    min-height: 0;
     width: 100%;
-    
     background-color: white;
     border: 2px solid #ffd700;
     border-radius: 10px;
     padding: 10px;
-    
-    /* Center the image */
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,41 +158,35 @@ html {
 #detail-image {
     width: 100%;
     height: 100%;
-    /* 'contain' ensures the FULL image is visible, no cropping */
-    object-fit: contain; 
+    object-fit: contain;
     display: block;
 }
 
-/* 4. Bottom Half: Description */
 #detail-description {
-    flex: 1; /* Forces the other 50% of vertical space */
-    min-height: 0; /* CRITICAL FIX: Forces text to scroll instead of pushing layout */
-    
+    flex: 1;
+    min-height: 0;
+
     background-color: rgba(255, 255, 255, 0.9);
     color: #000;
     padding: 15px;
     border-radius: 8px;
     border: 2px solid #1a2a6c;
-    
+
     text-align: center;
     font-size: 1rem;
     font-weight: bold;
-    
-    /* Internal scrolling for text only */
-    overflow-y: auto; 
-    
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Justify center if text is short, top if text is long */
-    justify-content: flex-start; 
+    justify-content: flex-start;
 }
 
-
 /* --- ARTIFACTS GRID LIST --- */
+
 #artifacts-grid-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 15px;
     width: 100%;
     padding: 10px;
@@ -197,7 +194,7 @@ html {
 }
 
 .artifact-grid-item {
-    width: 100%; 
+    width: 100%;
     height: 120px;
     background-color: rgba(255, 255, 255, 0.15);
     border: 2px solid #ffd700;
@@ -227,20 +224,36 @@ html {
 .notification-dot {
     position: relative;
 }
+
 .notification-dot::after {
     content: '';
     position: absolute;
-    top: 0; right: 0;
-    width: 15px; height: 15px;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
     background-color: red;
     border-radius: 50%;
     border: 2px solid white;
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-    40% {transform: translateY(-10px);}
-    60% {transform: translateY(-5px);}
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
 }
 
 .inventory-bounce {
@@ -303,12 +316,16 @@ html {
     flex-grow: 1;
 }
 
+
+
 #inventory-use-container {
     margin-top: 10px;
     display: flex;
     justify-content: center;
     width: 100%;
 }
+
+
 
 #use-item-btn {
     width: 60%;
@@ -329,6 +346,7 @@ html {
 }
 
 /* --- UNIFIED BUTTONS --- */
+
 .ui-icon-button {
     width: 60px;
     height: 60px;
@@ -349,12 +367,17 @@ html {
         width: 12vw;
         height: 12vw;
     }
+
 }
+
+
 
 .ui-icon-button:hover {
     transform: scale(1.1);
     border-color: #fff;
 }
+
+
 
 .ui-icon-button img {
     width: 100%;
@@ -363,7 +386,10 @@ html {
     pointer-events: none;
 }
 
+
+
 /* --- DIALOGUE --- */
+
 #dialogue-box {
     position: absolute;
     bottom: 2dvh;
@@ -383,25 +409,55 @@ html {
     pointer-events: auto;
 }
 
+/* --- DIALOGUE BOX ARROW --- */
+#dialogue-arrow {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+
+    color: #e8dddd;
+    font-size: 1.5rem;
+    transform: rotate(-90deg);
+    animation: arrow-bounce 1s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes arrow-bounce {
+    0% {
+        transform: rotate(-90deg) translateX(0);
+    }
+    100% {
+        transform: rotate(-90deg) translateX(5px);
+    }
+
+}
+
+#dialogue-box {
+    position: absolute;
+    padding-bottom: 25px;
+
+}
+
 /* --- CHARACTER LAYER --- */
+
 #character-layer {
     position: absolute;
-    top: 5%; 
-    bottom: 25%; 
+    top: 5%;
+    bottom: 25%;
     width: 100%;
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 0 5%; 
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
     z-index: 300;
     pointer-events: none;
 }
 
 #character-layer img {
-    position: relative; 
+    position: relative;
     height: auto;
-    max-height: 100%; 
-    max-width: 45%; 
+    max-height: 100%;
+    max-width: 45%;
     object-fit: contain;
     transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
     filter: brightness(100%) grayscale(0%);
@@ -446,7 +502,6 @@ html {
     margin-top: 45px;
     text-align: center;
 }
-
 /* --- BUTTONS & LISTS --- */
 #language-options-list {
     display: flex;
@@ -457,7 +512,6 @@ html {
     align-items: center;
     margin-top: 20px;
 }
-
 .lang-option {
     width: 250px;
     padding: 15px;
@@ -477,7 +531,7 @@ html {
 
 /* Global Back Button Style */
 .ui-close-button-combo {
-    position: absolute; /* Default for other menus */
+    position: absolute;
     top: 10px;
     left: 10px;
     display: flex;
@@ -496,6 +550,7 @@ html {
 }
 
 /* --- TASK LAYER --- */
+
 #task-layer {
     position: absolute;
     top: 0;
@@ -503,9 +558,9 @@ html {
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    z-index: 600; 
+    justify-content: center;
+    align-items: center;
+    z-index: 600;
     pointer-events: none;
 }
 
@@ -517,17 +572,29 @@ html {
 }
 
 @keyframes task-pulse {
-    0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6)); }
-    50% { transform: scale(1.08); filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1)); }
-    100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6)); }
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+    }
+
+    50% {
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+    }
+
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.6));
+    }
+
 }
 
 #task-layer img {
-    position: relative !important; 
+    position: relative !important;
     left: auto !important;
     top: auto !important;
     transform: none !important;
-    max-width: 60vw; 
+    max-width: 60vw;
     max-height: 40vh;
     object-fit: contain;
     pointer-events: auto;
@@ -551,8 +618,23 @@ html {
 }
 
 @keyframes flicker-animation {
-    0%, 20%, 40%, 60%, 80%, 100% { opacity: 0; }
-    10%, 30%, 50%, 70%, 90% { opacity: 0.8; }
+    0%,
+    20%,
+    40%,
+    60%,
+    80%,
+    100% {
+        opacity: 0;
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        opacity: 0.8;
+    }
+
 }
 
 #ui-focus-overlay {
@@ -575,13 +657,13 @@ html {
     transform: scale(1.1);
     transition: all 0.3s ease;
 }
-
 /* --- END GAME OVERLAY --- */
+
 #end-game-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width:100%;
     height: 100dvh;
     background: linear-gradient(135deg, rgba(10, 10, 50, 0.95), rgba(26, 42, 108, 0.95));
     z-index: 9999;
@@ -618,7 +700,6 @@ html {
     color: #ffd700;
     text-shadow: 0 0 20px #ffd700;
 }
-
 .star.empty {
     color: #444;
 }
@@ -637,12 +718,37 @@ html {
 }
 .end-buttons-container {
     display: flex;
-    flex-direction: column; /* Stacks buttons vertically */
-    gap: 15px; /* Adds space between the two buttons */
+    flex-direction: column;
+    gap: 15px;
     width: 100%;
-    align-items: center; /* Centers them */
+    align-items: center;
     margin-top: 20px;
 }
+.score-container {
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3); /* Faint gold line separator */
+    padding-bottom: 10px;
+}
+
+.score-label {
+    font-size: 1.2rem;
+    color: #e8dddd; /* Off-white */
+    margin-bottom: 5px;
+}
+
+.score-value {
+    font-size: 2.5rem; /* Large and visible */
+    font-weight: bold;
+    color: #ffd700; /* Gold */
+    margin-top: 0;
+    margin-bottom: 5px;
+    text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.time-container {
+    margin-bottom: 30px;
+}
+
 .restart-btn {
     padding: 15px 30px;
     font-size: 1.2rem;
@@ -653,7 +759,7 @@ html {
     font-weight: bold;
     color: #000;
     transition: transform 0.2s;
-    width: 80%; /* Makes buttons uniform width */
+    width: 80%;
     max-width: 300px;
 }
 
@@ -661,9 +767,10 @@ html {
     transform: scale(1.05);
     background-color: #fff;
 }
+
 .survey-btn {
-    background-color: #1a2a6c; /* Blue */
-    color: #ffd700; /* Gold Text */
+    background-color: #1a2a6c;
+    color: #ffd700;
     border: 2px solid #ffd700;
 }
 
@@ -674,6 +781,13 @@ html {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+
 }

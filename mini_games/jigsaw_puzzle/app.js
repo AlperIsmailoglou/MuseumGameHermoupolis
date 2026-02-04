@@ -1,12 +1,9 @@
-// --- CONFIGURATION ---
 const IMAGE_URL = 'wooden_handmade_model_ship.jpg'; 
-
 const ROWS = 5;
 const COLS = 5;
 const SNAP_TOLERANCE = 50; 
-const RETURN_DELAY = 1500; // Time to wait (1.5 seconds)
+const RETURN_DELAY = 1500; 
 
-// --- STATE ---
 let pieces = [];
 let puzzleImage = new Image();
 let pieceWidth, pieceHeight;
@@ -17,40 +14,66 @@ const board = document.getElementById('puzzle-board');
 const tray = document.getElementById('pieces-tray');
 const winScreen = document.getElementById('win-screen');
 
-
-
-// --- INITIALIZATION ---
-puzzleImage.src = IMAGE_URL;
-puzzleImage.onload = () => { initializeGame(); };
-
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => { location.reload(); }, 500);
-});
+// --- BILINGUAL TUTORIAL MODULE ---
+const tutorialData = {
+    en: {
+        title: "How to Play",
+        step1Head: "Drag & Drop",
+        step1Desc: "Drag pieces from the tray onto the board to rebuild the image.",
+        step2Head: "Snap to Lock",
+        step2Desc: "A green flash means the piece is in the right spot and locked.",
+        step3Head: "Winning",
+        step3Desc: "Place all pieces correctly to complete the puzzle!",
+        closeBtn: "CLOSE"
+    },
+    gr: {
+        title: "Πώς να παίξεις",
+        step1Head: "Σύρε & Άφησε",
+        step1Desc: "Σύρετε τα κομμάτια από το δίσκο στο ταμπλό για να φτιάξετε την εικόνα.",
+        step2Head: "Κλείδωμα",
+        step2Desc: "Η πράσινη λάμψη σημαίνει ότι το κομμάτι είναι στη σωστή θέση.",
+        step3Head: "Νίκη",
+        step3Desc: "Τοποθετήστε όλα τα κομμάτια σωστά για να κερδίσετε!",
+        closeBtn: "ΚΛΕΙΣΙΜΟ"
+    }
+};
 
 window.toggleTutorial = function() {
     const modal = document.getElementById('tutorial-modal');
     if(modal) modal.classList.toggle('show');
 }
 
+function updateTutorialLanguage() {
+    const storedLang = localStorage.getItem('gameLanguage'); 
+    let lang = 'en';
+    if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') lang = 'gr';
+    const t = tutorialData[lang];
+    document.getElementById('tut-title').innerText = t.title;
+    document.getElementById('tut-step1-head').innerText = t.step1Head;
+    document.getElementById('tut-step1-desc').innerText = t.step1Desc;
+    document.getElementById('tut-step2-head').innerText = t.step2Head;
+    document.getElementById('tut-step2-desc').innerText = t.step2Desc;
+    document.getElementById('tut-step3-head').innerText = t.step3Head;
+    document.getElementById('tut-step3-desc').innerText = t.step3Desc;
+    document.getElementById('tut-close-btn').innerText = t.closeBtn;
+}
+
+// --- INITIALIZATION ---
+puzzleImage.src = IMAGE_URL;
+puzzleImage.onload = () => { initializeGame(); };
+
+window.addEventListener('resize', () => {
+    clearTimeout(window.resTimer);
+    window.resTimer = setTimeout(() => location.reload(), 500);
+});
+
 function initializeGame() {
     const isLandscape = window.innerWidth > window.innerHeight;
-    const marginX = 40; 
-    const marginY = 80; 
-    
+    const marginX = 40; const marginY = 80; 
     const screenW = window.innerWidth - marginX;
     const screenH = window.innerHeight - marginY;
-
-    let maxBoardW, maxBoardH;
-
-    if (isLandscape) {
-        maxBoardW = screenW * 0.70; 
-        maxBoardH = screenH;        
-    } else {
-        maxBoardW = screenW;        
-        maxBoardH = screenH * 0.55; 
-    }
+    let maxBoardW = isLandscape ? screenW * 0.70 : screenW;
+    let maxBoardH = isLandscape ? screenH : screenH * 0.55;
 
     const imgRatio = puzzleImage.width / puzzleImage.height;
     let boardWidth = maxBoardW;
@@ -63,27 +86,20 @@ function initializeGame() {
 
     board.style.width = boardWidth + 'px';
     board.style.height = boardHeight + 'px';
-    
     document.getElementById('puzzle-guide').style.backgroundImage = `url(${IMAGE_URL})`;
 
     pieceWidth = boardWidth / COLS;
     pieceHeight = boardHeight / ROWS;
     tabSize = Math.min(pieceWidth, pieceHeight) * 0.20; 
 
-    if(winScreen) winScreen.classList.add('hidden');
-    
-    const modal = document.getElementById('tutorial-modal');
-    if (modal && !modal.classList.contains('show')) window.toggleTutorial();
-
+    updateTutorialLanguage();
+    toggleTutorial(); 
     generatePieces(boardWidth, boardHeight);
 }
 
-// --- GENERATION ---
 function generatePieces(boardW, boardH) {
-    pieces = [];
-    tray.innerHTML = ''; 
+    pieces = []; tray.innerHTML = ''; 
     const shapeMap = [];
-    
     for(let r=0; r<ROWS; r++) {
         shapeMap[r] = [];
         for(let c=0; c<COLS; c++) {
@@ -95,17 +111,13 @@ function generatePieces(boardW, boardH) {
             };
         }
     }
-
     for(let r=0; r<ROWS; r++) {
         for(let c=0; c<COLS; c++) {
             createPieceCanvas(r, c, shapeMap[r][c], boardW, boardH);
         }
     }
-    
-    const fragment = document.createDocumentFragment();
     const shuffled = [...pieces].sort(() => Math.random() - 0.5);
-    shuffled.forEach(p => fragment.appendChild(p.canvas));
-    tray.appendChild(fragment);
+    shuffled.forEach(p => tray.appendChild(p.canvas));
 }
 
 function createPieceCanvas(r, c, shape, boardW, boardH) {
@@ -113,27 +125,18 @@ function createPieceCanvas(r, c, shape, boardW, boardH) {
     const ctx = canvas.getContext('2d');
     const totalW = pieceWidth + (tabSize * 2);
     const totalH = pieceHeight + (tabSize * 2);
-
-    canvas.width = totalW;
-    canvas.height = totalH;
+    canvas.width = totalW; canvas.height = totalH;
     canvas.className = 'jigsaw-piece in-tray';
-    
     canvas.dataset.correctX = c * pieceWidth;
     canvas.dataset.correctY = r * pieceHeight;
-    canvas.dataset.r = r;
-    canvas.dataset.c = c;
-
     ctx.translate(tabSize, tabSize);
     ctx.beginPath();
     drawSimplePiecePath(ctx, pieceWidth, pieceHeight, shape);
     ctx.clip();
-
     const srcX = (c * pieceWidth) - tabSize;
     const srcY = (r * pieceHeight) - tabSize;
-    
     ctx.drawImage(puzzleImage, 0, 0, puzzleImage.width, puzzleImage.height, -srcX - tabSize, -srcY - tabSize, boardW, boardH);
     ctx.strokeStyle = '#333'; ctx.lineWidth = 2; ctx.stroke();
-
     addDragLogic(canvas);
     pieces.push({ canvas: canvas, isLocked: false });
 }
@@ -147,138 +150,78 @@ function drawSimplePiecePath(ctx, w, h, shape) {
     if (shape.left === 0) ctx.lineTo(0, 0); else { ctx.lineTo(0, h/2 + r); ctx.arc(0, h/2, r, 0.5 * Math.PI, 1.5 * Math.PI, shape.left === 1); ctx.lineTo(0, 0); }
 }
 
-// --- DRAG LOGIC (Pointer Events) ---
-
 function addDragLogic(el) {
     let shiftX, shiftY;
-
     const onPointerDown = (e) => {
         if (el.classList.contains('snapped')) return;
-        
-        // --- CATCH THE PIECE LOGIC ---
-        // If the piece is waiting to return (timer active), cancel it!
-        if (el.returnTimer) {
-            clearTimeout(el.returnTimer);
-            el.returnTimer = null;
-            el.classList.remove('wrong'); // Stop red flash
-            // Note: We leave the placeholder alone in the tray 
-            // so the hole remains waiting for this piece.
-        }
-        // -----------------------------
-
+        if (el.returnTimer) { clearTimeout(el.returnTimer); el.returnTimer = null; el.classList.remove('wrong'); }
         el.setPointerCapture(e.pointerId);
-        e.preventDefault(); 
-        
         const rect = el.getBoundingClientRect();
         shiftX = e.clientX - rect.left;
         shiftY = e.clientY - rect.top;
-
-        // If picking up from tray (fresh pick)
         if (el.classList.contains('in-tray')) {
             createPlaceholder(el);
             el.classList.remove('in-tray');
             document.body.appendChild(el);
-            
             el.style.left = (e.clientX - shiftX) + 'px';
             el.style.top = (e.clientY - shiftY) + 'px';
             el.style.position = 'absolute'; 
         }
-
         el.addEventListener('pointermove', onPointerMove);
         el.addEventListener('pointerup', onPointerUp);
     };
-
     const onPointerMove = (e) => {
-        e.preventDefault();
         el.style.left = (e.clientX - shiftX) + 'px';
         el.style.top = (e.clientY - shiftY) + 'px';
     };
-
     const onPointerUp = (e) => {
         el.releasePointerCapture(e.pointerId);
         el.removeEventListener('pointermove', onPointerMove);
         el.removeEventListener('pointerup', onPointerUp);
         checkSnap(el);
     };
-
     el.addEventListener('pointerdown', onPointerDown);
 }
 
-// --- PLACEHOLDER UTILS ---
 function createPlaceholder(el) {
     if (activePlaceholder) return; 
-
     activePlaceholder = document.createElement('div');
     activePlaceholder.style.width = el.width + 'px';
     activePlaceholder.style.height = el.height + 'px';
     activePlaceholder.style.margin = '10px'; 
-    activePlaceholder.style.flexShrink = '0'; 
     activePlaceholder.style.visibility = 'hidden'; 
-    activePlaceholder.style.pointerEvents = 'none'; 
-    
-    if(el.parentNode === tray) {
-        tray.insertBefore(activePlaceholder, el);
-    } else {
-        tray.appendChild(activePlaceholder);
-    }
+    tray.insertBefore(activePlaceholder, el);
 }
 
-function removePlaceholder() {
-    if (activePlaceholder && activePlaceholder.parentNode) {
-        activePlaceholder.parentNode.removeChild(activePlaceholder);
-    }
-    activePlaceholder = null;
-}
-
-// --- SNAP & RETURN LOGIC ---
 function checkSnap(el) {
     const rect = el.getBoundingClientRect();
     const boardRect = board.getBoundingClientRect();
-
     const targetX = boardRect.left + parseFloat(el.dataset.correctX) - tabSize;
     const targetY = boardRect.top + parseFloat(el.dataset.correctY) - tabSize;
-
     const dist = Math.hypot(rect.left - targetX, rect.top - targetY);
-
     if (dist < SNAP_TOLERANCE) {
-        // --- SUCCESS ---
-        if (el.returnTimer) { clearTimeout(el.returnTimer); el.returnTimer = null; }
-        
-        removePlaceholder(); 
+        if (activePlaceholder) activePlaceholder.remove();
+        activePlaceholder = null;
         board.appendChild(el);
-        
         el.style.left = (parseFloat(el.dataset.correctX) - tabSize) + 'px';
         el.style.top = (parseFloat(el.dataset.correctY) - tabSize) + 'px';
         el.classList.add('snapped');
-        el.classList.remove('wrong');
-        
         const pObj = pieces.find(p => p.canvas === el);
         if(pObj) pObj.isLocked = true;
         checkWin();
     } else {
-        // --- FAIL ---
         el.classList.add('wrong');
-        
-        // Cancel previous timer if it exists (rapid clicking)
-        if (el.returnTimer) clearTimeout(el.returnTimer);
-        
-        // Set new timer
         el.returnTimer = setTimeout(() => {
             el.classList.remove('wrong');
             returnToTray(el);
-            el.returnTimer = null;
         }, RETURN_DELAY); 
     }
 }
 
 function returnToTray(el) {
     el.style.position = ''; 
-    el.style.left = '';
-    el.style.top = '';
     el.classList.add('in-tray');
-    
-    // STRICT SWAP: Put element exactly where placeholder is
-    if (activePlaceholder && activePlaceholder.parentNode === tray) {
+    if (activePlaceholder) {
         tray.replaceChild(el, activePlaceholder);
         activePlaceholder = null; 
     } else {
@@ -287,17 +230,13 @@ function returnToTray(el) {
 }
 
 function checkWin() {
-    if (pieces.length === 0) return;
     if (pieces.every(p => p.isLocked)) {
         setTimeout(() => { 
-            const screen = document.getElementById('win-screen');
-            screen.classList.remove('hidden'); 
-             if (typeof setFlag === 'function') {
-                    setFlag('Medal_Puzzle_solved', true);
-                    window.location.href = "../../rooms/room_6.html";
-                } else {
-                    console.log("Game Won! Flag 'Medal_Puzzle_solved' set to true.");
-                }
-        }, 300);
+            winScreen.classList.remove('hidden'); 
+            if (typeof setFlag === 'function') {
+                setFlag('Medal_Puzzle_solved', true);
+                window.location.href = "../../rooms/room_6.html";
+            }
+        }, 500);
     }
 }

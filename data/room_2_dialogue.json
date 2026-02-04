@@ -6,9 +6,8 @@
     "emotion": "happy",
     "text": {
       "en": "Here's the kitchen! As you can see, it doesn't have all the equipment it used to have, but many of the items they used back then are still here.",
-      "gr": "Εδώ είναι η κουζίνα! Όπως μπορείς να δεις δεν έχει όλο τον εξοπλισμό που είχε παλιά, αλλά πολλά από τα αντικείμενα που χρησιμοποιούσαν τότε είναι ακόμα εδώ. "
+      "gr": "Εδώ είναι η κουζίνα! Όπως μπορείς να δεις δεν έχει όλο τον εξοπλισμό που είχε παλιά, αλλά πολλά από τα αντικείμενα που χρησιμοποιούσαν τότε είναι ακόμα εδώ."
     },
-   
     "next_id": "scene_2_post_puzzle"
   },
   {
@@ -18,7 +17,7 @@
     "emotion": "happy",
     "text": {
       "en": "Oh! Natalia, are you here?",
-      "gr": " Ω! Ναταλία, εδώ είσαι;"
+      "gr": "Ω! Ναταλία, εδώ είσαι;"
     },
     "next_id": "scene_3_post_puzzle"
   },
@@ -29,7 +28,7 @@
     "emotion": "happy",
     "text": {
       "en": "Oh, Eric, hi. Yeah, when the lights started to come on, I came by to see if things were okay in the kitchen.",
-      "gr": "Α, Έρικ, γεια σου. Ναι όταν τα φώτα άρχισαν να παίζουν ήρθα να δω εάν τα πράγματα στην κουζίνα ήταν εντάξει."
+      "gr": "Α, Έρικ, γεια σου. Ναι, όταν τα φώτα άρχισαν να παίζουν ήρθα να δω εάν τα πράγματα στην κουζίνα ήταν εντάξει."
     },
     "next_id": "scene_4_post_puzzle"
   },
@@ -40,7 +39,7 @@
     "emotion": "happy",
     "text": {
       "en": "Natalia was once a maid who worked specifically in the kitchen. Back then, they had staff for everything in the house, and the butler along with the head maid were responsible for managing them.",
-      "gr": "Η Ναταλία ήταν κάποτε υπηρέτρια που δούλευε συγκεκριμένα στην κουζίνα. Τότε είχαν προσωπικό για το κάθε τι στο σπίτι, και ο μπάτλερ μαζί με την επικεφαλή υπηρέτρια ήταν υπεύθυνοι για την διαχείρισή τους."
+      "gr": "Η Ναταλία ήταν κάποτε υπηρέτρια που δούλευε συγκεκριμένα στην κουζίνα. Τότε είχαν προσωπικό για το κάθε τι στο σπίτι, και ο μπάτλερ μαζί με την επικεφαλής υπηρέτρια ήταν υπεύθυνοι για τη διαχείρισή τους."
     },
     "next_id": "scene_5_post_puzzle"
   },
@@ -51,7 +50,7 @@
     "emotion": "happy",
     "text": {
       "en": "If you noticed the two aprons in the room, they were used by the same maid. The simpler one was for inside the house, and the other was for when she had to go out, so as not to bring shame to her masters.",
-      "gr": "Αν παρατήρησες τις δύο ποδιές που βρίσκονται στο δωμάτιο, αυτές χρησιμοποιόντουσαν από την ίδια υπηρέτρια. Η πιο απλή ήταν για μέσα στο σπίτι, και η άλλη ήταν για όταν έπρεπε να βγει έξω, έτσι ώστε να μην φέρει ντροπή στα αφεντικά της."
+      "gr": "Αν παρατήρησες τις δύο ποδιές που βρίσκονται στο δωμάτιο, αυτές χρησιμοποιούνταν από την ίδια υπηρέτρια. Η πιο απλή ήταν για μέσα στο σπίτι, και η άλλη ήταν για όταν έπρεπε να βγει έξω, έτσι ώστε να μην φέρει ντροπή στα αφεντικά της."
     },
     "next_id": "scene_6_post_puzzle"
   },
@@ -62,7 +61,7 @@
     "emotion": "happy",
     "text": {
       "en": "Haha yes, we had to be very careful. The slightest mistake could cost us our jobs, if not even our lives!",
-      "gr": "Χαχα ναι, έπρεπε να είμαστε πολύ προσεκτικές. Το παραμικρό λάθος μπορεί να μας κόστιζε την δουλειά μας, εάν όχι και την ζωή μας ακόμη!"
+      "gr": "Χαχα ναι, έπρεπε να είμαστε πολύ προσεκτικές. Το παραμικρό λάθος μπορεί να μας κόστιζε τη δουλειά μας, εάν όχι και τη ζωή μας ακόμη!"
     },
     "next_id": "scene_7_post_puzzle"
   },
@@ -72,8 +71,8 @@
     "speaker_id": "character2",
     "emotion": "happy",
     "text": {
-      "en": "Things were very difficult for the general staff. Not only did we come from far away to find work while we were very young, if we didn't make it, we would have to...you know.",
-      "gr": "Ήταν πολύ δύσκολα τα πράγματα για το κοινό προσωπικό. Όχι μόνο ερχόμασταν από μακριά για να βρούμε δουλειά ενώ ήμασταν πολύ μικρές, αν δεν το καταφέρναμε θα έπρεπε να…ξέρεις."
+      "en": "Things were very difficult for the general staff. Not only did we come from far away to find work while we were very young, if we didn't make it, we would have to... you know.",
+      "gr": "Ήταν πολύ δύσκολα τα πράγματα για το κοινό προσωπικό. Όχι μόνο ερχόμασταν από μακριά για να βρούμε δουλειά ενώ ήμασταν πολύ μικρές, αν δεν το καταφέρναμε θα έπρεπε να… ξέρεις."
     },
     "next_id": "scene_8_post_puzzle"
   },
@@ -83,8 +82,8 @@
     "speaker_id": "guide",
     "emotion": "happy",
     "text": {
-      "en": "Yes, yes, I remember…you would be forced to get a job in a brothel.",
-      "gr": " Ναι, ναι, θυμαι…θα αναγκαζόσασταν να πιάσετε δουλειά σε πορνείο."
+      "en": "Yes, yes, I remember… you would be forced to get a job in a brothel.",
+      "gr": "Ναι, ναι, θυμάμαι… θα αναγκαζόσασταν να πιάσετε δουλειά σε πορνείο."
     },
     "next_id": "scene_9_post_puzzle"
   },
@@ -95,7 +94,7 @@
     "emotion": "happy",
     "text": {
       "en": "So, am I to assume, Natalia, that you didn't see who was making the fuss before?",
-      "gr": " Άρα να υποθέσω Ναταλία ότι δεν είδες ποιός έκανε την φασαρία πριν;"
+      "gr": "Άρα να υποθέσω Ναταλία ότι δεν είδες ποιος έκανε τη φασαρία πριν;"
     },
     "next_id": "scene_10_post_puzzle"
   },
@@ -128,7 +127,7 @@
     "emotion": "happy",
     "text": {
       "en": "Oh yes, I remember you saying that...",
-      "gr": " Α ναι, θυμάμαι να το λες αυτό…"
+      "gr": "Α ναι, θυμάμαι να το λες αυτό…"
     },
     "next_id": "scene_13_post_puzzle"
   },
@@ -139,7 +138,7 @@
     "emotion": "happy",
     "text": {
       "en": "But, as ghosts, we can't move objects more than a few centimeters...",
-      "gr": " Αλλά, ως φαντάσματα, δεν μπορούμε να μετακινήσουμε αντικείμενα παραπάνω από λίγα εκατοστά…"
+      "gr": "Αλλά, ως φαντάσματα, δεν μπορούμε να μετακινήσουμε αντικείμενα παραπάνω από λίγα εκατοστά…"
     },
     "next_id": "scene_14_post_puzzle"
   },
@@ -149,8 +148,8 @@
     "speaker_id": "guide",
     "emotion": "happy",
     "text": {
-      "en": "…and I didn't notice anything now that we were there…although…ah!",
-      "gr": " …και δεν παρατήρησα κάτι τώρα που ήμασταν εκεί…αν και…α!"
+      "en": "…and I didn't notice anything now that we were there… although… ah!",
+      "gr": "…και δεν παρατήρησα κάτι τώρα που ήμασταν εκεί… αν και… α!"
     },
     "next_id": "scene_15_post_puzzle"
   },
@@ -172,7 +171,7 @@
     "emotion": "happy",
     "text": {
       "en": "Now that you have something in your bag, you can open it!",
-      "gr": " Τώρα που έχεις κάτι στην τσάντα σου, μπορείς να την ανοίξεις!"
+      "gr": "Τώρα που έχεις κάτι στην τσάντα σου, μπορείς να την ανοίξεις!"
     },
     "next_id": "scene_17_post_puzzle"
   },
@@ -206,9 +205,9 @@
     "emotion": "happy",
     "text": {
       "en": "You were right after all, Natalia! I still can't believe it! But how...",
-      "gr": " Είχες δίκιο τελικά Ναταλία! Ακόμη δεν το πιστεύω! Μα πώς…"
+      "gr": "Είχες δίκιο τελικά Ναταλία! Ακόμη δεν το πιστεύω! Μα πώς…"
     },
-    "action":"remove-item:kanata",
+    "action": "remove-item:kanata",
     "next_id": "scene_20_post_puzzle"
   },
   {
@@ -239,13 +238,13 @@
     "speaker_id": "guide",
     "emotion": "happy",
     "text": {
-      "en": "Let's go see the room for the lady of the house!.",
-      "gr": "Ας πάμε να δούμε το δωμάτιο για την κυρία του σπιτιού!."
+      "en": "Let's go see the room for the lady of the house!",
+      "gr": "Ας πάμε να δούμε το δωμάτιο για την κυρία του σπιτιού!"
     },
     "next_id": "scene_23_pre_game"
   },
   {
-     "id": "scene_23_post_puzzle",
+    "id": "scene_23_post_puzzle",
     "type": "task_check",
     "speaker_id": "guide",
     "emotion": "happy",
@@ -277,7 +276,7 @@
     "mini_game_url": "mini_games/ice_cream/ice_cream_machine.html",
     "text": {
       "en": "Use the ingredients on the machine to start!",
-      "gr": "Χρησιμοποιήστε τα υλικά στη μηχανή για να ξεκινήσετε!"
+      "gr": "Χρησιμοποίησε τα υλικά στη μηχανή για να ξεκινήσεις!"
     },
     "next_id": "scene_26_success"
   },
@@ -298,26 +297,26 @@
     "type": "task_check",
     "speaker_id": "guide",
     "emotion": "happy",
-    "required_item":"Apron",
+    "required_item": "Apron",
     "text": {
       "en": "",
       "gr": ""
     },
     "next_id": "scene_28"
   },
-   {
+  {
     "id": "scene_28",
     "type": "dialogue",
     "speaker_id": "character2",
     "emotion": "happy",
     "text": {
-      "en": "Thank you very much",
-      "gr": "Σας ευχαριστώ πολύ"
+      "en": "Thank you very much.",
+      "gr": "Σας ευχαριστώ πολύ."
     },
-    "action":"remove-item:Apron",
+    "action": "remove-item:Apron",
     "next_id": "scene_29"
   },
-    {
+  {
     "id": "scene_29",
     "type": "dialogue",
     "speaker_id": "guide",

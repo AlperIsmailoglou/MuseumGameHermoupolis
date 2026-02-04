@@ -14,8 +14,6 @@
 
     <div class="game-area" id="gameArea">
         
-       
-
         <div class="shoe-container">
             <img src="shoe_polish.png" id="cleanShoeImg" alt="Shoe" draggable="false">
             <canvas id="dirtCanvas"></canvas>
@@ -40,39 +38,39 @@
 
     <div id="tutorial-modal" class="modal">
         <div class="modal-content">
-            <h2>How to Play</h2>
+            <h2 id="tut-title">How to Play</h2>
             
             <div class="tutorial-step">
                 <div class="step-img" style="background-color: #34495e;">
-                    <span>👆</span>
+                    <span>👆</span> 
                 </div>
                 <div class="step-text">
-                    <h3>Grab the Brush</h3>
-                    <p>Touch and drag the brush to pick it up.</p>
+                    <h3 id="tut-step1-head">Step 1 Title</h3>
+                    <p id="tut-step1-desc">Description for step 1.</p>
                 </div>
             </div>
 
             <div class="tutorial-step">
-                <div class="step-img" style="background-color: #2ecc71;">
+                <div class="step-img" style="background-color: #3498db;">
                     <span>✨</span>
                 </div>
                 <div class="step-text">
-                    <h3>Scrub Dirt</h3>
-                    <p>Rub back and forth over the dirty spots to clean them.</p>
+                    <h3 id="tut-step2-head">Step 2 Title</h3>
+                    <p id="tut-step2-desc">Description for step 2.</p>
                 </div>
             </div>
 
             <div class="tutorial-step">
-                <div class="step-img" style="background-color: #e74c3c;">
+                <div class="step-img" style="background-color: #27ae60;">
                     <span>🏆</span>
                 </div>
                 <div class="step-text">
-                    <h3>Win!</h3>
-                    <p>Clean 100% of the shoe to finish the game.</p>
+                    <h3 id="tut-step3-head">Step 3 Title</h3>
+                    <p id="tut-step3-desc">Description for step 3.</p>
                 </div>
             </div>
 
-            <button class="close-btn-red" onclick="toggleTutorial()">PLAY</button>
+            <button id="tut-close-btn" class="close-btn-red" onclick="toggleTutorial()">CLOSE</button>
         </div>
     </div>
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find the Difference</title>
     <link rel="stylesheet" href="style.css">
-    <script src="../../js/game_state.js"></script>
+    <script src="../../js/game_state.js"></script> 
 </head>
 <body>
 
@@ -32,49 +32,39 @@
 
     <div id="tutorial-modal" class="modal">
         <div class="modal-content">
-            <h2>How to Play</h2>
+            <h2 id="tut-title">How to Play</h2>
             
             <div class="tutorial-step">
                 <div class="step-img" style="background-color: #34495e;">
-                    <span>👀</span>
+                    <span>👀</span> 
                 </div>
                 <div class="step-text">
-                    <h3>Observe Reality</h3>
-                    <p>Look at the real object or scene in front of you.</p>
+                    <h3 id="tut-step1-head">Step 1 Title</h3>
+                    <p id="tut-step1-desc">Description for step 1.</p>
                 </div>
             </div>
 
             <div class="tutorial-step">
-                <div class="step-img" style="background-color: #e74c3c;">
+                <div class="step-img" style="background-color: #3498db;">
                     <span>📱</span>
                 </div>
                 <div class="step-text">
-                    <h3>Compare Screen</h3>
-                    <p>Look at the image on your phone. Something is different!</p>
+                    <h3 id="tut-step2-head">Step 2 Title</h3>
+                    <p id="tut-step2-desc">Description for step 2.</p>
                 </div>
             </div>
 
             <div class="tutorial-step">
-                <div class="step-img" style="background-color: #2ecc71;">
+                <div class="step-img" style="background-color: #27ae60;">
                     <span>👆</span>
                 </div>
                 <div class="step-text">
-                    <h3>Tap to Find</h3>
-                    <p>Tap the difference on your screen to mark it.</p>
+                    <h3 id="tut-step3-head">Step 3 Title</h3>
+                    <p id="tut-step3-desc">Description for step 3.</p>
                 </div>
             </div>
 
-            <div class="tutorial-step">
-                <div class="step-img" style="background-color: #e6a10c;">
-                    <span>💡</span>
-                </div>
-                <div class="step-text">
-                    <h3>Getting Hard Time?</h3>
-                    <p>Tap the hint button to highlight the locations.ONLY ONCE!!! </p>
-                </div>
-            </div>
-
-            <button class="close-btn-red" onclick="toggleTutorial()">PLAY GAME</button>
+            <button id="tut-close-btn" class="close-btn-red" onclick="toggleTutorial()">CLOSE</button>
         </div>
     </div>
 
