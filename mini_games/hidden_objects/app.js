@@ -1,9 +1,5 @@
-/* Hidden Objects game: Separate images, Green Found Highlight, Hint System, Tutorial */
-
 /* ---------- CONFIG ---------- */
 const IMAGE_SRC = "Master_bedroom.png";
-
-
 
 // HINT CONFIGURATION
 const MAX_HINTS = 1;     
@@ -58,12 +54,75 @@ const hintBtn = document.getElementById("hint-btn");
 const found = new Set();
 let hintsUsed = 0;
 
-/* ---------- TUTORIAL LOGIC ---------- */
-// Make this global so the HTML button can call it
+/* =========================================
+   BILINGUAL TUTORIAL MODULE (INTEGRATED)
+   ========================================= */
+
+const tutorialData = {
+    en: {
+        title: "How to Play",
+        step1Head: "Check the List",
+        step1Desc: "Look at the icon bar to see which items are hidden in the room.",
+        step2Head: "Find & Click",
+        step2Desc: "Spot the object in the scene and click it to collect it.",
+        step3Head: "Need a Hint?",
+        step3Desc: "Stuck? Click the HINT button to flash the location of missing items.",
+        closeBtn: "PLAY GAME"
+    },
+    gr: {
+        title: "Πώς να παίξεις",
+        step1Head: "Λίστα Αντικειμένων",
+        step1Desc: "Δες την μπάρα για να δεις ποια αντικείμενα κρύβονται στο δωμάτιο.",
+        step2Head: "Βρες & Πάτα",
+        step2Desc: "Εντόπισε το αντικείμενο στη σκηνή και πάτα το για να το συλλέξεις.",
+        step3Head: "Χρειάζεσαι Βοήθεια;",
+        step3Desc: "Κόλλησες; Πάτα το κουμπί HINT για να σου δείξει πού είναι τα αντικείμενα.",
+        closeBtn: "ΠΑΙΞΕ"
+    }
+};
+
 window.toggleTutorial = function() {
     const modal = document.getElementById('tutorial-modal');
-    modal.classList.toggle('show');
+    if(modal) modal.classList.toggle('show');
 }
+
+function updateTutorialLanguage() {
+    const storedLang = localStorage.getItem('gameLanguage'); 
+    let lang = 'en'; 
+    
+    if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') {
+        lang = 'gr';
+    }
+
+    const t = tutorialData[lang];
+    
+    // Safely update elements if they exist
+    if(document.getElementById('tut-title')) 
+        document.getElementById('tut-title').innerText = t.title;
+    
+    if(document.getElementById('tut-step1-head')) {
+        document.getElementById('tut-step1-head').innerText = t.step1Head;
+        document.getElementById('tut-step1-desc').innerText = t.step1Desc;
+    }
+    
+    if(document.getElementById('tut-step2-head')) {
+        document.getElementById('tut-step2-head').innerText = t.step2Head;
+        document.getElementById('tut-step2-desc').innerText = t.step2Desc;
+    }
+    
+    if(document.getElementById('tut-step3-head')) {
+        document.getElementById('tut-step3-head').innerText = t.step3Head;
+        document.getElementById('tut-step3-desc').innerText = t.step3Desc;
+    }
+    
+    if(document.getElementById('tut-close-btn'))
+        document.getElementById('tut-close-btn').innerText = t.closeBtn;
+}
+
+function initTutorial() {
+    updateTutorialLanguage();
+}
+
 
 /* ---------- build the icon bar ---------- */
 function buildIconBar() {
@@ -154,7 +213,7 @@ function updateHintButton() {
     }
 }
 
-/* ---------- compute rendered image rectangle ---------- */
+/* ---------- compute rendered image rectangle (CRITICAL - DO NOT TOUCH) ---------- */
 function getImageRect() {
   const img = bgImage;
   if (!img || !img.complete || img.naturalWidth === 0) return null;
@@ -190,7 +249,7 @@ function getImageRect() {
   };
 }
 
-/* ---------- position hotspots ---------- */
+/* ---------- position hotspots (CRITICAL - DO NOT TOUCH) ---------- */
 function positionHotspots() {
   const rect = getImageRect();
   if (!rect) return;
@@ -246,8 +305,14 @@ function initialize() {
   buildHotspots();
   updateHintButton();
 
-  // Show Tutorial immediately on load
-  toggleTutorial(); 
+  // 1. Initialize Tutorial Text
+  initTutorial(); 
+
+  // 2. Force Tutorial to Pop Up (with small delay to ensure DOM is ready)
+  setTimeout(() => {
+    const modal = document.getElementById('tutorial-modal');
+    if (modal) modal.classList.add('show');
+  }, 100);
 
   function safePosition() {
     positionHotspots();

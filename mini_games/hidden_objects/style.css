@@ -192,7 +192,7 @@ html,body { height: 100%; height:100dvh; margin:0; padding:0; font-family:Arial,
 #help-btn {
   position: absolute;
   top: 15px;
-  left: 15px; /* Placed on left to avoid HINT button */
+  left: 15px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -218,7 +218,7 @@ html,body { height: 100%; height:100dvh; margin:0; padding:0; font-family:Arial,
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.85); /* Dark background */
+  background-color: rgba(0,0,0,0.85);
   z-index: 9999; /* Highest priority */
   justify-content: center;
   align-items: center;
@@ -302,7 +302,7 @@ html,body { height: 100%; height:100dvh; margin:0; padding:0; font-family:Arial,
   margin-top: 20px;
   width: 100%;
   transition: transform 0.1s, background-color 0.2s;
-  box-shadow: 0 4px 0 #c0392b; /* 3D effect */
+  box-shadow: 0 4px 0 #c0392b;
 }
 
 .close-btn-red:hover { background-color: #ff5e4d; }

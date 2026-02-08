@@ -29,17 +29,17 @@
     </div>
   </div>
 
-  <div id="tutorial-modal" class="modal">
+ <div id="tutorial-modal" class="modal">
     <div class="modal-content">
-        <h2>How to Play</h2>
+        <h2 id="tut-title">How to Play</h2>
         
         <div class="tutorial-step">
             <div class="step-img" style="background-color: #34495e;">
                 <span>📋</span>
             </div>
             <div class="step-text">
-                <h3>Check the List</h3>
-                <p>Look at the icon bar to see which items are hidden in the room.</p>
+                <h3 id="tut-step1-head">Check the List</h3>
+                <p id="tut-step1-desc">Look at the icon bar to see which items are hidden in the room.</p>
             </div>
         </div>
 
@@ -48,8 +48,8 @@
                 <span>👆</span>
             </div>
             <div class="step-text">
-                <h3>Find & Click</h3>
-                <p>Spot the object in the scene and click it to collect it.</p>
+                <h3 id="tut-step2-head">Find & Click</h3>
+                <p id="tut-step2-desc">Spot the object in the scene and click it to collect it.</p>
             </div>
         </div>
 
@@ -58,12 +58,12 @@
                 <span>💡</span>
             </div>
             <div class="step-text">
-                <h3>Need a Hint?</h3>
-                <p>Stuck? Click the HINT button to flash the location of missing items.</p>
+                <h3 id="tut-step3-head">Need a Hint?</h3>
+                <p id="tut-step3-desc">Stuck? Click the HINT button to flash the location of missing items.</p>
             </div>
         </div>
 
-        <button class="close-btn-red" onclick="toggleTutorial()">PLAY GAME</button>
+        <button id="tut-close-btn" class="close-btn-red" onclick="toggleTutorial()">PLAY GAME</button>
     </div>
   </div>
 
