@@ -2,8 +2,8 @@
      "Reward": {
         "image": "images/room_3/reward.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Reward For Dance Competition",
+            "gr": "Ανταμοιβή για Διαγωνισμό Χορού"
         },
          "description": {
             "en": "No origin",
@@ -13,8 +13,8 @@
     "Dance_Schedule": {
         "image": "images/room_3/dance_schedule.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Carnet de bal Dance Schedule",
+            "gr": "Carnet de bal Πρόγραμμα χορού"
         },
          "description": {
             "en": "No origin",

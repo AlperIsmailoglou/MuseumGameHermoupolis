@@ -29,7 +29,10 @@ const tutorialData = {
         step2Desc: "A Green flash means the piece is correct and will lock in place.",
         step3Head: "Wrong Spot?",
         step3Desc: "A Red flash means it's not quite right. It will return to the tray.",
-        closeBtn: "START ADVENTURE"
+        closeBtn: "START ADVENTURE",
+        winTitle: "Restored!",
+        winDesc: "The plate is whole again.",
+        winBtn: "Continue Adventure"
     },
     gr: {
         title: "Πώς να παίξεις",
@@ -39,24 +42,53 @@ const tutorialData = {
         step2Desc: "Η πράσινη λάμψη σημαίνει σωστή θέση και το κομμάτι κλειδώνει.",
         step3Head: "Λάθος Θέση;",
         step3Desc: "Η κόκκινη λάμψη σημαίνει λάθος. Το κομμάτι θα επιστρέψει στον δίσκο.",
-        closeBtn: "ΕΚΚΙΝΗΣΗ"
+        closeBtn: "ΕΚΚΙΝΗΣΗ",
+        winTitle: "Αποκαταστάθηκε!",
+        winDesc: "Το πιάτο είναι και πάλι ολόκληρο.",
+        winBtn: "Συνέχεια Περιπέτειας"
     }
 };
 
 function updateTutorialLanguage() {
     const storedLang = localStorage.getItem('gameLanguage'); 
-    let lang = (storedLang === 'gr' || storedLang === 'el') ? 'gr' : 'en';
+    let lang = 'en'; 
+    
+    if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') {
+        lang = 'gr';
+    }
 
     const t = tutorialData[lang];
     
-    document.getElementById('tut-title').innerText = t.title;
-    document.getElementById('tut-step1-head').innerText = t.step1Head;
-    document.getElementById('tut-step1-desc').innerText = t.step1Desc;
-    document.getElementById('tut-step2-head').innerText = t.step2Head;
-    document.getElementById('tut-step2-desc').innerText = t.step2Desc;
-    document.getElementById('tut-step3-head').innerText = t.step3Head;
-    document.getElementById('tut-step3-desc').innerText = t.step3Desc;
-    document.getElementById('tut-close-btn').innerText = t.closeBtn;
+    if(document.getElementById('tut-title')) 
+        document.getElementById('tut-title').innerText = t.title;
+    
+    if(document.getElementById('tut-step1-head')) {
+        document.getElementById('tut-step1-head').innerText = t.step1Head;
+        document.getElementById('tut-step1-desc').innerText = t.step1Desc;
+    }
+    
+    if(document.getElementById('tut-step2-head')) {
+        document.getElementById('tut-step2-head').innerText = t.step2Head;
+        document.getElementById('tut-step2-desc').innerText = t.step2Desc;
+    }
+    
+    if(document.getElementById('tut-step3-head')) {
+        document.getElementById('tut-step3-head').innerText = t.step3Head;
+        document.getElementById('tut-step3-desc').innerText = t.step3Desc;
+    }
+    
+    if(document.getElementById('tut-close-btn'))
+        document.getElementById('tut-close-btn').innerText = t.closeBtn;
+   
+    if(document.getElementById('win-title'))
+        document.getElementById('win-title').innerText = t.winTitle;
+
+    if(document.getElementById('win-desc'))
+        document.getElementById('win-desc').innerText = t.winDesc;
+
+    if(document.getElementById('play-again-btn'))
+        document.getElementById('play-again-btn').innerText = t.winBtn;
+
 }
 
 window.toggleTutorial = function() {

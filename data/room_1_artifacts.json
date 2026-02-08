@@ -4,7 +4,7 @@
         "image": "images/room_1/old_mural.jpg",
         "name": {
             "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "gr": "Απομεινάρια από παλιά τοιχογραφία"
         },
         "description": {
             "en": "After heavy damage the room is paintad however this spot is left intentionally",
@@ -15,7 +15,7 @@
         "image": "images/room_1/wooden_ship.jpg",
         "name": {
             "en": "Hand crafted wooden ship",
-            "gr": "Αρχαίο Νόμισμα"
+            "gr": "Χειροποίητο ξύλινο καράβι"
         },
         "description": {
             "en": "No origin",

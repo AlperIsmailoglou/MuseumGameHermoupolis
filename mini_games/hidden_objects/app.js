@@ -1,7 +1,6 @@
-/* ---------- CONFIG ---------- */
+
 const IMAGE_SRC = "Master_bedroom.png";
 
-// HINT CONFIGURATION
 const MAX_HINTS = 1;     
 const HINT_TIME = 500;   
 
@@ -43,20 +42,14 @@ const hotspots = [
   } 
 ];
 
-/* ---------- DOM references ---------- */
 const wrapper = document.getElementById("game-wrapper");
 const iconBar = document.getElementById("icon-bar");
 const bgImage = document.getElementById("bg-image");
 const hotspotLayer = document.getElementById("hotspot-layer");
 const hintBtn = document.getElementById("hint-btn");
 
-/* Track found state */
 const found = new Set();
 let hintsUsed = 0;
-
-/* =========================================
-   BILINGUAL TUTORIAL MODULE (INTEGRATED)
-   ========================================= */
 
 const tutorialData = {
     en: {
@@ -96,7 +89,6 @@ function updateTutorialLanguage() {
 
     const t = tutorialData[lang];
     
-    // Safely update elements if they exist
     if(document.getElementById('tut-title')) 
         document.getElementById('tut-title').innerText = t.title;
     
@@ -124,7 +116,6 @@ function initTutorial() {
 }
 
 
-/* ---------- build the icon bar ---------- */
 function buildIconBar() {
   iconBar.innerHTML = ""; 
   hotspots.forEach(h => {
@@ -142,7 +133,6 @@ function buildIconBar() {
   });
 }
 
-/* ---------- create hotspot DOM elements ---------- */
 function buildHotspots() {
   hotspotLayer.innerHTML = "";
   hotspots.forEach(h => {
@@ -160,16 +150,13 @@ function buildHotspots() {
   });
 }
 
-/* ---------- When a hotspot is clicked (found) ---------- */
 function onHotspotClick(id) {
   if (found.has(id)) return;
   found.add(id);
 
-  // highlight icon
   const tile = iconBar.querySelector(`.icon[data-id="${id}"]`);
   if (tile) tile.classList.add("found");
 
-  // highlight hotspot (Green)
   const hs = hotspotLayer.querySelector(`.hotspot[data-id="${id}"]`);
   if (hs) {
     hs.classList.add("found");
@@ -179,7 +166,6 @@ function onHotspotClick(id) {
   checkWinCondition();
 }
 
-/* ---------- HINT FUNCTIONALITY ---------- */
 hintBtn.addEventListener('click', () => {
     if (hintsUsed >= MAX_HINTS) return;
     
@@ -213,7 +199,6 @@ function updateHintButton() {
     }
 }
 
-/* ---------- compute rendered image rectangle (CRITICAL - DO NOT TOUCH) ---------- */
 function getImageRect() {
   const img = bgImage;
   if (!img || !img.complete || img.naturalWidth === 0) return null;
@@ -249,7 +234,6 @@ function getImageRect() {
   };
 }
 
-/* ---------- position hotspots (CRITICAL - DO NOT TOUCH) ---------- */
 function positionHotspots() {
   const rect = getImageRect();
   if (!rect) return;
@@ -275,7 +259,6 @@ function positionHotspots() {
   });
 }
 
-/* ---------- orientation check ---------- */
 function checkOrientation() {
   if (window.innerWidth > window.innerHeight) {
     wrapper.classList.add("landscape");
@@ -286,7 +269,6 @@ function checkOrientation() {
   }
 }
 
-/* ---------- win condition check ---------- */
 function checkWinCondition() {
   if (found.size === hotspots.length) {
     document.getElementById("win-popup").classList.remove("hidden");
@@ -299,16 +281,13 @@ function checkWinCondition() {
   }
 }
 
-/* ---------- initialize everything ---------- */
 function initialize() {
   buildIconBar();
   buildHotspots();
   updateHintButton();
 
-  // 1. Initialize Tutorial Text
   initTutorial(); 
 
-  // 2. Force Tutorial to Pop Up (with small delay to ensure DOM is ready)
   setTimeout(() => {
     const modal = document.getElementById('tutorial-modal');
     if (modal) modal.classList.add('show');

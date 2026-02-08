@@ -1,4 +1,4 @@
-// --- CONFIGURATION ---
+
 const TARGET_SCORE = 100;
 const PROGRESS_PER_TAP = 4; 
 
@@ -6,7 +6,6 @@ let currentProgress = 0;
 let isMirrored = false;
 let isWinning = false;
 
-// --- ELEMENTS ---
 const handleImg = document.getElementById('handle-img');
 const progressBar = document.getElementById('progress-fill');
 const statusText = document.getElementById('status-text');
@@ -41,7 +40,7 @@ function winGame() {
     isWinning = true;
     setTimeout(() => {
         winScreen.style.display = "flex";
-        // Check if global game state exists (from your file include)
+        
         if (typeof setFlag === 'function') {
             setFlag('Ice_cream_solved', true);
         } else {
@@ -50,7 +49,6 @@ function winGame() {
     }, 300);
 }
 
-// --- INPUTS ---
 crankBtn.addEventListener('mousedown', churn);
 crankBtn.addEventListener('touchstart', (e) => { 
     e.preventDefault(); 
@@ -65,11 +63,6 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-/* =========================================
-   BILINGUAL TUTORIAL MODULE
-   ========================================= */
-
-// 1. CONFIGURATION: Updated for ICE CREAM GAME
 const tutorialData = {
     en: {
         title: "How to Make Ice Cream",
@@ -79,7 +72,9 @@ const tutorialData = {
         step2Desc: "Tap the 'TAP TO TURN' button repeatedly or press SPACEBAR to turn the handle.",
         step3Head: "Winning",
         step3Desc: "Fill the progress bar to 100% to finish the ice cream!",
-        closeBtn: "START CHURNING"
+        closeBtn: "START CHURNING",
+        winTitle: "It is ready",
+        winBtn: "Continue Adventure"
     },
     gr: {
         title: "Πώς να φτιάξεις Παγωτό",
@@ -89,20 +84,19 @@ const tutorialData = {
         step2Desc: "Πάτα το κουμπί 'TAP TO TURN' επανειλημμένα ή το SPACEBAR για να γυρίσεις τη μανιβέλα.",
         step3Head: "Νίκη",
         step3Desc: "Γέμισε τη μπάρα στο 100% για να ολοκληρώσεις το παγωτό!",
-        closeBtn: "ΞΕΚΙΝΑ ΤΟ ΓΥΡΙΣΜΑ"
+        closeBtn: "ΞΕΚΙΝΑ ΤΟ ΓΥΡΙΣΜΑ",
+        winTitle: "Είναι έτοιμο",
+        winBtn: "Συνέχεια Περιπέτειας"
     }
 };
-
-// 2. TOGGLE FUNCTION
 window.toggleTutorial = function() {
     const modal = document.getElementById('tutorial-modal');
     modal.classList.toggle('show');
 }
 
-// 3. LANGUAGE UPDATE FUNCTION
 function updateTutorialLanguage() {
     const storedLang = localStorage.getItem('gameLanguage'); 
-    let lang = 'en'; // Default
+    let lang = 'en'; 
     
     if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') {
         lang = 'gr';
@@ -130,9 +124,13 @@ function updateTutorialLanguage() {
     
     if(document.getElementById('tut-close-btn'))
         document.getElementById('tut-close-btn').innerText = t.closeBtn;
+
+    if(document.getElementById('win-title'))
+        document.getElementById('win-title').innerText = t.winTitle;
+
+    if(document.getElementById('restart-btn'))
+        document.getElementById('restart-btn').innerText = t.winBtn;
 }
 
-// 4. INITIALIZATION
-// Call this immediately to set text and open the modal
 updateTutorialLanguage();
 toggleTutorial();

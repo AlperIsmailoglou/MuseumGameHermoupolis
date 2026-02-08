@@ -1,4 +1,4 @@
-/* --- CONFIG --- */
+
 const gridSize = 3; 
 const tileSize = 125; 
 const gapSize = 2;    
@@ -9,11 +9,9 @@ const board = document.getElementById("board");
 const winBox = document.getElementById("win-message");
 const startBtn = document.getElementById("start-btn");
 
-// Game State
 let tiles = [0, 1, 2, 3, 4, 5, 6, 7, 8];
 let isGameActive = false; 
 
-// Drag Variables
 let activeTile = null;
 let startX = 0, startY = 0;
 let moveAxis = null; 
@@ -22,11 +20,7 @@ let currentTranslate = 0;
 let dragRaf = null; 
 let resetTimer = null; 
 
-/* =========================================
-   BILINGUAL TUTORIAL MODULE
-   ========================================= */
 
-// 1. CONFIGURATION
 const tutorialData = {
     en: {
         title: "How to Play",
@@ -49,19 +43,14 @@ const tutorialData = {
         closeBtn: "ΚΛΕΙΣΙΜΟ"
     }
 };
-
-// 2. TOGGLE FUNCTION
 window.toggleTutorial = function() {
     const modal = document.getElementById('tutorial-modal');
     modal.classList.toggle('show');
 }
 
-// 3. LANGUAGE UPDATE FUNCTION
 function updateTutorialLanguage() {
-    // Detect Language from LocalStorage 
-    // (Assuming main game saves 'gr' or 'el' or 'Greek')
     const storedLang = localStorage.getItem('gameLanguage'); 
-    let lang = 'en'; // Default
+    let lang = 'en'; 
     
     if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') {
         lang = 'gr';
@@ -69,7 +58,6 @@ function updateTutorialLanguage() {
 
     const t = tutorialData[lang];
     
-    // Update DOM elements safely
     if(document.getElementById('tut-title')) 
         document.getElementById('tut-title').innerText = t.title;
     
@@ -92,28 +80,23 @@ function updateTutorialLanguage() {
         document.getElementById('tut-close-btn').innerText = t.closeBtn;
 }
 
-// 4. INITIALIZATION 
 function initTutorial() {
     updateTutorialLanguage();
     
-    // Auto-open on start
     const modal = document.getElementById('tutorial-modal');
     if (modal && !modal.classList.contains('show')) {
         toggleTutorial();
     }
 }
 
-/* --- INITIALIZE GAME --- */
 function initGame() {
     renderBoard();
     board.classList.add("locked"); 
     
-    // Call the tutorial init here
     initTutorial();
 }
 
 
-/* --- RENDER BOARD --- */
 function renderBoard() {
     board.innerHTML = "";
     
@@ -144,7 +127,6 @@ function renderBoard() {
     });
 }
 
-/* --- GAME FLOW --- */
 function startGame() {
     winBox.classList.add("hidden");
     isGameActive = false; 
@@ -180,7 +162,6 @@ function startGame() {
     }, 100);
 }
 
-/* --- SKIP LOGIC --- */
 function skipGame() {
     if (!confirm("Are you sure you want to skip this puzzle?")) {
         return; 
@@ -205,7 +186,6 @@ function skipGame() {
     }, 1500); 
 }
 
-/* --- POINTER LOGIC --- */
 function handlePointerDown(e) {
     if (!isGameActive) return; 
 
@@ -314,7 +294,6 @@ function handlePointerUp(e) {
     }
 }
 
-/* --- WIN CHECK --- */
 function checkWin() {
     if (!isGameActive) return;
     const isSolved = tiles.every((val, index) => val === index);

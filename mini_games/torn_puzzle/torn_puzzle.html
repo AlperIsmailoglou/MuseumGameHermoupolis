@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,17 +8,18 @@
     <link rel="stylesheet" href="style.css">
     <script src="../../js/game_state.js"></script>
 </head>
+
 <body>
 
     <button id="help-btn" onclick="toggleTutorial()">?</button>
-    
+
     <div id="win-modal" class="modal">
         <div class="modal-content win-content">
             <div style="font-size: 50px;">🎉</div>
-            <h2 style="color: #27ae60; border-bottom: none;">Memory Restored!</h2>
-            <p style="color: #555; font-size: 1.1rem;">You have successfully repaired the document.</p>
-            
-            <button class="continue-btn" onclick="window.location.href='../../rooms/room_5.html'">
+            <h2 id="win-title" style="color: #27ae60; border-bottom: none;">Memory Restored!</h2>
+            <p id="win-desc" style="color: #555; font-size: 1.1rem;">You have successfully repaired the document.</p>
+
+            <button id="win-btn" class="continue-btn" onclick="window.location.href='../../rooms/room_5.html'">
                 CONTINUE TO ADVENTURE ➔
             </button>
         </div>
@@ -26,10 +28,10 @@
     <div id="tutorial-modal" class="modal">
         <div class="modal-content">
             <h2 id="tut-title">How to Play</h2>
-            
+
             <div class="tutorial-step">
                 <div class="step-img" style="background-color: #34495e;">
-                    <span>🖱️</span> 
+                    <span>🖱️</span>
                 </div>
                 <div class="step-text">
                     <h3 id="tut-step1-head">Step 1 Title</h3>
@@ -67,11 +69,11 @@
         <div id="game-board-container">
             <div id="game-board">
                 <img src="torn_piece_left.png" id="fixed-left-piece" class="board-piece" alt="Left">
-                
+
                 <img src="torn_piece_right.png" id="ghost-guide-piece" class="board-piece ghost" alt="Ghost">
 
                 <div id="target-zone-piece" class="target-zone"></div>
-                
+
                 <div id="target-zone-glue" class="target-zone hidden"></div>
                 <div id="glue-effect"></div>
 
@@ -87,7 +89,7 @@
             <button id="btn-search-piece" class="tray-btn">SEARCH FOR PIECE</button>
             <img src="torn_piece_right.png" id="draggable-piece" class="tray-item hidden" alt="Piece">
 
-           <button id="btn-search-glue" class="tray-btn hidden">SEARCH FOR GLUE</button>
+            <button id="btn-search-glue" class="tray-btn hidden">SEARCH FOR GLUE</button>
 
             <div id="draggable-glue" class="tray-item glue-container hidden">
                 <img src="glue.png" alt="Glue Stick" draggable="false">
@@ -97,4 +99,5 @@
 
     <script src="app.js"></script>
 </body>
+
 </html>

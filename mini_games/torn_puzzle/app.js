@@ -1,4 +1,4 @@
-/* ================= GAME STATE ================= */
+
 const State = {
     step: 1,
     isDragging: false,
@@ -6,8 +6,6 @@ const State = {
     startPos: { x: 0, y: 0, parent: null }
 };
 
-/* ================= BILINGUAL TUTORIAL MODULE ================= */
-// 1. CONFIGURATION
 const tutorialData = {
     en: {
         title: "How to Play",
@@ -17,7 +15,23 @@ const tutorialData = {
         step2Desc: "Drag the piece to the right side of the document.",
         step3Head: "Apply Glue",
         step3Desc: "Drop the glue anywhere on the board to finish.",
-        closeBtn: "CLOSE"
+        closeBtn: "CLOSE",
+        
+        winTitle: "Memory Restored!",
+        winDesc: "You have successfully repaired the document.",
+        winBtn: "CONTINUE TO ADVENTURE ➔",
+
+        btnPiece: "SEARCH FOR PIECE",
+        btnGlue: "SEARCH FOR GLUE",
+
+        msgStart: "Tray is empty. Search for the missing piece.",
+        msgSearching: "Searching...",
+        msgFoundPiece: "Found it! Drag the piece to the right side of the board.",
+        msgFoundGlue: "Glue found! Drop it anywhere on the highlighted board.",
+        msgFits: "It fits! Search for glue.",
+        msgMissed: "Missed! Drop it on the highlighted board.",
+        msgMissedPiece: "Drag the piece to the right side.", 
+        msgMissedGlue: "Glue found! Drop it anywhere on the board." 
     },
     gr: {
         title: "Πώς να παίξεις",
@@ -27,62 +41,78 @@ const tutorialData = {
         step2Desc: "Σύρε το κομμάτι στη δεξιά πλευρά του εγγράφου.",
         step3Head: "Κόλλα",
         step3Desc: "Ρίξε την κόλλα οπουδήποτε στον πίνακα για να τελειώσεις.",
-        closeBtn: "ΚΛΕΙΣΙΜΟ"
+        closeBtn: "ΚΛΕΙΣΙΜΟ",
+
+        winTitle: "Η Μνήμη Αποκαταστάθηκε!",
+        winDesc: "Επιδιορθώσατε το έγγραφο με επιτυχία.",
+        winBtn: "ΣΥΝΕΧΕΙΑ ΣΤΗΝ ΠΕΡΙΠΕΤΕΙΑ ➔",
+
+        btnPiece: "ΑΝΑΖΗΤΗΣΗ ΚΟΜΜΑΤΙΟΥ",
+        btnGlue: "ΑΝΑΖΗΤΗΣΗ ΚΟΛΛΑΣ",
+
+        msgStart: "Ο δίσκος είναι άδειος. Αναζητήστε το κομμάτι.",
+        msgSearching: "Αναζήτηση...",
+        msgFoundPiece: "Βρέθηκε! Σύρε το κομμάτι στη δεξιά πλευρά.",
+        msgFoundGlue: "Η κόλλα βρέθηκε! Ρίξτε την οπουδήποτε στον πίνακα.",
+        msgFits: "Ταιριάζει! Αναζητήστε την κόλλα.",
+        msgMissed: "Αστοχία! Ρίξτε το στον επισημασμένο πίνακα.",
+        msgMissedPiece: "Σύρε το κομμάτι στη δεξιά πλευρά.",
+        msgMissedGlue: "Η κόλλα βρέθηκε! Ρίξτε την οπουδήποτε στον πίνακα."
     }
 };
-
-// 2. TOGGLE FUNCTION
+function getCurrentLang() {
+    const stored = localStorage.getItem('gameLanguage');
+    return (stored === 'gr' || stored === 'el' || stored === 'Greek') ? 'gr' : 'en';
+}
 window.toggleTutorial = function() {
     const modal = document.getElementById('tutorial-modal');
     modal.classList.toggle('show');
 }
 
-// 3. LANGUAGE UPDATE FUNCTION
 function updateTutorialLanguage() {
-    const storedLang = localStorage.getItem('gameLanguage'); 
-    let lang = 'en'; 
-    
-    if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') {
-        lang = 'gr';
-    }
-
+    const lang = getCurrentLang();
     const t = tutorialData[lang];
     
-    // Safely update DOM
-    if(document.getElementById('tut-title')) 
-        document.getElementById('tut-title').innerText = t.title;
-    
+    if(document.getElementById('tut-title')) document.getElementById('tut-title').innerText = t.title;
     if(document.getElementById('tut-step1-head')) {
         document.getElementById('tut-step1-head').innerText = t.step1Head;
         document.getElementById('tut-step1-desc').innerText = t.step1Desc;
     }
-    
     if(document.getElementById('tut-step2-head')) {
         document.getElementById('tut-step2-head').innerText = t.step2Head;
         document.getElementById('tut-step2-desc').innerText = t.step2Desc;
     }
-    
     if(document.getElementById('tut-step3-head')) {
         document.getElementById('tut-step3-head').innerText = t.step3Head;
         document.getElementById('tut-step3-desc').innerText = t.step3Desc;
     }
-    
-    if(document.getElementById('tut-close-btn'))
-        document.getElementById('tut-close-btn').innerText = t.closeBtn;
+    if(document.getElementById('tut-close-btn')) document.getElementById('tut-close-btn').innerText = t.closeBtn;
+
+    if(document.getElementById('win-title')) document.getElementById('win-title').innerText = t.winTitle;
+    if(document.getElementById('win-desc')) document.getElementById('win-desc').innerText = t.winDesc;
+    if(document.getElementById('win-btn')) document.getElementById('win-btn').innerText = t.winBtn;
+
+    if(els.btnPiece) els.btnPiece.innerText = t.btnPiece;
+    if(els.btnGlue) els.btnGlue.innerText = t.btnGlue;
+
+    const sb = els.status;
+    if(sb) {
+        if(State.step === 1) sb.innerText = t.msgStart;
+        else if(State.step === 2) sb.innerText = t.msgFoundPiece;
+        else if(State.step === 3) sb.innerText = t.msgFits;
+        else if(State.step === 4) sb.innerText = t.msgFoundGlue;
+    }
 }
 
-// 4. INITIALIZATION
 function initTutorial() {
     updateTutorialLanguage();
     
-    // Auto-open on start
     const modal = document.getElementById('tutorial-modal');
     if (modal && !modal.classList.contains('show')) {
         toggleTutorial();
     }
 }
 
-/* ================= DOM ELEMENTS & INIT ================= */
 const els = {
     btnPiece: document.getElementById('btn-search-piece'),
     btnGlue: document.getElementById('btn-search-glue'),
@@ -99,24 +129,27 @@ window.onload = () => {
     initTutorial();
 };
 
-/* ================= GAME LOGIC ================= */
 els.btnPiece.addEventListener('click', () => {
-    els.status.innerText = "Searching...";
+    const t = tutorialData[getCurrentLang()]; 
+    els.status.innerText = t.msgSearching;
+    
     setTimeout(() => {
         State.step = 2;
         els.btnPiece.classList.add('hidden');
         els.dragPiece.classList.remove('hidden');
-        els.status.innerText = "Found it! Drag the piece to the right side of the board.";
+        els.status.innerText = tutorialData[getCurrentLang()].msgFoundPiece;
     }, 400);
 });
 
 els.btnGlue.addEventListener('click', () => {
-    els.status.innerText = "Searching...";
+    const t = tutorialData[getCurrentLang()];
+    els.status.innerText = t.msgSearching;
+    
     setTimeout(() => {
         State.step = 4;
         els.btnGlue.classList.add('hidden');
         els.dragGlue.classList.remove('hidden');
-        els.status.innerText = "Glue found! Drop it anywhere on the highlighted board.";
+        els.status.innerText = tutorialData[getCurrentLang()].msgFoundGlue;
     }, 400);
 });
 
@@ -176,6 +209,7 @@ function setupDraggable(element, type) {
 
 function checkDropCoords(dropX, dropY, type, draggedElement) {
     let success = false;
+    const t=tutorialData[getCurrentLang()];
 
     const boardRect = els.boardContainer.getBoundingClientRect();
 
@@ -203,7 +237,7 @@ function checkDropCoords(dropX, dropY, type, draggedElement) {
                 els.placedPiece.classList.remove('hidden');
                 State.step = 3;
                 els.btnGlue.classList.remove('hidden');
-                els.status.innerText = "It fits! Search for glue.";
+                els.status.innerText = t.msgFits;
             }
         }
     }
@@ -223,8 +257,8 @@ function checkDropCoords(dropX, dropY, type, draggedElement) {
             els.boardContainer.style.borderColor = "#27ae60";
 
             setTimeout(() => {
+                updateTutorialLanguage();
                 document.getElementById('win-modal').classList.add('show');
-                // --- YOUR ORIGINAL FLAGS PRESERVED HERE ---
                 if (typeof setFlag === 'function') {
                     setFlag('Torn_puzzle_solved', true);
                 } else {
@@ -241,10 +275,10 @@ function checkDropCoords(dropX, dropY, type, draggedElement) {
         draggedElement.style.zIndex = '1000';
         draggedElement.style.visibility = 'visible';
 
-        els.status.innerText = "Missed! Drop it on the highlighted board.";
+        els.status.innerText =t.msgMissed;
         setTimeout(() => {
-            if (State.step === 2) els.status.innerText = "Drag the piece to the right side.";
-            if (State.step === 4) els.status.innerText = "Glue found! Drop it anywhere on the board.";
+            if (State.step === 2) els.status.innerText = currentT.msgMissedPiece;
+            if (State.step === 4) els.status.innerText = currentT.msgMissedGlue;
         }, 1500);
     }
 }

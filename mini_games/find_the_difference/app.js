@@ -1,8 +1,4 @@
-// =========================================
-//  BILINGUAL TUTORIAL MODULE
-// =========================================
 
-// 1. CONFIGURATION: TAILORED FOR "FIND THE DIFFERENCE"
 const tutorialData = {
     en: {
         title: "How to Play",
@@ -12,7 +8,10 @@ const tutorialData = {
         step2Desc: "Look at the image on your phone. Find what is different!",
         step3Head: "Tap to Find",
         step3Desc: "Tap the difference on your screen to mark it.",
-        closeBtn: "PLAY GAME"
+        closeBtn: "PLAY GAME",
+        winTitle: "Eureka",
+        winDesc: "You found all the differences.",
+        winBtn: "Continue Adventure"
     },
     gr: {
         title: "Πώς να παίξεις",
@@ -22,30 +21,28 @@ const tutorialData = {
         step2Desc: "Κοίτα την εικόνα στο κινητό σου. Βρες τι διαφέρει!",
         step3Head: "Πάτα τη Διαφορά",
         step3Desc: "Πάτα πάνω στη διαφορά στην οθόνη για να την επιλέξεις.",
-        closeBtn: "ΠΑΙΞΕ"
+        closeBtn: "ΠΑΙΞΕ",
+        winTitle: "Εύρηκα",
+        winDesc: "Βρήκες όλες τις διαφορές.",
+        winBtn: "Συνέχεια Περιπέτειας"
     }
 };
 
-// 2. TOGGLE FUNCTION (Open/Close)
 window.toggleTutorial = function() {
     const modal = document.getElementById('tutorial-modal');
     modal.classList.toggle('show');
 }
 
-// 3. LANGUAGE UPDATE FUNCTION
 function updateTutorialLanguage() {
-    // Detect Language from LocalStorage (standardized)
     const storedLang = localStorage.getItem('gameLanguage'); 
-    let lang = 'en'; // Default
+    let lang = 'en'; 
     
     if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') {
         lang = 'gr';
     }
 
     const t = tutorialData[lang];
-    
-    // Update DOM elements safely
-    if(document.getElementById('tut-title')) 
+        if(document.getElementById('tut-title')) 
         document.getElementById('tut-title').innerText = t.title;
     
     if(document.getElementById('tut-step1-head')) {
@@ -65,15 +62,21 @@ function updateTutorialLanguage() {
     
     if(document.getElementById('tut-close-btn'))
         document.getElementById('tut-close-btn').innerText = t.closeBtn;
+
+    if(document.getElementById('win-title'))
+        document.getElementById('win-title').innerText = t.winTitle;
+
+    if(document.getElementById('win-desc'))
+        document.getElementById('win-desc').innerText = t.winDesc;
+
+    if(document.getElementById('reset-btn'))
+        document.getElementById('reset-btn').innerText = t.winBtn;
 }
 
-// 4. INITIALIZATION 
 function initTutorial() {
     updateTutorialLanguage();
     
-    // Auto-open on start
     const modal = document.getElementById('tutorial-modal');
-    // Small delay to ensure render
     setTimeout(() => {
         if (modal && !modal.classList.contains('show')) {
             toggleTutorial();
@@ -82,25 +85,18 @@ function initTutorial() {
 }
 
 
-// =========================================
-//  MAIN GAME LOGIC
-// =========================================
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- INIT TUTORIAL ---
     initTutorial();
 
-    // --- CONFIGURATION ---
     let tipsAllowed = 1;      
     const hintDuration = 2000; 
     
-    // --- STATE VARIABLES ---
     let foundCount = 0;
     const diffItems = document.querySelectorAll('.diff-item');
     const totalDiffs = diffItems.length;
     
-    // --- DOM ELEMENTS ---
     const countDisplay = document.getElementById('count');
     const totalCountDisplay = document.getElementById('total-count');
     const tipsLeftDisplay = document.getElementById('tips-left');
@@ -108,33 +104,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const winMsg = document.getElementById('win-msg');
     const resetBtn = document.getElementById('reset-btn');
 
-    // --- INITIALIZATION ---
     totalCountDisplay.innerText = totalDiffs;
     tipsLeftDisplay.innerText = tipsAllowed;
 
-    // --- GAME INTERACTION ---
-
-    // 1. Handle clicking a difference
     diffItems.forEach(item => {
         item.addEventListener('click', function() {
             if(this.classList.contains('found')) return;
 
-            // Mark as found
             this.classList.add('found');
             this.classList.remove('hint-active');
 
-            // Update Score
             foundCount++;
             countDisplay.innerText = foundCount;
 
-            // Check for Win
             if(foundCount === totalDiffs) {
                 handleWin();
             }
         });
     });
 
-    // 2. Handle Hint Button
     hintBtn.addEventListener('click', () => {
         if (tipsAllowed > 0) {
             tipsAllowed--;
@@ -146,7 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.classList.add('hint-active');
             });
 
-            // Timer to remove highlight
             setTimeout(() => {
                 remaining.forEach(item => {
                     item.classList.remove('hint-active');
@@ -159,8 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-
-    // 3. Handle Win State
     function handleWin() {
         
         setTimeout(() => {
@@ -173,8 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Simulation: Flag 'Find_difference_solved' set to true");
         }
     }
-
-    // 4. Handle Continue Button
     resetBtn.addEventListener('click', () => {
         window.location.href = "../../rooms/room_1.html";
     });

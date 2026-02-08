@@ -24,78 +24,92 @@ let lastX = 0;
 let lastY = 0;
 let totalVisiblePixels = 0;
 
-/* =========================================
-   BILINGUAL TUTORIAL MODULE
-   ========================================= */
 
-// 1. CONFIGURATION: SHOE POLISH MECHANICS
-const tutorialData = {
+const languageData = {
     en: {
-        title: "How to Play",
-        step1Head: "Grab the Brush",
-        step1Desc: "Touch and drag the brush to pick it up.",
-        step2Head: "Scrub Dirt",
-        step2Desc: "Rub back and forth over the dirty spots to clean them.",
-        step3Head: "Win!",
-        step3Desc: "Clean 100% of the shoe to finish the game.",
-        closeBtn: "PLAY"
+        tutTitle: "How to Play",
+        tutStep1Head: "Grab the Brush",
+        tutStep1Desc: "Touch and drag the brush to pick it up.",
+        tutStep2Head: "Scrub Dirt",
+        tutStep2Desc: "Rub back and forth over the dirty spots to clean them.",
+        tutStep3Head: "Win!",
+        tutStep3Desc: "Clean 100% of the shoe to finish the game.",
+        tutCloseBtn: "PLAY",
+        
+        winHeading: "Perfect!",
+        winBtn: "Continue To Adventure",
+        uiCleaned: "Cleaned:",
+        uiInstructions: "Drag the brush to polish!"
     },
     gr: {
-        title: "Πώς να παίξεις",
-        step1Head: "Πιάσε τη Βούρτσα",
-        step1Desc: "Πάτα και σύρε τη βούρτσα για να την πιάσεις.",
-        step2Head: "Τρίψε τη Βρωμιά",
-        step2Desc: "Τρίψε πέρα-δώθε στα βρώμικα σημεία για να καθαρίσουν.",
-        step3Head: "Νίκη!",
-        step3Desc: "Καθάρισε το 100% του παπουτσιού για να κερδίσεις.",
-        closeBtn: "ΠΑΙΞΕ"
+        tutTitle: "Πώς να παίξεις",
+        tutStep1Head: "Πιάσε τη Βούρτσα",
+        tutStep1Desc: "Πάτα και σύρε τη βούρτσα για να την πιάσεις.",
+        tutStep2Head: "Τρίψε τη Βρωμιά",
+        tutStep2Desc: "Τρίψε πέρα-δώθε στα βρώμικα σημεία για να καθαρίσουν.",
+        tutStep3Head: "Νίκη!",
+        tutStep3Desc: "Καθάρισε το 100% του παπουτσιού για να κερδίσεις.",
+        tutCloseBtn: "ΠΑΙΞΕ",
+        
+        winHeading: "Τέλεια!",
+        winBtn: "Συνέχεια στην Περιπέτεια",
+        uiCleaned: "Γυαλίστηκε:", 
+        uiInstructions: "Σύρε το βούρτσα για να γυαλίσεις!"
     }
 };
 
-// 2. TOGGLE FUNCTION
 window.toggleTutorial = function() {
     const modal = document.getElementById('tutorial-modal');
     modal.classList.toggle('show');
 }
 
-// 3. LANGUAGE UPDATE FUNCTION
-function updateTutorialLanguage() {
+function updateLanguage() {
     const storedLang = localStorage.getItem('gameLanguage'); 
-    let lang = 'en'; // Default
+    let lang = 'en'; 
     
     if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') {
         lang = 'gr';
     }
 
-    const t = tutorialData[lang];
+    const t = languageData[lang];
     
     if(document.getElementById('tut-title')) 
-        document.getElementById('tut-title').innerText = t.title;
+        document.getElementById('tut-title').innerText = t.tutTitle;
     
     if(document.getElementById('tut-step1-head')) {
-        document.getElementById('tut-step1-head').innerText = t.step1Head;
-        document.getElementById('tut-step1-desc').innerText = t.step1Desc;
+        document.getElementById('tut-step1-head').innerText = t.tutStep1Head;
+        document.getElementById('tut-step1-desc').innerText = t.tutStep1Desc;
     }
     
     if(document.getElementById('tut-step2-head')) {
-        document.getElementById('tut-step2-head').innerText = t.step2Head;
-        document.getElementById('tut-step2-desc').innerText = t.step2Desc;
+        document.getElementById('tut-step2-head').innerText = t.tutStep2Head;
+        document.getElementById('tut-step2-desc').innerText = t.tutStep2Desc;
     }
     
     if(document.getElementById('tut-step3-head')) {
-        document.getElementById('tut-step3-head').innerText = t.step3Head;
-        document.getElementById('tut-step3-desc').innerText = t.step3Desc;
+        document.getElementById('tut-step3-head').innerText = t.tutStep3Head;
+        document.getElementById('tut-step3-desc').innerText = t.tutStep3Desc;
     }
     
     if(document.getElementById('tut-close-btn'))
-        document.getElementById('tut-close-btn').innerText = t.closeBtn;
+        document.getElementById('tut-close-btn').innerText = t.tutCloseBtn;
+
+    if(document.getElementById('win-heading'))
+        document.getElementById('win-heading').innerText = t.winHeading;
+        
+    if(document.getElementById('win-btn'))
+        document.getElementById('win-btn').innerText = t.winBtn;
+        
+    if(document.getElementById('ui-cleaned-label'))
+        document.getElementById('ui-cleaned-label').innerText = t.uiCleaned;
+        
+    if(document.getElementById('ui-instructions'))
+        document.getElementById('ui-instructions').innerText = t.uiInstructions;
 }
 
-// 4. INITIALIZATION 
 function initTutorial() {
-    updateTutorialLanguage();
+    updateLanguage();
     
-    // Auto-open on start
     setTimeout(() => {
         const modal = document.getElementById('tutorial-modal');
         if (modal && !modal.classList.contains('show')) {
@@ -104,9 +118,6 @@ function initTutorial() {
     }, 500);
 }
 
-/* =========================================
-   MAIN GAME LOGIC
-   ========================================= */
 
 function init() {
     if (cleanShoeImg.complete) {
@@ -118,7 +129,6 @@ function init() {
     setupEventListeners();
     window.addEventListener('resize', setupCanvas);
 
-    // Call the tutorial init instead of custom logic
     initTutorial();
 }
 
@@ -196,7 +206,6 @@ function calculateInitialPixels() {
     console.log("Total Countable Pixels in Box:", totalVisiblePixels);
 }
 
-// --- DRAG LOGIC ---
 function getRelativePos(e) {
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const clientY = e.touches ? e.touches[0].clientY : e.clientY;

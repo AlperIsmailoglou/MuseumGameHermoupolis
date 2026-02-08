@@ -2,8 +2,8 @@
      "Ladies": {
         "image": "images/room_4/ladies.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Ladies Dress ",
+            "gr": "Γυναικεία Ενδυμασία"
         },
          "description": {
             "en": "No origin",
@@ -13,8 +13,8 @@
     "Mannequin": {
         "image": "images/room_4/mannequin.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Mannequin",
+            "gr": "Μανεκέν"
         },
          "description": {
             "en": "No origin",

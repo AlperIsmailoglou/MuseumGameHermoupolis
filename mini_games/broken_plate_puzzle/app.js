@@ -21,7 +21,6 @@ const resetBtn = document.getElementById('reset-btn');
 const continueBtn = document.getElementById('play-again-btn'); 
 
 function initGame() {
-    // Cleanup existing pieces and overlays
     document.querySelectorAll('.puzzle-piece').forEach(el => el.remove());
     document.querySelectorAll('.flash-overlay').forEach(el => el.remove());
     pieces = [];
@@ -39,14 +38,12 @@ function initGame() {
         }, 100);
     };
 
-    // Initialize Tutorial (Language check + Auto-open)
     initTutorial();
 }
 
 window.onload = initGame;
 resetBtn.addEventListener('click', initGame);
 
-// Go back to Room 1 on win
 continueBtn.addEventListener('click', () => {
     window.location.href = "../../rooms/room_1.html";
 });
@@ -197,8 +194,6 @@ function handleStart(e) {
     e.preventDefault(); 
     selectedPiece = e.target;
     selectedPiece.style.zIndex = ++zIndexCounter;
-
-    // Timer Cancellation
     if (selectedPiece.returnTimer) {
         clearTimeout(selectedPiece.returnTimer);
         selectedPiece.returnTimer = null;
@@ -334,11 +329,7 @@ function returnToTrayAnimated(piece) {
     }, RETURN_DELAY);
 }
 
-/* =========================================
-   BILINGUAL TUTORIAL MODULE
-   ========================================= */
 
-// 1. CONFIGURATION
 const tutorialData = {
     en: {
         title: "How to Play",
@@ -348,7 +339,13 @@ const tutorialData = {
         step2Desc: "If the position is correct, the piece flashes green and locks.",
         step3Head: "Watch Out",
         step3Desc: "Incorrect pieces flash red and return to the tray after 1 second.",
-        closeBtn: "CLOSE"
+        closeBtn: "CLOSE",
+        winTitle: "Restored!",
+        winDesc: "The plate is whole again.",
+        winBtn: "Continue Adventure",
+        winTitle: "Restored!",
+        winDesc: "The plate is whole again.",
+        winBtn: "Continue Adventure"
     },
     gr: {
         title: "Πώς να παίξεις",
@@ -358,17 +355,18 @@ const tutorialData = {
         step2Desc: "Αν η θέση είναι σωστή, το κομμάτι πρασινίζει και κλειδώνει.",
         step3Head: "Προσοχή",
         step3Desc: "Τα λάθος κομμάτια κοκκινίζουν και επιστρέφουν στον δίσκο.",
-        closeBtn: "ΚΛΕΙΣΙΜΟ"
+        closeBtn: "ΚΛΕΙΣΙΜΟ",
+        winTitle: "Αποκαταστάθηκε!",
+        winDesc: "Το πιάτο είναι και πάλι ολόκληρο.",
+        winBtn: "Συνέχεια Περιπέτειας",
+        
     }
 };
 
-// 2. TOGGLE FUNCTION
 window.toggleTutorial = function() {
     const modal = document.getElementById('tutorial-modal');
     modal.classList.toggle('show');
 }
-
-// 3. LANGUAGE UPDATE FUNCTION
 function updateTutorialLanguage() {
     const storedLang = localStorage.getItem('gameLanguage'); 
     let lang = 'en'; 
@@ -399,14 +397,23 @@ function updateTutorialLanguage() {
     
     if(document.getElementById('tut-close-btn'))
         document.getElementById('tut-close-btn').innerText = t.closeBtn;
+   
+    if(document.getElementById('win-title'))
+        document.getElementById('win-title').innerText = t.winTitle;
+
+    if(document.getElementById('win-desc'))
+        document.getElementById('win-desc').innerText = t.winDesc;
+
+    if(document.getElementById('play-again-btn'))
+        document.getElementById('play-again-btn').innerText = t.winBtn;
+
 }
 
-// 4. INITIALIZATION
 function initTutorial() {
     updateTutorialLanguage();
     
     const modal = document.getElementById('tutorial-modal');
-    // Ensure tutorial opens if not already open (and perhaps only on first visit if you wanted to add that logic)
+  
     if (modal && !modal.classList.contains('show')) {
         toggleTutorial();
     }

@@ -23,16 +23,16 @@
 
         <div class="win-screen" id="winScreen">
             <img src="win_condition.png" alt="Sparkle" class="win-image">
-            <h2 class="win-text">Perfect!</h2>
-            <button onclick="window.location.href='../../rooms/room_4.html'" class="replay-btn">Continue To Adventure</button>
+            <h2 class="win-text" id="win-heading">Perfect!</h2>
+            <button onclick="window.location.href='../../rooms/room_4.html'" class="replay-btn" id="win-btn">Continue To Adventure</button>
         </div>
 
         <div class="ui-container">
             <div class="progress-bar-container">
                 <div class="progress-bar-fill" id="progressBarFill"></div>
             </div>
-            <p class="progress-text">Cleaned: <span id="progressText">0</span>%</p>
-            <p class="instructions">Drag the rag to polish!</p>
+            <p class="progress-text"><span id="ui-cleaned-label">Cleaned:</span> <span id="progressText">0</span>%</p>
+            <p class="instructions" id="ui-instructions">Drag the rag to polish!</p>
         </div>
     </div>
 

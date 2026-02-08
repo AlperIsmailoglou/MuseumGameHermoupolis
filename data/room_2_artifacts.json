@@ -2,8 +2,8 @@
     "ice_cream_machine": {
         "image": "images/room_2/ice_cream_machine.jpg",
         "name": {
-            "en": "Remnants from old mural",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Ice cream machine",
+            "gr": "Παγωτομηχανή"
         },
         "description": {
             "en": "No origin",
@@ -13,8 +13,8 @@
     "inside_apron": {
         "image": "images/room_2/inside_apron.jpg",
         "name": {
-            "en": "Hand crafted wooden ship",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Inside Apron",
+            "gr": "Εσωτερική ποδιά"
         },
         "description": {
             "en": "No origin",
@@ -24,8 +24,8 @@
     "mug": {
         "image": "images/room_2/mug.jpg",
         "name": {
-            "en": "Hand crafted wooden ship",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Mug",
+            "gr": "Κούπα"
         },
         "description": {
             "en": "No origin",
@@ -35,8 +35,8 @@
     "outside_apron": {
         "image": "images/room_2/outside_apron.jpg",
         "name": {
-            "en": "Hand crafted wooden ship",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Outside Apron",
+            "gr": "Εξωτερική ποδιά"
         },
         "description": {
             "en": "No origin",
@@ -46,8 +46,8 @@
     "presser": {
         "image": "images/room_2/presser.jpg",
         "name": {
-            "en": "Hand crafted wooden ship",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Presser",
+            "gr": "Σιδερωτής"
         },
         "description": {
             "en": "No origin",
@@ -57,8 +57,8 @@
     "stove": {
         "image": "images/room_2/stove.jpg",
         "name": {
-            "en": "Hand crafted wooden ship",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Stove",
+            "gr": "Θερμάστρα"
         },
         "description": {
             "en": "No origin",
@@ -68,8 +68,8 @@
     "utensil": {
         "image": "images/room_2/utensil.jpg",
         "name": {
-            "en": "Hand crafted wooden ship",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Utensil",
+            "gr": "Σκεύος"
         },
         "description": {
             "en": "No origin",
@@ -79,8 +79,8 @@
     "utensil2": {
         "image": "images/room_2/utensil2.jpg",
         "name": {
-            "en": "Hand crafted wooden ship",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Utensil",
+            "gr": "Σκεύος"
         },
         "description": {
             "en": "No origin",
@@ -90,8 +90,8 @@
     "utensil3": {
         "image": "images/room_2/utensil3.jpg",
         "name": {
-            "en": "Hand crafted wooden ship",
-            "gr": "Αρχαίο Νόμισμα"
+            "en": "Utensil",
+            "gr": "Σκεύος"
         },
         "description": {
             "en": "No origin",
