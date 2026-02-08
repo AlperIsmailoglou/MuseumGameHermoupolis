@@ -1,0 +1,11 @@
+Guide_happy.png = Eric
+character2_happy = Natalia
+character3_happy = Marina
+character4_happy = Εμμανουήλ
+character5_happy = Αναστασία και Ελισάβετ
+character6_happy = Katerina
+character7_happy = Μάνθος
+character8_happy = Ιφιγένεια
+character9_happy = Αχιλλέας
+character10_happy = lais pirate
+character11_happy = lais alien

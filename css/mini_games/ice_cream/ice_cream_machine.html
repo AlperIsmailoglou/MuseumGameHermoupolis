@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ice Cream Turn Mini-Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../../js/game_state.js"></script>
+</head>
+<body>
+
+    <button id="help-btn" onclick="toggleTutorial()">?</button>
+
+    <div id="top-ui">
+        <div id="progress-container">
+            <div id="progress-fill"></div>
+            <div id="status-text">TURN PROGRESS: 0%</div>
+        </div>
+    </div>
+
+    <div id="game-area">
+        <div class="game-cabinet">
+            
+            <div class="machine-assembly">
+                <img id="bucket-img" src="ice_cream_machine.png" alt="Machine Body">
+                <div id="handle-anchor">
+                    <img id="handle-img" src="ice_cream_machine_handle.png" alt="Handle">
+                </div>
+            </div>
+
+            <div class="ingredients-panel">
+                <div class="ingredient-item">
+                    <div class="ing-icon">🥛</div> 
+                    <div class="tick-mark">✔</div>
+                </div>
+                
+                <div class="ingredient-item">
+                     <div class="ing-icon">🍬</div>
+                    <div class="tick-mark">✔</div>
+                </div>
+
+                <div class="ingredient-item">
+                     <div class="ing-icon">🧊</div>
+                    <div class="tick-mark">✔</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="controls-ui">
+        <button id="crank-btn">TAP TO TURN</button>
+    </div>
+
+    <div id="win-screen">
+        <h1>ICE CREAM READY!</h1>
+        <button onclick="window.location.href='../../rooms/room_2.html'" id="restart-btn">Continue to Adventure</button>
+    </div>
+
+    <div id="tutorial-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="tut-title">How to Play</h2>
+            
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #8b4513;">
+                    <span>🍦</span> 
+                </div>
+                <div class="step-text">
+                    <h3 id="tut-step1-head">Step 1 Title</h3>
+                    <p id="tut-step1-desc">Description for step 1.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #e67e22;">
+                    <span>👆</span>
+                </div>
+                <div class="step-text">
+                    <h3 id="tut-step2-head">Step 2 Title</h3>
+                    <p id="tut-step2-desc">Description for step 2.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #27ae60;">
+                    <span>🏁</span>
+                </div>
+                <div class="step-text">
+                    <h3 id="tut-step3-head">Step 3 Title</h3>
+                    <p id="tut-step3-desc">Description for step 3.</p>
+                </div>
+            </div>
+
+            <button id="tut-close-btn" class="close-btn-red" onclick="toggleTutorial()">CLOSE</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

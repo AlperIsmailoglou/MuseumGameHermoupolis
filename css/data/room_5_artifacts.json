@@ -1,0 +1,57 @@
+{
+      "Couch": {
+        "image": "images/room_5/couch.jpg",
+        "name": {
+            "en": "Couch",
+            "gr": "Καναπές"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Dress_Baggage": {
+        "image": "images/room_5/dress_baggage.jpg",
+        "name": {
+            "en": "Dress baggage",
+            "gr": "Αποσκευές ντυσίματος"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Pattern": {
+        "image": "images/room_5/pattern.jpg",
+        "name": {
+            "en": "Pattern",
+            "gr": "Μοτίβο"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Pattern2": {
+        "image": "images/room_5/pattern2.jpg",
+        "name": {
+            "en": "Pattern",
+            "gr": "Μοτίβο"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Pattern3": {
+        "image": "images/room_5/pattern3.jpg",
+        "name": {
+            "en": "Pattern",
+            "gr": "Μοτίβο"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    }
+}

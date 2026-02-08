@@ -1,0 +1,248 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    height: 100vh;
+    background: #fafafa;
+    overflow: hidden; /* Prevent scrolling generally */
+}
+
+h1 { margin-bottom: 10px; color: #333; }
+
+#win-message {
+    position: fixed;
+    top: 20px;
+    font-size: 26px;
+    padding: 15px 30px;
+    background: rgba(76, 175, 80, 0.9);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+    pointer-events: none; /* Let clicks pass through if needed */
+}
+
+.hidden { display: none; }
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+
+
+#board {
+   
+    width: fit-content;
+    height: fit-content;
+    
+    display: grid;
+    grid-template-columns: repeat(3, 125px);
+    grid-template-rows: repeat(3, 125px);
+    gap: 2px;
+    background: #333;
+    border: 4px solid #333;
+    border-radius: 4px;
+    touch-action: none; 
+    position: relative;
+    margin: auto; 
+}
+
+/* Visual cue that the board is locked */
+#board.locked .tile {
+    cursor: default;
+    filter: brightness(0.9);
+}
+
+.tile {
+    width: 125px;
+    height: 125px;
+    background-color: #ddd;
+    user-select: none;
+    cursor: grab;
+    will-change: transform; 
+    transition: transform 0.1s; /* Smooth snapping */
+}
+
+.tile:active {
+    cursor: grabbing;
+}
+
+.empty {
+    background: transparent !important;
+    cursor: default;
+}
+
+/* NEW: Style for the numbers overlay */
+.number {
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    /* This shadow ensures visibility on white OR black backgrounds */
+    text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+         2px 2px 4px rgba(0,0,0,0.8);
+    pointer-events: none; /* Important: clicks pass through to the tile */
+    z-index: 10;
+}
+
+/* ... Keep button and win-message same ... */
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    z-index: 10;
+}
+#help-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Kept to right as preferred in games */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-color: #3498db;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    z-index: 150; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#help-btn:hover { background-color: #2980b9; transform: scale(1.1); }
+
+/* --- MODAL BACKGROUND --- */
+.modal {
+    display: none; 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85); 
+    z-index: 300; 
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex; 
+    animation: fadeIn 0.3s;
+}
+
+/* --- MODAL BOX --- */
+.modal-content {
+    background-color: white;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    text-align: center;
+    max-height: 90vh; 
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+}
+
+/* --- STEPS ROW LAYOUT --- */
+.tutorial-step {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.step-img {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0; 
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-right: 15px;
+    color: white;
+}
+
+.step-text h3 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.step-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* --- CLOSE BUTTON --- */
+.close-btn-red {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    transition: transform 0.1s;
+}
+
+.close-btn-red:hover { background-color: #c0392b; }
+.close-btn-red:active { transform: scale(0.95); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.close-btn-red:hover { background-color: #c0392b; }
+.close-btn-red:active { transform: scale(0.95); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+#skip-btn {
+    background-color: #e67e22; /* Orange color to indicate special action */
+    margin-top: 10px;          /* Space between Start and Skip */
+    font-size: 14px;           /* Slightly smaller than Start button */
+    padding: 8px 16px;
+    opacity: 0.9;
+}
+
+#skip-btn:hover {
+    background-color: #d35400;
+    opacity: 1;
+}

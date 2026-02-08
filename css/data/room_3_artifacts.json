@@ -1,0 +1,24 @@
+{
+     "Reward": {
+        "image": "images/room_3/reward.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Dance_Schedule": {
+        "image": "images/room_3/dance_schedule.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    }
+}

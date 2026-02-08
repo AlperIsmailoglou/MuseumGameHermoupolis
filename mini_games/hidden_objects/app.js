@@ -1,72 +1,13 @@
+/* Hidden Objects game: Separate images, Green Found Highlight, Hint System, Tutorial */
 
-
+/* ---------- CONFIG ---------- */
 const IMAGE_SRC = "Master_bedroom.png";
 
 
+
+// HINT CONFIGURATION
 const MAX_HINTS = 1;     
 const HINT_TIME = 500;   
-
-const tutorialData = {
-    en: {
-        title: "How to Play",
-        step1Head: "Find Objects",
-        step1Desc: "Look at the side bar to see which items are hidden in the room.",
-        step2Head: "Click to Collect",
-        step2Desc: "Tap the hidden objects in the scene to remove them from your list.",
-        step3Head: "Use Hints",
-        step3Desc: "Stuck? Use the Hint button to briefly highlight the remaining items.",
-        closeBtn: "PLAY"
-    },
-    gr: {
-        title: "Πώς να παίξεις",
-        step1Head: "Βρες τα αντικείμενα",
-        step1Desc: "Δες τη λίστα στα πλάγια για να δεις ποια αντικείμενα κρύβονται στο δωμάτιο.",
-        step2Head: "Πάτα για συλλογή",
-        step2Desc: "Πάτα πάνω στα κρυμμένα αντικείμενα για να τα συλλέξεις.",
-        step3Head: "Βοήθεια",
-        step3Desc: "Κόλλησες; Πάτα το κουμπί HINT για να δεις πού βρίσκονται τα αντικείμενα.",
-        closeBtn: "ΠΑΙΞΕ"
-    }
-};
-
-window.toggleTutorial = function() {
-    const modal = document.getElementById('tutorial-modal');
-    modal.classList.toggle('show');
-}
-
-function updateTutorialLanguage() {
-    const storedLang = localStorage.getItem('gameLanguage'); 
-    let lang = 'en'; 
-    
-    if (storedLang === 'gr' || storedLang === 'el' || storedLang === 'Greek') {
-        lang = 'gr';
-    }
-
-    const t = tutorialData[lang];
-    
-    // Safety checks to prevent errors if IDs are missing
-    const elements = {
-        'tut-title': t.title,
-        'tut-step1-head': t.step1Head,
-        'tut-step1-desc': t.step1Desc,
-        'tut-step2-head': t.step2Head,
-        'tut-step2-desc': t.step2Desc,
-        'tut-step3-head': t.step3Head,
-        'tut-step3-desc': t.step3Desc,
-        'tut-close-btn': t.closeBtn
-    };
-
-    for (let id in elements) {
-        const el = document.getElementById(id);
-        if (el) el.innerText = elements[id];
-    }
-}
-
-function initTutorial() {
-    updateTutorialLanguage();
-    const modal = document.getElementById('tutorial-modal');
-    if (modal) modal.classList.add('show');
-}
 
 const hotspots = [
   { 
@@ -106,20 +47,25 @@ const hotspots = [
   } 
 ];
 
+/* ---------- DOM references ---------- */
 const wrapper = document.getElementById("game-wrapper");
 const iconBar = document.getElementById("icon-bar");
 const bgImage = document.getElementById("bg-image");
 const hotspotLayer = document.getElementById("hotspot-layer");
 const hintBtn = document.getElementById("hint-btn");
 
+/* Track found state */
 const found = new Set();
 let hintsUsed = 0;
 
+/* ---------- TUTORIAL LOGIC ---------- */
+// Make this global so the HTML button can call it
 window.toggleTutorial = function() {
     const modal = document.getElementById('tutorial-modal');
     modal.classList.toggle('show');
 }
 
+/* ---------- build the icon bar ---------- */
 function buildIconBar() {
   iconBar.innerHTML = ""; 
   hotspots.forEach(h => {
@@ -137,6 +83,7 @@ function buildIconBar() {
   });
 }
 
+/* ---------- create hotspot DOM elements ---------- */
 function buildHotspots() {
   hotspotLayer.innerHTML = "";
   hotspots.forEach(h => {
@@ -154,13 +101,16 @@ function buildHotspots() {
   });
 }
 
+/* ---------- When a hotspot is clicked (found) ---------- */
 function onHotspotClick(id) {
   if (found.has(id)) return;
   found.add(id);
 
+  // highlight icon
   const tile = iconBar.querySelector(`.icon[data-id="${id}"]`);
   if (tile) tile.classList.add("found");
 
+  // highlight hotspot (Green)
   const hs = hotspotLayer.querySelector(`.hotspot[data-id="${id}"]`);
   if (hs) {
     hs.classList.add("found");
@@ -170,6 +120,7 @@ function onHotspotClick(id) {
   checkWinCondition();
 }
 
+/* ---------- HINT FUNCTIONALITY ---------- */
 hintBtn.addEventListener('click', () => {
     if (hintsUsed >= MAX_HINTS) return;
     
@@ -203,6 +154,7 @@ function updateHintButton() {
     }
 }
 
+/* ---------- compute rendered image rectangle ---------- */
 function getImageRect() {
   const img = bgImage;
   if (!img || !img.complete || img.naturalWidth === 0) return null;
@@ -237,6 +189,8 @@ function getImageRect() {
     height: renderedH
   };
 }
+
+/* ---------- position hotspots ---------- */
 function positionHotspots() {
   const rect = getImageRect();
   if (!rect) return;
@@ -262,6 +216,7 @@ function positionHotspots() {
   });
 }
 
+/* ---------- orientation check ---------- */
 function checkOrientation() {
   if (window.innerWidth > window.innerHeight) {
     wrapper.classList.add("landscape");
@@ -272,6 +227,7 @@ function checkOrientation() {
   }
 }
 
+/* ---------- win condition check ---------- */
 function checkWinCondition() {
   if (found.size === hotspots.length) {
     document.getElementById("win-popup").classList.remove("hidden");
@@ -284,36 +240,33 @@ function checkWinCondition() {
   }
 }
 
+/* ---------- initialize everything ---------- */
 function initialize() {
-    buildIconBar();
-    buildHotspots();
-    updateHintButton();
+  buildIconBar();
+  buildHotspots();
+  updateHintButton();
 
-    // 1. Set the language strings first
-    updateTutorialLanguage();
+  // Show Tutorial immediately on load
+  toggleTutorial(); 
 
-    // 2. Setup resizing listeners
-    window.addEventListener('resize', () => {
-        checkOrientation();
-        positionHotspots();
-    });
+  function safePosition() {
+    positionHotspots();
+  }
 
-    if (bgImage.complete && bgImage.naturalWidth) {
-        positionHotspots();
-    } else {
-        bgImage.addEventListener('load', positionHotspots);
-    }
+  if (bgImage.complete && bgImage.naturalWidth) {
+    safePosition();
+  } else {
+    bgImage.addEventListener('load', safePosition);
+  }
 
+  window.addEventListener('resize', () => {
     checkOrientation();
+    positionHotspots();
+  });
 
-    // 3. FORCE THE POP-UP
-    // We use a tiny delay so the "fadeIn" animation triggers correctly
-    setTimeout(() => {
-        const modal = document.getElementById('tutorial-modal');
-        if (modal) {
-            modal.classList.add('show');
-        }
-    }, 100); 
+  checkOrientation();
+  setTimeout(positionHotspots, 300);
+  setTimeout(positionHotspots, 800);
 }
 
 initialize();

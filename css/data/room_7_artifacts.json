@@ -1,0 +1,90 @@
+{
+    "Beauty_bag": {
+        "image": "images/room_7/beauty_bag.jpg",
+        "name": {
+            "en": "Beauty bag",
+            "gr": "Τσάντα ομορφιάς"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Calendar": {
+        "image": "images/room_7/calendar.jpg",
+        "name": {
+            "en": "Calendar",
+            "gr": "Ημερολόγιο"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση."
+        }
+    },
+    "Clothes": {
+        "image": "images/room_7/clothes.jpg",
+        "name": {
+            "en": "Clothes",
+            "gr": "Ρούχα"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Folder": {
+        "image": "images/room_7/folder.jpg",
+        "name": {
+            "en": "Folder",
+            "gr": "Διπλωτής"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Pillow": {
+        "image": "images/room_7/pillow.jpg",
+        "name": {
+            "en": "Pillow",
+            "gr": "Μαξιλάρι"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Porcelain_kanata": {
+        "image": "images/room_7/porcelain_kanata.jpg",
+        "name": {
+            "en": "Porcelain Pitcher",
+            "gr": "Πορσελάνινη κανάτα"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Sewing_machine": {
+        "image": "images/room_7/sewing_machine.jpg",
+        "name": {
+            "en": "Sewing Machine",
+            "gr": "Ραπτομηχανή"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Wedding": {
+        "image": "images/room_7/wedding.jpg",
+        "name": {
+            "en": "Wedding Dress",
+            "gr": "Νυφικό"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    }
+}

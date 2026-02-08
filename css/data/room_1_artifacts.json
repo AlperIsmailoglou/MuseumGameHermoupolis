@@ -1,0 +1,25 @@
+{
+   
+    "Old_Mural": {
+        "image": "images/room_1/old_mural.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
+        }
+    },
+    "Wooden_Ship": {
+        "image": "images/room_1/wooden_ship.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    }
+}

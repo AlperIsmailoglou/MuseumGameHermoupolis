@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find the Difference</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../../js/game_state.js"></script> 
+</head>
+<body>
+
+    <div class="ui-bar">
+        <button id="help-btn" onclick="toggleTutorial()">?</button>
+        
+        <span>Found: <span id="count">0</span>/<span id="total-count">0</span></span>
+        <button id="hint-btn">Tip (<span id="tips-left">1</span>)</button>
+    </div>
+
+    <div class="game-wrapper" id="game-area">
+        <img src="Find_the_difference.jpg" class="base-image" alt="Find the difference scene">
+
+        <div class="diff-item" data-id="1" style="top: 20%; left: 10%; width: 10%; height: 10%;"></div>
+        <div class="diff-item" data-id="2" style="top: 50%; left: 60%; width: 15%; height: 8%;"></div>
+        <div class="diff-item" data-id="3" style="top: 80%; left: 30%; width: 12%; height: 12%;"></div>
+
+        <div id="win-msg">
+            <h2>Success!</h2>
+            <p>You found all the differences.</p>
+            <button id="reset-btn">CONTINUE</button>
+        </div>
+    </div>
+
+    <div id="tutorial-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="tut-title">How to Play</h2>
+            
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #34495e;">
+                    <span>👀</span> 
+                </div>
+                <div class="step-text">
+                    <h3 id="tut-step1-head">Step 1 Title</h3>
+                    <p id="tut-step1-desc">Description for step 1.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #3498db;">
+                    <span>📱</span>
+                </div>
+                <div class="step-text">
+                    <h3 id="tut-step2-head">Step 2 Title</h3>
+                    <p id="tut-step2-desc">Description for step 2.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #27ae60;">
+                    <span>👆</span>
+                </div>
+                <div class="step-text">
+                    <h3 id="tut-step3-head">Step 3 Title</h3>
+                    <p id="tut-step3-desc">Description for step 3.</p>
+                </div>
+            </div>
+
+            <button id="tut-close-btn" class="close-btn-red" onclick="toggleTutorial()">CLOSE</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

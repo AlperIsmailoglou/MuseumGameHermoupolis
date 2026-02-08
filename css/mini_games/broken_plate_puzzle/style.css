@@ -1,0 +1,210 @@
+:root {
+    --bg-color: #2c3e50;
+    --tray-color: #34495e;
+    --accent-green: #2ecc71;
+    --accent-red: #e74c3c;
+    --border-color: #ecf0f1;
+    --gold: #f1c40f;
+    --header-height: clamp(45px, 8vh, 80px);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden; 
+    touch-action: none; 
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    width: 100%;
+}
+
+/* --- HEADER --- */
+#ui-header {
+    height: var(--header-height);
+    background-color: var(--tray-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 500;
+    flex-shrink: 0;
+}
+
+#ui-header .title {
+    color: var(--border-color);
+    font-weight: bold;
+    font-size: clamp(0.9rem, 2.5vh, 2rem); 
+    opacity: 0.8;
+}
+
+#reset-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: clamp(4px, 1vh, 10px) clamp(8px, 1.5vw, 20px);
+    font-size: clamp(0.75rem, 1.5vh, 1.2rem);
+}
+
+/* --- TUTORIAL BUTTON --- */
+#help-btn {
+    /* Fluid Circle Size */
+    width: clamp(30px, 6vh, 60px);
+    height: clamp(30px, 6vh, 60px);
+    border-radius: 50%;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1rem, 2.5vh, 1.5rem);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+#help-btn:hover { background-color: #2980b9; }
+
+/* --- GAME LAYOUT --- */
+#game-container {
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+    height: calc(100% - var(--header-height)); 
+}
+
+#puzzle-board {
+    flex: 2; 
+    background: rgba(0, 0, 0, 0.2);
+    margin: 5px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+    position: relative;
+}
+
+#play-zone {
+    position: relative;
+    border: 2px dashed var(--border-color);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+#ghost-image {
+    display: block;
+    opacity: 0.15;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+}
+
+#piece-tray {
+    flex: 1; 
+    background-color: var(--tray-color);
+    border-top: 4px solid var(--border-color);
+    border-left: none;
+    position: relative;
+    overflow: hidden; 
+    width: 100%;
+}
+
+@media (orientation: landscape) {
+    #game-container { flex-direction: row; }
+    #puzzle-board { flex: 1; margin: 1vmin 0 1vmin 1vmin; }
+    #piece-tray {
+        border-top: none;
+        border-left: 4px solid var(--border-color);
+        height: 100%;
+        width: 30vw; 
+        min-width: 250px; 
+        max-width: 400px;
+        flex: none;
+    }
+}
+
+/* --- PIECES --- */
+.puzzle-piece {
+    position: absolute;
+    cursor: grab;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+    touch-action: none;
+    transform-origin: top left;
+    z-index: 10;
+}
+
+.puzzle-piece:active {
+    cursor: grabbing;
+    z-index: 100;
+    transform: scale(1.1);
+}
+
+.locked {
+    z-index: 1; 
+    pointer-events: none;
+    filter: brightness(1.1); 
+}
+
+/* --- FLASH ANIMATION ELEMENT --- */
+.flash-overlay {
+    position: absolute;
+    pointer-events: none;
+    z-index: 2000;
+    transition: opacity 0.5s ease-out;
+}
+
+/* --- MODAL (TUTORIAL & WIN SCREEN) --- */
+#win-screen, .modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85); z-index: 3000;
+    display: flex; justify-content: center; align-items: center;
+    backdrop-filter: blur(5px);
+}
+#win-screen { z-index: 2000; transition: opacity 0.3s; }
+#win-screen.hidden { opacity: 0; pointer-events: none; }
+.modal { display: none; }
+.modal.show { display: flex; animation: fadeIn 0.3s; }
+
+.win-content, .modal-content {
+    background: white; padding: clamp(2rem, 5vh, 4rem);
+    border-radius: 12px; text-align: center;
+    box-shadow: 0 0 30px var(--gold);
+    max-width: 500px; width: 90%;
+    max-height: 90vh; overflow-y: auto;
+}
+.modal-content h2 {
+    margin-top: 0; color: #2c3e50; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px;
+}
+
+.win-content h1 { margin: 0 0 10px; font-size: clamp(1.5rem, 5vw, 3rem); color: var(--bg-color); }
+
+/* --- TUTORIAL STEPS --- */
+.tutorial-step { 
+    display: flex; align-items: center; background: #f8f9fa; 
+    margin: 15px 0; padding: 10px; border-radius: 8px; 
+    text-align: left; border: 1px solid #ddd; 
+}
+.step-img { 
+    width: 60px; height: 60px; border-radius: 8px; 
+    display: flex; justify-content: center; align-items: center; 
+    font-size: 24px; margin-right: 15px; color: white; flex-shrink: 0; 
+}
+.step-text h3 { margin: 0 0 5px 0; font-size: 1rem; color: #333; }
+.step-text p { margin: 0; font-size: 0.9rem; color: #666; }
+
+/* --- BUTTONS --- */
+#play-again-btn, .close-btn-red {
+    border: none; padding: 12px 30px; border-radius: 5px; 
+    cursor: pointer; margin-top: 20px; width: 100%; 
+    font-weight: bold; color: white; transition: transform 0.1s;
+}
+#play-again-btn { background: var(--accent-green); font-size: clamp(1rem, 2vw, 1.5rem); }
+.close-btn-red { background-color: #e74c3c; border-radius: 50px; font-size: 1rem; }
+.close-btn-red:hover { background-color: #c0392b; }
+.close-btn-red:active { transform: scale(0.95); }

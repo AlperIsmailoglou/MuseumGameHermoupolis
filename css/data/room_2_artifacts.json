@@ -1,0 +1,101 @@
+{
+    "ice_cream_machine": {
+        "image": "images/room_2/ice_cream_machine.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "inside_apron": {
+        "image": "images/room_2/inside_apron.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "mug": {
+        "image": "images/room_2/mug.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "outside_apron": {
+        "image": "images/room_2/outside_apron.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση."
+        }
+    },
+    "presser": {
+        "image": "images/room_2/presser.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση."
+        }
+    },
+    "stove": {
+        "image": "images/room_2/stove.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "utensil": {
+        "image": "images/room_2/utensil.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "utensil2": {
+        "image": "images/room_2/utensil2.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση."
+        }
+    },
+    "utensil3": {
+        "image": "images/room_2/utensil3.jpg",
+        "name": {
+            "en": "Hand crafted wooden ship",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+        "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    }
+}

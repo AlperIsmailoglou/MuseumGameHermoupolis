@@ -1,0 +1,25 @@
+{
+     "Ladies": {
+        "image": "images/room_4/ladies.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Mannequin": {
+        "image": "images/room_4/mannequin.jpg",
+        "name": {
+            "en": "Remnants from old mural",
+            "gr": "Αρχαίο Νόμισμα"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    
+    }
+}

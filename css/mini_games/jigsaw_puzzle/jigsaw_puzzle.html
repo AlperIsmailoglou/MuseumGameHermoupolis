@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jigsaw Puzzle</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../../js/game_state.js"></script>
+</head>
+<body>
+
+    <button id="help-btn" onclick="toggleTutorial()">?</button>
+
+    <div class="game-container">
+        <div id="puzzle-board">
+            <div id="puzzle-guide"></div>
+        </div>
+
+        <div id="pieces-tray"></div>
+    </div>
+
+    <div id="win-screen" class="hidden">
+        <div class="win-content">
+            <h1>Complete!</h1>
+        </div>
+    </div>
+
+    <div id="tutorial-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="tut-title">How to Play</h2>
+            
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #34495e;">
+                    <span>1️⃣</span> 
+                </div>
+                <div class="step-text">
+                    <h3 id="tut-step1-head">Step 1 Title</h3>
+                    <p id="tut-step1-desc">Description for step 1.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #3498db;">
+                    <span>2️⃣</span>
+                </div>
+                <div class="step-text">
+                    <h3 id="tut-step2-head">Step 2 Title</h3>
+                    <p id="tut-step2-desc">Description for step 2.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #27ae60;">
+                    <span>3️⃣</span>
+                </div>
+                <div class="step-text">
+                    <h3 id="tut-step3-head">Step 3 Title</h3>
+                    <p id="tut-step3-desc">Description for step 3.</p>
+                </div>
+            </div>
+
+            <button id="tut-close-btn" class="close-btn-red" onclick="toggleTutorial()">CLOSE</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

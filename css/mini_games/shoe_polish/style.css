@@ -1,0 +1,296 @@
+/* Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Stop scrolling */
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333; /* Fallback color */
+}
+
+/* 1. Global Background */
+.page-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-image: url(background1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* 2. The Game Area Wrapper */
+.game-area {
+    position: relative;
+    z-index: 10;
+    width: 85%;       
+    max-width: 500px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    touch-action: none; 
+}
+
+/* 3. The Shoe Container */
+.shoe-container {
+    position: relative; 
+    width: 100%; 
+}
+
+/* The Clean Shoe Image */
+#cleanShoeImg {
+    display: block;
+    width: 100%;
+    height: auto; 
+    pointer-events: none; 
+}
+
+/* The Canvas (The Dirt) */
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; 
+    touch-action: none;
+}
+
+/* 4. The Rag */
+.cloth {
+    width: 100px;
+    height: 100px;
+    transition: all 0.5s ease-out; /* Smooth snap back */
+    position: absolute;
+    bottom: 1px; 
+    right: -10px;
+    z-index: 20; 
+    cursor: grab;
+    
+    /* Image Setup */
+    background-image: url('brush.png'); 
+    background-color: transparent; 
+    background-size: contain; 
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.cloth:active {
+    cursor: grabbing;
+    transform: scale(1.1);
+}
+
+/* 5. UI Styling */
+.ui-container {
+    margin-top: 20px; 
+    width: 100%;
+    text-align: center;
+    color: rgb(255, 255, 255); 
+    text-shadow: 2px 2px 2.5px rgba(0,0,0,0.8);
+    font-size:calc(0.5vw+1rem);
+    font-weight: 1000;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 15px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid white;
+    margin-bottom: 5px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: repeating-linear-gradient(45deg, #27ec04, #38d39d 10px, #850d0b 10px, #61d50d 20px); 
+    transition: width 0.1s linear;
+}
+
+/* WIN SCREEN STYLING */
+.win-screen {
+    display: none; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(4px); 
+    z-index: 100; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.win-image {
+    width: 120px; 
+    height: auto;
+    animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); 
+}
+
+.win-text {
+    color: #333; 
+    font-size: 2em;
+    margin: 10px 0;
+    text-shadow: 0 2px 4px rgba(255,255,255,0.5);
+    font-family: 'Arial', sans-serif;
+    animation: fadeIn 1s ease;
+}
+
+.replay-btn {
+    padding: 12px 24px;
+    background-color: #FFD700;
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    margin-top: 10px;
+    transition: transform 0.1s;
+}
+
+.replay-btn:active {
+    transform: scale(0.95);
+}
+
+/* =========================================
+   STANDARD TUTORIAL CSS
+   ========================================= */
+
+/* --- TUTORIAL BUTTON --- */
+#help-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px; /* Adjust to right:20px if needed */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    z-index: 150; 
+}
+#help-btn:hover { background-color: #2980b9; }
+
+/* --- MODAL BACKGROUND --- */
+.modal {
+    display: none; 
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.85); 
+    z-index: 300; 
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex; 
+    animation: fadeIn 0.3s;
+}
+
+/* --- MODAL BOX --- */
+.modal-content {
+    background-color: white;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    text-align: center;
+    max-height: 90vh; 
+    overflow-y: auto;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    border-bottom: 2px solid #ecf0f1;
+    padding-bottom: 10px;
+}
+
+/* --- STEPS ROW LAYOUT --- */
+.tutorial-step {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.step-img {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0; 
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-right: 15px;
+    color: white;
+}
+
+.step-text h3 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.step-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* --- CLOSE BUTTON --- */
+.close-btn-red {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+    transition: transform 0.1s;
+}
+
+.close-btn-red:hover { background-color: #c0392b; }
+.close-btn-red:active { transform: scale(0.95); }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Animations */
+@keyframes popIn {
+    0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

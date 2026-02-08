@@ -1,0 +1,409 @@
+[
+  {
+    "id": "scene_r3_01",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "This side is dedicated to the lady of the house! You can see various items that a woman of such stature would have used in the past.",
+      "gr": "Αυτή η μεριά είναι αφιερωμένη στην κυρία του σπιτιού! Μπορείς να δεις διάφορα αντικείμενα που θα χρησιμοποιούσε παλιά μία γυναίκα τέτοιου κύρους."
+    },
+    "next_id": "scene_r3_02"
+  },
+  {
+    "id": "scene_r3_02",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": "Don't touch anything!",
+      "gr": "Μην τυχόν και αγγίξετε τίποτα!"
+    },
+    "next_id": "scene_r3_03"
+  },
+  {
+    "id": "scene_r3_03",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Oh! Mrs. Marina, you scared me!",
+      "gr": "Α! Κυρία Μαρίνα, με τρομάξατε!"
+    },
+    "next_id": "scene_r3_04"
+  },
+  {
+    "id": "scene_r3_04",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Mrs. Marina was once a head maid, and she was essentially the one who supervised the staff along with the butler.",
+      "gr": "Η κυρία Μαρίνα ήταν κάποτε μία επικεφαλής υπηρέτρια, και ήταν ουσιαστικά αυτή που επέβλεπε το προσωπικό μαζί με τον μπάτλερ."
+    },
+    "next_id": "scene_r3_05"
+  },
+  {
+    "id": "scene_r3_05",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Usually, these people were very close to the lady of the house, and that's why she's a little... sensitive towards this part of the room.",
+      "gr": "Συνήθως αυτά τα άτομα ήταν πολύ κοντά με την κυρία του σπιτιού, και για αυτό είναι λίγο… ευαίσθητη προς αυτό το μέρος του δωματίου."
+    },
+    "next_id": "scene_r3_06"
+  },
+  {
+    "id": "scene_r3_06",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": "Watch what you say, Eric. Come on, I won't throw you out with the broom. The others across the square are making me dizzy enough.",
+      "gr": "Πρόσεχε τι λες, Έρικ. Άντε μη σε ρίξω έξω με τη σκούπα. Αρκετά με ζαλίζουν οι άλλοι απέναντι στην πλατεία."
+    },
+    "next_id": "scene_r3_07"
+  },
+  {
+    "id": "scene_r3_07",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Such threats don't work anymore, Mrs. Marina!",
+      "gr": "Τέτοιες απειλές δεν δουλεύουν πλέον κυρία Μαρίνα!"
+    },
+    "next_id": "scene_r3_08"
+  },
+  {
+    "id": "scene_r3_08",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": "Are you sure you want to test this?",
+      "gr": "Σίγουρα θες να το τεστάρεις αυτό;"
+    },
+    "next_id": "scene_r3_09"
+  },
+  {
+    "id": "scene_r3_09",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": ". . .",
+      "gr": ". . ."
+    },
+    "next_id": "scene_r3_10"
+  },
+  {
+    "id": "scene_r3_10",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": ". . .",
+      "gr": ". . ."
+    },
+    "next_id": "scene_r3_11"
+  },
+  {
+    "id": "scene_r3_11",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Anyway!",
+      "gr": "Τέλος πάντων!"
+    },
+    "next_id": "scene_r3_12"
+  },
+  {
+    "id": "scene_r3_12",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "This side of the room focuses mainly on the occupations of a lady of the era; think from the 1800s to the early 1900s.",
+      "gr": "Αυτή η μεριά του δωματίου εστιάζει κυρίως στις απασχολήσεις μίας κυρίας της εποχής, σκέψου από το 1800 μέχρι και αρχές του 1900."
+    },
+    "next_id": "scene_r3_13"
+  },
+  {
+    "id": "scene_r3_13",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "As you can see, she was mainly involved in embroidery, but also in social activities. The prize you see was from a carnival dance. Whoever had the best costume won it.",
+      "gr": "Όπως μπορείς να δεις, ασχολιόταν κυρίως με το κέντημα, αλλά και με κοινωνικές δραστηριότητες. Το βραβείο που βλέπεις ήταν από αποκριάτικο χορό. Το κέρδιζε όποιος είχε την καλύτερη στολή."
+    },
+    "next_id": "scene_r3_14"
+  },
+  {
+    "id": "scene_r3_14",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "They had so much free time back then that they even showed off prizes at dances...",
+      "gr": "Τόσο ελεύθερο χρόνο είχαν τότε που έδιναν ακόμη και βραβεία σε χορούς…"
+    },
+    "next_id": "scene_r3_15"
+  },
+  {
+    "id": "scene_r3_15",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": "You say this because you don't understand how much work had to be done to prepare the guests, especially the ladies and gentlemen.",
+      "gr": "Τα λες αυτά επειδή δεν καταλαβαίνεις πόση δουλειά έπρεπε να γίνει για την προετοιμασία των καλεσμένων, ειδικά των κυρίων και δεσποινίδων."
+    },
+    "next_id": "scene_r3_16"
+  },
+  {
+    "id": "scene_r3_16",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Okay, okay, whatever you say, Mrs. Marina...",
+      "gr": "Καλά, καλά, ό,τι πείτε κυρία Μαρίνα…"
+    },
+    "next_id": "scene_r3_17"
+  },
+  {
+    "id": "scene_r3_17",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "The next item that must have caught your attention must be the dance list.",
+      "gr": "Το επόμενο αντικείμενο που πρέπει να σου τράβηξε την προσοχή πρέπει να είναι η λίστα χορού."
+    },
+    "next_id": "scene_r3_18"
+  },
+  {
+    "id": "scene_r3_18",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "As the name suggests, it is a list that upper-class ladies had at the time, where they wrote down the names of their partners for each song that would be played at the dance they were invited to.",
+      "gr": "Όπως υποδηλώνει το όνομα, είναι μία λίστα που είχαν οι κυρίες της άνω τάξης τότε, όπου έγραφαν τα ονόματα των παρτενέρ τους για το κάθε τραγούδι που θα παιζόταν στον χορό που ήταν προσκεκλημένες."
+    },
+    "next_id": "scene_r3_19"
+  },
+  {
+    "id": "scene_r3_19",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Whenever they received an invitation to a dance, the song list was included, so that way they knew how many partners they could have and for which songs.",
+      "gr": "Όποτε τους ερχόταν μία πρόσκληση για έναν χορό, ήταν μαζί και η λίστα τραγουδιών, οπότε έτσι ήξεραν πόσους παρτενέρ μπορούν να έχουν και για ποια τραγούδια."
+    },
+    "next_id": "scene_r3_20"
+  },
+  {
+    "id": "scene_r3_20",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": "But don't forget, partners were not only chosen by the lady/miss herself; her parents and especially her father, or the closest man in her family, had to approve them as well. Without his approval, they would never dance with her.",
+      "gr": "Μην ξεχνάς όμως, οι παρτενέρ επιλέγονταν όχι μόνο από την ίδια την κυρία/δεσποινίδα, οι γονείς της και κυρίως ο πατέρας της, ή ο κοντινότερος άντρας στην οικογένειά της, έπρεπε να τους εγκρίνει επίσης. Χωρίς την έγκρισή του δεν θα χώρευαν ποτέ μαζί της."
+    },
+    "next_id": "scene_r3_21"
+  },
+  {
+    "id": "scene_r3_21",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": "Of course, beyond that, they also couldn't dance with the same partner more than once in a row.",
+      "gr": "Εννοείται πέρα από αυτό δεν μπορούσαν επίσης να χορέψουν με τον ίδιο παρτενέρ πάνω από μία φορά συνεχόμενα."
+    },
+    "next_id": "scene_r3_22"
+  },
+  {
+    "id": "scene_r3_22",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Mrs. Marina, did you see who did the damage to the dining room before?",
+      "gr": "Κυρία Μαρίνα, μήπως είδες ποιος έκανε πριν τη ζημιά στην τραπεζαρία;"
+    },
+    "next_id": "scene_r3_23"
+  },
+  {
+    "id": "scene_r3_23",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": "I didn't see anything. But I wish him well, whoever did it should leave the things in this room alone! Otherwise, the broom will take him!",
+      "gr": "Δεν είδα τίποτα. Αλλά το καλό που του θέλω, όποιος το έκανε να αφήσει τα πράγματα σε αυτό το δωμάτιο ήσυχα! Αλλιώς θα τον πάρει εκείνον η σκούπα!"
+    },
+    "action": "flicker-lights",
+    "next_id": "scene_r3_24"
+  },
+  {
+    "id": "scene_r3_24",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": "Oh my God! The turntable records!",
+      "gr": "Παναγία μου! Οι δίσκοι του πικάπ!"
+    },
+    "next_id": "scene_r3_25_task_turntable"
+  },
+  {
+    "id": "scene_r3_25_task_turntable",
+    "type": "task_check",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "task_id": "Record_game",
+    "mini_game_url": "mini_games/broken_turntable/broken_puzzle.html",
+    "text": {
+      "en": "I hope you know how to work with your hands...",
+      "gr": "Ελπίζω να ξέρεις να δουλεύεις με τα χέρια σου…"
+    },
+    "next_id": "scene_r3_success"
+  },
+  {
+    "id": "scene_r3_success",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Now what do we do?",
+      "gr": "Τώρα τι κάνουμε;"
+    },
+    "action": "add-item:Broken_Record",
+    "next_id": "scene_r3_26"
+  },
+  {
+    "id": "scene_r3_26",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": "I bet those people across the square will have something that can help. Quick, go ask them!",
+      "gr": "Βάζω στοίχημα ότι αυτοί απέναντι στην πλατεία θα έχουν κάτι που μπορεί να βοηθήσει. Γρήγορα, πηγαίνετε να τους ρωτήσετε!"
+    },
+    "next_id": "scene_r3_27"
+  },
+  {
+    "id": "scene_r3_27",
+    "type": "task_check",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "task_id": "Waiting_for_Glue",
+    "required_item": "Glue",
+    "text": {
+      "en": "Okay, okay! Let's go! (Come back when you find Glue).",
+      "gr": "Καλά, καλά! Πηγαίνουμε! (Επιστρέψτε όταν βρείτε Κόλλα)."
+    },
+    "next_id": "scene_r3_28"
+  },
+  {
+    "id": "scene_r3_28",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": "Did you find glue?",
+      "gr": "Βρήκατε κόλλα;"
+    },
+    "next_id": "scene_r3_29"
+  },
+  {
+    "id": "scene_r3_29",
+    "type": "task_check",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "task_id": "Fix_Record_Check",
+    "required_item": "Broken_Record",
+    "text": {
+      "en": "Ah, great! Use the glue to fix the record.",
+      "gr": "Αχ τέλεια! Χρησιμοποιήστε την κόλλα για να φτιάξετε τον δίσκο."
+    },
+    "next_id": "scene_r3_30"
+  },
+  {
+    "id": "scene_r3_30",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Always with a good word in your mouth...",
+      "gr": "Πάντα με τον καλό λόγο στο στόμα..."
+    },
+    "action": "remove-item:Broken_Record",
+    "next_id": "scene_r3_31"
+  },
+  {
+    "id": "scene_r3_31",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": "What did you say?",
+      "gr": "Τι είπες;"
+    },
+    "next_id": "scene_r3_32"
+  },
+  {
+    "id": "scene_r3_32",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Ah! Nothing, let's go upstairs now! I'll see you in the living room!",
+      "gr": "Α! Τίποτα, ας πηγαίνουμε στον πάνω όροφο τώρα! Θα τα πούμε στο καθιστικό!"
+    },
+    "next_id": "scene_r3_33"
+  },
+  {
+    "id": "scene_r3_33",
+    "type": "task_check",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "required_item": "Knitwear",
+    "text": {
+      "en": "",
+      "gr": ""
+    },
+    "next_id": "scene_r3_34"
+  },
+  {
+    "id": "scene_r3_34",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "There you go.",
+      "gr": "Ορίστε."
+    },
+    "action": "remove-item:Knitwear",
+    "next_id": "scene_r3_35"
+  },
+  {
+    "id": "scene_r3_35",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Now to the kitchen.",
+      "gr": "Τώρα στην κουζίνα."
+    },
+    "next_id": "END"
+  }
+]

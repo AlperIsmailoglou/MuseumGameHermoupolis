@@ -1,0 +1,13 @@
+{
+    "Locker": {
+        "image": "images/room_6/locker.jpg",
+        "name": {
+            "en": "Locker",
+            "gr": "Χρηματοκιβώτιo"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση."
+        }
+    }
+}

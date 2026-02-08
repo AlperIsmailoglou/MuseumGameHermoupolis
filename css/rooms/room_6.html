@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Room 6: Office</title>
+    <link rel="stylesheet" href="../css/main_responsive.css">
+    <link rel="stylesheet" href="../css/room_styles/room_6_specific.css">
+    <script src="../js/game_state.js"></script>
+</head>
+<body>
+    <div id="game-container">
+        <div id="light-overlay"></div>
+       <div id="character-layer">
+            <img id="guide" src="../images/characters/guide_happy.png" alt="Eric">
+            <img id="character7" src="../images/characters/character7_happy.png" alt="Chef" style="display: none;">
+        </div>
+
+        <div id="task-layer">
+            <img id="task-medal" class="interactive-ui" src="../images/room_6/medal.png" 
+                alt="Medal Puzzle" style="display: none;"
+                onclick="handleTaskInteraction('Medal_Puzzle', null, 'mini_games/jigsaw_puzzle/jigsaw_puzzle.html')">
+
+        </div>
+
+        <div id="task-feedback" style="display: none;"></div>
+
+        <div id="dialogue-box">
+            <div id="dialogue-text">Click anywhere to start the story...</div>
+            <div id="dialogue-arrow">▼</div>
+        </div>
+
+        <div id="reward-popup" style="display: none;" class="interactive-ui"></div>
+        
+        <div id="top-left-ui-layer">
+            <div class="ui-icon-button interactive-ui" onclick="toggleLanguageMenu(true)">
+                <img src="../images/UI/settings.png" alt="Settings">
+            </div>
+            <div class="ui-icon-button interactive-ui" onclick="toggleHistory(true)">
+        <img src="../images/UI/history_icon.png" alt="History">
+    </div>
+        </div>
+
+        <div id="persistent-ui-layer">
+            <div class="ui-icon-button interactive-ui" onclick="toggleInventory(true)">
+                <img id="inventory-btn" src="../images/UI/inventory_empty.png" alt="Inventory">
+            </div>
+            <div class="ui-icon-button interactive-ui" onclick="toggleArtifacts(true)">
+                <img src="../images/UI/artifacts.png" alt="Artifacts">
+            </div>
+        </div>
+
+        <div id="inventory-menu" style="display: none;" class="overlay-menu interactive-ui">
+            <div class="ui-close-button-combo" onclick="toggleInventory(false)">
+                <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
+            </div>
+            <div id="inventory-use-container">
+        <button id="use-item-btn" class="lang-option" onclick="handlePlaceboUseClick()">
+            USE / ΧΡΗΣΗ
+        </button>
+    </div>
+            <h2>Inventory / Αποθήκη</h2>
+            <div id="inventory-list"></div>
+        </div>
+
+        <div id="artifacts-menu" style="display: none;" class="overlay-menu interactive-ui">
+            <div class="ui-close-button-combo" onclick="toggleArtifacts(false)">
+                <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
+            </div>
+            <h2>Artifacts / Τεχνουργήματα</h2>
+            <div id="artifacts-grid-list"></div>
+            <div id="artifact-detail-panel" style="display: none;">
+                <div class="ui-close-button-combo" onclick="showArtifactsList()">
+                    <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
+                </div>
+                <h3 id="detail-name-title"></h3>
+                <div id="detail-content">
+                    <div id="detail-image-container"><img id="detail-image" src="" alt="Artifact"></div>
+                    <p id="detail-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="language-menu" style="display: none;" class="overlay-menu interactive-ui">
+            <div class="ui-close-button-combo" onclick="toggleLanguageMenu(false)">
+                <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
+            </div>
+            <h2>Select Language / Επιλέξτε Γλώσσα</h2>
+            <div id="language-options-list">
+                <button class="lang-option interactive-ui" onclick="changeGameLanguage('en')">English</button>
+                <button class="lang-option interactive-ui" onclick="changeGameLanguage('gr')">Ελληνικά</button>
+            </div>
+        </div>
+        <div id="history-menu" style="display: none;" class="overlay-menu interactive-ui">
+    <div class="ui-close-button-combo" onclick="toggleHistory(false)">
+        <img src="../images/UI/back_arrow.png" alt="Back"><span class="back-text">BACK</span>
+    </div>
+    <h2>Dialogue History / Ιστορικό</h2>
+    <div id="history-list">
+        </div>
+</div>
+    </div>
+
+    <script src="../js/dialogue_engine.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGameState();
+            // Safety check for language
+            if (!gameState.language) {
+                window.location.href = '../index.html';
+                return;
+            }
+            updateInventoryButtonVisual();
+
+            initializeDialogueEngine('room_6', '../data/room_6_dialogue.json');
+        });
+    </script>
+</body>
+</html>

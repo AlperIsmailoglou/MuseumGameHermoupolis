@@ -1,0 +1,406 @@
+[
+  {
+    "id": "scene_01_intro",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Hi! My name is Eric, and I will be your ghost tour guide during your visit to the museum! (Tap anywhere on the screen to proceed!!!)",
+      "gr": "Γεια! Με λένε Έρικ, και θα είμαι ο φαντασμα-ξεναγός σου κατά τη διάρκεια της επίσκεψής σου στο μουσείο! (Πατήστε οπουδήποτε στην οθόνη για να συνεχίσετε!!!)"
+    },
+    "next_id": "scene_02_intro"
+  },
+  {
+    "id": "scene_02_intro",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "I wasn't always a tour guide, but after all these years of being dead, I got bored and the job seemed interesting, so I said, 'Why not?'",
+      "gr": "Δεν ήμουν πάντα ξεναγός, αλλά μετά από τόσα χρόνια που είμαι νεκρός, βαρέθηκα και η δουλειά μου φάνηκε ενδιαφέρουσα, οπότε είπα ‘Γιατί όχι;’"
+    },
+    "next_id": "scene_03_intro"
+  },
+  {
+    "id": "scene_03_intro",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Oh, sorry, sometimes I just can't stop talking! So let's start the tour!",
+      "gr": "Α, συγγνώμη, καμιά φορά απλώς δεν μπορώ να σταματήσω να μιλάω! Ας αρχίσουμε την ξενάγηση λοιπόν!"
+    },
+    "next_id": "scene_04_intro"
+  },
+  {
+    "id": "scene_04_intro",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "First, I will show you the space where you operate.",
+      "gr": "Πρώτα θα σου δείξω τον χώρο όπου δραστηριοποιείσαι."
+    },
+    "next_id": "scene_05_intro"
+  },
+  {
+    "id": "scene_05_intro",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "First, I will show you the space where you operate.",
+      "gr": "Πρώτα θα σου δείξω τον χώρο όπου δραστηριοποιείσαι."
+    },
+    "action": "focus-ui:on",
+    "next_id": "scene_06_intro"
+  },
+  {
+    "id": "scene_06_intro",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "The button at the top is the settings. There you can change the language if you want to play the game in a different language.",
+      "gr": "Το κουμπί στην κορυφή είναι οι ρυθμίσεις. Εκεί μπορείτε να αλλάξετε τη γλώσσα αν θέλετε να παίξετε το παιχνίδι σε διαφορετική γλώσσα."
+    },
+    "action": "focus-ui:settings ",
+    "next_id": "scene_06_recreat"
+  },
+  {
+    "id": "scene_06_recreat",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Right below that, we have the history button; there you can check the parts of the story you missed.",
+      "gr": "Ακριβώς από κάτω έχουμε το κουμπί ιστορικού, όπου μπορείτε να ελέγξετε τα σημεία της ιστορίας που έχετε χάσει."
+    },
+    "action": "focus-ui:history ",
+    "next_id": "scene_07_intro"
+  },
+  {
+    "id": "scene_07_intro",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "This button opens the list of notable exhibits/artifacts. Unfortunately, information is not available for all of them, as many are donated without their history; therefore, only some are available for you to read about. In each room, it only shows the items located in that specific space. If you would like to read more about some of the museum's objects—where available—don't hesitate to press it!",
+      "gr": "Αυτό το κουμπί είναι η λίστα με τα αξιοσημείωτα εκθέματα. Δεν υπάρχουν πληροφορίες για όλα δυστυχώς, επειδή πολλά δωρίζονται χωρίς όμως την ιστορία τους, οπότε είναι μόνο μερικά από αυτά διαθέσιμα για να τα διαβάσεις. Σε κάθε δωμάτιο δείχνει μόνο αυτά που υπάρχουν στον χώρο. Εάν θέλεις να διαβάσεις περισσότερες πληροφορίες για μερικά από τα αντικείμενα του μουσείου, εφόσον υπάρχουν, μη διστάσεις να το πατήσεις!"
+    },
+    "action": "focus-ui:artifacts",
+    "next_id": "scene_08_intro"
+  },
+  {
+    "id": "scene_08_intro",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "This button is your inventory, where any items you collect will be stored. You haven't collected anything yet, so you can't press it!",
+      "gr": "Αυτό το κουμπί είναι η τσάντα (inventory) σου, όπου ό,τι αντικείμενα συλλέγεις θα βρεθούν εκεί. Δεν έχεις συλλέξει κάτι ακόμα, οπότε δεν μπορείς να το πατήσεις!"
+    },
+    "action": "focus-ui:inventory",
+    "next_id": "scene_09_intro"
+  },
+  {
+    "id": "scene_09_intro",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "When we finish the tour of this room, you will need to scan the QR code located in the next room. Feel free to check and inspect all of the exhibits because there might be a little quiz at the end. It's a tradition!",
+      "gr": "Όταν τελειώσουμε την ξενάγηση σε αυτό το δωμάτιο, θα πρέπει να σκανάρεις τον κωδικό QR που βρίσκεται στο επόμενο δωμάτιο. Μη διστάσει να ελέγξεις και να επιθεωρήσεις όλα τα εκθέματα, επειδή μπορεί να υπάρξει ένα μικρό κουίζ στο τέλος. Είναι παράδοση."
+    },
+    "action": "focus-ui:off",
+    "next_id": "scene_10_post_puzzle"
+  },
+  {
+    "id": "scene_10_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "What the— what's going on? Ah!",
+      "gr": "Μα τι στο— τι συμβαίνει; Α!"
+    },
+    "action": "flicker-lights",
+    "next_id": "scene_11_post_puzzle"
+  },
+  {
+    "id": "scene_11_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Here we go again...",
+      "gr": "Άντε πάλι τα ίδια…"
+    },
+    "next_id": "scene_12_post_puzzle"
+  },
+  {
+    "id": "scene_12_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "You see, these things have started happening more often lately. Just when everything is normal and calm, something like this will happen and bam! The exhibits go...",
+      "gr": "Βλέπεις, αυτά τα πράγματα έχουν αρχίσει να συμβαίνουν συχνά τώρα τελευταία. Πάνω που όλα είναι φυσιολογικά και ήρεμα, κάτι τέτοιο θα συμβεί και μπαμ! Πάνε τα εκθέματα…"
+    },
+    "next_id": "scene_13_post_puzzle"
+  },
+  {
+    "id": "scene_13_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Actually, now that I think about it...",
+      "gr": "Βασικά, τώρα που το σκέφτομαι…"
+    },
+    "next_id": "scene_14_post_puzzle"
+  },
+  {
+    "id": "scene_14_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Since you're already here... how would you like to help me find the culprit who's doing all this to the museum?",
+      "gr": "Μιας και είσαι ήδη εδώ… πώς θα σου ακουγόταν να με βοηθήσεις να βρω τον ένοχο που κάνει όλα αυτά στο μουσείο;"
+    },
+    "next_id": "scene_15_post_puzzle"
+  },
+  {
+    "id": "scene_15_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": ". .. ... ",
+      "gr": ". .. ... "
+    },
+    "next_id": "scene_16_post_puzzle"
+  },
+  {
+    "id": "scene_16_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Okay, don't worry.",
+      "gr": "Εντάξει, μην ανησυχείς."
+    },
+    "next_id": "scene_17_post_puzzle"
+  },
+  {
+    "id": "scene_17_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "But think about it! You'll get to meet a bunch of other ghosts! There are many of us here whose souls are tied to the museum building.",
+      "gr": "Αλλά σκέψου το! Θα μπορέσεις να γνωρίσεις ένα σωρό άλλα φαντάσματα! Είμαστε πολλοί εδώ που οι ψυχές μας είναι δεμένες με το κτίριο του μουσείου."
+    },
+    "next_id": "scene_18_post_puzzle"
+  },
+  {
+    "id": "scene_18_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Plus, you can continue your tour!",
+      "gr": "Συν ότι έτσι θα μπορείς να συνεχίσεις την ξενάγησή σου!"
+    },
+    "next_id": "scene_19_post_puzzle"
+  },
+  {
+    "id": "scene_19_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Oh, although I must warn you… many of the ghosts will ask you for favors. Having to only hang around within the perimeter of the building has made many of us a little… demanding.",
+      "gr": "Α, αν και πρέπει να σε προειδοποιήσω… πολλά από τα φαντάσματα θα σου ζητήσουν χάρες. Το να πρέπει να περιτριγυρίζουν μόνο μέσα στην περιφέρεια του κτιρίου έχει κάνει πολλούς από εμάς να είμαστε λίγο… απαιτητικοί."
+    },
+    "next_id": "scene_20_post_puzzle"
+  },
+  {
+    "id": "scene_20_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "But don't be discouraged! I believe you can do it!",
+      "gr": "Μην σκιάζεσαι όμως! Πιστεύω ότι μπορείς να τα καταφέρεις!"
+    },
+    "next_id": "scene_21_post_puzzle"
+  },
+  {
+    "id": "scene_21_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Let's start with the damaged exhibits in this room then!",
+      "gr": "Ας αρχίσουμε με τα εκθέματα που έχουν υποστεί ζημιά σε αυτό το δωμάτιο λοιπόν!"
+    },
+    "next_id": "scene_22_post_puzzle"
+  },
+  {
+    "id": "scene_22_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "First of all, this Chinese statue. In the past, when rich people still lived in this house, they enjoyed luxury.",
+      "gr": "Πρώτο από όλα είναι αυτό το κινέζικο άγαλμα. Παλιά, όταν ζούσαν ακόμη πλούσιοι άνθρωποι σε αυτό το σπίτι, απολάμβαναν την πολυτέλεια."
+    },
+    "next_id": "scene_23_post_puzzle"
+  },
+  {
+    "id": "scene_23_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "That's why in this room you will find many different objects from many countries—European, but even Asian.",
+      "gr": "Γι' αυτό σε αυτό το δωμάτιο θα βρεις πολλά διάφορα αντικείμενα από πολλές χώρες—Ευρωπαϊκές, αλλά ακόμη και Ασιατικές."
+    },
+    "next_id": "scene_24_post_puzzle"
+  },
+  {
+    "id": "scene_24_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "This statue, along with all the items you see in this room, was previously purchased specifically for this purpose. By placing it in the dining room where guests would gather for dinner, the owners could boast about owning something rare that few others possessed—either because the craftsman was exclusive and didn't easily take on new clients, or because it was difficult to import items from outside Europe, making them even more unique.",
+      "gr": "Αυτό το άγαλμα, μαζί με όλα τα αντικείμενα που βλέπεις στο δωμάτιο, είναι ένα από τα αντικείμενα που είχε αγοραστεί προηγουμένως για αυτόν τον σκοπό. Τοποθετώντας το στην τραπεζαρία, όπου θα ερχόντουσαν επισκέπτες για δείπνο, μπορούσαν να υπερηφανευτούν ότι έχουν κάτι σπάνιο που δεν το έχουν πολλοί, είτε επειδή ο κατασκευαστής ήταν αποκλειστικός και δεν έπαιρνε εύκολα καινούργιους πελάτες, είτε επειδή ήταν δύσκολο να φέρουν αντικείμενα από χώρες εκτός της Ευρώπης, κάνοντάς τα ακόμη πιο σπάνια."
+    },
+    "next_id": "scene_25_post_puzzle"
+  },
+  {
+    "id": "scene_25_post_puzzle",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Even if it means having interesting things to do...",
+      "gr": "Αυτό και αν θα πει να έχεις ενδιαφέρουσες ενασχολήσεις…"
+    },
+    "next_id": "scene_26_task_slide"
+  },
+  {
+    "id": "scene_26_task_slide",
+    "type": "task_check",
+    "task_id": "statue_game",
+    "mini_game_url": "mini_games/slide_puzzle/puzzle.html",
+    "text": {
+      "en": "Rearrange the squares to fix the Chinese statue.",
+      "gr": "Αναδιατάξτε τα τετράγωνα για να φτιάξετε το κινέζικο άγαλμα."
+    }
+  },
+  {
+    "id": "scene_26_success",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Well done! But look, the dinner plate is broken too!",
+      "gr": "Μπράβο! Αλλά κοίτα, και το πιάτο είναι σπασμένο!"
+    },
+    "next_id": "scene_27_task_Broken"
+  },
+  {
+    "id": "scene_27_task_Broken",
+    "type": "task_check",
+    "task_id": "Broken_plate",
+    "mini_game_url": "mini_games/broken_plate_puzzle/broken_puzzle.html",
+    "text": {
+      "en": "Slide the irregular pieces to fix the plate.",
+      "gr": "Σύρετε τα ακανόνιστα κομμάτια για να φτιάξετε το πιάτο."
+    }
+  },
+  {
+    "id": "scene_27_success",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "You're a natural! One last thing: that mural looks... different.",
+      "gr": "Είσαι ταλέντο! Ένα τελευταίο πράγμα: αυτή η τοιχογραφία φαίνεται... περίεργη."
+    },
+    "next_id": "scene_28_task_Observe"
+  },
+  {
+    "id": "scene_28_task_Observe",
+    "type": "task_check",
+    "task_id": "Find_difference",
+    "mini_game_url": "mini_games/find_the_difference/find_difference.html",
+    "text": {
+      "en": "Compare the mural with the screen and find the differences.",
+      "gr": "Συγκρίνετε την τοιχογραφία με την οθόνη και βρείτε τις διαφορές."
+    }
+  },
+  {
+    "id": "scene_29",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Okay then! I think we've spent enough time in this room for now, time to move on to the next one. See you in the kitchen!",
+      "gr": "Ωραία λοιπόν! Νομίζω αρκετά μείναμε σε αυτό το δωμάτιο για τώρα, ώρα να πάμε στο επόμενο. Τα λέμε στην κουζίνα!"
+    },
+    "action": "add-item:Golden_Fragment add-item:kanata",
+    "next_id": "scene_30"
+  },
+  {
+    "id": "scene_30",
+    "type": "task_check",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "required_item": "Plate",
+    "text": {
+      "en": "",
+      "gr": ""
+    },
+    "action": "remove-item:Ice_cream remove-item:Golden_Fragment remove-item:kanata",
+    "next_id": "scene_31"
+  },
+  {
+    "id": "scene_31",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Finally! I'm tired and I can't even walk!",
+      "gr": "Επιτέλους! Κουράστηκα και δεν περπατάω καν!"
+    },
+    "action": "remove-item:Plate",
+    "next_id": "scene_32"
+  },
+  {
+    "id": "scene_32",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Now we can go to the place the letter said...",
+      "gr": "Τώρα μπορούμε να πάμε στο μέρος που έλεγε το γράμμα…"
+    },
+    "next_id": "scene_33"
+  },
+  {
+    "id": "scene_33",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "The only place we haven't visited is... the cistern.",
+      "gr": "Το μόνο μέρος που δεν έχουμε επισκεφθεί είναι… η στέρνα."
+    },
+    "next_id": "END"
+  }
+]

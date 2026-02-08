@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Broken Plate Adventure Puzzle</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../../js/game_state.js"></script>
+</head>
+<body>
+
+    <div id="win-screen" class="hidden">
+        <div class="win-content">
+            <h1>Restored!</h1>
+            <p>The plate is whole again.</p>
+            <button id="play-again-btn">Continue Adventure</button>
+        </div>
+    </div>
+
+    <header id="ui-header">
+        <button id="reset-btn">Reset</button>
+        <span class="title">Broken Plate</span>
+        <button id="help-btn" onclick="toggleTutorial()">?</button>
+    </header>
+
+    <div id="game-container">
+        <div id="puzzle-board">
+            <div id="play-zone">
+                <img id="ghost-image" src="plate.jpg" alt="Ghost Reference">
+            </div>
+        </div>
+        
+        <div id="piece-tray">
+            </div>
+    </div>
+
+    <div id="tutorial-modal" class="modal">
+    <div class="modal-content">
+        <h2 id="tut-title">How to Play</h2>
+        
+        <div class="tutorial-step">
+            <div class="step-img" style="background-color: #34495e;">
+                <span>🖱️</span> 
+            </div>
+            <div class="step-text">
+                <h3 id="tut-step1-head">Drag & Drop</h3>
+                <p id="tut-step1-desc">Drag pieces from the tray to the board.</p>
+            </div>
+        </div>
+
+        <div class="tutorial-step">
+            <div class="step-img" style="background-color: #2ecc71;">
+                <span>✨</span>
+            </div>
+            <div class="step-text">
+                <h3 id="tut-step2-head">Snap to Lock</h3>
+                <p id="tut-step2-desc">A green flash means the piece is in the right spot!</p>
+            </div>
+        </div>
+
+        <div class="tutorial-step">
+            <div class="step-img" style="background-color: #e74c3c;">
+                <span>🔄</span>
+            </div>
+            <div class="step-text">
+                <h3 id="tut-step3-head">Try Again</h3>
+                <p id="tut-step3-desc">Red flash? The piece will return to the tray shortly.</p>
+            </div>
+        </div>
+
+        <button id="tut-close-btn" class="close-btn-red" onclick="toggleTutorial()">CLOSE</button>
+    </div>
+</div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

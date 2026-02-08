@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Realistic Slide Puzzle</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="../../js/game_state.js"></script>
+</head>
+<body>
+
+    <button id="help-btn" onclick="toggleTutorial()">?</button>
+
+    <div id="game-container">
+        <h1>Slide Puzzle</h1>
+        <div id="board"></div>
+        <button id="start-btn" onclick="startGame()">Start Game</button>
+        <button id="skip-btn" onclick="skipGame()">Skip Puzzle</button>
+    </div>
+
+    <div id="win-message" class="hidden">
+        🎉 Puzzle Solved! 🎉
+    </div>
+
+    <div id="tutorial-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="tut-title">How to Play</h2>
+            
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #34495e;">
+                    <span>👆</span> 
+                </div>
+                <div class="step-text">
+                    <h3 id="tut-step1-head">Start</h3>
+                    <p id="tut-step1-desc">Click Start to shuffle the tiles.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #3498db;">
+                    <span>🧐</span>
+                </div>
+                <div class="step-text">
+                    <h3 id="tut-step2-head">Move</h3>
+                    <p id="tut-step2-desc">Drag tiles into the empty space.</p>
+                </div>
+            </div>
+
+            <div class="tutorial-step">
+                <div class="step-img" style="background-color: #27ae60;">
+                    <span>👋</span>
+                </div>
+                <div class="step-text">
+                    <h3 id="tut-step3-head">Win</h3>
+                    <p id="tut-step3-desc">Order them 1-8 to win.</p>
+                </div>
+            </div>
+
+            <button id="tut-close-btn" class="close-btn-red" onclick="toggleTutorial()">CLOSE</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

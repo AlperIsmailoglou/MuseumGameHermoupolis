@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hidden Objects</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="../../js/game_state.js"></script>
+</head>
+<body>
+  <div id="game-wrapper" class="landscape">
+    <div id="icon-bar" aria-label="Objects to find"></div>
+
+    <div id="game-area">
+      <div id="image-frame">
+        <img id="bg-image" src="Master_bedroom.png" alt="Hidden objects background" />
+        <div id="hotspot-layer"></div>
+        
+        <button id="hint-btn">HINT</button>
+
+        <button id="help-btn" onclick="toggleTutorial()">?</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="win-popup" class="hidden">
+    <div id="win-content">
+      <img id="win-image" src="win_condition.png" alt="You win!">
+    </div>
+  </div>
+
+  <div id="tutorial-modal" class="modal">
+    <div class="modal-content">
+        <h2>How to Play</h2>
+        
+        <div class="tutorial-step">
+            <div class="step-img" style="background-color: #34495e;">
+                <span>📋</span>
+            </div>
+            <div class="step-text">
+                <h3>Check the List</h3>
+                <p>Look at the icon bar to see which items are hidden in the room.</p>
+            </div>
+        </div>
+
+        <div class="tutorial-step">
+            <div class="step-img" style="background-color: #2ecc71;">
+                <span>👆</span>
+            </div>
+            <div class="step-text">
+                <h3>Find & Click</h3>
+                <p>Spot the object in the scene and click it to collect it.</p>
+            </div>
+        </div>
+
+        <div class="tutorial-step">
+            <div class="step-img" style="background-color: #f1c40f;">
+                <span>💡</span>
+            </div>
+            <div class="step-text">
+                <h3>Need a Hint?</h3>
+                <p>Stuck? Click the HINT button to flash the location of missing items.</p>
+            </div>
+        </div>
+
+        <button class="close-btn-red" onclick="toggleTutorial()">PLAY GAME</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

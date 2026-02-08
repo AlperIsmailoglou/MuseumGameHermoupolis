@@ -1,0 +1,120 @@
+:root {
+    --bg-color: #2c3e50;
+    --tray-color: #34495e;
+    --board-border: #ecf0f1;
+    --gap-size: 15px;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none; 
+    -webkit-user-select: none;
+    touch-action: manipulation; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 60px; 
+    background-color: var(--bg-color);
+    font-family: sans-serif;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; 
+    position: fixed; 
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    padding-bottom: 20px;
+    gap: var(--gap-size);
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- HELP BUTTON --- */
+#help-btn {
+    position: fixed; 
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid white;
+    background-color: #3498db;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    z-index: 10000; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+
+/* --- THE BOARD --- */
+#puzzle-board {
+    border: 2px solid var(--board-border);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.2);
+    flex-shrink: 0; 
+    z-index: 10; 
+}
+
+#puzzle-guide {
+    width: 100%; height: 100%; opacity: 0.2;
+    pointer-events: none; background-repeat: no-repeat;
+    background-position: center; background-size: 100% 100%;
+}
+
+/* --- THE TRAY --- */
+#pieces-tray {
+    background-color: var(--tray-color);
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    width: 100%; flex-grow: 1; min-height: 120px; 
+    display: flex; flex-wrap: wrap; justify-content: center;
+    align-content: flex-start; gap: 25px; padding: 20px;
+    overflow-y: auto; overflow-x: hidden; scroll-behavior: smooth;
+    touch-action: pan-y; 
+}
+
+/* --- PIECES --- */
+.jigsaw-piece { position: absolute; cursor: grab; z-index: 100; touch-action: none; }
+.jigsaw-piece.in-tray { position: relative !important; top: auto !important; left: auto !important; margin: 10px; transform: none !important; z-index: 10; }
+.jigsaw-piece:active { cursor: grabbing; z-index: 7000 !important; }
+
+/* --- MODAL --- */
+.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.85); z-index: 20000; justify-content: center; align-items: center; }
+.modal.show { display: flex; animation: fadeIn 0.3s; }
+.modal-content { background: white; width: 90%; max-width: 500px; padding: 25px; border-radius: 10px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+.tutorial-step { display: flex; align-items: center; background: #f8f9fa; margin: 15px 0; padding: 10px; border-radius: 8px; text-align: left; border: 1px solid #ddd; }
+.step-img { width: 60px; height: 60px; flex-shrink: 0; border-radius: 8px; display: flex; justify-content: center; align-items: center; font-size: 24px; margin-right: 15px; color: white; }
+.step-text h3 { margin: 0 0 5px 0; font-size: 1rem; color: #333; }
+.step-text p { margin: 0; font-size: 0.9rem; color: #666; }
+.close-btn-red { background: #e74c3c; color: white; border: none; padding: 12px 30px; font-weight: bold; border-radius: 50px; margin-top: 20px; width: 100%; cursor: pointer; }
+
+/* --- WIN SCREEN --- */
+#win-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(52, 52, 57, 0.854); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 30000; opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
+#win-screen:not(.hidden) { opacity: 1; pointer-events: auto; }
+.win-content { background: white; color: #2c3e50; padding: 40px; border-radius: 15px; text-align: center; transform: scale(0.8); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+#win-screen:not(.hidden) .win-content { transform: scale(1); }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes snapFlash { 0% { filter: brightness(1.2); } 30% { filter: brightness(1.5); box-shadow: 0 0 25px #2ecc71; transform: scale(1.05); } 100% { filter: brightness(1); transform: scale(1); } }
+.jigsaw-piece.snapped { pointer-events: none; z-index: 5; animation: snapFlash 0.8s ease-out forwards; }
+.jigsaw-piece.wrong { z-index: 6000 !important; animation: errorFlash 1.5s ease-in-out infinite; }
+@keyframes errorFlash { 50% { box-shadow: 0 0 20px #e74c3c; border: 2px solid #e74c3c; } }
+.hidden { display: none !important; }
+
+@media (min-width: 600px) and (orientation: landscape) {
+    .game-container { flex-direction: row; }
+    #pieces-tray { width: 300px; height: 100%; flex-grow: 0; }
+    body { padding-top: 0; }
+}

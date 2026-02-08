@@ -1,0 +1,134 @@
+{
+    "Golden_Fragment": {
+        "name": {
+            "en": "Golden Fragment",
+            "gr": "Χρυσό θραύσμα"
+        },
+        "description": {
+            "en": "A 19th-century handmade model found in the harbor.",
+            "gr": "Ένα χειροποίητο μοντέλο του 19ου αιώνα που βρέθηκε στο λιμάνι."
+        },
+        "image": "images/room_1/GoldenFragment_icon.png"
+    },
+    "kanata": {
+        "name": {
+            "en": "Kanata",
+            "gr": "Kanata"
+        },
+        "description": {
+            "en": "A 19th-century handmade model found in the harbor.",
+            "gr": "Ένα χειροποίητο μοντέλο του 19ου αιώνα που βρέθηκε στο λιμάνι."
+        },
+        "image": "images/room_1/kanata.jpg"
+    },
+    "Broken_Record": {
+        "name": {
+            "en": "Broken Record",
+            "gr": "Σπασμένο Πικαπ"
+        },
+        "description": {
+            "en": "A 19th-century handmade model found in the harbor.",
+            "gr": "Ένα χειροποίητο μοντέλο του 19ου αιώνα που βρέθηκε στο λιμάνι."
+        },
+        "image": "images/room_3/Broken_record.jpg"
+    },
+    "Ice_cream_ingredients": {
+        "name": {
+            "en": "Ice Cream Ingredients",
+            "gr": "Συστατικά παγωτού"
+        },
+        "description": {
+            "en": "A 19th-century handmade model found in the harbor.",
+            "gr": "Ένα χειροποίητο μοντέλο του 19ου αιώνα που βρέθηκε στο λιμάνι."
+        },
+        "image": "images/room_4/Ice_cream_ingredients.png"
+    },
+    "Ice_cream": {
+        "name": {
+            "en": "Ice Cream",
+            "gr": "Παγωτό"
+        },
+        "description": {
+            "en": "A 19th-century handmade model found in the harbor.",
+            "gr": "Ένα χειροποίητο μοντέλο του 19ου αιώνα που βρέθηκε στο λιμάνι."
+        },
+        "image": "images/room_2/Ice_cream.jpg"
+    },
+    "Glue": {
+        "name": {
+            "en": "Glue",
+            "gr": "Κόλλα"
+        },
+        "description": {
+            "en": "A 19th-century handmade model found in the harbor.",
+            "gr": "Ένα χειροποίητο μοντέλο του 19ου αιώνα που βρέθηκε στο λιμάνι."
+        },
+        "image": "images/room_4/Glue.jpg"
+    },
+    "Right_score": {
+        "name": {
+            "en": "Right Score",
+            "gr": "Δεξιά Παρτιτούρα"
+        },
+        "description": {
+            "en": "A 19th-century handmade model found in the harbor.",
+            "gr": "Ένα χειροποίητο μοντέλο του 19ου αιώνα που βρέθηκε στο λιμάνι."
+        },
+        "image": "images/room_5/torn_piece_right.png"
+    },
+     "Needle": {
+        "name": {
+            "en": "Needle",
+            "gr": "Βελόνα"
+        },
+        "description": {
+            "en": "A 19th-century handmade model found in the harbor.",
+            "gr": "Ένα χειροποίητο μοντέλο του 19ου αιώνα που βρέθηκε στο λιμάνι."
+        },
+        "image": "images/room_7/Safety_Pin.png"
+    },
+     "Apron": {
+        "name": {
+            "en": "Apron",
+            "gr": "Ποδιά"
+        },
+        "description": {
+            "en": "A 19th-century handmade model found in the harbor.",
+            "gr": "Ένα χειροποίητο μοντέλο του 19ου αιώνα που βρέθηκε στο λιμάνι."
+        },
+        "image": "images/room_7/Apron.png"
+    },
+     "Knitwear": {
+        "name": {
+            "en": "Knitwear",
+            "gr": "Πλεκτό"
+        },
+        "description": {
+            "en": "A 19th-century handmade model found in the harbor.",
+            "gr": "Ένα χειροποίητο μοντέλο του 19ου αιώνα που βρέθηκε στο λιμάνι."
+        },
+        "image": "images/room_7/Knitwear.png"
+    },
+     "Plate": {
+        "name": {
+            "en": "Plate",
+            "gr": "Πιάτο"
+        },
+        "description": {
+            "en": "A 19th-century handmade model found in the harbor.",
+            "gr": "Ένα χειροποίητο μοντέλο του 19ου αιώνα που βρέθηκε στο λιμάνι."
+        },
+        "image": "images/room_7/plate.png"
+    },
+     "WalkingStick": {
+        "name": {
+            "en": "Cane",
+            "gr": "Μπαστούνι"
+        },
+        "description": {
+            "en": "A 19th-century handmade model found in the harbor.",
+            "gr": "Ένα χειροποίητο μοντέλο του 19ου αιώνα που βρέθηκε στο λιμάνι."
+        },
+        "image": "images/room_7/WalkingStick.png"
+    }
+}

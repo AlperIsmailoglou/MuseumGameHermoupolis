@@ -1,0 +1,307 @@
+[
+  {
+    "id": "scene_r4_01",
+    "type": "dialogue",
+    "speaker_id": "character4",
+    "emotion": "happy",
+    "text": {
+      "en": "But why is Marina shouting again?",
+      "gr": "Μα γιατί φωνάζει η Μαρίνα πάλι;"
+    },
+    "next_id": "scene_r4_02"
+  },
+  {
+    "id": "scene_r4_02",
+    "type": "dialogue",
+    "speaker_id": "character5",
+    "emotion": "happy",
+    "text": {
+      "en": "Who knows again…",
+      "gr": "Ποιος ξέρει πάλι…"
+    },
+    "next_id": "scene_r4_03"
+  },
+  {
+    "id": "scene_r4_03",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Emmanuel! Please tell me you have glue somewhere here!",
+      "gr": "Εμμανουήλ! Πες μου σε παρακαλώ ότι έχετε κόλλα κάπου εδώ!"
+    },
+    "next_id": "scene_r4_04"
+  },
+  {
+    "id": "scene_r4_04",
+    "type": "dialogue",
+    "speaker_id": "character4",
+    "emotion": "happy",
+    "text": {
+      "en": "Glue? What do you want it for? What happened again?",
+      "gr": "Κόλλα; Τι τη θες; Τι έγινε πάλι;"
+    },
+    "next_id": "scene_r4_05"
+  },
+  {
+    "id": "scene_r4_05",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Well, you didn't understand anything while the lights were playing?",
+      "gr": "Καλά, δεν κατάλαβες τίποτα ενώ έπαιζαν τα φώτα;"
+    },
+    "next_id": "scene_r4_06"
+  },
+  {
+    "id": "scene_r4_06",
+    "type": "dialogue",
+    "speaker_id": "character4",
+    "emotion": "happy",
+    "text": {
+      "en": "No, I was busy. The doll's shoe is dirty again!",
+      "gr": "Όχι, ήμουν απασχολημένος. Το παπούτσι της κούκλας είναι πάλι λερωμένο!"
+    },
+    "next_id": "scene_r4_07"
+  },
+  {
+    "id": "scene_r4_07",
+    "type": "dialogue",
+    "speaker_id": "character5",
+    "emotion": "happy",
+    "text": {
+      "en": "HA HA HA!!!",
+      "gr": "ΧΑ ΧΑ ΧΑ!!!"
+    },
+    "next_id": "scene_r4_08"
+  },
+  {
+    "id": "scene_r4_08",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": ". . .",
+      "gr": ". . ."
+    },
+    "next_id": "scene_r4_09"
+  },
+  {
+    "id": "scene_r4_09",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "If we clean it, will you give us glue?",
+      "gr": "Εάν το καθαρίσουμε, θα μας δώσεις κόλλα;"
+    },
+    "next_id": "scene_r4_10_shoe_polish"
+  },
+  {
+    "id": "scene_r4_10_shoe_polish",
+    "type": "task_check",
+    "speaker_id": "character4",
+    "emotion": "happy",
+    "task_id": "Polish_game",
+    "mini_game_url": "mini_games/shoe_polish/shoe_polish.html",
+    "text": {
+      "en": "We'll see, for now do it, and then we'll see!",
+      "gr": "Θα δούμε, για τώρα κάντε το, και μετά βλέπουμε!"
+    },
+    "next_id": "scene_r4_success"
+  },
+  {
+    "id": "scene_r4_success",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "There you go! Now it's crystal clear!",
+      "gr": "Ορίστε! Τώρα είναι πεντακάθαρο!"
+    },
+    "next_id": "scene_r4_12"
+  },
+  {
+    "id": "scene_r4_12",
+    "type": "dialogue",
+    "speaker_id": "character4",
+    "emotion": "happy",
+    "text": {
+      "en": "Yes, yes, well done.",
+      "gr": "Ναι, ναι, μπράβο."
+    },
+    "next_id": "scene_r4_13"
+  },
+  {
+    "id": "scene_r4_13",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Can we have the glue now?",
+      "gr": "Μπορούμε τώρα να έχουμε την κόλλα;"
+    },
+    "next_id": "scene_r4_14"
+  },
+  {
+    "id": "scene_r4_14",
+    "type": "dialogue",
+    "speaker_id": "character4",
+    "emotion": "happy",
+    "text": {
+      "en": "What glue? Uh... before that, I want you to do one more thing for me.",
+      "gr": "Ποια κόλλα; Α… πριν από αυτό, θέλω να κάνετε κάτι ακόμα για εμένα."
+    },
+    "next_id": "scene_r4_15"
+  },
+  {
+    "id": "scene_r4_15",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "But, you promised!",
+      "gr": "Μα, υποσχεθήκατε!"
+    },
+    "next_id": "scene_r4_16"
+  },
+  {
+    "id": "scene_r4_16",
+    "type": "dialogue",
+    "speaker_id": "character4",
+    "emotion": "happy",
+    "text": {
+      "en": "I said we'll see!",
+      "gr": "Είπα θα δούμε!"
+    },
+    "next_id": "scene_r4_17"
+  },
+  {
+    "id": "scene_r4_17",
+    "type": "dialogue",
+    "speaker_id": "character4",
+    "emotion": "happy",
+    "text": {
+      "en": "Before I give it to you, I want one more favor.",
+      "gr": "Πριν σας το δώσω, θέλω μία χάρη ακόμη."
+    },
+    "next_id": "scene_r4_18"
+  },
+  {
+    "id": "scene_r4_18",
+    "type": "dialogue",
+    "speaker_id": "character4",
+    "emotion": "happy",
+    "text": {
+      "en": "I've been craving the ice cream I used to eat while I was still alive.",
+      "gr": "Έχω επιθυμήσει το παγωτό που έτρωγα ενώ ήμουν ακόμη ζωντανός."
+    },
+    "next_id": "scene_r4_19"
+  },
+  {
+    "id": "scene_r4_19",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "But I don't have any ingredients for ice cream right now!",
+      "gr": "Μα δεν έχω τώρα υλικά για το παγωτό!"
+    },
+    "next_id": "scene_r4_20"
+  },
+  {
+    "id": "scene_r4_20",
+    "type": "dialogue",
+    "speaker_id": "character3",
+    "emotion": "happy",
+    "text": {
+      "en": "I can help! I have some more from when Natalia and I made it for Katerina.",
+      "gr": "Μπορώ εγώ να βοηθήσω! Έχω μερικά ακόμα από όταν το φτιάξαμε με τη Ναταλία για την Κατερίνα."
+    },
+    "action": "add-item:Ice_cream_ingredients",
+    "next_id": "scene_r4_21"
+  },
+  {
+    "id": "scene_r4_21",
+    "type": "task_check",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "task_id": "Ice_cream_check",
+    "required_item": "Ice_cream",
+    "text": {
+      "en": "Okay so... let's go back to the kitchen.",
+      "gr": "Εντάξει λοιπόν… πάμε πίσω στην κουζίνα."
+    },
+    "next_id": "scene_r4_22"
+  },
+  {
+    "id": "scene_r4_22",
+    "type": "task_check",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "required_item": "Ice_cream",
+    "text": {
+      "en": "Mr. Emmanuel! We brought your ice cream!",
+      "gr": "Κύριε Εμμανουήλ! Φέραμε το παγωτό σας!"
+    },
+    "next_id": "scene_r4_23"
+  },
+  {
+    "id": "scene_r4_23",
+    "type": "dialogue",
+    "speaker_id": "character4",
+    "emotion": "happy",
+    "text": {
+      "en": "Well done, my child, well done! Okay, I'll give you the glue.",
+      "gr": "Μπράβο παιδί μου, εύγε! Εντάξει, θα σας δώσω την κόλλα."
+    },
+    "action": "remove-item:Ice_cream",
+    "next_id": "scene_r4_24"
+  },
+  {
+    "id": "scene_r4_24",
+    "type": "dialogue",
+    "speaker_id": "character4",
+    "emotion": "happy",
+    "text": {
+      "en": "...look inside the shoe.",
+      "gr": "...κοιτάξτε μέσα στο παπούτσι."
+    },
+    "next_id": "scene_r4_25"
+  },
+  {
+    "id": "scene_r4_25",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "But hey... what's glue doing inside a shoe...?",
+      "gr": "Μα καλά... τι κάνει μια κόλλα μέσα στο παπούτσι...;"
+    },
+    "next_id": "scene_r4_26"
+  },
+  {
+    "id": "scene_r4_26",
+    "type": "dialogue",
+    "speaker_id": "character4",
+    "emotion": "happy",
+    "text": {
+      "en": "Well, since you found what you wanted, and you did what I asked you to do, what are you complaining about?",
+      "gr": "Ε καλά, αφού βρήκατε αυτό που θέλατε, και κάνατε και ό,τι σας ζήτησα, τι γκρινιάζεις;"
+    },
+    "action": "add-item:Glue",
+    "next_id": "scene_r4_27"
+  },
+  {
+    "id": "scene_r4_27",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "... Let's go back to Marina...",
+      "gr": "... Πάμε πίσω στη Μαρίνα..."
+    },
+    "next_id": "END"
+  }
+]

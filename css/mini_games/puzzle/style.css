@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Center vertically */
+    margin: 0;
+    height: 100vh;
+    background: #fafafa;
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* WIN MESSAGE */
+#win-message {
+    position: fixed;
+    top: 20px;
+    font-size: 26px;
+    padding: 15px 30px;
+    background: rgba(76, 175, 80, 0.9); /* Greenish background */
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 999;
+}
+
+.hidden {
+    display: none;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* THE BOARD - 3x3 Grid */
+#board {
+    width: 306px;  /* 300px + borders/gaps adjustment */
+    height: 306px;
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 2px;
+    background: #333;
+    border: 4px solid #333;
+    border-radius: 4px;
+}
+
+/* THE TILES */
+.tile {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0; /* Hide text numbers if you only want images */
+}
+
+.tile:hover {
+    filter: brightness(1.1);
+}
+
+/* THE EMPTY SLOT */
+.empty {
+    background: transparent !important; /* No image */
+    cursor: default;
+    border: none;
+}
+
+/* BUTTON STYLE */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+button:hover {
+    background-color: #555;
+}

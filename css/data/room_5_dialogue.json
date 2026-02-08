@@ -1,0 +1,540 @@
+[
+  {
+    "id": "scene_r5_01",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "Oh! A new visitor! Hi!",
+      "gr": "Ω! Ένας καινούργιος επισκέπτης! Γεια!"
+    },
+    "next_id": "scene_r5_02"
+  },
+  {
+    "id": "scene_r5_02",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Hello Miss Katerina, how are you?",
+      "gr": "Γεια σας δεσποινίς Κατερίνα, πώς είστε;"
+    },
+    "next_id": "scene_r5_03"
+  },
+  {
+    "id": "scene_r5_03",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "Well, I was trying to learn the piano again!",
+      "gr": "Καλά, προσπαθούσα να μάθω πιάνο πάλι!"
+    },
+    "next_id": "scene_r5_04"
+  },
+  {
+    "id": "scene_r5_04",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Ah, a classic hobby for young ladies, especially at that time, as was embroidery.",
+      "gr": "Α, ένα κλασικό χόμπι για τις νεαρές κυρίες, ειδικά εκείνη την εποχή, όπως ήταν και το κέντημα."
+    },
+    "next_id": "scene_r5_05"
+  },
+  {
+    "id": "scene_r5_05",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "But the piano is not tuned... and you can't even touch it...",
+      "gr": "Μα το πιάνο δεν είναι κουρδισμένο… και ούτε μπορείτε να το ακουμπήσετε..."
+    },
+    "next_id": "scene_r5_06"
+  },
+  {
+    "id": "scene_r5_06",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": ". . .",
+      "gr": ". . ."
+    },
+    "next_id": "scene_r5_07"
+  },
+  {
+    "id": "scene_r5_07",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Just kidding! Who am I to tell you that you can't learn piano...",
+      "gr": "Πλάκα κάνω καλέ! Ποιος είμαι εγώ για να σας πω ότι δεν μπορείτε να μάθετε πιάνο..."
+    },
+    "next_id": "scene_r5_08"
+  },
+  {
+    "id": "scene_r5_08",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "HAHA!...",
+      "gr": "ΧΑΧΑ!..."
+    },
+    "next_id": "scene_r5_09"
+  },
+  {
+    "id": "scene_r5_09",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "OH!!!",
+      "gr": "ΩΧ!!!"
+    },
+    "action": "flicker-lights",
+    "next_id": "scene_r5_10"
+  },
+  {
+    "id": "scene_r5_10",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "Oh no… that gentleman was up to mischief again!",
+      "gr": "Ω όχι… πάλι εκείνος ο κύριος έκανε σκανταλιά!"
+    },
+    "next_id": "scene_r5_11"
+  },
+  {
+    "id": "scene_r5_11",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "That... gentleman?",
+      "gr": "Ο... κύριος;"
+    },
+    "next_id": "scene_r5_12"
+  },
+  {
+    "id": "scene_r5_12",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "Yes! I've seen him many times coming and going in the museum rooms! And after every time he goes somewhere, something happens.",
+      "gr": "Ναι! Τον έχω δει πολλές φορές να πηγαινοέρχεται στα δωμάτια του μουσείου! Και μετά από κάθε φορά που πάει κάπου, κάτι συμβαίνει."
+    },
+    "next_id": "scene_r5_13"
+  },
+  {
+    "id": "scene_r5_13",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "What does he look like? Did you get a good look at him?",
+      "gr": "Πώς μοιάζει; Τον έχεις δει καλά;"
+    },
+    "next_id": "scene_r5_14"
+  },
+  {
+    "id": "scene_r5_14",
+    "type": "task_check",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "required_item": "Glue",
+    "text": {
+      "en": "Yes! But… the score is torn! Please use the glue to fix it.",
+      "gr": "Ναι! Αλλά… η παρτιτούρα είναι σκισμένη! Παρακαλώ χρησιμοποιήστε την κόλλα για να την φτιάξετε."
+    },
+    "action": "add-item:Right_score",
+    "next_id": "scene_r5_15_torn_puzzle"
+  },
+  {
+    "id": "scene_r5_15_torn_puzzle",
+    "type": "task_check",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "task_id": "Torn_puzzle",
+    "required_item": "Right_score",
+    "mini_game_url": "mini_games/torn_puzzle/torn_puzzle.html",
+    "text": {
+      "en": "Click on the torn score to start fixing it!",
+      "gr": "Πατήστε πάνω στην σκισμένη παρτιτούρα για να την φτιάξετε!"
+    },
+    "next_id": "scene_r5_success"
+  },
+  {
+    "id": "scene_r5_success",
+    "type": "task_check",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "required_item": "Right_score",
+    "text": {
+      "en": "Here it is! Like new! (Press the Use button to give the score)",
+      "gr": "Ορίστε! Σαν καινούργια! (Πατήστε το κουμπί Χρήση για να δώσετε την παρτιτούρα)"
+    },
+    "next_id": "scene_r5_17"
+  },
+  {
+    "id": "scene_r5_17",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "Phew, thank you very much!",
+      "gr": "Ουφ, ευχαριστώ πάρα πολύ!"
+    },
+    "next_id": "scene_r5_18"
+  },
+  {
+    "id": "scene_r5_18",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Can you now tell us what the gentleman you said you saw looks like?",
+      "gr": "Μπορείτε τώρα να μας πείτε πώς μοιάζει ο κύριος που είπατε ότι έχετε δει;"
+    },
+    "next_id": "scene_r5_19"
+  },
+  {
+    "id": "scene_r5_19",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "Okay, but you have to promise me you won't laugh. Everyone else I told laughed...",
+      "gr": "Εντάξει, αλλά πρέπει να μου υποσχεθείς ότι δεν θα γελάσεις. Σε όσους το είπα αυτό έκαναν…"
+    },
+    "next_id": "scene_r5_20"
+  },
+  {
+    "id": "scene_r5_20",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "We promise you, miss! On my honor!",
+      "gr": "Σας το υποσχόμαστε δεσποινίς! Στην τιμή μου!"
+    },
+    "next_id": "scene_r5_21"
+  },
+  {
+    "id": "scene_r5_21",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "He looked like... like...",
+      "gr": "Έμοιαζε σαν... σαν..."
+    },
+    "next_id": "scene_r5_22"
+  },
+  {
+    "id": "scene_r5_22",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "P i r a t e !",
+      "gr": "Π ε ι ρ α τ ή ς !"
+    },
+    "next_id": "scene_r5_23"
+  },
+  {
+    "id": "scene_r5_23",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": ". . .",
+      "gr": ". . ."
+    },
+    "next_id": "scene_r5_24"
+  },
+  {
+    "id": "scene_r5_24",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "But... of all of us here as ghosts, none of us are pirates...",
+      "gr": "Μα... από όλους όσους είμαστε εδώ ως φαντάσματα, κανένας μας δεν είναι πειρατής..."
+    },
+    "next_id": "scene_r5_25"
+  },
+  {
+    "id": "scene_r5_25",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "I am telling you the truth!",
+      "gr": "Αλήθεια σας λέω!"
+    },
+    "next_id": "scene_r5_26"
+  },
+  {
+    "id": "scene_r5_26",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "I knew you wouldn't believe me...",
+      "gr": "Το ήξερα ότι δεν θα με πιστεύατε..."
+    },
+    "next_id": "scene_r5_27"
+  },
+  {
+    "id": "scene_r5_27",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "No, no, I believe you!",
+      "gr": "Όχι, όχι, σας πιστεύω!"
+    },
+    "next_id": "scene_r5_28"
+  },
+  {
+    "id": "scene_r5_28",
+    "type": "task_check",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "I think we better get out of here... let's go to the office!",
+      "gr": "Νομίζω είναι καλύτερα να φύγουμε από εδώ… πάμε στο γραφείο!"
+    },
+    "action": "set-flag:r5_phase1_complete",
+    "next_id": "END"
+  },
+  {
+    "id": "scene_r5_return_01",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Miss Katerina! Miss Katerina!",
+      "gr": "Δεσποινίς Κατερίνα! Δεσποινίς Κατερίνα!"
+    },
+    "next_id": "scene_r5_return_02"
+  },
+  {
+    "id": "scene_r5_return_02",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "What do you want again?",
+      "gr": "Τι θες πάλι;"
+    },
+    "next_id": "scene_r5_return_03"
+  },
+  {
+    "id": "scene_r5_return_03",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "I came to apologize… and to ask if you saw the… pirate ghost again just now.",
+      "gr": "Ήρθα να σας ζητήσω συγγνώμη… και για να σας ρωτήσω αν είδατε πάλι το… φάντασμα πειρατή μόλις τώρα."
+    },
+    "next_id": "scene_r5_return_04"
+  },
+  {
+    "id": "scene_r5_return_04",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": ". . .",
+      "gr": ". . ."
+    },
+    "next_id": "scene_r5_return_05"
+  },
+  {
+    "id": "scene_r5_return_05",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "Alright, I forgive you!",
+      "gr": "Εντάξει, σε συγχωρώ!"
+    },
+    "next_id": "scene_r5_return_06"
+  },
+  {
+    "id": "scene_r5_return_06",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Thank you very much, Miss. So, did you see him?",
+      "gr": "Σας ευχαριστώ πολύ δεσποινίς. Λοιπόν, τον είδατε;"
+    },
+    "next_id": "scene_r5_return_07"
+  },
+  {
+    "id": "scene_r5_return_07",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "Yes, he was here a while ago and I saw him very clearly this time! He threw a bunch of things into the box in the corner!",
+      "gr": "Ναι, ήταν εδώ πριν λίγο και τον είδα πολύ καθαρά αυτήν την φορά! Πέταξε ένα σωρό πράγματα μέσα στο κουτί στην γωνία!"
+    },
+    "next_id": "scene_r5_return_08"
+  },
+  {
+    "id": "scene_r5_return_08",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Oh no, not the dress box… but how can he touch so many things if he's a ghost?!",
+      "gr": "Ωχ, όχι το κουτί με τα φορέματα… μα πώς μπορεί και ακουμπάει τόσα πράγματα εάν είναι φάντασμα;!"
+    },
+    "next_id": "scene_r5_return_09"
+  },
+  {
+    "id": "scene_r5_return_09",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "Now that I saw him a bit better, even though he has the form of a pirate, he looks a bit… strange.",
+      "gr": "Τώρα που τον είδα λίγο καλύτερα, αν και έχει την μορφή ενός πειρατή, φαίνεται λίγο… περίεργος."
+    },
+    "next_id": "scene_r5_return_10"
+  },
+  {
+    "id": "scene_r5_return_10",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "What do you mean?",
+      "gr": "Τι εννοείτε;"
+    },
+    "next_id": "scene_r5_return_11"
+  },
+  {
+    "id": "scene_r5_return_11",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "I can't explain it well… but I feel that he might not be a ghost after all.",
+      "gr": "Δεν μπορώ να το εξηγήσω καλά… νιώθω όμως ότι μπορεί και να μην είναι φάντασμα τελικά."
+    },
+    "next_id": "scene_r5_return_12"
+  },
+  {
+    "id": "scene_r5_return_12",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "That… would explain a lot… but why would someone disguise themselves as a pirate?",
+      "gr": "Αυτό… θα εξηγούσε πολλά… αλλά γιατί να μεταμφιέζεται ως πειρατής;"
+    },
+    "next_id": "scene_r5_return_13"
+  },
+  {
+    "id": "scene_r5_return_13",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "I don't know…",
+      "gr": "Δεν ξέρω…"
+    },
+    "next_id": "scene_r5_return_14"
+  },
+  {
+    "id": "scene_r5_return_14",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Let's look at the box, maybe there's something there…",
+      "gr": "Ας κοιτάξουμε το κουτί, ίσως υπάρχει κάτι εκεί…"
+    },
+    "next_id": "scene_r5_return_15"
+  },
+  {
+    "id": "scene_r5_return_15",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Oh my... he stole so many things? But why did he throw it all here? So we can read the note.",
+      "gr": "Πω πω… τόσα πολλά πράγματα έκλεψε; Μα γιατί τα πέταξε όλα εδώ; Για να διαβάσουμε το σημείωμα."
+    },
+    "action": "add-item:Needle add-item:Apron add-item:Knitwear add-item:WalkingStick add-item:Plate",
+    "next_id": "scene_r5_return_16"
+  },
+  {
+    "id": "scene_r5_return_16",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "But how dare he...!",
+      "gr": "Μα πώς τολμά…!"
+    },
+    "action": "show-alert",
+    "next_id": "scene_r5_return_17"
+  },
+  {
+    "id": "scene_r5_return_17",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Let's first put things back where they should be... and then let's go to the last part of the letter.",
+      "gr": "Ας επιστρέψουμε τα πράγματα πρώτα εκεί που πρέπει να είναι… και μετά ας πάμε στο τελευταίο μέρος που λέει το γράμμα."
+    },
+    "next_id": "scene_r5_return_18"
+  },
+  {
+    "id": "scene_r5_return_18",
+    "type": "dialogue",
+    "speaker_id": "character6",
+    "emotion": "happy",
+    "text": {
+      "en": "Good luck Eric!",
+      "gr": "Καλή τύχη Έρικ!"
+    },
+    "next_id": "scene_r5_return_19"
+  },
+  {
+    "id": "scene_r5_return_19",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "Thank you, miss…",
+      "gr": "Ευχαριστούμε δεσποινίς…"
+    },
+    "next_id": "scene_r5_return_20"
+  },
+  {
+    "id": "scene_r5_return_20",
+    "type": "dialogue",
+    "speaker_id": "guide",
+    "emotion": "happy",
+    "text": {
+      "en": "We found the needle so let's go back to the bedroom first.",
+      "gr": "Βρήκαμε τη βελόνα οπότε ας πάμε πίσω στην κρεβατοκάμαρα πρώτα."
+    },
+    "next_id": "END"
+  }
+]
