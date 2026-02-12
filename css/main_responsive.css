@@ -68,10 +68,10 @@ html {
 
 
 .history-entry {
-    background-color: rgba(143, 153, 181, 0.9);
+    background-color: #AAC0FF;
     border-radius: 8px;
     padding: 12px;
-    border-left: 5px solid #1a2a6c;
+    border-left: 5px solid #646464;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -79,7 +79,7 @@ html {
 
 .history-speaker {
     font-weight: bold;
-    color: #000000;
+    color: #333;
     margin-bottom: 5px;
     font-size: 1rem;
     text-transform: uppercase;
@@ -110,7 +110,8 @@ html {
     flex-direction: column;
     padding: 15px;
     box-sizing: border-box;
-    background: linear-gradient(135deg, #1a2a6c, #2975bc);
+   background: #AAC0FF;
+    border: #646464;
     overflow: scroll;
 }
 
@@ -127,7 +128,7 @@ html {
     width: 100%;
     flex-shrink: 0;
     font-size: 1.4rem;
-    color: #ffd700;
+     color: black;
     text-shadow: 1px 1px 2px black;
 }
 
@@ -144,8 +145,8 @@ html {
     flex: 1;
     min-height: 0;
     width: 100%;
-    background-color: white;
-    border: 2px solid #ffd700;
+   background-color: white;
+    border: 2px solid #666666;
     border-radius: 10px;
     padding: 10px;
 
@@ -166,12 +167,11 @@ html {
     flex: 1;
     min-height: 0;
 
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #AAC0FF;
     color: #000;
     padding: 15px;
     border-radius: 8px;
-    border: 2px solid #1a2a6c;
-
+    border: 2px solid #646464;
     text-align: center;
     font-size: 1rem;
     font-weight: bold;
@@ -196,8 +196,8 @@ html {
 .artifact-grid-item {
     width: 100%;
     height: 120px;
-    background-color: rgba(0, 0, 0, 0.15);
-    border: 2px solid #ffd700;
+     background-color: white;
+    border: 2px solid #666666;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -290,7 +290,7 @@ html {
     flex-direction: row;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.15);
-    border: 2px solid #ffd700;
+    border: 2px solid #2CDF94;;
     border-radius: 10px;
     padding: 10px;
     width: 100%;
@@ -330,9 +330,9 @@ html {
 #use-item-btn {
     width: 60%;
     max-width: 200px;
-    background-color: #ffd700;
+   background-color: white;
     color: black;
-    border: 2px solid #1a2a6c;
+    border: 2px solid #666666;
     padding: 10px;
     font-weight: bold;
     border-radius: 10px;
@@ -353,8 +353,8 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #475db3, #203f5b);
-    border: 2px solid #ffd700;
+    background: #AAC0FF;
+    border: 2px solid #ffffff;
     border-radius: 12px;
     padding: 8px;
     cursor: pointer;
@@ -399,11 +399,11 @@ html {
     min-height: 15dvh;
     padding: 3vw;
     z-index: 500;
-    background-color: #1d374e;
-    border: 3px solid #fff;
+    background-color: #AAC0FF;;
+    border: 3px solid #646464;
     border-radius: 15px;
     font-family: Arial, sans-serif;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 4vw;
     cursor: pointer;
     pointer-events: auto;
@@ -482,8 +482,8 @@ html {
     width: 80%;
     max-width: 500px;
     height: 65%;
-    background: linear-gradient(135deg, #475db3, #203f5b);
-    border: 3px solid #ffd700;
+    background: #AAC0FF;
+    border: 2px solid #646464;
     border-radius: 15px;
     z-index: 2000;
     padding: 20px;
@@ -516,9 +516,9 @@ html {
     width: 250px;
     padding: 15px;
     font-size: 1.1rem;
-    background-color: #ffd700;
+      background-color: white;
     color: #000;
-    border: 2px solid #1a2a6c;
+    border: 2px solid #666666;
     border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
@@ -566,7 +566,7 @@ html {
 
 .task-highlight {
     animation: task-pulse 1.5s infinite ease-in-out;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+    filter: drop-shadow(0 0 10px rgba(44, 223, 148, 0.8));
     cursor: pointer;
     pointer-events: auto !important;
 }
@@ -579,7 +579,7 @@ html {
 
     50% {
         transform: scale(1.08);
-        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+        filter: drop-shadow(0 0 20px rgba(44, 223, 148, 1));
     }
 
     100% {
@@ -653,7 +653,7 @@ html {
     z-index: 1001 !important;
     position: relative;
     pointer-events: auto !important;
-    box-shadow: 0 0 20px 5px #ffd700;
+    box-shadow: 0 0 20px 5px #2CDF94;
     transform: scale(1.1);
     transition: all 0.3s ease;
 }
@@ -665,7 +665,7 @@ html {
     left: 0;
     width:100%;
     height: 100dvh;
-    background: linear-gradient(135deg, rgba(10, 10, 50, 0.95), rgba(26, 42, 108, 0.95));
+    background: #AAC0FF;
     z-index: 9999;
     display: flex;
     justify-content: center;
@@ -675,11 +675,11 @@ html {
 
 .end-content {
     text-align: center;
-    color: white;
+     color: black;
     padding: 40px;
-    border: 4px solid #ffd700;
+     border: 4px solid #646464;
     border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #AAC0FF;
     width: 90%;
     max-width: 500px;
 }
@@ -687,9 +687,10 @@ html {
 .end-content h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #ffd700;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    color: black;
+    text-shadow: 0 0 10px #666666;
 }
+
 
 .stars-container {
     font-size: 4rem;
@@ -706,7 +707,7 @@ html {
 
 .time-label {
     font-size: 1.2rem;
-    color: #aaa;
+    color:  black;
     margin-bottom: 5px;
 }
 
@@ -752,7 +753,7 @@ html {
 .restart-btn {
     padding: 15px 30px;
     font-size: 1.2rem;
-    background-color: #ffd700;
+    background-color:white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -767,17 +768,16 @@ html {
     transform: scale(1.05);
     background-color: #fff;
 }
-
 .survey-btn {
-    background-color: #1a2a6c;
-    color: #ffd700;
-    border: 2px solid #ffd700;
+    background-color: white;
+    color: black;
+    border: 2px solid #666666;
 }
 
 .survey-btn:hover {
     background-color: #fff;
-    color: #1a2a6c;
-    border-color: #1a2a6c;
+    color: black;
+    border-color: #666666;
 }
 
 @keyframes fadeIn {
