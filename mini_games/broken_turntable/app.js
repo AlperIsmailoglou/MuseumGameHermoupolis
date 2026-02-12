@@ -3,7 +3,7 @@
 const IMAGE_SRC = 'plate.jpg'; 
 const PIECE_COUNT_MIN = 12;
 const PIECE_COUNT_MAX = 20; 
-const SNAP_TOLERANCE = 40; 
+const SNAP_TOLERANCE = 60; 
 const RETURN_DELAY = 1000; 
 
 let pieces = [];

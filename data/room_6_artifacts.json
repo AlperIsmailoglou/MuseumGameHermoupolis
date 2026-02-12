@@ -2,12 +2,23 @@
     "Locker": {
         "image": "images/room_6/locker.jpg",
         "name": {
-            "en": "Locker",
+            "en": "Safe",
             "gr": "Χρηματοκιβώτιo"
         },
          "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση."
+            "en": "A place to store valuables.",
+            "gr": "Για φύλαξη πολύτιμων αντικειμένων."
+        }
+    },
+    "Mural": {
+        "image": "images/room_6/mural.jpg",
+        "name": {
+            "en": "Mural (Finished)",
+            "gr": "Τοιχογραφία (Τελειωμένη)"
+        },
+        "description": {
+            "en": "The finished version of the mural seen also in the living room. It depicts the explosion of Mount Vesuvius. Italian and other foreign artists were commissioned to work here, and they often depicted scenes from their own history.",
+            "gr": "Η ολοκληρωμένη εκδοχή της τοιχογραφίας, που φαίνεται επίσης στο σαλόνι. Απεικονίζει την έκρηξη του Βεζούβιου. Έφερναν Ιταλούς και άλλους ξένους καλλιτέχνες να δουλέψουν εδώ και συχνά απεικόνιζαν σκηνές από τη δική τους ιστορία."
         }
     }
 }

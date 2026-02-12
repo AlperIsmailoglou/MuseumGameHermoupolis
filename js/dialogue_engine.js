@@ -7,6 +7,8 @@ let currentSceneIndex = 0;
 let isProcessingClick = false;
 let roomID = '';
 
+
+
 function showTaskFeedback(msg) {
     const feedback = document.getElementById('task-feedback');
     if (feedback) {
@@ -69,7 +71,6 @@ function handlePlaceboUseClick() {
         toggleInventory(false);
     }
 }
-
 function toggleHistory(show) {
     if (isMenuOpen('history-menu')) {
         closeAllMenus();
@@ -114,7 +115,6 @@ function renderHistoryLog() {
         list.scrollTop = list.scrollHeight;
     }, 50);
 }
-
 function formatSpeakerName(id) {
     if (!id) return "Unknown";
 
@@ -147,6 +147,7 @@ function handleSceneAdvance(event) {
             showEndGameScreen(); 
             return;
         } else {
+          
             console.log("End of room reached");
             return; 
         }
@@ -177,28 +178,13 @@ function handleCharacterVisuals(scene) {
     const limitVisibility = allCharacters.length > 2;
 
     allCharacters.forEach(charEl => {
-        // --- HARD HIDE LOGIC ---
-        // If scene index is greater than 5, hide ALL characters immediately
-        if (currentSceneIndex > 5) {
-            charEl.style.display = 'none';
-            return; 
-        }
-        // -----------------------
-
         if (charEl.id === speakerKey) {
             charEl.style.display = 'block';
             charEl.classList.remove('is-listening');
-            
             if (scene.emotion && ASSETS.characters[speakerKey]) {
                 const emotionSrc = ASSETS.characters[speakerKey][scene.emotion];
                 if (emotionSrc) {
-                    // Removed the broken optimization calls. 
-                    // Now simply sets the source to avoid ReferenceError.
                     charEl.src = BASE_PATH + emotionSrc;
-                    
-                    // Reset transform in case it was modified before
-                    charEl.style.opacity = "1";
-                    charEl.style.transform = "scale(1)";
                 }
             }
         } else {
@@ -275,11 +261,14 @@ function processScene() {
     dialogueTextElement.textContent = scene.text[gameState.language] || scene.text['en'];
     handleCharacterVisuals(scene);
 
+   
     const arrowEl = document.getElementById('dialogue-arrow');
     if (arrowEl) {
         if (scene.type === 'task_check') {
+            
             arrowEl.style.display = 'none';
         } else {
+         
             arrowEl.style.display = 'block';
         }
     }
@@ -347,9 +336,10 @@ async function initializeDialogueEngine(roomName, jsonPath) {
         }
          else if (roomID === 'room_8') {
             if (getFlag('Quiz_Final_Stars')) startingIndex = currentDialogueScript.findIndex(s => s.id === 'scene_r8_24_success');
+           
         }
 
-        // Fallback
+        // Fallback: If no mini-game solved just now, load last saved scene
         if (startingIndex <= 0 && savedSceneID) {
             const foundIndex = currentDialogueScript.findIndex(s => s.id === savedSceneID);
             if (foundIndex !== -1) startingIndex = foundIndex;
@@ -369,6 +359,7 @@ async function initializeDialogueEngine(roomName, jsonPath) {
 }
 
 function showEndGameScreen() {
+    // --- 1. TIME CALCULATION ---
     const endTime = Date.now();
     const startTime = gameState.gameStartTime || endTime; 
     const totalMilliseconds = endTime - startTime;
@@ -379,18 +370,24 @@ function showEndGameScreen() {
     
     const timeDisplay = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m`;
 
+    // --- 2. SCORE & STAR RETRIEVAL ---
     let stars = getFlag('Quiz_Final_Stars');
+    // Safety check
     if (!stars || stars < 1) stars = 1;
     if (stars > 3) stars = 3;
 
+    // RETRIEVE THE SCORE
+    // Default to 0/8 if not found (for safety)
     const scoreCorrect = getFlag('Quiz_Score_Correct') || 0;
     const scoreTotal = getFlag('Quiz_Score_Total') || 8;
 
+    // --- 3. UI GENERATION ---
     const overlay = document.createElement('div');
     overlay.id = 'end-game-overlay';
     
     const lang = gameState.language;
     
+    // TEXT CONTENT
     const titleText = lang === 'en' ? "ADVENTURE COMPLETE" : "ΤΕΛΟΣ ΠΕΡΙΠΕΤΕΙΑΣ";
     const timeText = lang === 'en' ? "Total Time:" : "Συνολικός Χρόνος:";
     const scoreLabel = lang === 'en' ? "Quiz Score:" : "Σκορ Κουίζ:";
@@ -399,6 +396,7 @@ function showEndGameScreen() {
     const surveyText = lang === 'en' ? "TAKE SURVEY" : "ΣΥΜΠΛΗΡΩΣΤΕ ΤΗΝ ΕΡΕΥΝΑ";
     const surveyUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfgCMBHJqDRni3w1ZULaoj7D_-PAi8ELSUOqHQeBzSFAKgMAw/viewform?usp=dialog";
 
+    // Star generation
     let starHTML = '';
     for (let i = 0; i < 3; i++) {
         if (i < stars) starHTML += '<span class="star filled">★</span>';
@@ -408,6 +406,7 @@ function showEndGameScreen() {
     overlay.innerHTML = `
         <div class="end-content">
             <h1>${titleText}</h1>
+            
             <div class="stars-container">${starHTML}</div>
             
             <div class="score-container">
@@ -438,18 +437,8 @@ window.handleTaskInteraction = function (taskID, requiredItem, miniGameURL) {
     const scene = currentDialogueScript[currentSceneIndex];
     if (scene.type === 'task_check' && scene.task_id === taskID) {
         saveRoomProgress(roomID, scene.id);
+         navigateToGame(miniGameURL);
         
-        const landscapeGames = ['Find_difference', 'Hidden_objects']; 
-
-        if (landscapeGames.includes(taskID) && screen.orientation && screen.orientation.lock) {
-            document.documentElement.requestFullscreen().then(() => {
-                screen.orientation.lock('landscape').catch(err => console.warn("Lock failed", err));
-            }).finally(() => {
-                navigateToGame(miniGameURL);
-            });
-        } else {
-            navigateToGame(miniGameURL);
-        }
     }
 };
 

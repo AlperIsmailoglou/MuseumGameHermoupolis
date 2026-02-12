@@ -2,56 +2,45 @@
       "Couch": {
         "image": "images/room_5/couch.jpg",
         "name": {
-            "en": "Couch",
-            "gr": "Καναπές"
+            "en": "Couch Pattern",
+            "gr": "Σχέδια Καλύμματος Καναπέ"
         },
         "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "Couch covers with an Irish pattern, something expensive at the time, a type of luxury only few could bear witness to.",
+            "gr": "Καλύμματα καναπέδων με ιρλανδικό σχέδιο, κάτι ακριβό για την εποχή, ένα είδος πολυτέλειας που μόνο λίγοι είχαν την τύχη να τη δουν από κοντά."
         }
     },
     "Dress_Baggage": {
         "image": "images/room_5/dress_baggage.jpg",
         "name": {
-            "en": "Dress baggage",
-            "gr": "Αποσκευές ντυσίματος"
+            "en": "Gifts from Travels",
+            "gr": "Δώρα από Ταξίδια"
         },
         "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "Whenever the man of the house would go on business trips, he'd always bring back gifts for the women of the house. Most of those gifts were dresses from big fashion hubs like France, who was the leader in fashion at the time. Women needed to keep up with the fashion trends, and so their husbands or fathers would bring them the latest designs so as not to bring shame upon their family.",
+            "gr": "Όποτε ο άντρας του σπιτιού έφευγε για επαγγελματικά ταξίδια, πάντα έφερνε δώρα για τις γυναίκες του σπιτιού. Τα περισσότερα από αυτά ήταν φορέματα από μεγάλα κέντρα μόδας, όπως η Γαλλία, που εκείνη την εποχή ήταν η ηγέτιδα της μόδας. Οι γυναίκες έπρεπε να ακολουθούν τις τάσεις της μόδας, και έτσι οι σύζυγοι ή οι πατέρες τους τους έφερναν τα πιο πρόσφατα σχέδια, ώστε να μην φέρουν ντροπή στην οικογένειά τους."
         }
     },
     "Pattern": {
         "image": "images/room_5/pattern.jpg",
         "name": {
-            "en": "Pattern",
-            "gr": "Μοτίβο"
+            "en": "Mural (Unfinished)",
+            "gr": "Τοιχογραφία (Ημιτελής)"
         },
          "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "An unfinished wall mural. Left to show the painting process.",
+            "gr": "Μία ημιτελής τοιχογραφία. Αφήθηκε για να δείξει τη διαδικασία της ζωγραφικής."
         }
     },
     "Pattern2": {
         "image": "images/room_5/pattern2.jpg",
         "name": {
-            "en": "Pattern",
-            "gr": "Μοτίβο"
+            "en": "Mural (Half-finished)",
+            "gr": "Τοιχογραφία (Μισοτελειωμένη)"
         },
          "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
-        }
-    },
-    "Pattern3": {
-        "image": "images/room_5/pattern3.jpg",
-        "name": {
-            "en": "Pattern",
-            "gr": "Μοτίβο"
-        },
-         "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "A half-finished wall mural. Left to show the painting process.",
+            "gr": "Μία μισοτελειωμένη τοιχογραφία. Αφήθηκε για να δείξει τη διαδικασία της ζωγραφικής."
         }
     }
 }

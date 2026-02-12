@@ -1,101 +1,57 @@
 {
-    "ice_cream_machine": {
-        "image": "images/room_2/ice_cream_machine.jpg",
+    "fridge": {
+        "image": "images/room_2/fridge.jpg",
         "name": {
-            "en": "Ice cream machine",
-            "gr": "Παγωτομηχανή"
+            "en": "Old Fridge",
+            "gr": "Ψυγείο Παλαιάς Εποχής"
         },
         "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
-        }
-    },
-    "inside_apron": {
-        "image": "images/room_2/inside_apron.jpg",
-        "name": {
-            "en": "Inside Apron",
-            "gr": "Εσωτερική ποδιά"
-        },
-        "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "Although its material wouldn't make someone think that it's a fridge, it actually is! They'd put ice inside these, and then whatever edible items that needed to be stored in cold temperatures, like fruits for example.",
+            "gr": "Παρότι το υλικό του δεν θα έκανε κάποιον να σκευτεί ότι είναι ψυγείο, και όμως είναι! Σε αυτό θα έβαζαν πάγο μέσα, και έπειτα ό,τι φαγώσιμα χρειάζονταν να είναι σε κρύες θερμοκρασίες, σαν τα φρούτα για παράδειγμα."
         }
     },
     "mug": {
         "image": "images/room_2/mug.jpg",
         "name": {
-            "en": "Mug",
-            "gr": "Κούπα"
+            "en": "Whiskey Jug",
+            "gr": "Κανάτα για Ουίσκι"
         },
         "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
-        }
-    },
-    "outside_apron": {
-        "image": "images/room_2/outside_apron.jpg",
-        "name": {
-            "en": "Outside Apron",
-            "gr": "Εξωτερική ποδιά"
-        },
-        "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση."
+            "en": "Back then, because they used barrels to store spirits like whiskey, it was more convenient to use a jug like this to serve it in, and then pass it on to glasses or even drink from it directly.",
+            "gr": "Εκείνη την εποχή, επειδή χρησιμοποιούσαν βαρέλια για να αποθηκεύσουν ποτά όπως το ουίσκι, ήταν πιο βολικό να τα χύνουν σε μία κανάτα όπως αυτή, και έπειτα να το έβαζαν σε ποτήρια ή ακόμη και να πιούν απευθείας από την κανάτα."
         }
     },
     "presser": {
         "image": "images/room_2/presser.jpg",
         "name": {
-            "en": "Presser",
-            "gr": "Σιδερωτής"
+            "en": "Potato Ricer",
+            "gr": "Πρέσσα Πατάτας"
         },
         "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση."
+            "en": "This is what they used back then to press boiled potatoes and make purée, before electric appliances came out.",
+            "gr": "Αυτό χρησιμοποιούσαν παλιά για να πιέζουν τις βρασμένες πατάτες και να φτιάχνουν πουρέ, πριν βγουν τα ηλεκτικά."
         }
     },
-    "stove": {
-        "image": "images/room_2/stove.jpg",
+    "jug": {
+        "image": "images/room_2/jug.jpg",
         "name": {
-            "en": "Stove",
-            "gr": "Θερμάστρα"
+            "en": "Washing Jug",
+            "gr": "Κανάτα για Πλύσιμο"
         },
         "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "This jug was used specifically to transfer water for washing their hands or faces with. This one is more simple in style, implying it may have been used by servants.",
+            "gr": "Αυτή η κανάτα χρησιμοποιόταν συγκεκριμένα για να μεταφέρει νερό για να πλύνει κάποιος τα χέρια του ή το πρόσωπό του. Έχει απλό στυλ, που σημαίνει ότι πιθανά να χρησιμοποιόταν από υπηρέτες."
         }
     },
-    "utensil": {
-        "image": "images/room_2/utensil.jpg",
+    "bowl": {
+        "image": "images/room_2/bowl.jpg",
         "name": {
-            "en": "Utensil",
-            "gr": "Σκεύος"
+            "en": "Clay Bowl",
+            "gr": "Πύλινη Στάμνα"
         },
         "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
-        }
-    },
-    "utensil2": {
-        "image": "images/room_2/utensil2.jpg",
-        "name": {
-            "en": "Utensil",
-            "gr": "Σκεύος"
-        },
-        "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση."
-        }
-    },
-    "utensil3": {
-        "image": "images/room_2/utensil3.jpg",
-        "name": {
-            "en": "Utensil",
-            "gr": "Σκεύος"
-        },
-        "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "ALthough its appearance doesn't inspire much, this would be considered one of the most valuable things for someone to own. That is because it looks really old even for back then, meaning its value is considered timeless.",
+            "gr": "Παρόλο που έχει αυτή την εμφάνιση, παλιά θα θεωρόταν ένα από τα πιο πολύτιμα αντικείμενα που θα είχε κάποιος. Αυτό είναι επειδή ακόμη και για εκείνη την εποχή φαίνεται να είναι παλιό, που σημαίνει ότι θεωρείται πολύτιμο λόγω της διαχρονικής του αξίας. "
         }
     }
 }
