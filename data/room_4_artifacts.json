@@ -2,23 +2,23 @@
      "Ladies": {
         "image": "images/room_4/ladies.jpg",
         "name": {
-            "en": "Examples of Clothing Worn Back Then (Ladies' Fashion)",
-            "gr": "Παραδείγματα Ρούχων που Φορούσαν Τότε (Μόδα Κυριών)"
+            "en": "Ladies Dress ",
+            "gr": "Γυναικεία Ενδυμασία"
         },
          "description": {
-            "en": "No one could enter the city square if they weren't dressed appropriately. These are examples of fashion that women of high society wore at the time.",
-            "gr": "Κανένας δεν μπορούσε να πάει στην πλατεία αν δεν ήταν καλά ντυμένοι. Αυτά είναι παραδείγματα της μόδας που οι γυναίκες υψηλής κοινωνίας φορούσαν τότε."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Mannequin": {
         "image": "images/room_4/mannequin.jpg",
         "name": {
-            "en": "Example of Male Fashion Worn Back Then",
-            "gr": "Παράδειγμα Αντρικής Μόδας της Εποχής"
+            "en": "Mannequin",
+            "gr": "Μανεκέν"
         },
          "description": {
-            "en": "Men's clothing that would be considered appropriate to enter the square with. Shoe shiners would be outside the square, as they were people of lower standing, more often than not kids, and did not have the clothes needed to enter it.",
-            "gr": "Αντρικά ρούχα που θα θεωρούνταν σωστά για να πάει κάποιος στην πλατεία. Οι γυαλοποιοί παπουτσιών δούλευαν έξω από την πλατεία, αφού ήταν άνθρωποι χαμηλής κοινωνικής τάξης, συνήθως παιδιά, και δεν είχαν τα κατάλληλα ρούχα για να πάνε στην πλατεία."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     
     }

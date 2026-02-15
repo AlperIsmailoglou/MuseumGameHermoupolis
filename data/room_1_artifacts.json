@@ -3,56 +3,23 @@
     "Old_Mural": {
         "image": "images/room_1/old_mural.jpg",
         "name": {
-            "en": "Remnants from Old Mural",
-            "gr": "Απομηνάρια Παλιάς Τοιχογραφίας"
+            "en": "Remnants from old mural",
+            "gr": "Απομεινάρια από παλιά τοιχογραφία"
         },
         "description": {
-            "en": "After heavy damage the room is paintad however this spot is left intentionally, so that the difference between old and new paints is more visible.",
-            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφηκε, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα, έτσι ώστε να φαίνεται η διαφορά των αρχικών βαφών με των καινούργιων."
-        }
-    },
-    "Tea_Set": {
-        "image": "images/room_1/tea_set.jpg",
-        "name": {
-            "en": "Japanese Tea Set",
-            "gr": "Ιαπωνέζικο Σετ Τσαγιού"
-        },
-        "description": {
-            "en": "A tea set from Japan, bought to showcase wealth.",
-            "gr": "Ένα σετ τσαγιού από την Ιαπωνία, αγορασμένο για ένδειξη πλούτου."
-        }
-    },
-    "Dishware": {
-        "image": "images/room_1/dishware.jpg",
-        "name": {
-            "en": "Polish Dishware",
-            "gr": "Πωλονέζικο Σερβίτσιο"
-        },
-        "description": {
-            "en": "A dishware set made in Poland, from a famous craftsman. Since it's made by hand, it was hard to get due to limited supply, and buying it showed how much wealth and importance someone had.",
-            "gr": "Ένα σερβίτσιο από Πωλονία, φτιαγμένο από έναν δημοφηλή τεχνήτη της εποχής. Επειδή είναι φτιαγμένο από χέρι, ήταν δύσκολο να αγοραστεί λόγω περιορισμένης ποσότητας, και εάν το αγόραζαν έδειχνε τον πλούτο και το πόσο σημαντικά ήταν οι αγοραστές."
+            "en": "After heavy damage the room is paintad however this spot is left intentionally",
+            "gr": "Μετά από σοβαρές ζημιές, το δωμάτιο βάφεται, ωστόσο αυτό το σημείο έχει παραλειφθεί σκόπιμα."
         }
     },
     "Wooden_Ship": {
         "image": "images/room_1/wooden_ship.jpg",
         "name": {
-            "en": "Hand Crafted Wooden Ship",
-            "gr": "Ξύλινο Καράβι"
+            "en": "Hand crafted wooden ship",
+            "gr": "Χειροποίητο ξύλινο καράβι"
         },
         "description": {
-            "en": "A wooden ship said to be bought as a symbol of the rich naval history of the island.",
-            "gr": "Ένα ξύλινο καράβι που θεωρείται ως σύμβολο της μεγάλης ναυτικής ιστορίας του νησιού."
-        }
-    },
-    "Couch": {
-        "image": "images/room_1/couch.jpg",
-        "name": {
-            "en": "Couch",
-            "gr": "Καναπές"
-        },
-        "description": {
-            "en": "When the master of the house was away on a business trip, they usually didn't bring any guests over, and covered the furniture to avoid collecting dust like so.",
-            "gr": "Όταν ο κύριος του σπιτιού έλλειπε σε επαγγελματικό ταξίδι, συνήθως δεν δεχόντουσαν επισκέπτες, και κάλυπταν τα έπιπλα για να μην μαζεύουν σκόνη."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     }
 }

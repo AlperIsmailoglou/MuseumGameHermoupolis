@@ -1,35 +1,24 @@
 {
-     "Prize": {
-        "image": "images/room_3/prize.jpg",
+     "Reward": {
+        "image": "images/room_3/reward.jpg",
         "name": {
-            "en": "Costume Party Competition Prize",
-            "gr": "Βραβείο Διαγωνισμού Χορού Μασκέ"
+            "en": "Reward For Dance Competition",
+            "gr": "Ανταμοιβή για Διαγωνισμό Χορού"
         },
          "description": {
-            "en": "During costume parties, they'd hold a competition for the best costume. This was a prize won in one of them. There are similar traditions residing even to this day in other places, for example Kastoria.",
-            "gr": "Σε χορούς μασκέ είχαν διαγωνισμούς για την καλύτερη στολή, που δίνονταν βραβεία όπως αυτό. Υπάρχουν ακόμα παρόμοια έθιμα σε διάφορα μέρη, όπως για παράδειγμα στην Καστοριά. "
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Dance_Schedule": {
         "image": "images/room_3/dance_schedule.jpg",
         "name": {
-            "en": "Carnet de Bal",
-            "gr": "Καρνέ Χορού"
+            "en": "Carnet de bal Dance Schedule",
+            "gr": "Carnet de bal Πρόγραμμα χορού"
         },
          "description": {
-            "en": "A card or booklet that a lady would fill with the names of dance partners in advance before a party or ball. The list of songs being played at parties was given along with the invitations.",
-            "gr": "Μια κάρτα ή ένα μικρό βιβλιαράκι που μια κυρία συμπλήρωνε με τα ονόματα των συντρόφων χορού εκ των προτέρων, πριν από ένα πάρτι ή χορό. Η λίστα με τα τραγούδια που θα παιζόταν στα πάρτι δινόταν μαζί με τις προσκλήσεις."
-        }
-    },
-    "Music_Box": {
-        "image": "images/room_3/music_box.jpg",
-        "name": {
-            "en": "Music Box",
-            "gr": "Μουσικό Κουτί"
-        },
-        "description": {
-            "en": "Back then music boxes could reach this size, looking almost like a record player. The discs for them had small holes that, just like the raised bumps on a cylinder of a regular music box you can find today, triggered the mechanism to play music.",
-            "gr": "Παλιότερα τα μουσικά κουτιά μπορούσαν να φτάσουν σε αυτό το μέγεθος, μοιάζοντας σχεδόν με γραμμόφωνο. Οι δίσκοι τους είχαν μικρές τρύπες που, όπως οι εξογκώσεις στον κύλινδρο ενός συνηθισμένου μουσικού κουτιού που βρίσκει κανείς σήμερα, ενεργοποιούσαν τον μηχανισμό για να παίξει μουσική."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     }
 }

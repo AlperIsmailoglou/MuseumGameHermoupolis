@@ -2,12 +2,12 @@
     "Beauty_bag": {
         "image": "images/room_7/beauty_bag.jpg",
         "name": {
-            "en": "Beauty Bag",
-            "gr": "Βαλίτσα Ομορφιάς"
+            "en": "Beauty bag",
+            "gr": "Τσάντα ομορφιάς"
         },
          "description": {
-            "en": "Bag with care products women would bring when traveling.",
-            "gr": "Βαλίτσα με προϊόντα ομορφιάς που έφερναν οι γυναίκες μαζί όταν ταξίδευαν."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     },
     "Calendar": {
@@ -17,41 +17,8 @@
             "gr": "Ημερολόγιο"
         },
          "description": {
-            "en": "A hand sewn calendar. Each bird represents a month in the year.",
-            "gr": "Ένα πλεκτό ημερολόγιο. Κάθε πουλί αντιπροσωπεύει έναν μήνα."
-        }
-    },
-    "Folder": {
-        "image": "images/room_7/folder.jpg",
-        "name": {
-            "en": "Clothing Tray",
-            "gr": "Δίσκος για Ρούχα"
-        },
-         "description": {
-            "en": "Tray used by servants to carry the masters’ folded pyjamas to the bed.",
-            "gr": "Δίσκος που χρησιμοποιούσαν οι υπηρέτες για να μεταφέρουν τις διπλωμένες πυτζάμες των κυρίων και να τις τοποθετούν στο κρεβάτι."
-        }
-    },
-    "Porcelain_kanata": {
-        "image": "images/room_7/porcelain_kanata.jpg",
-        "name": {
-            "en": "Porcelain Pitcher",
-            "gr": "Πορσελάνινη Κανάτα"
-        },
-         "description": {
-            "en": "A more fancy version of the washing jug in the kitchen. This one was used by the masters of the house to wash their faces.",
-            "gr": "Μία πιο πολυτελής εκδοχή της κανάτας πλυσίματος στην κουζίνα. Χρησιμοποιόταν από τους κύριους του σπιτιού για να καθαρίσουν τα πρόσωπά τους."
-        }
-    },
-    "Sewing_machine": {
-        "image": "images/room_7/sewing_machine.jpg",
-        "name": {
-            "en": "Sewing Machine",
-            "gr": "Ραπτομηχανή"
-        },
-         "description": {
-            "en": "A sewing machine. Because the needles were expensive, only the lady of the house was allowed to use it. If a servant used it and broke the needle, they'd be severely punished.",
-            "gr": "Μία ραπτομηχανή. Επειδή οι βελόνες ήταν ακριβές, μόνο η κυρία του σπιτιού μπορούσε να την χρησιμοποιήσει. Εάν μία υπηρέτρια την χρησιμοποίησε και η βελόνα έσπαγε, τότε θα την τιμωρούσαν αυστηρά"
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση."
         }
     },
     "Clothes": {
@@ -61,8 +28,63 @@
             "gr": "Ρούχα"
         },
          "description": {
-            "en": "Some of the clothing worn at the time. Their small sizes speak of the fact that women would marry very young back then.",
-            "gr": "Ρούχα που θα φορούσαν τότε. Τα μικρά τους μεγέθη μαρτυρούν το γεγονός ότι οι γυναίκες παντρεύονταν πολύ νέες εκείνη την εποχή."
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Folder": {
+        "image": "images/room_7/folder.jpg",
+        "name": {
+            "en": "Folder",
+            "gr": "Διπλωτής"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Pillow": {
+        "image": "images/room_7/pillow.jpg",
+        "name": {
+            "en": "Pillow",
+            "gr": "Μαξιλάρι"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Porcelain_kanata": {
+        "image": "images/room_7/porcelain_kanata.jpg",
+        "name": {
+            "en": "Porcelain Pitcher",
+            "gr": "Πορσελάνινη κανάτα"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Sewing_machine": {
+        "image": "images/room_7/sewing_machine.jpg",
+        "name": {
+            "en": "Sewing Machine",
+            "gr": "Ραπτομηχανή"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
+        }
+    },
+    "Wedding": {
+        "image": "images/room_7/wedding.jpg",
+        "name": {
+            "en": "Wedding Dress",
+            "gr": "Νυφικό"
+        },
+         "description": {
+            "en": "No origin",
+            "gr": "Χωρίς προέλευση"
         }
     }
 }
