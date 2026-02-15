@@ -2,12 +2,12 @@
     "Beauty_bag": {
         "image": "images/room_7/beauty_bag.jpg",
         "name": {
-            "en": "Beauty bag",
-            "gr": "Τσάντα ομορφιάς"
+            "en": "Beauty Bag",
+            "gr": "Βαλίτσα Ομορφιάς"
         },
          "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "Bag with care products women would bring when traveling.",
+            "gr": "Βαλίτσα με προϊόντα ομορφιάς που έφερναν οι γυναίκες μαζί όταν ταξίδευαν."
         }
     },
     "Calendar": {
@@ -17,52 +17,30 @@
             "gr": "Ημερολόγιο"
         },
          "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση."
-        }
-    },
-    "Clothes": {
-        "image": "images/room_7/clothes.jpg",
-        "name": {
-            "en": "Clothes",
-            "gr": "Ρούχα"
-        },
-         "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "A hand sewn calendar. Each bird represents a month in the year.",
+            "gr": "Ένα πλεκτό ημερολόγιο. Κάθε πουλί αντιπροσωπεύει έναν μήνα."
         }
     },
     "Folder": {
         "image": "images/room_7/folder.jpg",
         "name": {
-            "en": "Folder",
-            "gr": "Διπλωτής"
+            "en": "Clothing Tray",
+            "gr": "Δίσκος για Ρούχα"
         },
          "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
-        }
-    },
-    "Pillow": {
-        "image": "images/room_7/pillow.jpg",
-        "name": {
-            "en": "Pillow",
-            "gr": "Μαξιλάρι"
-        },
-         "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "Tray used by servants to carry the masters’ folded pyjamas to the bed.",
+            "gr": "Δίσκος που χρησιμοποιούσαν οι υπηρέτες για να μεταφέρουν τις διπλωμένες πυτζάμες των κυρίων και να τις τοποθετούν στο κρεβάτι."
         }
     },
     "Porcelain_kanata": {
         "image": "images/room_7/porcelain_kanata.jpg",
         "name": {
             "en": "Porcelain Pitcher",
-            "gr": "Πορσελάνινη κανάτα"
+            "gr": "Πορσελάνινη Κανάτα"
         },
          "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "A more fancy version of the washing jug in the kitchen. This one was used by the masters of the house to wash their faces.",
+            "gr": "Μία πιο πολυτελής εκδοχή της κανάτας πλυσίματος στην κουζίνα. Χρησιμοποιόταν από τους κύριους του σπιτιού για να καθαρίσουν τα πρόσωπά τους."
         }
     },
     "Sewing_machine": {
@@ -72,19 +50,19 @@
             "gr": "Ραπτομηχανή"
         },
          "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "A sewing machine. Because the needles were expensive, only the lady of the house was allowed to use it. If a servant used it and broke the needle, they'd be severely punished.",
+            "gr": "Μία ραπτομηχανή. Επειδή οι βελόνες ήταν ακριβές, μόνο η κυρία του σπιτιού μπορούσε να την χρησιμοποιήσει. Εάν μία υπηρέτρια την χρησιμοποίησε και η βελόνα έσπαγε, τότε θα την τιμωρούσαν αυστηρά"
         }
     },
-    "Wedding": {
-        "image": "images/room_7/wedding.jpg",
+    "Clothes": {
+        "image": "images/room_7/clothes.jpg",
         "name": {
-            "en": "Wedding Dress",
-            "gr": "Νυφικό"
+            "en": "Clothes",
+            "gr": "Ρούχα"
         },
          "description": {
-            "en": "No origin",
-            "gr": "Χωρίς προέλευση"
+            "en": "Some of the clothing worn at the time. Their small sizes speak of the fact that women would marry very young back then.",
+            "gr": "Ρούχα που θα φορούσαν τότε. Τα μικρά τους μεγέθη μαρτυρούν το γεγονός ότι οι γυναίκες παντρεύονταν πολύ νέες εκείνη την εποχή."
         }
     }
 }
